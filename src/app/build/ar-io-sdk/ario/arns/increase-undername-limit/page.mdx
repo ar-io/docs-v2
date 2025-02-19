@@ -5,7 +5,7 @@ import {HeroPattern} from "@/components/HeroPattern"
 
 # increaseUndernameLimit
 
-`increaseUndernameLimit` is a method on the `ARIO` class that increases the undername support of a domain up to a maximum 10,000. Domains, by default, support up to 10 undernames.
+`increaseUndernameLimit` is a method on the `ARIO` class that increases the number of undernames an ArNS domain can support. Each domain starts with a default limit of 10 undernames and can be increased up to a maximum of 10,000 undernames.
 
 `increaseUndernameLimit` requires authentication.
 
@@ -27,20 +27,20 @@ import {HeroPattern} from "@/components/HeroPattern"
       <tr>
         <th>name</th>
         <td>string</td>
-        <td>Target ArNS name to increase undername limit.</td>
+        <td>The ArNS name to increase the undername limit for</td>
         <td>false</td>
       </tr>
       <tr>
         <th>qty</th>
         <td>number</td>
-        <td>The number of additional undername slots to purchase.</td>
+        <td>The number of additional undername slots to purchase (up to 10,000 total)</td>
         <td>false</td>
       </tr>
       <tr>
         <th>tags</th>
         <td>array</td>
         <td>
-          An array of GQL tag objects to attach to the transfer AO message.
+          An array of GQL tag objects to attach to the transfer AO message
         </td>
         <td>true</td>
       </tr>
@@ -55,7 +55,7 @@ import {HeroPattern} from "@/components/HeroPattern"
 
        ```typescript {{title: "NodeJS"}}
         const fs = require("fs");
-        const { ARIO, ArweaveSigner, ARIOToken } = require("@ar.io/sdk");
+        const { ARIO, ArweaveSigner } = require("@ar.io/sdk");
 
         async function main() {
         const jwk = JSON.parse(fs.readFileSync("KeyFile.json"));
@@ -63,36 +63,43 @@ import {HeroPattern} from "@/components/HeroPattern"
             signer: new ArweaveSigner(jwk),
         });
 
+        // Increase limit by 90 slots (from default 10 to 100 total)
         const { id: txId } = await ario.increaseUndernameLimit(
-                {
-                    name: 'ar-io',
-                    qty: 420,
-                },
-                // optional additional tags
-                { tags: [{ name: 'App-Name', value: 'My-Awesome-App' }] },
-            );
-        }
+            {
+                name: 'ar-io',
+                qty: 90,
+            },
+            // optional additional tags
+            { tags: [{ name: 'App-Name', value: 'My-Awesome-App' }] }
+        );
 
-        main();
+        console.log('Transaction ID:', txId);
+    }
+
+    main();
 
     ```
 
     ```typescript {{ title: 'Web' }}
-    import { ARIO, ARIOToken, ArConnectSigner } from '@ar.io/sdk/web';
+    import { ARIO, ArConnectSigner } from '@ar.io/sdk/web';
 
     async function main() {
         const ario = ARIO.init({
             signer: new ArConnectSigner(window.arweaveWallet)
-        })
+        });
+
+        // Increase limit by 90 slots (from default 10 to 100 total)
         const { id: txId } = await ario.increaseUndernameLimit(
-                {
-                    name: 'ar-io',
-                    qty: 420,
-                },
-                // optional additional tags
-                { tags: [{ name: 'App-Name', value: 'My-Awesome-App' }] },
-            );
-        }
+            {
+                name: 'ar-io',
+                qty: 90,
+            },
+            // optional additional tags
+            { tags: [{ name: 'App-Name', value: 'My-Awesome-App' }] }
+        );
+
+        console.log('Transaction ID:', txId);
+    }
 
     main();
     ```

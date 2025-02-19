@@ -12,7 +12,7 @@ export const metadata = {
 
 # removeUndernameRecord
 
-`removeUndernameRecord` is a method on the `ANT` class that removes an undername record from the ANT process.
+`removeUndernameRecord` is a method on the `ANT` class that removes a specified undername record from the ANT process. Once removed, the undername will no longer resolve.
 
 `removeUndernameRecord` requires authentication.
 
@@ -32,15 +32,15 @@ export const metadata = {
     <tbody>
       <tr>
         <th>undername</th>
-        <td>String</td>
-        <td>Undername to remove (e.g. 'dapp')</td>
+        <td>string</td>
+        <td>The undername to remove (e.g., 'dapp')</td>
         <td>false</td>
       </tr>
       <tr>
         <th>tags</th>
         <td>array</td>
         <td>
-          An array of GQL tag objects to attach to the transfer AO message.
+          An array of GQL tag objects to attach to the transfer AO message
         </td>
         <td>true</td>
       </tr>

@@ -5,7 +5,7 @@ import {HeroPattern} from "@/components/HeroPattern"
 
 # getRedelegationFee
 
-`getRedelegationFee` is a method on the `ARIO` class that retrieves the fee rate as percentage required to redelegate the stake of a specific address. Fee rate ranges from 0% to 60% based on the number of redelegations since the last fee reset.
+`getRedelegationFee` is a method on the `ARIO` class that retrieves the redelegation fee rate as a percentage for a specific address. The fee rate ranges from 0% to 60% based on the number of redelegations since the last fee reset.
 
 `getRedelegationFee` does not require authentication.
 
@@ -19,15 +19,15 @@ import {HeroPattern} from "@/components/HeroPattern"
         <th>Parameter</th>
         <th>Type</th>
         <th>Description</th>
-        <th>Optional</th>
+        <th>Required</th>
     </tr>
     </thead>
     <tbody>
     <tr>
         <th>address</th>
-        <td>string - WalletAddress</td>
-        <td>The public wallet address of the stake owner.</td>
-        <td>false</td>
+        <td>string</td>
+        <td>The wallet address to check for redelegation fees</td>
+        <td>Yes</td>
     </tr>
     </tbody>
     </table>

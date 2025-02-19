@@ -5,7 +5,7 @@ import {HeroPattern} from "@/components/HeroPattern"
 
 # releaseName
 
-`releaseName` is a method on the `ANT` class that releases a name from the ANT and makes it available for auction on the ARIO contract. The name must be permanently owned by the releasing wallet. 50% of the winning bid will be distributed to the ANT owner at the time of release. If no bids, the name will be released and can be reregistered by anyone.
+`releaseName` is a method on the `ANT` class that releases an ArNS name from the ANT, making it available for auction on the ARIO contract. The name must be permanently owned by the releasing wallet. Upon successful auction, 50% of the winning bid will be distributed to the ANT owner at the time of release. If there are no bids, the name becomes available for anyone to register.
 
 `releaseName` requires authentication.
 
@@ -27,20 +27,20 @@ import {HeroPattern} from "@/components/HeroPattern"
       <tr>
         <th>name</th>
         <td>string</td>
-        <td>ArNS name to release</td>
+        <td>The ArNS name to be released</td>
         <td>false</td>
       </tr>
       <tr>
         <th>ioProcessId</th>
         <td>string</td>
-        <td>Process Id of the ARIO contract.</td>
+        <td>The Process ID of the ARIO contract</td>
         <td>false</td>
       </tr>
       <tr>
         <th>tags</th>
         <td>array</td>
         <td>
-          An array of GQL tag objects to attach to the transfer AO message.
+          An array of GQL tag objects to attach to the transfer AO message
         </td>
         <td>true</td>
       </tr>

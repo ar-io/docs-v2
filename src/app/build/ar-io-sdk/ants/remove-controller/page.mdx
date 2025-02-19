@@ -5,7 +5,7 @@ import {HeroPattern} from "@/components/HeroPattern"
 
 # removeController
 
-`removeController` is a method on the `ANT` class that removes a controller from the list of approved controllers on the ANT.
+`removeController` is a method on the `ANT` class that removes a specified wallet address from the ANT's list of approved controllers.
 
 `removeController` requires authentication.
 
@@ -26,15 +26,15 @@ import {HeroPattern} from "@/components/HeroPattern"
     <tbody>
       <tr>
         <th>controller</th>
-        <td>String - WalletAddress</td>
-        <td>Public wallet address of the controller being removed.</td>
+        <td>string - WalletAddress</td>
+        <td>The public wallet address of the controller to be removed</td>
         <td>false</td>
       </tr>
       <tr>
         <th>tags</th>
         <td>array</td>
         <td>
-          An array of GQL tag objects to attach to the transfer AO message.
+          An array of GQL tag objects to attach to the transfer AO message
         </td>
         <td>true</td>
       </tr>

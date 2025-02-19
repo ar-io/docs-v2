@@ -5,7 +5,7 @@ import {HeroPattern} from "@/components/HeroPattern"
 
 # getTokenCost
 
-`getTokenCost` is a method on the `ARIO` class that calculates the price in `mARIO` to perform the interaction in question. e.g. a `Buy-Record` interaction, where args are the specific params for that interaction.
+`getTokenCost` is a method on the `ARIO` class that calculates the cost in mARIO tokens for a specific interaction (such as buying an ArNS record). The cost is calculated based on the interaction type and its parameters.
 
 `getTokenCost` does not require authentication.
 
@@ -26,13 +26,13 @@ import {HeroPattern} from "@/components/HeroPattern"
     <tr>
         <th>intent</th>
         <td>string</td>
-        <td>The action to check the token cost for.</td>
+        <td>The type of interaction to calculate the cost for (e.g., 'Buy-Record')</td>
         <td>false</td>
     </tr>
     <tr>
         <th>args</th>
-        <td>varied</td>
-        <td>The parameters for the action being checked</td>
+        <td>object</td>
+        <td>The specific parameters required for the interaction type</td>
         <td>false</td>
     </tr>
     </tbody>
@@ -55,7 +55,9 @@ import {HeroPattern} from "@/components/HeroPattern"
             name: 'ar-io',
             type: 'permabuy',
         })
-        .then((p) => new mIOToken(p).toIO()); // convert to ARIO for readability
+        .then((p) => new mIOToken(p).toIO()); // convert to IO tokens for readability
+      
+      console.log('Cost in IO tokens:', price);
     }
 
     main();
@@ -72,7 +74,9 @@ import {HeroPattern} from "@/components/HeroPattern"
             name: 'ar-io',
             type: 'permabuy',
         })
-        .then((p) => new mIOToken(p).toIO()); // convert to ARIO for readability
+        .then((p) => new mIOToken(p).toIO()); // convert to IO tokens for readability
+      
+      console.log('Cost in IO tokens:', price);
     }
 
     main();
@@ -83,5 +87,5 @@ import {HeroPattern} from "@/components/HeroPattern"
 ## Output
 
 ```js
-1642.34
+1642.34  // Cost in IO tokens (converted from mARIO for readability)
 ```

@@ -5,7 +5,7 @@ import {HeroPattern} from "@/components/HeroPattern"
 
 # getEpoch
 
-`getEpoch` is a method on the `ARIO` class that returns the epoch data for the specified block height. If no epoch index is provided, the current epoch is used.
+`getEpoch` is a method on the `ARIO` class that returns the epoch data for the specified epoch index. If no epoch index is provided, the current epoch is used.
 
 `getEpoch` does not require authentication.
 
@@ -20,15 +20,15 @@ import {HeroPattern} from "@/components/HeroPattern"
         <th>Parameter</th>
         <th>Type</th>
         <th>Description</th>
-        <th>Optional</th>
+        <th>Required</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <th>epochIndex</th>
         <td>number</td>
-        <td>Epoch index for the requested Epoch data.</td>
-        <td>true</td>
+        <td>The epoch index for which to retrieve epoch data.</td>
+        <td>No</td>
       </tr>
     </tbody>
   </table>

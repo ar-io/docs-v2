@@ -5,7 +5,7 @@ import {HeroPattern} from "@/components/HeroPattern"
 
 # getArNSRecord
 
-`getArNSRecord` is a method on the `ARIO` class that retrieves the record info of the specified ArNS name.
+`getArNSRecord` is a method on the `ARIO` class that retrieves the record information for a specified ArNS name, including its process ID, lease duration, type, and undername limit.
 
 `getArNSRecord` does not require authentication.
 
@@ -26,7 +26,7 @@ import {HeroPattern} from "@/components/HeroPattern"
     <tr>
         <th>name</th>
         <td>string</td>
-        <td>The ArNS name for which to receive record info.</td>
+        <td>The ArNS name to retrieve record information for</td>
         <td>false</td>
     </tr>
     </tbody>

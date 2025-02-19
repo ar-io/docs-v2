@@ -16,7 +16,7 @@ export const metadata = {
 
 # removeRecord
 
-`removeRecord` is a method on the `ANT` class that removes a record from the ANT process.
+`removeRecord` is a method on the `ANT` class that removes a specified record from the ANT process.
 
 `removeRecord` requires authentication.
 
@@ -37,15 +37,15 @@ export const metadata = {
     <tbody>
       <tr>
         <th>undername</th>
-        <td>String</td>
-        <td>Undername to remove record for. `@` represents the top level name.</td>
+        <td>string</td>
+        <td>The undername for which to remove the record. The `@` symbol represents the top-level name</td>
         <td>false</td>
       </tr>
       <tr>
         <th>tags</th>
         <td>array</td>
         <td>
-          An array of GQL tag objects to attach to the transfer AO message.
+          An array of GQL tag objects to attach to the transfer AO message
         </td>
         <td>true</td>
       </tr>

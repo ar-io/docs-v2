@@ -5,16 +5,15 @@ import {HeroPattern} from "@/components/HeroPattern"
 
 # redelegateStake
 
-`redelegateStake` is a method on the `ARIO` class that redelegates the stake of a specific address to a new gateway. Vault ID may be optionally included in order to redelegate from an existing withdrawal vault. The redelegation fee is calculated based on the fee rate and the stake amount. Users are allowed one free redelegation every seven epochs. Each additional redelegation beyond the free redelegation will increase the fee by 10%, capping at a 60% redelegation fee.
+`redelegateStake` is a method on the `ARIO` class that moves staked tokens from one gateway to another. A vault ID can be optionally included to redelegate from an existing withdrawal vault. The redelegation fee is calculated based on the fee rate and the stake amount. Users receive one free redelegation every seven epochs. Each additional redelegation increases the fee by 10%, up to a maximum of 60%.
 
-e.g: If 1000 mARIO is redelegated and the fee rate is 10%, the fee will be 100 mARIO. Resulting in 900 mARIO being redelegated to the new gateway and 100 mARIO being deducted back to the protocol balance.
+For example: If 1000 mARIO is redelegated with a 10% fee rate, the fee will be 100 mARIO. This results in 900 mARIO being redelegated to the new gateway and 100 mARIO being returned to the protocol balance.
 
 `redelegateStake` requires authentication.
 
 ## Parameters
 
 {
-
 <div style={{ textAlign: 'center' }}>
   <table className="inline-table">
     <thead>
@@ -22,35 +21,33 @@ e.g: If 1000 mARIO is redelegated and the fee rate is 10%, the fee will be 100 m
         <th>Parameter</th>
         <th>Type</th>
         <th>Description</th>
-        <th>Optional</th>
+        <th>Required</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <th>target</th>
-        <td>String - WalletAddress</td>
-        <td>Gateway address stake is being moved to.</td>
-        <td>false</td>
+        <td>string</td>
+        <td>Destination gateway address for the stake</td>
+        <td>Yes</td>
       </tr>
       <tr>
         <th>source</th>
-        <td>String - WalletAddress</td>
-        <td>Gateway address stake is being moved from.</td>
-        <td>false</td>
+        <td>string</td>
+        <td>Current gateway address of the stake</td>
+        <td>Yes</td>
       </tr>
       <tr>
         <th>stakeQty</th>
         <td>number</td>
-        <td>The number of `mARIO` tokens to redelegate.</td>
-        <td>false</td>
+        <td>Amount in mARIO to redelegate</td>
+        <td>Yes</td>
       </tr>
       <tr>
         <th>vaultId</th>
         <td>string</td>
-        <td>
-          Specific vault to move stake from.
-        </td>
-        <td>true</td>
+        <td>ID of the vault to move stake from</td>
+        <td>No</td>
       </tr>
     </tbody>
   </table>

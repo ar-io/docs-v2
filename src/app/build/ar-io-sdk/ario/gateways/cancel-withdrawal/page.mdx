@@ -5,7 +5,7 @@ import {HeroPattern} from "@/components/HeroPattern"
 
 # cancelWithdrawal
 
-`cancelWithdrawal` is a method on the `ARIO` class that instantly withdraws an existing vault on a gateway. If no `gatewayAddress` is provided, the signer's address will be used.
+`cancelWithdrawal` is a method on the `ARIO` class that cancels an existing vault withdrawal on a gateway. If no `gatewayAddress` is provided, the signer's address will be used.
 
 `cancelWithdrawal` requires authentication.
 
@@ -20,29 +20,27 @@ import {HeroPattern} from "@/components/HeroPattern"
         <th>Parameter</th>
         <th>Type</th>
         <th>Description</th>
-        <th>Optional</th>
+        <th>Required</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <th>gatewayAddress</th>
-        <td>String - WalletAddress</td>
-        <td>Gateway address where delegate vault exists</td>
-        <td>true</td>
+        <td>string</td>
+        <td>The gateway address where the vault exists</td>
+        <td>No</td>
       </tr>
       <tr>
         <th>vaultId</th>
         <td>string</td>
-        <td>Delegated vault id to cancel.</td>
-        <td>false</td>
+        <td>The ID of the vault withdrawal to cancel</td>
+        <td>Yes</td>
       </tr>
       <tr>
         <th>tags</th>
         <td>array</td>
-        <td>
-          An array of GQL tag objects to attach to the transfer AO message.
-        </td>
-        <td>true</td>
+        <td>An array of GQL tag objects to attach to the transfer AO message</td>
+        <td>No</td>
       </tr>
     </tbody>
   </table>

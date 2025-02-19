@@ -5,7 +5,7 @@ import {HeroPattern} from "@/components/HeroPattern"
 
 # removePrimaryNames
 
-`removePrimaryNames` is a method on the `ANT` class that removes primary names from the ANT process.
+`removePrimaryNames` is a method on the `ANT` class that removes specified primary names from the ANT process. This affects any primary names associated with base names controlled by this ANT.
 
 `removePrimaryNames` requires authentication.
 
@@ -27,20 +27,20 @@ import {HeroPattern} from "@/components/HeroPattern"
       <tr>
         <th>names</th>
         <td>array</td>
-        <td>Array of primary names to be removed.</td>
+        <td>An array of primary names to be removed</td>
         <td>false</td>
       </tr>
       <tr>
         <th>ioProcessId</th>
         <td>string</td>
-        <td>Process Id of the ARIO contract.</td>
+        <td>The Process ID of the ARIO contract</td>
         <td>false</td>
       </tr>
       <tr>
         <th>tags</th>
         <td>array</td>
         <td>
-          An array of GQL tag objects to attach to the transfer AO message.
+          An array of GQL tag objects to attach to the transfer AO message
         </td>
         <td>true</td>
       </tr>

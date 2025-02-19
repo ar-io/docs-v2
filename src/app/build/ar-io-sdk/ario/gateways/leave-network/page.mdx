@@ -5,7 +5,7 @@ import {HeroPattern} from "@/components/HeroPattern"
 
 # leaveNetwork
 
-`leaveNetwork` is a method on the `ARIO` class that sets the gateway as `leaving` on the ar.io network. The gateways operator and delegate stakes are vaulted and will be returned after the leave periods. The gateway will be removed from the network after the leave period.
+`leaveNetwork` is a method on the `ARIO` class that sets a gateway's status to `leaving` on the ar.io network. The gateway's operator and delegate stakes are vaulted and will be returned after the leave period. The gateway will be removed from the network once the leave period ends.
 
 `leaveNetwork` requires authentication.
 
@@ -19,17 +19,15 @@ import {HeroPattern} from "@/components/HeroPattern"
         <th>Parameter</th>
         <th>Type</th>
         <th>Description</th>
-        <th>Optional</th>
+        <th>Required</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <th>tags</th>
         <td>array</td>
-        <td>
-          An array of GQL tag objects to attach to the leaveNetwork AO message.
-        </td>
-        <td>true</td>
+        <td>An array of GQL tag objects to attach to the AO message</td>
+        <td>No</td>
       </tr>
     </tbody>
   </table>

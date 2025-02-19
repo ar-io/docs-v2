@@ -5,7 +5,7 @@ import {HeroPattern} from "@/components/HeroPattern"
 
 # increaseOperatorStake
 
-`increaseOperatorStake` is a method on the `ARIO` class that increases the callers operator stake. Must be executed with a wallet registered as a gateway operator.
+`increaseOperatorStake` is a method on the `ARIO` class that increases the caller's operator stake. This method must be executed with a wallet registered as a gateway operator.
 
 `increaseOperatorStake` requires authentication.
 
@@ -20,23 +20,21 @@ import {HeroPattern} from "@/components/HeroPattern"
         <th>Parameter</th>
         <th>Type</th>
         <th>Description</th>
-        <th>Optional</th>
+        <th>Required</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <th>qty</th>
         <td>number</td>
-        <td>The number of `mARIO` tokens to add to operator stake.</td>
-        <td>false</td>
+        <td>Amount in mARIO to add to operator stake</td>
+        <td>Yes</td>
       </tr>
       <tr>
         <th>tags</th>
         <td>array</td>
-        <td>
-          An array of GQL tag objects to attach to the transfer AO message.
-        </td>
-        <td>true</td>
+        <td>An array of GQL tag objects to attach to the transaction</td>
+        <td>No</td>
       </tr>
     </tbody>
   </table>

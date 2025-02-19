@@ -5,7 +5,8 @@ import {HeroPattern} from "@/components/HeroPattern"
 
 # getDemandFactor
 
-`getDemandFactor` is a method on the `ARIO` class that retrieves the current demand factor of the network. The demand factor is a multiplier applied to the cost of ArNS interactions based on the current network demand.
+`getDemandFactor` is a method on the `ARIO` class that retrieves the current network demand factor. This factor is a dynamic multiplier that adjusts the cost of ArNS interactions based on network demand - higher demand results in higher costs, and vice versa.
+
 `getDemandFactor` does not require authentication.
 
 ## Parameters
@@ -15,13 +16,13 @@ import {HeroPattern} from "@/components/HeroPattern"
 ## Examples
 
 <CodeGroup title="getDemandFactor">
-
     ```typescript {{ title: 'NodeJS' }}
     const { ARIO } = require('@ar.io/sdk');
 
     async function main() {
       const ario = ARIO.init();
       const demandFactor = await ario.getDemandFactor();
+      console.log('Current demand factor:', demandFactor);
     }
 
     main();
@@ -32,16 +33,16 @@ import {HeroPattern} from "@/components/HeroPattern"
 
     async function main() {
       const ario = ARIO.init();
-     const demandFactor = await ario.getDemandFactor();
+      const demandFactor = await ario.getDemandFactor();
+      console.log('Current demand factor:', demandFactor);
     }
 
     main();
     ```
-
 </CodeGroup>
 
 ## Output
 
 ```js
-1.05256
+1.05256  // A multiplier where 1.0 represents baseline cost
 ```
