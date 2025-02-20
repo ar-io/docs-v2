@@ -5,7 +5,7 @@ import {HeroPattern} from "@/components/HeroPattern"
 
 # getGateway
 
-`getGateway` is a method on the `ARIO` class that retrieves a gateway's information by its staking wallet address.
+`getGateway` is a method on the `ARIO` class that retrieves a gateway's information using its staking wallet address.
 
 `getGateway` does not require authentication.
 
@@ -19,15 +19,15 @@ import {HeroPattern} from "@/components/HeroPattern"
         <th>Parameter</th>
         <th>Type</th>
         <th>Description</th>
-        <th>Optional</th>
+        <th>Required</th>
     </tr>
     </thead>
     <tbody>
     <tr>
         <th>address</th>
-        <td>string - WalletAddress</td>
-        <td>The public staking wallet addressed associated with a gateway</td>
-        <td>false</td>
+        <td>string</td>
+        <td>The gateway's staking wallet address</td>
+        <td>Yes</td>
     </tr>
     </tbody>
     </table>

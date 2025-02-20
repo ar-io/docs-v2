@@ -12,7 +12,7 @@ export const metadata = {
 
 # joinNetwork
 
-`joinNetwork` is a method on the `ARIO` class that joins a gateway to the ar.io network via its associated wallet.
+`joinNetwork` is a method on the `ARIO` class that joins a gateway to the ar.io network using its associated wallet.
 
 `joinNetwork` requires authentication.
 
@@ -26,89 +26,87 @@ export const metadata = {
         <th>Parameter</th>
         <th>Type</th>
         <th>Description</th>
-        <th>Optional</th>
+        <th>Required</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <th>qty</th>
         <td>number</td>
-        <td>Number of tokens, in `mARIO` to stake when joining network.</td>
-        <td>false</td>
+        <td>Amount in mARIO to stake when joining network</td>
+        <td>Yes</td>
       </tr>
       <tr>
         <th>autoStake</th>
         <td>boolean</td>
-        <td>If true, automatically stakes gateway rewards.</td>
-        <td>false</td>
+        <td>Whether to automatically stake gateway rewards</td>
+        <td>Yes</td>
       </tr>
       <tr>
         <th>allowDelegatedStaking</th>
         <td>boolean</td>
-        <td>If true, allows third parties to delegate stake to the gateway.</td>
-        <td>false</td>
+        <td>Whether to allow third parties to delegate stake</td>
+        <td>Yes</td>
       </tr>
       <tr>
         <th>minDelegatedStake</th>
         <td>number</td>
-        <td>Minimum number of tokens, in `mARIO` that can be delegated to the gateway.</td>
-        <td>false</td>
+        <td>Minimum amount in mARIO that can be delegated</td>
+        <td>Yes</td>
       </tr>
       <tr>
         <th>delegateRewardShareRatio</th>
         <td>number</td>
-        <td>Percentage of gateway rewards to share with delegates. e.g. 10%</td>
-        <td>false</td>
+        <td>Percentage of rewards to share with delegates (e.g., 10)</td>
+        <td>Yes</td>
       </tr>
       <tr>
         <th>label</th>
         <td>string</td>
-        <td>Friendly name for gateway, min 1 character, max 64 characters.</td>
-        <td>false</td>
+        <td>Gateway name (1-64 characters)</td>
+        <td>Yes</td>
       </tr>
       <tr>
         <th>note</th>
         <td>string</td>
-        <td>A note to be associated with gateway, max 256 characters.</td>
-        <td>false</td>
+        <td>Gateway description (max 256 characters)</td>
+        <td>Yes</td>
       </tr>
       <tr>
         <th>properties</th>
-        <td>string - ArweaveTxId</td>
-        <td>ArweaveTxId to properties object containing additional gateway configuration details.</td>
-        <td>false</td>
+        <td>string</td>
+        <td>Arweave transaction ID containing additional gateway configuration</td>
+        <td>Yes</td>
       </tr>
       <tr>
         <th>observerWallet</th>
-        <td>string - WalletAddress</td>
-        <td>Public wallet address for wallet used to upload network observations.</td>
-        <td>false</td>
+        <td>string</td>
+        <td>Wallet address used for network observations</td>
+        <td>Yes</td>
       </tr>
       <tr>
         <th>fqdn</th>
         <td>string</td>
-        <td>Fully qualified domain name, must be valid domain owned by gateway operator.</td>
-        <td>false</td>
+        <td>Valid domain name owned by the gateway operator</td>
+        <td>Yes</td>
       </tr>
       <tr>
         <th>port</th>
         <td>number</td>
-        <td>Port number to use when accessing gateway, generally 443 (https)</td>
-        <td>false</td>
+        <td>Port number for gateway access (typically 443)</td>
+        <td>Yes</td>
       </tr>
       <tr>
         <th>protocol</th>
-        <td>string - "http" || "https"</td>
-        <td>Protocol to use when accessing gateway, only "https" is supported for network participation.</td>
-        <td>false</td>
+        <td>string</td>
+        <td>Access protocol (only 'https' supported)</td>
+        <td>Yes</td>
       </tr>
       <tr>
         <th>tags</th>
         <td>array</td>
-        <td>
-          An array of GQL tag objects to attach to the joinNetwork AO message.
-        </td>
-        <td>true</td>
+        <td>An array of GQL tag objects to attach to the transaction</td>
+        <td>No</td>
       </tr>
     </tbody>
   </table>

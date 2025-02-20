@@ -5,7 +5,7 @@ import {HeroPattern} from "@/components/HeroPattern"
 
 # setLogo
 
-`setLogo` is a method on the `ANT` class that sets the logo of the ANT process. Logo should be an Arweave transaction Id.
+`setLogo` is a method on the `ANT` class that updates the logo of the ANT process. The logo must be specified as an Arweave transaction ID that contains an image.
 
 `setLogo` requires authentication.
 
@@ -27,7 +27,7 @@ import {HeroPattern} from "@/components/HeroPattern"
       <tr>
         <th>txId</th>
         <td>string</td>
-        <td>Arweave transaction Id representing an image to use as ANT logo.</td>
+        <td>The Arweave transaction ID of the image to use as the ANT's logo</td>
         <td>false</td>
       </tr>
       <tr>

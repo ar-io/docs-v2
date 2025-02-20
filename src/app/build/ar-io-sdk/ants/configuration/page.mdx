@@ -5,7 +5,7 @@ import {HeroPattern} from "@/components/HeroPattern"
 
 # init
 
-`init` is a factory function that creates a read-only or writeable client. By providing a `signer` additional write APIs that require signing, like `setRecord` and `transfer` are available. By default, a read-only client is returned and no write APIs are available.
+`init` is a factory function that creates a read-only or writable client. By providing a `signer`, additional write APIs that require signing (like `setRecord` and `transfer`) become available. By default, a read-only client is returned and no write APIs are available.
 
 ## Parameters
 
@@ -31,7 +31,7 @@ import {HeroPattern} from "@/components/HeroPattern"
         <th>process</th>
         <td>AOProcess</td>
         <td>
-          A pre-configured AOProcess instance used to initialize the ARIO class
+          A pre-configured AOProcess instance used to initialize the ANT class
         </td>
         <td>true</td>
       </tr>

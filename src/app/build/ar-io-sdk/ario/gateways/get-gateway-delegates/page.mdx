@@ -5,14 +5,13 @@ import {HeroPattern} from "@/components/HeroPattern"
 
 # getGatewayDelegates
 
-`getGatewayDelegates` is a method on the `ARIO` class that retrieves all delegates for a specific gateway, paginated and sorted by the specified criteria. The `cursor` used for pagination is the last delegate address from the previous request.
+`getGatewayDelegates` is a method on the `ARIO` class that retrieves all delegates for a specific gateway. Results are paginated and sorted by the specified criteria. The cursor parameter represents the last delegate address from the previous request.
 
 `getGatewayDelegates` does not require authentication.
 
 ## Parameters
 
 {
-
 <div style={{ textAlign: 'center' }}>
   <table className="inline-table">
     <thead>
@@ -20,42 +19,39 @@ import {HeroPattern} from "@/components/HeroPattern"
         <th>Parameter</th>
         <th>Type</th>
         <th>Description</th>
-        <th>Optional</th>
+        <th>Required</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <th>address</th>
-        <td>string - WalletAddress</td>
-        <td>Gateway wallet address to receive delegates for.</td>
-        <td>false</td>
+        <td>string</td>
+        <td>The gateway address to query for delegates</td>
+        <td>Yes</td>
       </tr>
       <tr>
         <th>cursor</th>
         <td>string</td>
-        <td>Cursor used for paginated results</td>
-        <td>true</td>
+        <td>Cursor for paginated results</td>
+        <td>No</td>
       </tr>
       <tr>
         <th>limit</th>
         <td>number</td>
-        <td>Max number of results to return in a single search. Max is 1000.</td>
-        <td>true</td>
+        <td>Maximum number of results to return (max: 1000)</td>
+        <td>No</td>
       </tr>
       <tr>
         <th>sortBy</th>
         <td>string</td>
-        <td>Property used to sort returned results</td>
-        <td>true</td>
+        <td>Property to sort results by</td>
+        <td>No</td>
       </tr>
       <tr>
         <th>sortOrder</th>
         <td>string</td>
-        <td>
-          Order in which sorted results are returned. valid values are `desc` or
-          `asc`
-        </td>
-        <td>true</td>
+        <td>Sort direction (valid values: 'desc' or 'asc')</td>
+        <td>No</td>
       </tr>
     </tbody>
   </table>

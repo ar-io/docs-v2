@@ -5,7 +5,7 @@ import {HeroPattern} from "@/components/HeroPattern"
 
 # transfer
 
-`transfer` is a method on the `ANT` class that transfers ownership of the ANT to a new target address. Target must be an Arweave address.
+`transfer` is a method on the `ANT` class that transfers ownership of the ANT to a new wallet address. The target address must be a valid Arweave wallet address.
 
 `transfer` requires authentication.
 
@@ -26,8 +26,8 @@ import {HeroPattern} from "@/components/HeroPattern"
     <tbody>
       <tr>
         <th>target</th>
-        <td>String - WalletAddress</td>
-        <td>Recipient wallet address to send ANT to.</td>
+        <td>string - WalletAddress</td>
+        <td>The Arweave wallet address of the new owner</td>
         <td>false</td>
       </tr>
       <tr>

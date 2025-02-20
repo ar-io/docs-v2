@@ -16,7 +16,7 @@ export const metadata = {
 
 # setRecord
 
-`setRecord` is a method on the `ANT` class that updates or creates a record in the ANT process.
+`setRecord` is a method on the `ANT` class that creates or updates a record in the ANT process.
 
 `setRecord` requires authentication.
 
@@ -37,27 +37,27 @@ export const metadata = {
     <tbody>
       <tr>
         <th>undername</th>
-        <td>String</td>
-        <td>Undername to set record for. `@` represents the top level name.</td>
+        <td>string</td>
+        <td>The undername for which to set the record. The `@` symbol represents the top-level name</td>
         <td>false</td>
       </tr>
       <tr>
         <th>transactionId</th>
-        <td>String</td>
-        <td>Arweave transaction Id to set as record.</td>
+        <td>string</td>
+        <td>The Arweave transaction ID to set as the record</td>
         <td>false</td>
       </tr>
       <tr>
         <th>ttlSeconds</th>
         <td>number</td>
-        <td>Number of seconds for DNS TTL. Defaults to 900</td>
+        <td>The number of seconds for DNS TTL (defaults to 900)</td>
         <td>true</td>
       </tr>
       <tr>
         <th>tags</th>
         <td>array</td>
         <td>
-          An array of GQL tag objects to attach to the transfer AO message.
+          An array of GQL tag objects to attach to the transfer AO message
         </td>
         <td>true</td>
       </tr>
@@ -67,13 +67,12 @@ export const metadata = {
 }
 
 <Tip title="TTL">
-  Time-To-Live (TTL) determines how often gateways should check the ANT for an update the corresponding record. You can have different TTLs for different record within an ANT, depending on their use case. A record that is updated frequently should be set to a lower
-  number to facilitate serving current data, while a record that is updated less
-  often should be set to a higher number to allow cached data to be served more
+  Time-To-Live (TTL) determines how often gateways should check the ANT for updates to the corresponding record. You can have different TTLs for different records within an ANT, depending on their use case. A record that is updated frequently should have a lower
+  value to facilitate serving current data, while a record that is updated less
+  often should have a higher value to allow cached data to be served more
   quickly.
 
-`ttlSeconds` must be set between the minimum of 60 seconds (1 minute) and the maximum of 86400 seconds (1 day)
-
+TTL must be between 60 seconds (1 minute) and 86400 seconds (1 day).
 </Tip>
 
 ## Examples

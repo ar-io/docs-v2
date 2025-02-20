@@ -5,7 +5,7 @@ import {HeroPattern} from "@/components/HeroPattern"
 
 # getCostDetails
 
-`getCostDetails` is a method on the `ARIO` class that calculates the expanded cost details for the interaction in question, e.g a `Buy-Record` interaction, where args are the specific params for that interaction. The `fromAddress` is the address that would be charged for the interaction, and `fundFrom` is where the funds would be taken from, either `balance`, `stake`, or `any`.
+`getCostDetails` is a method on the `ARIO` class that calculates detailed cost information for a specific interaction (such as buying an ArNS record). The method determines costs based on the interaction type, the payer's address, and the funding source (balance, stake, or any available funds).
 
 `getCostDetails` does not require authentication.
 
@@ -26,25 +26,25 @@ import {HeroPattern} from "@/components/HeroPattern"
     <tr>
         <th>intent</th>
         <td>string</td>
-        <td>The action to check the token cost for.</td>
+        <td>The type of interaction to calculate costs for (e.g., 'Buy-Record')</td>
         <td>false</td>
     </tr>
     <tr>
         <th>fromAddress</th>
         <td>string - WalletAddress</td>
-        <td>The address that would be charged for the interaction.</td>
+        <td>The Arweave address that will be charged for the interaction</td>
         <td>false</td>
     </tr>
     <tr>
         <th>fundFrom</th>
-        <td>string: `balance` | `stake` | `any`</td>
-        <td>Where the funds would be taken from.</td>
+        <td>string</td>
+        <td>The source of funds: 'balance', 'stake', or 'any'</td>
         <td>false</td>
     </tr>
     <tr>
         <th>args</th>
-        <td>varied</td>
-        <td>The parameters for the action being checked</td>
+        <td>object</td>
+        <td>The specific parameters for the interaction type</td>
         <td>false</td>
     </tr>
     </tbody>
@@ -100,18 +100,18 @@ import {HeroPattern} from "@/components/HeroPattern"
 
 ```js
 {
-  "tokenCost": 2384252273,
+  "tokenCost": 2384252273,      // Total cost in IO tokens
   "fundingPlan": {
-    "address": "t4Xr0_J4Iurt7caNST02cMotaz2FIbWQ4Kbj616RHl3",
-    "balance": 0,
-    "stakes": {
+    "address": "t4Xr0_J4Iurt7caNST02cMotaz2FIbWQ4Kbj616RHl3", // Payer's address
+    "balance": 0,               // Available balance
+    "stakes": {                 // Available staked tokens
       "Rc80LG6h27Y3p9TN6J5hwDeG5M51cu671YwZpU9uAVE": {
-        "vaults": [],
-        "delegatedStake": 2384252273
+        "vaults": [],           // Vault information
+        "delegatedStake": 2384252273 // Amount of delegated stake
       }
     },
-    "shortfall": 0
+    "shortfall": 0             // Additional tokens needed (if any)
   },
-  "discounts": []
+  "discounts": []              // Any applicable discounts
 }
 ```

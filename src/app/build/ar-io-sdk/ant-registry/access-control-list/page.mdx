@@ -13,7 +13,7 @@ export const metadata = {
 
 # accessControlList
 
-`accessControlList` is a method on the `ANTRegistery` class that receives a list of ANTs owned or controlled by the provided wallet address.
+`accessControlList` is a method on the `ANTRegistry` class that receives a list of ANTs owned or controlled by the provided wallet address.
 
 `accessControlList` does not require authentication
 
@@ -48,7 +48,7 @@ export const metadata = {
 <CodeGroup title="accessControlList">
 
         ```typescript {{title: "NodeJS"}}
-            const { ANTRegistry } = require(('@ar.io/sdk'))
+            const { ANTRegistry } = require('@ar.io/sdk')
 
             async function main() {
                 const antRegistry = ANTRegistry.init()
@@ -64,7 +64,7 @@ export const metadata = {
         ```
 
         ```typescript {{title: "Web"}}
-            const { ANTRegistry } = require(('@ar.io/sdk'))
+            const { ANTRegistry } = require('@ar.io/sdk')
 
             async function main() {
                 const antRegistry = ANTRegistry.init()

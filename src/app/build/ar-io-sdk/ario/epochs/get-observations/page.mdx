@@ -5,7 +5,7 @@ import {HeroPattern} from "@/components/HeroPattern"
 
 # getObservations
 
-`getObservations` is a method on the `ARIO` class that returns the epoch-indexed observation list. If no epoch index is provided, the current epoch is used.
+`getObservations` is a method on the `ARIO` class that returns the epoch-specific observation list. If no epoch index is provided, the current epoch is used.
 
 `getObservations` does not require authentication.
 
@@ -20,15 +20,15 @@ import {HeroPattern} from "@/components/HeroPattern"
         <th>Parameter</th>
         <th>Type</th>
         <th>Description</th>
-        <th>Optional</th>
+        <th>Required</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <th>epochIndex</th>
         <td>number</td>
-        <td>Epoch index for the requested observations.</td>
-        <td>true</td>
+        <td>The epoch index for which to retrieve observations.</td>
+        <td>No</td>
       </tr>
     </tbody>
   </table>

@@ -5,7 +5,7 @@ import {HeroPattern} from "@/components/HeroPattern"
 
 # buyRecord
 
-`buyRecord` is a method on the `ARIO` class that purchases a new ArNS record with the specified name, type, and duration.
+`buyRecord` is a method on the `ARIO` class that purchases an ArNS record with a specified name. The record can be purchased either as a temporary lease or as a permanent record.
 
 `buyRecord` requires authentication.
 
@@ -32,14 +32,14 @@ import {HeroPattern} from "@/components/HeroPattern"
       </tr>
       <tr>
         <th>type</th>
-        <td>string - 'lease' || 'permabuy'</td>
-        <td>Whether the purchase is a lease or permabuy.</td>
+        <td>string - 'lease' | 'permabuy'</td>
+        <td>The purchase type: either a temporary lease or permanent ownership</td>
         <td>false</td>
       </tr>
       <tr>
         <th>years</th>
         <td>number</td>
-        <td>The number of years a lease is being purchased for.</td>
+        <td>The duration of the lease in years (required for lease type only)</td>
         <td>true</td>
       </tr>
       <tr>

@@ -5,7 +5,7 @@ import {HeroPattern} from "@/components/HeroPattern"
 
 # reassignName
 
-`reassignName` is a method on the `ANT` class that reassigns a name to a new ANT. This can only be done by the current owner of the ANT.
+`reassignName` is a method on the `ANT` class that transfers ownership of an ArNS name to a new ANT. This operation can only be performed by the current ANT owner.
 
 `reassignName` requires authentication.
 
@@ -27,19 +27,19 @@ import {HeroPattern} from "@/components/HeroPattern"
       <tr>
         <th>name</th>
         <td>string</td>
-        <td>ArNS name to reassign</td>
+        <td>The ArNS name to be reassigned</td>
         <td>false</td>
       </tr>
       <tr>
         <th>ioProcessId</th>
         <td>string</td>
-        <td>Process Id of the ARIO contract.</td>
+        <td>The Process ID of the ARIO contract</td>
         <td>false</td>
       </tr>
       <tr>
         <th>antProcessId</th>
         <td>string</td>
-        <td>Process Id of the new ANT.</td>
+        <td>The Process ID of the target ANT</td>
         <td>false</td>
       </tr>
       <tr>

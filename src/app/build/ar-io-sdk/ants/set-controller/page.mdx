@@ -5,7 +5,7 @@ import {HeroPattern} from "@/components/HeroPattern"
 
 # setController
 
-`setController` is a method on the `ANT` class that adds a new controller to the list of approved controllers on the ANT. Controllers can set records and change the ticker and name of the ANT process.
+`setController` is a method on the `ANT` class that adds a new controller to the ANT's list of approved controllers. Controllers have permissions to set records and modify the ANT process's ticker and name.
 
 `setController` requires authentication.
 
@@ -26,15 +26,15 @@ import {HeroPattern} from "@/components/HeroPattern"
     <tbody>
       <tr>
         <th>controller</th>
-        <td>String - WalletAddress</td>
-        <td>Public wallet address of the new controller being added.</td>
+        <td>string - WalletAddress</td>
+        <td>The public wallet address of the controller to be added</td>
         <td>false</td>
       </tr>
       <tr>
         <th>tags</th>
         <td>array</td>
         <td>
-          An array of GQL tag objects to attach to the transfer AO message.
+          An array of GQL tag objects to attach to the transfer AO message
         </td>
         <td>true</td>
       </tr>

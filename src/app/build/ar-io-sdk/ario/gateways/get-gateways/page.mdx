@@ -5,7 +5,7 @@ import {HeroPattern} from "@/components/HeroPattern"
 
 # getGateways
 
-`getGateways` is a method on the `ARIO` class that retrieves registered gateways from the ar.io Network. Results are paginated, and can be sorted by any attribute of the gateway object.
+`getGateways` is a method on the `ARIO` class that retrieves registered gateways from the ar.io Network. Results are paginated and can be sorted by any attribute of the gateway object.
 
 `getGateways` does not require authentication.
 
@@ -19,37 +19,37 @@ import {HeroPattern} from "@/components/HeroPattern"
         <th>Parameter</th>
         <th>Type</th>
         <th>Description</th>
-        <th>Optional</th>
+        <th>Required</th>
         <th>Default</th>
     </tr>
     </thead>
     <tbody>
     <tr>
         <th>cursor</th>
-        <td>String</td>
-        <td>Cursor used for paginated results</td>
-        <td>true</td>
+        <td>string</td>
+        <td>Cursor for paginated results</td>
+        <td>No</td>
         <td>None</td>
     </tr>
     <tr>
         <th>limit</th>
-        <td>Number</td>
-        <td>Max number of results to return in a single search. Max is 1000.</td>
-        <td>true</td>
+        <td>number</td>
+        <td>Maximum number of results to return (max: 1000)</td>
+        <td>No</td>
         <td>100</td>
     </tr>
     <tr>
         <th>sortBy</th>
-        <td>String</td>
-        <td>Property used to sort returned results</td>
-        <td>true</td>
+        <td>string</td>
+        <td>Property to sort results by</td>
+        <td>No</td>
         <td>startTimestamp</td>
     </tr>
     <tr>
         <th>sortOrder</th>
-        <td>String</td>
-        <td>Order in which sorted results are returned. valid values are `desc` or `asc`</td>
-        <td>true</td>
+        <td>string</td>
+        <td>Sort direction (valid values: 'desc' or 'asc')</td>
+        <td>No</td>
         <td>desc</td>
     </tr>
     </tbody>

@@ -5,7 +5,7 @@ import {HeroPattern} from "@/components/HeroPattern"
 
 # decreaseDelegateStake
 
-`decreaseDelegateStake` is a method on the `ARIO` class that increases the caller's stake on the target gateway.
+`decreaseDelegateStake` is a method on the `ARIO` class that decreases the caller's delegated stake on the target gateway.
 
 `decreaseDelegateStake` requires authentication.
 
@@ -19,35 +19,33 @@ import {HeroPattern} from "@/components/HeroPattern"
         <th>Parameter</th>
         <th>Type</th>
         <th>Description</th>
-        <th>Optional</th>
+        <th>Required</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <th>qty</th>
         <td>number</td>
-        <td>Number of tokens, in `mARIO` to remove from delegate stake.</td>
-        <td>false</td>
+        <td>Amount in mARIO to remove from delegated stake</td>
+        <td>Yes</td>
       </tr>
       <tr>
         <th>target</th>
-        <td>string - WalletAddress</td>
-        <td>Public Wallet address of gateway.</td>
-        <td>false</td>
+        <td>string</td>
+        <td>The gateway's public wallet address</td>
+        <td>Yes</td>
       </tr>
       <tr>
         <th>instant</th>
         <td>boolean</td>
-        <td>If true, pays a fee to make the withdrawn stake available instantly.</td>
-        <td>true</td>
+        <td>If true, pays a fee to make the withdrawn stake available instantly</td>
+        <td>No</td>
       </tr>
       <tr>
         <th>tags</th>
         <td>array</td>
-        <td>
-          An array of GQL tag objects to attach to the joinNetwork AO message.
-        </td>
-        <td>true</td>
+        <td>An array of GQL tag objects to attach to the transaction</td>
+        <td>No</td>
       </tr>
     </tbody>
   </table>
@@ -56,7 +54,7 @@ import {HeroPattern} from "@/components/HeroPattern"
 
 ## Example
 
-<CodeGroup title="increaseDelegateStake">
+<CodeGroup title="decreaseDelegateStake">
 
        ```typescript {{title: "NodeJS - standard"}}
         const fs = require("fs");
