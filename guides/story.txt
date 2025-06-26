@@ -1,20 +1,21 @@
 1:"$Sreact.fragment"
-2:I[60881,["9268","static/chunks/aaea2bcf-432631bb317559fe.js","3975","static/chunks/3975-65073ecd7686b488.js","1350","static/chunks/1350-46bcbb3766f1f555.js","1377","static/chunks/1377-51d41c11a8395473.js","6664","static/chunks/6664-cc5240d1e6977e9c.js","7948","static/chunks/7948-8957c2fa304b1b2a.js","7177","static/chunks/app/layout-1504383443a05997.js"],"Providers"]
-3:I[41056,["9268","static/chunks/aaea2bcf-432631bb317559fe.js","3975","static/chunks/3975-65073ecd7686b488.js","1350","static/chunks/1350-46bcbb3766f1f555.js","1377","static/chunks/1377-51d41c11a8395473.js","6664","static/chunks/6664-cc5240d1e6977e9c.js","7948","static/chunks/7948-8957c2fa304b1b2a.js","7177","static/chunks/app/layout-1504383443a05997.js"],"Layout"]
+2:I[60881,["9268","static/chunks/aaea2bcf-432631bb317559fe.js","3975","static/chunks/3975-65073ecd7686b488.js","5351","static/chunks/5351-70f3628903924335.js","1377","static/chunks/1377-51d41c11a8395473.js","7066","static/chunks/7066-9ea237f8271c6a3e.js","7948","static/chunks/7948-8957c2fa304b1b2a.js","7177","static/chunks/app/layout-1f0a3a6dd3f8911a.js"],"Providers"]
+3:I[41056,["9268","static/chunks/aaea2bcf-432631bb317559fe.js","3975","static/chunks/3975-65073ecd7686b488.js","5351","static/chunks/5351-70f3628903924335.js","1377","static/chunks/1377-51d41c11a8395473.js","7066","static/chunks/7066-9ea237f8271c6a3e.js","7948","static/chunks/7948-8957c2fa304b1b2a.js","7177","static/chunks/app/layout-1f0a3a6dd3f8911a.js"],"Layout"]
 4:I[87555,[],""]
 5:I[31295,[],""]
 6:I[30122,["3975","static/chunks/3975-65073ecd7686b488.js","4345","static/chunks/app/not-found-28cf6d37da7270ee.js"],"default"]
-7:I[87254,["9268","static/chunks/aaea2bcf-432631bb317559fe.js","3975","static/chunks/3975-65073ecd7686b488.js","1350","static/chunks/1350-46bcbb3766f1f555.js","6493","static/chunks/6493-a59dcbabb32c712c.js","9351","static/chunks/9351-e970a6324b01fa8a.js","2984","static/chunks/app/guides/story/page-fa7ee27a87f1ff29.js"],"Heading"]
-8:I[60445,["9268","static/chunks/aaea2bcf-432631bb317559fe.js","3975","static/chunks/3975-65073ecd7686b488.js","1350","static/chunks/1350-46bcbb3766f1f555.js","6493","static/chunks/6493-a59dcbabb32c712c.js","9351","static/chunks/9351-e970a6324b01fa8a.js","2984","static/chunks/app/guides/story/page-fa7ee27a87f1ff29.js"],"default"]
-9:I[81571,["9268","static/chunks/aaea2bcf-432631bb317559fe.js","3975","static/chunks/3975-65073ecd7686b488.js","1350","static/chunks/1350-46bcbb3766f1f555.js","6493","static/chunks/6493-a59dcbabb32c712c.js","9351","static/chunks/9351-e970a6324b01fa8a.js","2984","static/chunks/app/guides/story/page-fa7ee27a87f1ff29.js"],"Code"]
-a:I[81571,["9268","static/chunks/aaea2bcf-432631bb317559fe.js","3975","static/chunks/3975-65073ecd7686b488.js","1350","static/chunks/1350-46bcbb3766f1f555.js","6493","static/chunks/6493-a59dcbabb32c712c.js","9351","static/chunks/9351-e970a6324b01fa8a.js","2984","static/chunks/app/guides/story/page-fa7ee27a87f1ff29.js"],"Pre"]
-b:I[81571,["9268","static/chunks/aaea2bcf-432631bb317559fe.js","3975","static/chunks/3975-65073ecd7686b488.js","1350","static/chunks/1350-46bcbb3766f1f555.js","6493","static/chunks/6493-a59dcbabb32c712c.js","9351","static/chunks/9351-e970a6324b01fa8a.js","2984","static/chunks/app/guides/story/page-fa7ee27a87f1ff29.js"],"CodeGroup"]
-14:I[59665,[],"OutletBoundary"]
-17:I[74911,[],"AsyncMetadataOutlet"]
-19:I[59665,[],"ViewportBoundary"]
-1b:I[59665,[],"MetadataBoundary"]
-1d:I[26614,[],""]
-:HL["/docs-v2/_next/static/css/5f8643a20093ee0c.css","style"]
+7:I[87254,["9268","static/chunks/aaea2bcf-432631bb317559fe.js","3975","static/chunks/3975-65073ecd7686b488.js","5351","static/chunks/5351-70f3628903924335.js","6493","static/chunks/6493-a59dcbabb32c712c.js","465","static/chunks/465-8447cfdb347ccd48.js","2984","static/chunks/app/guides/story/page-d3b0c8e2fbff7ea5.js"],"Heading"]
+8:I[60445,["9268","static/chunks/aaea2bcf-432631bb317559fe.js","3975","static/chunks/3975-65073ecd7686b488.js","5351","static/chunks/5351-70f3628903924335.js","6493","static/chunks/6493-a59dcbabb32c712c.js","465","static/chunks/465-8447cfdb347ccd48.js","2984","static/chunks/app/guides/story/page-d3b0c8e2fbff7ea5.js"],"default"]
+9:I[81571,["9268","static/chunks/aaea2bcf-432631bb317559fe.js","3975","static/chunks/3975-65073ecd7686b488.js","5351","static/chunks/5351-70f3628903924335.js","6493","static/chunks/6493-a59dcbabb32c712c.js","465","static/chunks/465-8447cfdb347ccd48.js","2984","static/chunks/app/guides/story/page-d3b0c8e2fbff7ea5.js"],"Code"]
+a:I[81571,["9268","static/chunks/aaea2bcf-432631bb317559fe.js","3975","static/chunks/3975-65073ecd7686b488.js","5351","static/chunks/5351-70f3628903924335.js","6493","static/chunks/6493-a59dcbabb32c712c.js","465","static/chunks/465-8447cfdb347ccd48.js","2984","static/chunks/app/guides/story/page-d3b0c8e2fbff7ea5.js"],"Pre"]
+b:I[81571,["9268","static/chunks/aaea2bcf-432631bb317559fe.js","3975","static/chunks/3975-65073ecd7686b488.js","5351","static/chunks/5351-70f3628903924335.js","6493","static/chunks/6493-a59dcbabb32c712c.js","465","static/chunks/465-8447cfdb347ccd48.js","2984","static/chunks/app/guides/story/page-d3b0c8e2fbff7ea5.js"],"CodeGroup"]
+14:I[73019,["9268","static/chunks/aaea2bcf-432631bb317559fe.js","3975","static/chunks/3975-65073ecd7686b488.js","5351","static/chunks/5351-70f3628903924335.js","6493","static/chunks/6493-a59dcbabb32c712c.js","465","static/chunks/465-8447cfdb347ccd48.js","2984","static/chunks/app/guides/story/page-d3b0c8e2fbff7ea5.js"],"Feedback"]
+15:I[59665,[],"OutletBoundary"]
+18:I[74911,[],"AsyncMetadataOutlet"]
+1a:I[59665,[],"ViewportBoundary"]
+1c:I[59665,[],"MetadataBoundary"]
+1e:I[26614,[],""]
+:HL["/docs-v2/_next/static/css/84890fa81a3c91a8.css","style"]
 c:T7d5,import { TurboFactory, TurboAuthenticatedClient } from "@ardrive/turbo-sdk";
 import { StoryClient, StoryConfig } from "@story-protocol/core-sdk";
 import { http } from "viem";
@@ -69,61 +70,61 @@ const storyConfig: StoryConfig = {
 
 export const storyClient = StoryClient.newClient(storyConfig);
 console.log("Story Client initialized.");
-d:T7d5,import { TurboFactory, TurboAuthenticatedClient } from "@ardrive/turbo-sdk";
-import { StoryClient, StoryConfig } from "@story-protocol/core-sdk";
-import { http } from "viem";
-import { Account, privateKeyToAccount, Address } from "viem/accounts";
-import fs from 'fs';
-import path from 'path';
-import 'dotenv/config';
-
-// --- Environment Variable Loading ---
-const privateKeyEnv = process.env.WALLET_PRIVATE_KEY;
-const rpcProviderUrlEnv = process.env.RPC_PROVIDER_URL;
-const walletPath = path.resolve(process.cwd(), 'wallet.json'); // Assumes wallet.json is in the project root
-
-// --- Validations ---
-if (!privateKeyEnv) {
-  throw new Error("WALLET_PRIVATE_KEY is not set in the .env file");
-}
-if (!rpcProviderUrlEnv) {
-  throw new Error("RPC_PROVIDER_URL is not set in the .env file");
-}
-if (!fs.existsSync(walletPath)) {
-    throw new Error(`Arweave wallet file not found at ${walletPath}. Please ensure wallet.json exists in the project root.`);
-}
-
-// --- ArDrive Turbo Client Setup ---
-function parseWallet(filePath: string): any {
-    try {
-        const walletData = fs.readFileSync(filePath, 'utf8');
-        return JSON.parse(walletData);
-    } catch (error) {
-        console.error(`Error reading or parsing wallet file at ${filePath}:`, error);
-        throw new Error(`Failed to load Arweave wallet. Ensure ${filePath} exists and is valid JSON.`);
-    }
-}
-
-const arweaveWallet = parseWallet(walletPath);
-
-export const turboClient: TurboAuthenticatedClient = TurboFactory.authenticated({
-    privateKey: arweaveWallet,
-});
-console.log("ArDrive Turbo Client initialized.");
-
-// --- Story Protocol Client Setup ---
-const storyPrivateKey: Address = `0x${privateKeyEnv}`;
-const storyAccount: Account = privateKeyToAccount(storyPrivateKey);
-
-const storyConfig: StoryConfig = {
-  account: storyAccount,
-  transport: http(rpcProviderUrlEnv),
-  chainId: "aeneid", // Adjust chainId if necessary
-};
-
-export const storyClient = StoryClient.newClient(storyConfig);
-console.log("Story Client initialized.");
-e:T109a,import { storyClient, turboClient } from "./utils/clients";
+d:T147a,<span><span style="color: var(--shiki-color-text)">import { TurboFactory, TurboAuthenticatedClient } from &quot;@ardrive/turbo-sdk&quot;;</span></span>
+<span><span style="color: var(--shiki-color-text)">import { StoryClient, StoryConfig } from &quot;@story-protocol/core-sdk&quot;;</span></span>
+<span><span style="color: var(--shiki-color-text)">import { http } from &quot;viem&quot;;</span></span>
+<span><span style="color: var(--shiki-color-text)">import { Account, privateKeyToAccount, Address } from &quot;viem/accounts&quot;;</span></span>
+<span><span style="color: var(--shiki-color-text)">import fs from &#39;fs&#39;;</span></span>
+<span><span style="color: var(--shiki-color-text)">import path from &#39;path&#39;;</span></span>
+<span><span style="color: var(--shiki-color-text)">import &#39;dotenv/config&#39;;</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">// --- Environment Variable Loading ---</span></span>
+<span><span style="color: var(--shiki-color-text)">const privateKeyEnv = process.env.WALLET_PRIVATE_KEY;</span></span>
+<span><span style="color: var(--shiki-color-text)">const rpcProviderUrlEnv = process.env.RPC_PROVIDER_URL;</span></span>
+<span><span style="color: var(--shiki-color-text)">const walletPath = path.resolve(process.cwd(), &#39;wallet.json&#39;); // Assumes wallet.json is in the project root</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">// --- Validations ---</span></span>
+<span><span style="color: var(--shiki-color-text)">if (!privateKeyEnv) {</span></span>
+<span><span style="color: var(--shiki-color-text)">  throw new Error(&quot;WALLET_PRIVATE_KEY is not set in the .env file&quot;);</span></span>
+<span><span style="color: var(--shiki-color-text)">}</span></span>
+<span><span style="color: var(--shiki-color-text)">if (!rpcProviderUrlEnv) {</span></span>
+<span><span style="color: var(--shiki-color-text)">  throw new Error(&quot;RPC_PROVIDER_URL is not set in the .env file&quot;);</span></span>
+<span><span style="color: var(--shiki-color-text)">}</span></span>
+<span><span style="color: var(--shiki-color-text)">if (!fs.existsSync(walletPath)) {</span></span>
+<span><span style="color: var(--shiki-color-text)">    throw new Error(`Arweave wallet file not found at ${walletPath}. Please ensure wallet.json exists in the project root.`);</span></span>
+<span><span style="color: var(--shiki-color-text)">}</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">// --- ArDrive Turbo Client Setup ---</span></span>
+<span><span style="color: var(--shiki-color-text)">function parseWallet(filePath: string): any {</span></span>
+<span><span style="color: var(--shiki-color-text)">    try {</span></span>
+<span><span style="color: var(--shiki-color-text)">        const walletData = fs.readFileSync(filePath, &#39;utf8&#39;);</span></span>
+<span><span style="color: var(--shiki-color-text)">        return JSON.parse(walletData);</span></span>
+<span><span style="color: var(--shiki-color-text)">    } catch (error) {</span></span>
+<span><span style="color: var(--shiki-color-text)">        console.error(`Error reading or parsing wallet file at ${filePath}:`, error);</span></span>
+<span><span style="color: var(--shiki-color-text)">        throw new Error(`Failed to load Arweave wallet. Ensure ${filePath} exists and is valid JSON.`);</span></span>
+<span><span style="color: var(--shiki-color-text)">    }</span></span>
+<span><span style="color: var(--shiki-color-text)">}</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">const arweaveWallet = parseWallet(walletPath);</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">export const turboClient: TurboAuthenticatedClient = TurboFactory.authenticated({</span></span>
+<span><span style="color: var(--shiki-color-text)">    privateKey: arweaveWallet,</span></span>
+<span><span style="color: var(--shiki-color-text)">});</span></span>
+<span><span style="color: var(--shiki-color-text)">console.log(&quot;ArDrive Turbo Client initialized.&quot;);</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">// --- Story Protocol Client Setup ---</span></span>
+<span><span style="color: var(--shiki-color-text)">const storyPrivateKey: Address = `0x${privateKeyEnv}`;</span></span>
+<span><span style="color: var(--shiki-color-text)">const storyAccount: Account = privateKeyToAccount(storyPrivateKey);</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">const storyConfig: StoryConfig = {</span></span>
+<span><span style="color: var(--shiki-color-text)">  account: storyAccount,</span></span>
+<span><span style="color: var(--shiki-color-text)">  transport: http(rpcProviderUrlEnv),</span></span>
+<span><span style="color: var(--shiki-color-text)">  chainId: &quot;aeneid&quot;, // Adjust chainId if necessary</span></span>
+<span><span style="color: var(--shiki-color-text)">};</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">export const storyClient = StoryClient.newClient(storyConfig);</span></span>
+<span><span style="color: var(--shiki-color-text)">console.log(&quot;Story Client initialized.&quot;);</span></span>
+<span></span>e:T109a,import { storyClient, turboClient } from "./utils/clients";
 import { createHash } from "crypto";
 import { Address } from "viem";
 import type { UploadResult } from "@ardrive/turbo-sdk";
@@ -226,146 +227,110 @@ async function register() {
 
 // Execute the register function
 register().catch(console.error);
-f:T109a,import { storyClient, turboClient } from "./utils/clients";
-import { createHash } from "crypto";
-import { Address } from "viem";
-import type { UploadResult } from "@ardrive/turbo-sdk";
-
-// Helper function to upload JSON to Arweave via Turbo
-async function uploadJSONToArweave(jsonData: any, description: string): Promise<UploadResult> {
-    const dataBuffer = Buffer.from(JSON.stringify(jsonData));
-    console.log(`Uploading ${description} (${dataBuffer.byteLength} bytes) to Arweave via Turbo...`);
-
-    const tags = [
-        { name: "Content-Type", value: "application/json" },
-        { name: "App-Name", value: "ArDrive-Story-Tutorial" } // Example tag
-    ];
-
-    try {
-        // Use Turbo to upload the file buffer
-        const result = await turboClient.uploadFile(dataBuffer, { tags });
-        console.log(`${description} uploaded successfully: Transaction ID ${result.id}`);
-        return result;
-    } catch (error) {
-        console.error(`Error uploading ${description} to Arweave:`, error);
-        throw new Error(`Arweave upload failed for ${description}.`);
-    }
-}
-
-async function register() {
-  // --- Step 1: Define IP Metadata ---
-  const ipMetadata = {
-    title: "My Arweave-Powered IP",
-    description: "An example IP asset with metadata stored permanently on Arweave via Turbo.",
-    // Add other required fields like image, creators, etc.
-    // Example creator:
-    creators: [
-      { name: "Your Name/Org", address: storyClient.account.address, contributionPercent: 100 },
-    ],
-  };
-  console.log("IP Metadata defined.");
-
-  const nftMetadata = {
-    name: "Ownership NFT for My Arweave IP",
-    description: "This NFT represents ownership of the IP Asset whose metadata is on Arweave.",
-    // Add other fields like image
-  };
-  console.log("NFT Metadata defined.");
-
-  // --- Step 2: Upload Metadata to Arweave ---
-  const ipUploadResult = await uploadJSONToArweave(ipMetadata, "IP Metadata");
-  const nftUploadResult = await uploadJSONToArweave(nftMetadata, "NFT Metadata");
-
-  // Use arweave.net URLs instead of ar:// protocol
-  const ipMetadataArweaveURI = `https://arweave.net/${ipUploadResult.id}`;
-  const nftMetadataArweaveURI = `https://arweave.net/${nftUploadResult.id}`;
-
-  console.log(`IP Metadata Arweave URI: ${ipMetadataArweaveURI}`);
-  console.log(`NFT Metadata Arweave URI: ${nftMetadataArweaveURI}`);
-
-  // Calculate metadata hashes (required by Story Protocol)
-  const ipMetadataHash = `0x${createHash("sha256")
-    .update(JSON.stringify(ipMetadata))
-    .digest("hex")}`;
-  const nftMetadataHash = `0x${createHash("sha256")
-    .update(JSON.stringify(nftMetadata))
-    .digest("hex")}`;
-
-  console.log(`IP Metadata Hash: ${ipMetadataHash}`);
-  console.log(`NFT Metadata Hash: ${nftMetadataHash}`);
-
-  // --- Step 3: Register IP on Story Protocol ---
-  console.log("Registering IP Asset on Story Protocol...");
-
-  // Choose an SPG NFT contract (Story Protocol Governed NFT)
-  // Use a public testnet one or create your own (see Story docs)
-  const spgNftContract: Address = "0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc"; // Aeneid testnet example
-
-  try {
-    const response = await storyClient.ipAsset.mintAndRegisterIp({
-      spgNftContract: spgNftContract,
-      ipMetadata: {
-        ipMetadataURI: ipMetadataArweaveURI,      // URI pointing to Arweave
-        ipMetadataHash: ipMetadataHash as Address, // Content hash
-        nftMetadataURI: nftMetadataArweaveURI,     // URI pointing to Arweave
-        nftMetadataHash: nftMetadataHash as Address // Content hash
-      },
-      txOptions: { waitForTransaction: true }, // Wait for confirmation
-    });
-
-    console.log(
-      `Successfully registered IP Asset!`
-    );
-    console.log(`  Transaction Hash: ${response.txHash}`);
-    console.log(`  IP ID: ${response.ipId}`);
-    console.log(`  Story Explorer Link: https://aeneid.explorer.story.foundation/ipa/${response.ipId}`); // Adjust explorer link for different networks
-    console.log(`  IP Metadata (Arweave): ${ipMetadataArweaveURI}`);
-    console.log(`  NFT Metadata (Arweave): ${nftMetadataArweaveURI}`);
-
-  } catch (error) {
-    console.error("Error registering IP Asset on Story Protocol:", error);
-  }
-}
-
-// Execute the register function
-register().catch(console.error);
-10:T5b2,import { storyClient } from "./utils/clients";
-import { Address } from "viem";
-
-// Assume these values are known for the IP Asset you want to license
-const LICENSOR_IP_ID: Address = "0x..."; // Replace with the actual IP ID of the asset
-const LICENSE_TERMS_ID: string = "..."; // Replace with the specific terms ID attached to the IP Asset
-const RECEIVER_ADDRESS: Address = "0x..."; // Address to receive the license token(s)
-
-async function mintLicense() {
-  console.log(`Minting license token(s) for IP ID ${LICENSOR_IP_ID} under terms ${LICENSE_TERMS_ID}...`);
-
-  try {
-    const response = await storyClient.license.mintLicenseTokens({
-      licenseTermsId: LICENSE_TERMS_ID,
-      licensorIpId: LICENSOR_IP_ID,
-      receiver: RECEIVER_ADDRESS,
-      amount: 1, // Number of license tokens to mint
-      // Optional parameters:
-      // maxMintingFee: BigInt(0), // Set if the terms have a fee; 0 disables check if no fee expected
-      // maxRevenueShare: 100, // Default check for revenue share percentage
-      txOptions: { waitForTransaction: true },
-    });
-
-    console.log(
-      `Successfully minted license token(s)!`
-    );
-    console.log(`  Transaction Hash: ${response.txHash}`);
-    console.log(`  License Token ID(s): ${response.licenseTokenIds}`);
-
-  } catch (error) {
-    console.error("Error minting license token(s):", error);
-  }
-}
-
-// Execute the function (after updating the constants above)
-// mintLicense().catch(console.error);
-11:T5b2,import { storyClient } from "./utils/clients";
+f:T2884,<span><span style="color: var(--shiki-color-text)">import { storyClient, turboClient } from &quot;./utils/clients&quot;;</span></span>
+<span><span style="color: var(--shiki-color-text)">import { createHash } from &quot;crypto&quot;;</span></span>
+<span><span style="color: var(--shiki-color-text)">import { Address } from &quot;viem&quot;;</span></span>
+<span><span style="color: var(--shiki-color-text)">import type { UploadResult } from &quot;@ardrive/turbo-sdk&quot;;</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">// Helper function to upload JSON to Arweave via Turbo</span></span>
+<span><span style="color: var(--shiki-color-text)">async function uploadJSONToArweave(jsonData: any, description: string): Promise&lt;UploadResult&gt; {</span></span>
+<span><span style="color: var(--shiki-color-text)">    const dataBuffer = Buffer.from(JSON.stringify(jsonData));</span></span>
+<span><span style="color: var(--shiki-color-text)">    console.log(`Uploading ${description} (${dataBuffer.byteLength} bytes) to Arweave via Turbo...`);</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">    const tags = [</span></span>
+<span><span style="color: var(--shiki-color-text)">        { name: &quot;Content-Type&quot;, value: &quot;application/json&quot; },</span></span>
+<span><span style="color: var(--shiki-color-text)">        { name: &quot;App-Name&quot;, value: &quot;ArDrive-Story-Tutorial&quot; } // Example tag</span></span>
+<span><span style="color: var(--shiki-color-text)">    ];</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">    try {</span></span>
+<span><span style="color: var(--shiki-color-text)">        // Use Turbo to upload the file buffer</span></span>
+<span><span style="color: var(--shiki-color-text)">        const result = await turboClient.uploadFile(dataBuffer, { tags });</span></span>
+<span><span style="color: var(--shiki-color-text)">        console.log(`${description} uploaded successfully: Transaction ID ${result.id}`);</span></span>
+<span><span style="color: var(--shiki-color-text)">        return result;</span></span>
+<span><span style="color: var(--shiki-color-text)">    } catch (error) {</span></span>
+<span><span style="color: var(--shiki-color-text)">        console.error(`Error uploading ${description} to Arweave:`, error);</span></span>
+<span><span style="color: var(--shiki-color-text)">        throw new Error(`Arweave upload failed for ${description}.`);</span></span>
+<span><span style="color: var(--shiki-color-text)">    }</span></span>
+<span><span style="color: var(--shiki-color-text)">}</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">async function register() {</span></span>
+<span><span style="color: var(--shiki-color-text)">  // --- Step 1: Define IP Metadata ---</span></span>
+<span><span style="color: var(--shiki-color-text)">  const ipMetadata = {</span></span>
+<span><span style="color: var(--shiki-color-text)">    title: &quot;My Arweave-Powered IP&quot;,</span></span>
+<span><span style="color: var(--shiki-color-text)">    description: &quot;An example IP asset with metadata stored permanently on Arweave via Turbo.&quot;,</span></span>
+<span><span style="color: var(--shiki-color-text)">    // Add other required fields like image, creators, etc.</span></span>
+<span><span style="color: var(--shiki-color-text)">    // Example creator:</span></span>
+<span><span style="color: var(--shiki-color-text)">    creators: [</span></span>
+<span><span style="color: var(--shiki-color-text)">      { name: &quot;Your Name/Org&quot;, address: storyClient.account.address, contributionPercent: 100 },</span></span>
+<span><span style="color: var(--shiki-color-text)">    ],</span></span>
+<span><span style="color: var(--shiki-color-text)">  };</span></span>
+<span><span style="color: var(--shiki-color-text)">  console.log(&quot;IP Metadata defined.&quot;);</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">  const nftMetadata = {</span></span>
+<span><span style="color: var(--shiki-color-text)">    name: &quot;Ownership NFT for My Arweave IP&quot;,</span></span>
+<span><span style="color: var(--shiki-color-text)">    description: &quot;This NFT represents ownership of the IP Asset whose metadata is on Arweave.&quot;,</span></span>
+<span><span style="color: var(--shiki-color-text)">    // Add other fields like image</span></span>
+<span><span style="color: var(--shiki-color-text)">  };</span></span>
+<span><span style="color: var(--shiki-color-text)">  console.log(&quot;NFT Metadata defined.&quot;);</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">  // --- Step 2: Upload Metadata to Arweave ---</span></span>
+<span><span style="color: var(--shiki-color-text)">  const ipUploadResult = await uploadJSONToArweave(ipMetadata, &quot;IP Metadata&quot;);</span></span>
+<span><span style="color: var(--shiki-color-text)">  const nftUploadResult = await uploadJSONToArweave(nftMetadata, &quot;NFT Metadata&quot;);</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">  // Use arweave.net URLs instead of ar:// protocol</span></span>
+<span><span style="color: var(--shiki-color-text)">  const ipMetadataArweaveURI = `https://arweave.net/${ipUploadResult.id}`;</span></span>
+<span><span style="color: var(--shiki-color-text)">  const nftMetadataArweaveURI = `https://arweave.net/${nftUploadResult.id}`;</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">  console.log(`IP Metadata Arweave URI: ${ipMetadataArweaveURI}`);</span></span>
+<span><span style="color: var(--shiki-color-text)">  console.log(`NFT Metadata Arweave URI: ${nftMetadataArweaveURI}`);</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">  // Calculate metadata hashes (required by Story Protocol)</span></span>
+<span><span style="color: var(--shiki-color-text)">  const ipMetadataHash = `0x${createHash(&quot;sha256&quot;)</span></span>
+<span><span style="color: var(--shiki-color-text)">    .update(JSON.stringify(ipMetadata))</span></span>
+<span><span style="color: var(--shiki-color-text)">    .digest(&quot;hex&quot;)}`;</span></span>
+<span><span style="color: var(--shiki-color-text)">  const nftMetadataHash = `0x${createHash(&quot;sha256&quot;)</span></span>
+<span><span style="color: var(--shiki-color-text)">    .update(JSON.stringify(nftMetadata))</span></span>
+<span><span style="color: var(--shiki-color-text)">    .digest(&quot;hex&quot;)}`;</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">  console.log(`IP Metadata Hash: ${ipMetadataHash}`);</span></span>
+<span><span style="color: var(--shiki-color-text)">  console.log(`NFT Metadata Hash: ${nftMetadataHash}`);</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">  // --- Step 3: Register IP on Story Protocol ---</span></span>
+<span><span style="color: var(--shiki-color-text)">  console.log(&quot;Registering IP Asset on Story Protocol...&quot;);</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">  // Choose an SPG NFT contract (Story Protocol Governed NFT)</span></span>
+<span><span style="color: var(--shiki-color-text)">  // Use a public testnet one or create your own (see Story docs)</span></span>
+<span><span style="color: var(--shiki-color-text)">  const spgNftContract: Address = &quot;0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc&quot;; // Aeneid testnet example</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">  try {</span></span>
+<span><span style="color: var(--shiki-color-text)">    const response = await storyClient.ipAsset.mintAndRegisterIp({</span></span>
+<span><span style="color: var(--shiki-color-text)">      spgNftContract: spgNftContract,</span></span>
+<span><span style="color: var(--shiki-color-text)">      ipMetadata: {</span></span>
+<span><span style="color: var(--shiki-color-text)">        ipMetadataURI: ipMetadataArweaveURI,      // URI pointing to Arweave</span></span>
+<span><span style="color: var(--shiki-color-text)">        ipMetadataHash: ipMetadataHash as Address, // Content hash</span></span>
+<span><span style="color: var(--shiki-color-text)">        nftMetadataURI: nftMetadataArweaveURI,     // URI pointing to Arweave</span></span>
+<span><span style="color: var(--shiki-color-text)">        nftMetadataHash: nftMetadataHash as Address // Content hash</span></span>
+<span><span style="color: var(--shiki-color-text)">      },</span></span>
+<span><span style="color: var(--shiki-color-text)">      txOptions: { waitForTransaction: true }, // Wait for confirmation</span></span>
+<span><span style="color: var(--shiki-color-text)">    });</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">    console.log(</span></span>
+<span><span style="color: var(--shiki-color-text)">      `Successfully registered IP Asset!`</span></span>
+<span><span style="color: var(--shiki-color-text)">    );</span></span>
+<span><span style="color: var(--shiki-color-text)">    console.log(`  Transaction Hash: ${response.txHash}`);</span></span>
+<span><span style="color: var(--shiki-color-text)">    console.log(`  IP ID: ${response.ipId}`);</span></span>
+<span><span style="color: var(--shiki-color-text)">    console.log(`  Story Explorer Link: https://aeneid.explorer.story.foundation/ipa/${response.ipId}`); // Adjust explorer link for different networks</span></span>
+<span><span style="color: var(--shiki-color-text)">    console.log(`  IP Metadata (Arweave): ${ipMetadataArweaveURI}`);</span></span>
+<span><span style="color: var(--shiki-color-text)">    console.log(`  NFT Metadata (Arweave): ${nftMetadataArweaveURI}`);</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">  } catch (error) {</span></span>
+<span><span style="color: var(--shiki-color-text)">    console.error(&quot;Error registering IP Asset on Story Protocol:&quot;, error);</span></span>
+<span><span style="color: var(--shiki-color-text)">  }</span></span>
+<span><span style="color: var(--shiki-color-text)">}</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">// Execute the register function</span></span>
+<span><span style="color: var(--shiki-color-text)">register().catch(console.error);</span></span>
+<span></span>10:T5b2,import { storyClient } from "./utils/clients";
 import { Address } from "viem";
 
 // Assume these values are known for the IP Asset you want to license
@@ -401,7 +366,43 @@ async function mintLicense() {
 
 // Execute the function (after updating the constants above)
 // mintLicense().catch(console.error);
-12:T1289,import { storyClient, turboClient } from "./utils/clients";
+11:Tde7,<span><span style="color: var(--shiki-color-text)">import { storyClient } from &quot;./utils/clients&quot;;</span></span>
+<span><span style="color: var(--shiki-color-text)">import { Address } from &quot;viem&quot;;</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">// Assume these values are known for the IP Asset you want to license</span></span>
+<span><span style="color: var(--shiki-color-text)">const LICENSOR_IP_ID: Address = &quot;0x...&quot;; // Replace with the actual IP ID of the asset</span></span>
+<span><span style="color: var(--shiki-color-text)">const LICENSE_TERMS_ID: string = &quot;...&quot;; // Replace with the specific terms ID attached to the IP Asset</span></span>
+<span><span style="color: var(--shiki-color-text)">const RECEIVER_ADDRESS: Address = &quot;0x...&quot;; // Address to receive the license token(s)</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">async function mintLicense() {</span></span>
+<span><span style="color: var(--shiki-color-text)">  console.log(`Minting license token(s) for IP ID ${LICENSOR_IP_ID} under terms ${LICENSE_TERMS_ID}...`);</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">  try {</span></span>
+<span><span style="color: var(--shiki-color-text)">    const response = await storyClient.license.mintLicenseTokens({</span></span>
+<span><span style="color: var(--shiki-color-text)">      licenseTermsId: LICENSE_TERMS_ID,</span></span>
+<span><span style="color: var(--shiki-color-text)">      licensorIpId: LICENSOR_IP_ID,</span></span>
+<span><span style="color: var(--shiki-color-text)">      receiver: RECEIVER_ADDRESS,</span></span>
+<span><span style="color: var(--shiki-color-text)">      amount: 1, // Number of license tokens to mint</span></span>
+<span><span style="color: var(--shiki-color-text)">      // Optional parameters:</span></span>
+<span><span style="color: var(--shiki-color-text)">      // maxMintingFee: BigInt(0), // Set if the terms have a fee; 0 disables check if no fee expected</span></span>
+<span><span style="color: var(--shiki-color-text)">      // maxRevenueShare: 100, // Default check for revenue share percentage</span></span>
+<span><span style="color: var(--shiki-color-text)">      txOptions: { waitForTransaction: true },</span></span>
+<span><span style="color: var(--shiki-color-text)">    });</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">    console.log(</span></span>
+<span><span style="color: var(--shiki-color-text)">      `Successfully minted license token(s)!`</span></span>
+<span><span style="color: var(--shiki-color-text)">    );</span></span>
+<span><span style="color: var(--shiki-color-text)">    console.log(`  Transaction Hash: ${response.txHash}`);</span></span>
+<span><span style="color: var(--shiki-color-text)">    console.log(`  License Token ID(s): ${response.licenseTokenIds}`);</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">  } catch (error) {</span></span>
+<span><span style="color: var(--shiki-color-text)">    console.error(&quot;Error minting license token(s):&quot;, error);</span></span>
+<span><span style="color: var(--shiki-color-text)">  }</span></span>
+<span><span style="color: var(--shiki-color-text)">}</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">// Execute the function (after updating the constants above)</span></span>
+<span><span style="color: var(--shiki-color-text)">// mintLicense().catch(console.error);</span></span>
+<span></span>12:T1289,import { storyClient, turboClient } from "./utils/clients";
 import { createHash } from "crypto";
 import { Address } from "viem";
 import type { UploadResult } from "@ardrive/turbo-sdk";
@@ -508,119 +509,119 @@ async function registerDerivative() {
 // 2. Replace LICENSE_TERMS_ID with the actual license terms ID
 // Then uncomment the line below to execute
 // registerDerivative().catch(console.error);
-13:T1289,import { storyClient, turboClient } from "./utils/clients";
-import { createHash } from "crypto";
-import { Address } from "viem";
-import type { UploadResult } from "@ardrive/turbo-sdk";
-import { DerivativeData } from "@story-protocol/core-sdk";
-
-// Helper function to upload JSON to Arweave via Turbo (same as in registerIpWithArweave.ts)
-async function uploadJSONToArweave(jsonData: any, description: string): Promise<UploadResult> {
-    const dataBuffer = Buffer.from(JSON.stringify(jsonData));
-    console.log(`Uploading ${description} (${dataBuffer.byteLength} bytes) to Arweave via Turbo...`);
-
-    const tags = [
-        { name: "Content-Type", value: "application/json" },
-        { name: "App-Name", value: "ArDrive-Story-Tutorial" }
-    ];
-
-    try {
-        const result = await turboClient.uploadFile(dataBuffer, { tags });
-        console.log(`${description} uploaded successfully: Transaction ID ${result.id}`);
-        return result;
-    } catch (error) {
-        console.error(`Error uploading ${description} to Arweave:`, error);
-        throw new Error(`Arweave upload failed for ${description}.`);
-    }
-}
-
-// --- Information about the Parent IP and License ---
-const PARENT_IP_ID: Address = "0x..."; // Replace with the actual Parent IP ID
-const LICENSE_TERMS_ID: string = "..."; // Replace with the License Terms ID to derive under
-
-async function registerDerivative() {
-  // --- Step 1: Define Derivative Metadata ---
-  const derivativeIpMetadata = {
-    title: "My Derivative Work (Arweave Metadata)",
-    description: "A remix/adaptation based on a parent IP, metadata on Arweave.",
-    // Add other required fields (image, creators matching the derivative creator, etc.)
-  };
-
-  const derivativeNftMetadata = {
-    name: "Ownership NFT for My Derivative Work",
-    description: "NFT for the derivative IP, metadata on Arweave.",
-    // Add other fields
-  };
-
-  // --- Step 2: Upload Derivative Metadata to Arweave ---
-  console.log("Uploading derivative metadata to Arweave via Turbo...");
-  const derivIpUploadResult = await uploadJSONToArweave(derivativeIpMetadata, "Derivative IP Metadata");
-  const derivNftUploadResult = await uploadJSONToArweave(derivativeNftMetadata, "Derivative NFT Metadata");
-
-  // Use arweave.net URLs instead of ar:// protocol
-  const derivIpMetadataArweaveURI = `https://arweave.net/${derivIpUploadResult.id}`;
-  const derivNftMetadataArweaveURI = `https://arweave.net/${derivNftUploadResult.id}`;
-
-  const derivIpMetadataHash = `0x${createHash("sha256")
-    .update(JSON.stringify(derivativeIpMetadata))
-    .digest("hex")}`;
-  const derivNftMetadataHash = `0x${createHash("sha256")
-    .update(JSON.stringify(derivativeNftMetadata))
-    .digest("hex")}`;
-
-  console.log(`Derivative IP Metadata Arweave URI: ${derivIpMetadataArweaveURI}`);
-  console.log(`Derivative NFT Metadata Arweave URI: ${derivNftMetadataArweaveURI}`);
-
-  // --- Step 3: Register Derivative on Story Protocol ---
-  // Prepare Derivative Data for Story Protocol
-  const derivData: DerivativeData = {
-    parentIpIds: [PARENT_IP_ID],
-    licenseTermsIds: [LICENSE_TERMS_ID],
-  };
-
-  console.log("Registering Derivative IP Asset on Story Protocol...");
-
-  // Use the same SPG NFT contract or your own
-  const spgNftContract: Address = "0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc"; // Aeneid testnet example
-
-  try {
-    const response = await storyClient.ipAsset.mintAndRegisterIpAndMakeDerivative({
-      spgNftContract: spgNftContract,
-      derivData: derivData, // Link to parent IP and license terms
-      ipMetadata: { // Metadata for the *new* derivative IP
-        ipMetadataURI: derivIpMetadataArweaveURI,      // Arweave URI
-        ipMetadataHash: derivIpMetadataHash as Address, // Content hash
-        nftMetadataURI: derivNftMetadataArweaveURI,     // Arweave URI
-        nftMetadataHash: derivNftMetadataHash as Address // Content hash
-      },
-      txOptions: { waitForTransaction: true },
-    });
-
-    console.log(
-      `Successfully registered Derivative IP Asset!`
-    );
-    console.log(`  Transaction Hash: ${response.txHash}`);
-    console.log(`  Derivative IP ID: ${response.ipId}`);
-    console.log(`  Derivative Token ID: ${response.tokenId}`);
-    console.log(`  Story Explorer Link: https://aeneid.explorer.story.foundation/ipa/${response.ipId}`);
-    console.log(`  Derivative Metadata (Arweave): ${derivIpMetadataArweaveURI}`);
-
-  } catch (error) {
-    console.error("Error registering derivative IP Asset on Story Protocol:", error);
-  }
-}
-
-// Before running this script:
-// 1. Replace PARENT_IP_ID with a real IP ID you have access to
-// 2. Replace LICENSE_TERMS_ID with the actual license terms ID
-// Then uncomment the line below to execute
-// registerDerivative().catch(console.error);
-0:{"P":null,"b":"y9vJv91EYfhua7KC5E2Kf","p":"/docs-v2","c":["","guides","story"],"i":false,"f":[[["",{"children":["guides",{"children":["story",{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/docs-v2/_next/static/css/5f8643a20093ee0c.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"h-full","suppressHydrationWarning":true,"children":["$","body",null,{"className":"flex min-h-full bg-white antialiased dark:bg-zinc-900","children":["$","$L2",null,{"children":["$","$L3",null,{"children":["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","$L6",null,{}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]}]}]]}],{"children":["guides",["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["story",["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","article",null,{"className":"flex h-full flex-col pb-10 pt-16","children":[["$","div",null,{"className":"flex-auto prose dark:prose-invert [html_:where(&>*)]:mx-auto [html_:where(&>*)]:max-w-2xl [html_:where(&>*)]:lg:mx-[calc(50%-min(50%,theme(maxWidth.lg)))] [html_:where(&>*)]:lg:max-w-3xl","children":[["$","h1",null,{"children":"Registering Story Protocol IP Assets with Arweave Metadata using Turbo"}],"\n",["$","blockquote",null,{"children":["\n",["$","p",null,{"children":"Utilize the speed and reliability of ArDrive Turbo to store metadata for Story Protocol IP Assets permanently on Arweave."}],"\n"]}],"\n",["$","p",null,{"children":"Story Protocol enables the registration and management of intellectual property (IP) on-chain. A crucial part of this process involves linking metadata to your IP Assets. While various storage solutions exist, Arweave offers permanent, decentralized storage, making it an ideal choice for valuable IP metadata."}],"\n",["$","p",null,{"children":"This guide demonstrates how to use the ArDrive Turbo SDK to efficiently upload IP Asset metadata to Arweave and register it with the Story Protocol TypeScript SDK."}],"\n",["$","$L7",null,{"level":2,"id":"prerequisites","children":"Prerequisites"}],"\n",["$","p",null,{"children":"Before you begin, ensure you have the following:"}],"\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"Node.js:"}]," Version 18 or later. Download from ",["$","$L8",null,{"href":"https://nodejs.org","children":"nodejs.org"}],"."]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"npm/pnpm/yarn:"}]," A compatible package manager."]}],"\n",["$","li",null,{"language":"txt","children":[["$","strong",null,{"children":"Arweave Wallet:"}]," A ",["$","$L9",null,{"children":"wallet.json"}]," file. Generate one using tools like the ",["$","$L8",null,{"href":"https://wander.app/","children":"Wander"}]," browser extension. Keep this file secure and ",["$","strong",null,{"children":"do not commit it to version control"}],"."]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Turbo Credits:"}]," Your Arweave wallet must be funded with Turbo credits to pay for uploads. Top up at ",["$","$L8",null,{"href":"https://turbo-topup.com","children":"https://turbo-topup.com"}],"."]}],"\n",["$","li",null,{"language":"txt","children":[["$","strong",null,{"children":"Story Protocol Account:"}]," An Ethereum-compatible private key (",["$","$L9",null,{"children":"WALLET_PRIVATE_KEY"}],") and an RPC Provider URL (",["$","$L9",null,{"children":"RPC_PROVIDER_URL"}],") for the desired Story Protocol network (e.g., Aeneid testnet) stored in a ",["$","$L9",null,{"children":".env"}]," file."]}],"\n",["$","li",null,{"language":"txt","children":[["$","strong",null,{"children":"TypeScript Environment:"}]," You'll need to execute TypeScript code, so make sure you have ",["$","$L9",null,{"children":"ts-node"}]," installed globally (",["$","$L9",null,{"children":"npm install -g ts-node"}],") or as a dev dependency."]}],"\n"]}],"\n",["$","$L7",null,{"level":2,"id":"setup","children":"Setup"}],"\n",["$","h3",null,{"children":"1. Install Dependencies"}],"\n",["$","p",null,{"children":"First, set up a new project directory and install the necessary SDKs:"}],"\n",["$","$La",null,{"language":"bash","code":"mkdir story-arweave-project\ncd story-arweave-project\n","children":["$","$L9",null,{"className":"language-bash","children":"mkdir story-arweave-project\ncd story-arweave-project\n"}]}],"\n",["$","p",null,{"children":"Then install the required dependencies:"}],"\n",["$","$Lb",null,{"title":"Installation Methods","children":[["$","$La",null,{"language":"bash","code":"npm install --save @ardrive/turbo-sdk @story-protocol/core-sdk viem dotenv ts-node typescript\n","children":["$","$L9",null,{"className":"language-bash","children":"npm install --save @ardrive/turbo-sdk @story-protocol/core-sdk viem dotenv ts-node typescript\n"}],"title":"npm"}],["$","$La",null,{"language":"bash","code":"pnpm install @ardrive/turbo-sdk @story-protocol/core-sdk viem dotenv ts-node typescript\n","children":["$","$L9",null,{"className":"language-bash","children":"pnpm install @ardrive/turbo-sdk @story-protocol/core-sdk viem dotenv ts-node typescript\n"}],"title":"pnpm"}],["$","$La",null,{"language":"bash","code":"yarn add @ardrive/turbo-sdk @story-protocol/core-sdk viem dotenv ts-node typescript\n","children":["$","$L9",null,{"className":"language-bash","children":"yarn add @ardrive/turbo-sdk @story-protocol/core-sdk viem dotenv ts-node typescript\n"}],"title":"yarn"}]]}],"\n",["$","h3",null,{"children":"2. Project Setup"}],"\n",["$","p",null,{"children":"Create the following files in your project:"}],"\n",["$","ol",null,{"children":["\n",["$","li",null,{"language":"txt","children":[["$","$L9",null,{"children":".env"}]," file (in the project root):"]}],"\n"]}],"\n",["$","$La",null,{"language":"txt","code":"WALLET_PRIVATE_KEY=your_ethereum_private_key_without_0x_prefix\nRPC_PROVIDER_URL=your_ethereum_rpc_provider_url\n","children":["$","$L9",null,{"children":"<span><span style=\"color: undefined\">WALLET_PRIVATE_KEY=your_ethereum_private_key_without_0x_prefix</span></span>\n<span><span style=\"color: undefined\">RPC_PROVIDER_URL=your_ethereum_rpc_provider_url</span></span>\n<span><span style=\"color: undefined\"></span></span>"}]}],"\n",["$","ol",null,{"start":"2","children":["\n",["$","li",null,{"children":["\n",["$","p",null,{"language":"txt","children":["Place your Arweave ",["$","$L9",null,{"children":"wallet.json"}]," file in the project root."]}],"\n"]}],"\n",["$","li",null,{"children":["\n",["$","p",null,{"language":"txt","children":["Create a ",["$","$L9",null,{"children":"tsconfig.json"}]," file in the project root:"]}],"\n"]}],"\n"]}],"\n",["$","$La",null,{"language":"json","code":"{\n  \"compilerOptions\": {\n    \"target\": \"es2020\",\n    \"module\": \"commonjs\",\n    \"esModuleInterop\": true,\n    \"forceConsistentCasingInFileNames\": true,\n    \"strict\": true,\n    \"skipLibCheck\": true\n  }\n}\n","children":["$","$L9",null,{"className":"language-json","children":"{\n  \"compilerOptions\": {\n    \"target\": \"es2020\",\n    \"module\": \"commonjs\",\n    \"esModuleInterop\": true,\n    \"forceConsistentCasingInFileNames\": true,\n    \"strict\": true,\n    \"skipLibCheck\": true\n  }\n}\n"}]}],"\n",["$","h3",null,{"children":"3. Initialize SDK Clients"}],"\n",["$","p",null,{"children":"Create a configuration file to set up and export both the Turbo and Story clients:"}],"\n",["$","$La",null,{"language":"typescript","code":"$c","children":["$","$L9",null,{"className":"language-typescript","children":"$d"}]}],"\n",["$","p",null,{"language":"txt","children":["Make sure to create the ",["$","$L9",null,{"children":"utils"}]," directory first:"]}],"\n",["$","$La",null,{"language":"bash","code":"mkdir -p utils\n","children":["$","$L9",null,{"className":"language-bash","children":"mkdir -p utils\n"}]}],"\n",["$","$L7",null,{"level":2,"id":"registering-an-ip-asset","children":"Registering an IP Asset"}],"\n",["$","p",null,{"children":"Now, let's create a script to register an IP asset. This involves three steps:"}],"\n",["$","ol",null,{"children":["\n",["$","li",null,{"children":"Define metadata for the IP itself and the NFT representing ownership"}],"\n",["$","li",null,{"children":"Upload metadata to Arweave using Turbo"}],"\n",["$","li",null,{"children":"Register the IP on Story Protocol"}],"\n"]}],"\n",["$","p",null,{"children":"Create the following script file:"}],"\n",["$","$La",null,{"language":"typescript","code":"$e","children":["$","$L9",null,{"className":"language-typescript","children":"$f"}]}],"\n",["$","h3",null,{"children":"Run the Registration Script"}],"\n",["$","p",null,{"children":"To execute the script and register your IP Asset:"}],"\n",["$","$La",null,{"language":"bash","code":"npx ts-node registerIpWithArweave.ts\n","children":["$","$L9",null,{"className":"language-bash","children":"npx ts-node registerIpWithArweave.ts\n"}]}],"\n",["$","p",null,{"children":"This will:"}],"\n",["$","ol",null,{"children":["\n",["$","li",null,{"children":"Upload your IP metadata to Arweave permanently"}],"\n",["$","li",null,{"children":"Upload your NFT metadata to Arweave permanently"}],"\n",["$","li",null,{"children":"Register an IP Asset on Story Protocol pointing to these Arweave URLs"}],"\n"]}],"\n",["$","$L7",null,{"level":2,"id":"minting-license-tokens","children":"Minting License Tokens"}],"\n",["$","p",null,{"children":"Once an IP Asset is registered, you can attach license terms and allow others to mint license tokens. Create a new script for this:"}],"\n",["$","$La",null,{"language":"typescript","code":"$10","children":["$","$L9",null,{"className":"language-typescript","children":"$11"}]}],"\n",["$","p",null,{"children":"Before running this script:"}],"\n",["$","ol",null,{"children":["\n",["$","li",null,{"language":"txt","children":["Replace ",["$","$L9",null,{"children":"LICENSOR_IP_ID"}]," with the actual IP ID obtained from your registration"]}],"\n",["$","li",null,{"language":"txt","children":["Replace ",["$","$L9",null,{"children":"LICENSE_TERMS_ID"}]," with the ID of license terms attached to that IP"]}],"\n",["$","li",null,{"language":"txt","children":["Replace ",["$","$L9",null,{"children":"RECEIVER_ADDRESS"}]," with the address to receive the license token"]}],"\n",["$","li",null,{"children":"Uncomment the function call at the bottom"}],"\n"]}],"\n",["$","p",null,{"children":"Then run:"}],"\n",["$","$La",null,{"language":"bash","code":"npx ts-node mintLicense.ts\n","children":["$","$L9",null,{"className":"language-bash","children":"npx ts-node mintLicense.ts\n"}]}],"\n",["$","$L7",null,{"level":2,"id":"registering-derivative-ip-assets-with-arweave-metadata","children":"Registering Derivative IP Assets with Arweave Metadata"}],"\n",["$","p",null,{"children":"Finally, let's create a script to register a derivative work based on an existing IP, also using Arweave for metadata storage:"}],"\n",["$","$La",null,{"language":"typescript","code":"$12","children":["$","$L9",null,{"className":"language-typescript","children":"$13"}]}],"\n",["$","p",null,{"children":"Before running this script:"}],"\n",["$","ol",null,{"children":["\n",["$","li",null,{"language":"txt","children":["Replace ",["$","$L9",null,{"children":"PARENT_IP_ID"}]," with the actual parent IP ID"]}],"\n",["$","li",null,{"language":"txt","children":["Replace ",["$","$L9",null,{"children":"LICENSE_TERMS_ID"}]," with the license terms ID that permits derivatives"]}],"\n",["$","li",null,{"children":"Uncomment the function execution at the bottom"}],"\n",["$","li",null,{"children":"Run:"}],"\n"]}],"\n",["$","$La",null,{"language":"bash","code":"npx ts-node registerDerivativeWithArweave.ts\n","children":["$","$L9",null,{"className":"language-bash","children":"npx ts-node registerDerivativeWithArweave.ts\n"}]}],"\n",["$","$L7",null,{"level":2,"id":"conclusion","children":"Conclusion"}],"\n",["$","p",null,{"children":"By leveraging the ArDrive Turbo SDK, you can seamlessly integrate permanent Arweave storage into your Story Protocol workflow. Uploading metadata with Turbo ensures fast, reliable, and cost-effective data persistence for your valuable IP Assets, whether they are root IPs or complex derivatives with licensing relationships."}],"\n",["$","p",null,{"children":"This tutorial demonstrated a complete workflow:"}],"\n",["$","ol",null,{"children":["\n",["$","li",null,{"children":"Setting up a project structure with all required dependencies"}],"\n",["$","li",null,{"children":"Creating a utility module for client initialization"}],"\n",["$","li",null,{"children":"Registering original IP Assets with metadata stored on Arweave"}],"\n",["$","li",null,{"children":"Minting license tokens for IP Assets"}],"\n",["$","li",null,{"children":"Creating and registering derivative works"}],"\n"]}],"\n",["$","p",null,{"children":["For further details on Story Protocol concepts like licensing, derivatives, or specific SDK functions, refer to the ",["$","$L8",null,{"href":"https://docs.story.foundation","children":"Story Protocol Documentation"}],"."]}]]}],["$","footer",null,{"className":"mx-auto mt-16 w-full max-w-2xl lg:max-w-5xl"}]]}],null,["$","$L14",null,{"children":["$L15","$L16",["$","$L17",null,{"promise":"$@18"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","Smpdjt9rf4xMThprEZCM7v",{"children":[["$","$L19",null,{"children":"$L1a"}],null]}],["$","$L1b",null,{"children":"$L1c"}]]}],false]],"m":"$undefined","G":["$1d","$undefined"],"s":false,"S":true}
-1e:"$Sreact.suspense"
-1f:I[74911,[],"AsyncMetadata"]
-1c:["$","div",null,{"hidden":true,"children":["$","$1e",null,{"fallback":null,"children":["$","$L1f",null,{"promise":"$@20"}]}]}]
+13:T2b4d,<span><span style="color: var(--shiki-color-text)">import { storyClient, turboClient } from &quot;./utils/clients&quot;;</span></span>
+<span><span style="color: var(--shiki-color-text)">import { createHash } from &quot;crypto&quot;;</span></span>
+<span><span style="color: var(--shiki-color-text)">import { Address } from &quot;viem&quot;;</span></span>
+<span><span style="color: var(--shiki-color-text)">import type { UploadResult } from &quot;@ardrive/turbo-sdk&quot;;</span></span>
+<span><span style="color: var(--shiki-color-text)">import { DerivativeData } from &quot;@story-protocol/core-sdk&quot;;</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">// Helper function to upload JSON to Arweave via Turbo (same as in registerIpWithArweave.ts)</span></span>
+<span><span style="color: var(--shiki-color-text)">async function uploadJSONToArweave(jsonData: any, description: string): Promise&lt;UploadResult&gt; {</span></span>
+<span><span style="color: var(--shiki-color-text)">    const dataBuffer = Buffer.from(JSON.stringify(jsonData));</span></span>
+<span><span style="color: var(--shiki-color-text)">    console.log(`Uploading ${description} (${dataBuffer.byteLength} bytes) to Arweave via Turbo...`);</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">    const tags = [</span></span>
+<span><span style="color: var(--shiki-color-text)">        { name: &quot;Content-Type&quot;, value: &quot;application/json&quot; },</span></span>
+<span><span style="color: var(--shiki-color-text)">        { name: &quot;App-Name&quot;, value: &quot;ArDrive-Story-Tutorial&quot; }</span></span>
+<span><span style="color: var(--shiki-color-text)">    ];</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">    try {</span></span>
+<span><span style="color: var(--shiki-color-text)">        const result = await turboClient.uploadFile(dataBuffer, { tags });</span></span>
+<span><span style="color: var(--shiki-color-text)">        console.log(`${description} uploaded successfully: Transaction ID ${result.id}`);</span></span>
+<span><span style="color: var(--shiki-color-text)">        return result;</span></span>
+<span><span style="color: var(--shiki-color-text)">    } catch (error) {</span></span>
+<span><span style="color: var(--shiki-color-text)">        console.error(`Error uploading ${description} to Arweave:`, error);</span></span>
+<span><span style="color: var(--shiki-color-text)">        throw new Error(`Arweave upload failed for ${description}.`);</span></span>
+<span><span style="color: var(--shiki-color-text)">    }</span></span>
+<span><span style="color: var(--shiki-color-text)">}</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">// --- Information about the Parent IP and License ---</span></span>
+<span><span style="color: var(--shiki-color-text)">const PARENT_IP_ID: Address = &quot;0x...&quot;; // Replace with the actual Parent IP ID</span></span>
+<span><span style="color: var(--shiki-color-text)">const LICENSE_TERMS_ID: string = &quot;...&quot;; // Replace with the License Terms ID to derive under</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">async function registerDerivative() {</span></span>
+<span><span style="color: var(--shiki-color-text)">  // --- Step 1: Define Derivative Metadata ---</span></span>
+<span><span style="color: var(--shiki-color-text)">  const derivativeIpMetadata = {</span></span>
+<span><span style="color: var(--shiki-color-text)">    title: &quot;My Derivative Work (Arweave Metadata)&quot;,</span></span>
+<span><span style="color: var(--shiki-color-text)">    description: &quot;A remix/adaptation based on a parent IP, metadata on Arweave.&quot;,</span></span>
+<span><span style="color: var(--shiki-color-text)">    // Add other required fields (image, creators matching the derivative creator, etc.)</span></span>
+<span><span style="color: var(--shiki-color-text)">  };</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">  const derivativeNftMetadata = {</span></span>
+<span><span style="color: var(--shiki-color-text)">    name: &quot;Ownership NFT for My Derivative Work&quot;,</span></span>
+<span><span style="color: var(--shiki-color-text)">    description: &quot;NFT for the derivative IP, metadata on Arweave.&quot;,</span></span>
+<span><span style="color: var(--shiki-color-text)">    // Add other fields</span></span>
+<span><span style="color: var(--shiki-color-text)">  };</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">  // --- Step 2: Upload Derivative Metadata to Arweave ---</span></span>
+<span><span style="color: var(--shiki-color-text)">  console.log(&quot;Uploading derivative metadata to Arweave via Turbo...&quot;);</span></span>
+<span><span style="color: var(--shiki-color-text)">  const derivIpUploadResult = await uploadJSONToArweave(derivativeIpMetadata, &quot;Derivative IP Metadata&quot;);</span></span>
+<span><span style="color: var(--shiki-color-text)">  const derivNftUploadResult = await uploadJSONToArweave(derivativeNftMetadata, &quot;Derivative NFT Metadata&quot;);</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">  // Use arweave.net URLs instead of ar:// protocol</span></span>
+<span><span style="color: var(--shiki-color-text)">  const derivIpMetadataArweaveURI = `https://arweave.net/${derivIpUploadResult.id}`;</span></span>
+<span><span style="color: var(--shiki-color-text)">  const derivNftMetadataArweaveURI = `https://arweave.net/${derivNftUploadResult.id}`;</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">  const derivIpMetadataHash = `0x${createHash(&quot;sha256&quot;)</span></span>
+<span><span style="color: var(--shiki-color-text)">    .update(JSON.stringify(derivativeIpMetadata))</span></span>
+<span><span style="color: var(--shiki-color-text)">    .digest(&quot;hex&quot;)}`;</span></span>
+<span><span style="color: var(--shiki-color-text)">  const derivNftMetadataHash = `0x${createHash(&quot;sha256&quot;)</span></span>
+<span><span style="color: var(--shiki-color-text)">    .update(JSON.stringify(derivativeNftMetadata))</span></span>
+<span><span style="color: var(--shiki-color-text)">    .digest(&quot;hex&quot;)}`;</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">  console.log(`Derivative IP Metadata Arweave URI: ${derivIpMetadataArweaveURI}`);</span></span>
+<span><span style="color: var(--shiki-color-text)">  console.log(`Derivative NFT Metadata Arweave URI: ${derivNftMetadataArweaveURI}`);</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">  // --- Step 3: Register Derivative on Story Protocol ---</span></span>
+<span><span style="color: var(--shiki-color-text)">  // Prepare Derivative Data for Story Protocol</span></span>
+<span><span style="color: var(--shiki-color-text)">  const derivData: DerivativeData = {</span></span>
+<span><span style="color: var(--shiki-color-text)">    parentIpIds: [PARENT_IP_ID],</span></span>
+<span><span style="color: var(--shiki-color-text)">    licenseTermsIds: [LICENSE_TERMS_ID],</span></span>
+<span><span style="color: var(--shiki-color-text)">  };</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">  console.log(&quot;Registering Derivative IP Asset on Story Protocol...&quot;);</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">  // Use the same SPG NFT contract or your own</span></span>
+<span><span style="color: var(--shiki-color-text)">  const spgNftContract: Address = &quot;0xc32A8a0FF3beDDDa58393d022aF433e78739FAbc&quot;; // Aeneid testnet example</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">  try {</span></span>
+<span><span style="color: var(--shiki-color-text)">    const response = await storyClient.ipAsset.mintAndRegisterIpAndMakeDerivative({</span></span>
+<span><span style="color: var(--shiki-color-text)">      spgNftContract: spgNftContract,</span></span>
+<span><span style="color: var(--shiki-color-text)">      derivData: derivData, // Link to parent IP and license terms</span></span>
+<span><span style="color: var(--shiki-color-text)">      ipMetadata: { // Metadata for the *new* derivative IP</span></span>
+<span><span style="color: var(--shiki-color-text)">        ipMetadataURI: derivIpMetadataArweaveURI,      // Arweave URI</span></span>
+<span><span style="color: var(--shiki-color-text)">        ipMetadataHash: derivIpMetadataHash as Address, // Content hash</span></span>
+<span><span style="color: var(--shiki-color-text)">        nftMetadataURI: derivNftMetadataArweaveURI,     // Arweave URI</span></span>
+<span><span style="color: var(--shiki-color-text)">        nftMetadataHash: derivNftMetadataHash as Address // Content hash</span></span>
+<span><span style="color: var(--shiki-color-text)">      },</span></span>
+<span><span style="color: var(--shiki-color-text)">      txOptions: { waitForTransaction: true },</span></span>
+<span><span style="color: var(--shiki-color-text)">    });</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">    console.log(</span></span>
+<span><span style="color: var(--shiki-color-text)">      `Successfully registered Derivative IP Asset!`</span></span>
+<span><span style="color: var(--shiki-color-text)">    );</span></span>
+<span><span style="color: var(--shiki-color-text)">    console.log(`  Transaction Hash: ${response.txHash}`);</span></span>
+<span><span style="color: var(--shiki-color-text)">    console.log(`  Derivative IP ID: ${response.ipId}`);</span></span>
+<span><span style="color: var(--shiki-color-text)">    console.log(`  Derivative Token ID: ${response.tokenId}`);</span></span>
+<span><span style="color: var(--shiki-color-text)">    console.log(`  Story Explorer Link: https://aeneid.explorer.story.foundation/ipa/${response.ipId}`);</span></span>
+<span><span style="color: var(--shiki-color-text)">    console.log(`  Derivative Metadata (Arweave): ${derivIpMetadataArweaveURI}`);</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">  } catch (error) {</span></span>
+<span><span style="color: var(--shiki-color-text)">    console.error(&quot;Error registering derivative IP Asset on Story Protocol:&quot;, error);</span></span>
+<span><span style="color: var(--shiki-color-text)">  }</span></span>
+<span><span style="color: var(--shiki-color-text)">}</span></span>
+<span></span>
+<span><span style="color: var(--shiki-color-text)">// Before running this script:</span></span>
+<span><span style="color: var(--shiki-color-text)">// 1. Replace PARENT_IP_ID with a real IP ID you have access to</span></span>
+<span><span style="color: var(--shiki-color-text)">// 2. Replace LICENSE_TERMS_ID with the actual license terms ID</span></span>
+<span><span style="color: var(--shiki-color-text)">// Then uncomment the line below to execute</span></span>
+<span><span style="color: var(--shiki-color-text)">// registerDerivative().catch(console.error);</span></span>
+<span></span>0:{"P":null,"b":"5A8qhMKlSFMMYTbELPfLs","p":"/docs-v2","c":["","guides","story"],"i":false,"f":[[["",{"children":["guides",{"children":["story",{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/docs-v2/_next/static/css/84890fa81a3c91a8.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"h-full","suppressHydrationWarning":true,"children":["$","body",null,{"className":"flex min-h-full bg-white antialiased dark:bg-zinc-900","children":["$","$L2",null,{"children":["$","$L3",null,{"children":["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","$L6",null,{}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]}]}]]}],{"children":["guides",["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["story",["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","article",null,{"className":"flex h-full flex-col pb-10 pt-16","children":[["$","div",null,{"className":"flex-auto prose dark:prose-invert [html_:where(&>*)]:mx-auto [html_:where(&>*)]:max-w-2xl [html_:where(&>*)]:lg:mx-[calc(50%-min(50%,theme(maxWidth.lg)))] [html_:where(&>*)]:lg:max-w-3xl","children":[["$","h1",null,{"children":"Registering Story Protocol IP Assets with Arweave Metadata using Turbo"}],"\n",["$","blockquote",null,{"children":["\n",["$","p",null,{"children":"Utilize the speed and reliability of ArDrive Turbo to store metadata for Story Protocol IP Assets permanently on Arweave."}],"\n"]}],"\n",["$","p",null,{"children":"Story Protocol enables the registration and management of intellectual property (IP) on-chain. A crucial part of this process involves linking metadata to your IP Assets. While various storage solutions exist, Arweave offers permanent, decentralized storage, making it an ideal choice for valuable IP metadata."}],"\n",["$","p",null,{"children":"This guide demonstrates how to use the ArDrive Turbo SDK to efficiently upload IP Asset metadata to Arweave and register it with the Story Protocol TypeScript SDK."}],"\n",["$","$L7",null,{"level":2,"id":"prerequisites","children":"Prerequisites"}],"\n",["$","p",null,{"children":"Before you begin, ensure you have the following:"}],"\n",["$","ul",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"Node.js:"}]," Version 18 or later. Download from ",["$","$L8",null,{"href":"https://nodejs.org","children":"nodejs.org"}],"."]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"npm/pnpm/yarn:"}]," A compatible package manager."]}],"\n",["$","li",null,{"language":"txt","children":[["$","strong",null,{"children":"Arweave Wallet:"}]," A ",["$","$L9",null,{"children":"wallet.json"}]," file. Generate one using tools like the ",["$","$L8",null,{"href":"https://wander.app/","children":"Wander"}]," browser extension. Keep this file secure and ",["$","strong",null,{"children":"do not commit it to version control"}],"."]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Turbo Credits:"}]," Your Arweave wallet must be funded with Turbo credits to pay for uploads. Top up at ",["$","$L8",null,{"href":"https://turbo-topup.com","children":"https://turbo-topup.com"}],"."]}],"\n",["$","li",null,{"language":"txt","children":[["$","strong",null,{"children":"Story Protocol Account:"}]," An Ethereum-compatible private key (",["$","$L9",null,{"children":"WALLET_PRIVATE_KEY"}],") and an RPC Provider URL (",["$","$L9",null,{"children":"RPC_PROVIDER_URL"}],") for the desired Story Protocol network (e.g., Aeneid testnet) stored in a ",["$","$L9",null,{"children":".env"}]," file."]}],"\n",["$","li",null,{"language":"txt","children":[["$","strong",null,{"children":"TypeScript Environment:"}]," You'll need to execute TypeScript code, so make sure you have ",["$","$L9",null,{"children":"ts-node"}]," installed globally (",["$","$L9",null,{"children":"npm install -g ts-node"}],") or as a dev dependency."]}],"\n"]}],"\n",["$","$L7",null,{"level":2,"id":"setup","children":"Setup"}],"\n",["$","h3",null,{"children":"1. Install Dependencies"}],"\n",["$","p",null,{"children":"First, set up a new project directory and install the necessary SDKs:"}],"\n",["$","$La",null,{"language":"bash","code":"mkdir story-arweave-project\ncd story-arweave-project\n","children":["$","$L9",null,{"className":"language-bash","children":"<span><span style=\"color: var(--shiki-color-text)\">mkdir story-arweave-project</span></span>\n<span><span style=\"color: var(--shiki-color-text)\">cd story-arweave-project</span></span>\n<span></span>"}]}],"\n",["$","p",null,{"children":"Then install the required dependencies:"}],"\n",["$","$Lb",null,{"title":"Installation Methods","children":[["$","$La",null,{"language":"bash","code":"npm install --save @ardrive/turbo-sdk @story-protocol/core-sdk viem dotenv ts-node typescript\n","children":["$","$L9",null,{"className":"language-bash","children":"<span><span style=\"color: var(--shiki-color-text)\">npm install --save @ardrive/turbo-sdk @story-protocol/core-sdk viem dotenv ts-node typescript</span></span>\n<span></span>"}],"title":"npm"}],["$","$La",null,{"language":"bash","code":"pnpm install @ardrive/turbo-sdk @story-protocol/core-sdk viem dotenv ts-node typescript\n","children":["$","$L9",null,{"className":"language-bash","children":"<span><span style=\"color: var(--shiki-color-text)\">pnpm install @ardrive/turbo-sdk @story-protocol/core-sdk viem dotenv ts-node typescript</span></span>\n<span></span>"}],"title":"pnpm"}],["$","$La",null,{"language":"bash","code":"yarn add @ardrive/turbo-sdk @story-protocol/core-sdk viem dotenv ts-node typescript\n","children":["$","$L9",null,{"className":"language-bash","children":"<span><span style=\"color: var(--shiki-color-text)\">yarn add @ardrive/turbo-sdk @story-protocol/core-sdk viem dotenv ts-node typescript</span></span>\n<span></span>"}],"title":"yarn"}]]}],"\n",["$","h3",null,{"children":"2. Project Setup"}],"\n",["$","p",null,{"children":"Create the following files in your project:"}],"\n",["$","ol",null,{"children":["\n",["$","li",null,{"language":"txt","children":[["$","$L9",null,{"children":".env"}]," file (in the project root):"]}],"\n"]}],"\n",["$","$La",null,{"language":"txt","code":"WALLET_PRIVATE_KEY=your_ethereum_private_key_without_0x_prefix\nRPC_PROVIDER_URL=your_ethereum_rpc_provider_url\n","children":["$","$L9",null,{"children":"<span><span style=\"color: undefined\">WALLET_PRIVATE_KEY=your_ethereum_private_key_without_0x_prefix</span></span>\n<span><span style=\"color: undefined\">RPC_PROVIDER_URL=your_ethereum_rpc_provider_url</span></span>\n<span><span style=\"color: undefined\"></span></span>"}]}],"\n",["$","ol",null,{"start":"2","children":["\n",["$","li",null,{"children":["\n",["$","p",null,{"language":"txt","children":["Place your Arweave ",["$","$L9",null,{"children":"wallet.json"}]," file in the project root."]}],"\n"]}],"\n",["$","li",null,{"children":["\n",["$","p",null,{"language":"txt","children":["Create a ",["$","$L9",null,{"children":"tsconfig.json"}]," file in the project root:"]}],"\n"]}],"\n"]}],"\n",["$","$La",null,{"language":"json","code":"{\n  \"compilerOptions\": {\n    \"target\": \"es2020\",\n    \"module\": \"commonjs\",\n    \"esModuleInterop\": true,\n    \"forceConsistentCasingInFileNames\": true,\n    \"strict\": true,\n    \"skipLibCheck\": true\n  }\n}\n","children":["$","$L9",null,{"className":"language-json","children":"<span><span style=\"color: var(--shiki-color-text)\">{</span></span>\n<span><span style=\"color: var(--shiki-color-text)\">  &quot;compilerOptions&quot;: {</span></span>\n<span><span style=\"color: var(--shiki-color-text)\">    &quot;target&quot;: &quot;es2020&quot;,</span></span>\n<span><span style=\"color: var(--shiki-color-text)\">    &quot;module&quot;: &quot;commonjs&quot;,</span></span>\n<span><span style=\"color: var(--shiki-color-text)\">    &quot;esModuleInterop&quot;: true,</span></span>\n<span><span style=\"color: var(--shiki-color-text)\">    &quot;forceConsistentCasingInFileNames&quot;: true,</span></span>\n<span><span style=\"color: var(--shiki-color-text)\">    &quot;strict&quot;: true,</span></span>\n<span><span style=\"color: var(--shiki-color-text)\">    &quot;skipLibCheck&quot;: true</span></span>\n<span><span style=\"color: var(--shiki-color-text)\">  }</span></span>\n<span><span style=\"color: var(--shiki-color-text)\">}</span></span>\n<span></span>"}]}],"\n",["$","h3",null,{"children":"3. Initialize SDK Clients"}],"\n",["$","p",null,{"children":"Create a configuration file to set up and export both the Turbo and Story clients:"}],"\n",["$","$La",null,{"language":"typescript","code":"$c","children":["$","$L9",null,{"className":"language-typescript","children":"$d"}]}],"\n",["$","p",null,{"language":"txt","children":["Make sure to create the ",["$","$L9",null,{"children":"utils"}]," directory first:"]}],"\n",["$","$La",null,{"language":"bash","code":"mkdir -p utils\n","children":["$","$L9",null,{"className":"language-bash","children":"<span><span style=\"color: var(--shiki-color-text)\">mkdir -p utils</span></span>\n<span></span>"}]}],"\n",["$","$L7",null,{"level":2,"id":"registering-an-ip-asset","children":"Registering an IP Asset"}],"\n",["$","p",null,{"children":"Now, let's create a script to register an IP asset. This involves three steps:"}],"\n",["$","ol",null,{"children":["\n",["$","li",null,{"children":"Define metadata for the IP itself and the NFT representing ownership"}],"\n",["$","li",null,{"children":"Upload metadata to Arweave using Turbo"}],"\n",["$","li",null,{"children":"Register the IP on Story Protocol"}],"\n"]}],"\n",["$","p",null,{"children":"Create the following script file:"}],"\n",["$","$La",null,{"language":"typescript","code":"$e","children":["$","$L9",null,{"className":"language-typescript","children":"$f"}]}],"\n",["$","h3",null,{"children":"Run the Registration Script"}],"\n",["$","p",null,{"children":"To execute the script and register your IP Asset:"}],"\n",["$","$La",null,{"language":"bash","code":"npx ts-node registerIpWithArweave.ts\n","children":["$","$L9",null,{"className":"language-bash","children":"<span><span style=\"color: var(--shiki-color-text)\">npx ts-node registerIpWithArweave.ts</span></span>\n<span></span>"}]}],"\n",["$","p",null,{"children":"This will:"}],"\n",["$","ol",null,{"children":["\n",["$","li",null,{"children":"Upload your IP metadata to Arweave permanently"}],"\n",["$","li",null,{"children":"Upload your NFT metadata to Arweave permanently"}],"\n",["$","li",null,{"children":"Register an IP Asset on Story Protocol pointing to these Arweave URLs"}],"\n"]}],"\n",["$","$L7",null,{"level":2,"id":"minting-license-tokens","children":"Minting License Tokens"}],"\n",["$","p",null,{"children":"Once an IP Asset is registered, you can attach license terms and allow others to mint license tokens. Create a new script for this:"}],"\n",["$","$La",null,{"language":"typescript","code":"$10","children":["$","$L9",null,{"className":"language-typescript","children":"$11"}]}],"\n",["$","p",null,{"children":"Before running this script:"}],"\n",["$","ol",null,{"children":["\n",["$","li",null,{"language":"txt","children":["Replace ",["$","$L9",null,{"children":"LICENSOR_IP_ID"}]," with the actual IP ID obtained from your registration"]}],"\n",["$","li",null,{"language":"txt","children":["Replace ",["$","$L9",null,{"children":"LICENSE_TERMS_ID"}]," with the ID of license terms attached to that IP"]}],"\n",["$","li",null,{"language":"txt","children":["Replace ",["$","$L9",null,{"children":"RECEIVER_ADDRESS"}]," with the address to receive the license token"]}],"\n",["$","li",null,{"children":"Uncomment the function call at the bottom"}],"\n"]}],"\n",["$","p",null,{"children":"Then run:"}],"\n",["$","$La",null,{"language":"bash","code":"npx ts-node mintLicense.ts\n","children":["$","$L9",null,{"className":"language-bash","children":"<span><span style=\"color: var(--shiki-color-text)\">npx ts-node mintLicense.ts</span></span>\n<span></span>"}]}],"\n",["$","$L7",null,{"level":2,"id":"registering-derivative-ip-assets-with-arweave-metadata","children":"Registering Derivative IP Assets with Arweave Metadata"}],"\n",["$","p",null,{"children":"Finally, let's create a script to register a derivative work based on an existing IP, also using Arweave for metadata storage:"}],"\n",["$","$La",null,{"language":"typescript","code":"$12","children":["$","$L9",null,{"className":"language-typescript","children":"$13"}]}],"\n",["$","p",null,{"children":"Before running this script:"}],"\n",["$","ol",null,{"children":["\n",["$","li",null,{"language":"txt","children":["Replace ",["$","$L9",null,{"children":"PARENT_IP_ID"}]," with the actual parent IP ID"]}],"\n",["$","li",null,{"language":"txt","children":["Replace ",["$","$L9",null,{"children":"LICENSE_TERMS_ID"}]," with the license terms ID that permits derivatives"]}],"\n",["$","li",null,{"children":"Uncomment the function execution at the bottom"}],"\n",["$","li",null,{"children":"Run:"}],"\n"]}],"\n",["$","$La",null,{"language":"bash","code":"npx ts-node registerDerivativeWithArweave.ts\n","children":["$","$L9",null,{"className":"language-bash","children":"<span><span style=\"color: var(--shiki-color-text)\">npx ts-node registerDerivativeWithArweave.ts</span></span>\n<span></span>"}]}],"\n",["$","$L7",null,{"level":2,"id":"conclusion","children":"Conclusion"}],"\n",["$","p",null,{"children":"By leveraging the ArDrive Turbo SDK, you can seamlessly integrate permanent Arweave storage into your Story Protocol workflow. Uploading metadata with Turbo ensures fast, reliable, and cost-effective data persistence for your valuable IP Assets, whether they are root IPs or complex derivatives with licensing relationships."}],"\n",["$","p",null,{"children":"This tutorial demonstrated a complete workflow:"}],"\n",["$","ol",null,{"children":["\n",["$","li",null,{"children":"Setting up a project structure with all required dependencies"}],"\n",["$","li",null,{"children":"Creating a utility module for client initialization"}],"\n",["$","li",null,{"children":"Registering original IP Assets with metadata stored on Arweave"}],"\n",["$","li",null,{"children":"Minting license tokens for IP Assets"}],"\n",["$","li",null,{"children":"Creating and registering derivative works"}],"\n"]}],"\n",["$","p",null,{"children":["For further details on Story Protocol concepts like licensing, derivatives, or specific SDK functions, refer to the ",["$","$L8",null,{"href":"https://docs.story.foundation","children":"Story Protocol Documentation"}],"."]}]]}],["$","footer",null,{"className":"mx-auto mt-16 w-full max-w-2xl lg:max-w-5xl","children":["$","$L14",null,{}]}]]}],null,["$","$L15",null,{"children":["$L16","$L17",["$","$L18",null,{"promise":"$@19"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","c9maFQmo1aHEjx3s-dCa_v",{"children":[["$","$L1a",null,{"children":"$L1b"}],null]}],["$","$L1c",null,{"children":"$L1d"}]]}],false]],"m":"$undefined","G":["$1e","$undefined"],"s":false,"S":true}
+1f:"$Sreact.suspense"
+20:I[74911,[],"AsyncMetadata"]
+1d:["$","div",null,{"hidden":true,"children":["$","$1f",null,{"fallback":null,"children":["$","$L20",null,{"promise":"$@21"}]}]}]
+17:null
+1b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 16:null
-1a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
-15:null
-18:{"metadata":[["$","title","0",{"children":"Register an IP Asset on Arweave - AR.IO Docs"}],["$","meta","1",{"name":"description","content":"Learn how to register an IP asset on Story Protocol and make it accessible on Arweave"}],["$","link","2",{"rel":"icon","href":"/docs-v2/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
-20:{"metadata":"$18:metadata","error":null,"digest":"$undefined"}
+19:{"metadata":[["$","title","0",{"children":"Register an IP Asset on Arweave - AR.IO Docs"}],["$","meta","1",{"name":"description","content":"Learn how to register an IP asset on Story Protocol and make it accessible on Arweave"}],["$","link","2",{"rel":"icon","href":"/docs-v2/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+21:{"metadata":"$19:metadata","error":null,"digest":"$undefined"}
