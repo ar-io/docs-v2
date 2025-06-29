@@ -1,591 +1,84 @@
 1:"$Sreact.fragment"
-2:I[60881,["9268","static/chunks/aaea2bcf-432631bb317559fe.js","3975","static/chunks/3975-65073ecd7686b488.js","5351","static/chunks/5351-70f3628903924335.js","1377","static/chunks/1377-51d41c11a8395473.js","7066","static/chunks/7066-9ea237f8271c6a3e.js","7948","static/chunks/7948-8957c2fa304b1b2a.js","7177","static/chunks/app/layout-1f0a3a6dd3f8911a.js"],"Providers"]
-3:I[41056,["9268","static/chunks/aaea2bcf-432631bb317559fe.js","3975","static/chunks/3975-65073ecd7686b488.js","5351","static/chunks/5351-70f3628903924335.js","1377","static/chunks/1377-51d41c11a8395473.js","7066","static/chunks/7066-9ea237f8271c6a3e.js","7948","static/chunks/7948-8957c2fa304b1b2a.js","7177","static/chunks/app/layout-1f0a3a6dd3f8911a.js"],"Layout"]
+2:I[60881,["9268","static/chunks/aaea2bcf-432631bb317559fe.js","3975","static/chunks/3975-65073ecd7686b488.js","7120","static/chunks/7120-e9219c79fe5d8baa.js","1377","static/chunks/1377-51d41c11a8395473.js","7066","static/chunks/7066-9ea237f8271c6a3e.js","7948","static/chunks/7948-6c805a7ad4ce1396.js","7177","static/chunks/app/layout-fc3009dd9c846bac.js"],"Providers"]
+3:I[41056,["9268","static/chunks/aaea2bcf-432631bb317559fe.js","3975","static/chunks/3975-65073ecd7686b488.js","7120","static/chunks/7120-e9219c79fe5d8baa.js","1377","static/chunks/1377-51d41c11a8395473.js","7066","static/chunks/7066-9ea237f8271c6a3e.js","7948","static/chunks/7948-6c805a7ad4ce1396.js","7177","static/chunks/app/layout-fc3009dd9c846bac.js"],"Layout"]
 4:I[87555,[],""]
 5:I[31295,[],""]
 6:I[30122,["3975","static/chunks/3975-65073ecd7686b488.js","4345","static/chunks/app/not-found-28cf6d37da7270ee.js"],"default"]
-7:I[87254,["9268","static/chunks/aaea2bcf-432631bb317559fe.js","3975","static/chunks/3975-65073ecd7686b488.js","5351","static/chunks/5351-70f3628903924335.js","6493","static/chunks/6493-a59dcbabb32c712c.js","465","static/chunks/465-8447cfdb347ccd48.js","6145","static/chunks/app/wayfinder/routing-strategies/round-robin/page-e1021561e8b3e395.js"],"Heading"]
-8:I[81571,["9268","static/chunks/aaea2bcf-432631bb317559fe.js","3975","static/chunks/3975-65073ecd7686b488.js","5351","static/chunks/5351-70f3628903924335.js","6493","static/chunks/6493-a59dcbabb32c712c.js","465","static/chunks/465-8447cfdb347ccd48.js","6145","static/chunks/app/wayfinder/routing-strategies/round-robin/page-e1021561e8b3e395.js"],"Code"]
-9:I[81571,["9268","static/chunks/aaea2bcf-432631bb317559fe.js","3975","static/chunks/3975-65073ecd7686b488.js","5351","static/chunks/5351-70f3628903924335.js","6493","static/chunks/6493-a59dcbabb32c712c.js","465","static/chunks/465-8447cfdb347ccd48.js","6145","static/chunks/app/wayfinder/routing-strategies/round-robin/page-e1021561e8b3e395.js"],"Pre"]
-14:I[73019,["9268","static/chunks/aaea2bcf-432631bb317559fe.js","3975","static/chunks/3975-65073ecd7686b488.js","5351","static/chunks/5351-70f3628903924335.js","6493","static/chunks/6493-a59dcbabb32c712c.js","465","static/chunks/465-8447cfdb347ccd48.js","6145","static/chunks/app/wayfinder/routing-strategies/round-robin/page-e1021561e8b3e395.js"],"Feedback"]
-15:I[59665,[],"OutletBoundary"]
-18:I[74911,[],"AsyncMetadataOutlet"]
-1a:I[59665,[],"ViewportBoundary"]
-1c:I[59665,[],"MetadataBoundary"]
-1e:I[26614,[],""]
+7:I[87254,["9268","static/chunks/aaea2bcf-432631bb317559fe.js","3975","static/chunks/3975-65073ecd7686b488.js","7120","static/chunks/7120-e9219c79fe5d8baa.js","6493","static/chunks/6493-a59dcbabb32c712c.js","465","static/chunks/465-00f1bec8c4a0a554.js","6145","static/chunks/app/wayfinder/routing-strategies/round-robin/page-36946c8e0897c510.js"],"Heading"]
+8:I[81571,["9268","static/chunks/aaea2bcf-432631bb317559fe.js","3975","static/chunks/3975-65073ecd7686b488.js","7120","static/chunks/7120-e9219c79fe5d8baa.js","6493","static/chunks/6493-a59dcbabb32c712c.js","465","static/chunks/465-00f1bec8c4a0a554.js","6145","static/chunks/app/wayfinder/routing-strategies/round-robin/page-36946c8e0897c510.js"],"Code"]
+9:I[81571,["9268","static/chunks/aaea2bcf-432631bb317559fe.js","3975","static/chunks/3975-65073ecd7686b488.js","7120","static/chunks/7120-e9219c79fe5d8baa.js","6493","static/chunks/6493-a59dcbabb32c712c.js","465","static/chunks/465-00f1bec8c4a0a554.js","6145","static/chunks/app/wayfinder/routing-strategies/round-robin/page-36946c8e0897c510.js"],"Pre"]
+10:I[73019,["9268","static/chunks/aaea2bcf-432631bb317559fe.js","3975","static/chunks/3975-65073ecd7686b488.js","7120","static/chunks/7120-e9219c79fe5d8baa.js","6493","static/chunks/6493-a59dcbabb32c712c.js","465","static/chunks/465-00f1bec8c4a0a554.js","6145","static/chunks/app/wayfinder/routing-strategies/round-robin/page-36946c8e0897c510.js"],"Feedback"]
+11:I[59665,[],"OutletBoundary"]
+14:I[74911,[],"AsyncMetadataOutlet"]
+16:I[59665,[],"ViewportBoundary"]
+18:I[59665,[],"MetadataBoundary"]
+1a:I[26614,[],""]
 :HL["/docs-v2/_next/static/css/84890fa81a3c91a8.css","style"]
-a:T441,class DynamicRoundRobinStrategy extends RoundRobinRoutingStrategy {
-  constructor(options) {
-    super(options)
-    this.gatewayProvider = options.gatewayProvider
-    this.updateInterval = options.updateInterval || 60000
-    this.startGatewayUpdates()
-  }
-
-  startGatewayUpdates() {
-    setInterval(async () => {
-      try {
-        const newGateways = await this.gatewayProvider.getGateways()
-        this.updateGateways(newGateways)
-        console.log('🔄 Updated gateway list:', newGateways.length, 'gateways')
-      } catch (error) {
-        console.error('Failed to update gateways:', error.message)
-      }
-    }, this.updateInterval)
-  }
-
-  updateGateways(newGateways) {
-    const oldGateways = this.gateways
-    this.gateways = newGateways
-
-    // Adjust current position if gateway list changed
-    if (this.currentPosition >= newGateways.length) {
-      this.currentPosition = 0
-    }
-
-    console.log('Gateway list updated:', {
-      added: newGateways.filter((g) => !oldGateways.includes(g)),
-      removed: oldGateways.filter((g) => !newGateways.includes(g)),
-    })
-  }
-}
-b:T441,class DynamicRoundRobinStrategy extends RoundRobinRoutingStrategy {
-  constructor(options) {
-    super(options)
-    this.gatewayProvider = options.gatewayProvider
-    this.updateInterval = options.updateInterval || 60000
-    this.startGatewayUpdates()
-  }
-
-  startGatewayUpdates() {
-    setInterval(async () => {
-      try {
-        const newGateways = await this.gatewayProvider.getGateways()
-        this.updateGateways(newGateways)
-        console.log('🔄 Updated gateway list:', newGateways.length, 'gateways')
-      } catch (error) {
-        console.error('Failed to update gateways:', error.message)
-      }
-    }, this.updateInterval)
-  }
-
-  updateGateways(newGateways) {
-    const oldGateways = this.gateways
-    this.gateways = newGateways
-
-    // Adjust current position if gateway list changed
-    if (this.currentPosition >= newGateways.length) {
-      this.currentPosition = 0
-    }
-
-    console.log('Gateway list updated:', {
-      added: newGateways.filter((g) => !oldGateways.includes(g)),
-      removed: oldGateways.filter((g) => !newGateways.includes(g)),
-    })
-  }
-}
-c:T5b2,class HealthAwareRoundRobinStrategy extends RoundRobinRoutingStrategy {
-  constructor(options) {
-    super(options)
-    this.gatewayHealth = new Map()
-    this.healthScores = new Map()
-    this.adaptiveWeights = options.adaptiveWeights || false
-  }
-
-  async selectGateway({ gateways }) {
-    if (this.adaptiveWeights) {
-      // Adjust weights based on health scores
-      this.adjustWeightsBasedOnHealth()
-    }
-
-    // Get next gateway in rotation
-    let selectedGateway = await super.selectGateway({ gateways })
-
-    // If selected gateway is unhealthy, find next healthy one
-    if (this.skipUnhealthyGateways) {
-      let attempts = 0
-      while (
-        attempts < gateways.length &&
-        !this.isGatewayHealthy(selectedGateway)
-      ) {
-        selectedGateway = await super.selectGateway({ gateways })
-        attempts++
-      }
-    }
-
-    return selectedGateway
-  }
-
-  adjustWeightsBasedOnHealth() {
-    for (const [gateway, health] of this.gatewayHealth.entries()) {
-      const baseWeight = this.weights.get(gateway) || 1
-      const healthScore = this.healthScores.get(gateway) || 1
-
-      // Adjust weight based on health (0.1 to 2.0 multiplier)
-      const adjustedWeight = Math.max(
-        0.1,
-        Math.min(2.0, baseWeight * healthScore),
-      )
-      this.weights.set(gateway, adjustedWeight)
-    }
-  }
-
-  isGatewayHealthy(gateway) {
-    const health = this.gatewayHealth.get(gateway)
-    return !health || health.healthy
-  }
-}
-d:T5b2,class HealthAwareRoundRobinStrategy extends RoundRobinRoutingStrategy {
-  constructor(options) {
-    super(options)
-    this.gatewayHealth = new Map()
-    this.healthScores = new Map()
-    this.adaptiveWeights = options.adaptiveWeights || false
-  }
-
-  async selectGateway({ gateways }) {
-    if (this.adaptiveWeights) {
-      // Adjust weights based on health scores
-      this.adjustWeightsBasedOnHealth()
-    }
-
-    // Get next gateway in rotation
-    let selectedGateway = await super.selectGateway({ gateways })
-
-    // If selected gateway is unhealthy, find next healthy one
-    if (this.skipUnhealthyGateways) {
-      let attempts = 0
-      while (
-        attempts < gateways.length &&
-        !this.isGatewayHealthy(selectedGateway)
-      ) {
-        selectedGateway = await super.selectGateway({ gateways })
-        attempts++
-      }
-    }
-
-    return selectedGateway
-  }
-
-  adjustWeightsBasedOnHealth() {
-    for (const [gateway, health] of this.gatewayHealth.entries()) {
-      const baseWeight = this.weights.get(gateway) || 1
-      const healthScore = this.healthScores.get(gateway) || 1
-
-      // Adjust weight based on health (0.1 to 2.0 multiplier)
-      const adjustedWeight = Math.max(
-        0.1,
-        Math.min(2.0, baseWeight * healthScore),
-      )
-      this.weights.set(gateway, adjustedWeight)
-    }
-  }
-
-  isGatewayHealthy(gateway) {
-    const health = this.gatewayHealth.get(gateway)
-    return !health || health.healthy
-  }
-}
-e:T7b1,class GeographicRoundRobinStrategy extends RoundRobinRoutingStrategy {
-  constructor(options) {
-    super(options)
-    this.userLocation = options.userLocation
-    this.gatewayLocations = options.gatewayLocations || new Map()
-    this.regionRotation = options.regionRotation || false
-  }
-
-  async selectGateway({ gateways }) {
-    if (this.regionRotation && this.userLocation) {
-      // Group gateways by region
-      const gatewaysByRegion = this.groupGatewaysByRegion(gateways)
-
-      // Round robin within preferred regions first
-      const preferredRegions = this.getPreferredRegions()
-
-      for (const region of preferredRegions) {
-        const regionGateways = gatewaysByRegion.get(region) || []
-        if (regionGateways.length > 0) {
-          return this.selectFromRegion(regionGateways)
-        }
-      }
-    }
-
-    return super.selectGateway({ gateways })
-  }
-
-  groupGatewaysByRegion(gateways) {
-    const regions = new Map()
-
-    for (const gateway of gateways) {
-      const location = this.gatewayLocations.get(gateway)
-      const region = location ? this.getRegion(location) : 'unknown'
-
-      if (!regions.has(region)) {
-        regions.set(region, [])
-      }
-      regions.get(region).push(gateway)
-    }
-
-    return regions
-  }
-
-  getRegion(location) {
-    // Simple region classification
-    if (
-      location.lat > 35 &&
-      location.lat < 70 &&
-      location.lon > -10 &&
-      location.lon < 40
-    ) {
-      return 'europe'
-    } else if (
-      location.lat > 25 &&
-      location.lat < 50 &&
-      location.lon > -125 &&
-      location.lon < -65
-    ) {
-      return 'north-america'
-    } else if (
-      location.lat > -35 &&
-      location.lat < 35 &&
-      location.lon > 95 &&
-      location.lon < 155
-    ) {
-      return 'asia-pacific'
-    }
-    return 'other'
-  }
-
-  getPreferredRegions() {
-    const userRegion = this.getRegion(this.userLocation)
-    return [userRegion, 'other'] // Prefer user's region, then others
-  }
-}
-f:T7b1,class GeographicRoundRobinStrategy extends RoundRobinRoutingStrategy {
-  constructor(options) {
-    super(options)
-    this.userLocation = options.userLocation
-    this.gatewayLocations = options.gatewayLocations || new Map()
-    this.regionRotation = options.regionRotation || false
-  }
-
-  async selectGateway({ gateways }) {
-    if (this.regionRotation && this.userLocation) {
-      // Group gateways by region
-      const gatewaysByRegion = this.groupGatewaysByRegion(gateways)
-
-      // Round robin within preferred regions first
-      const preferredRegions = this.getPreferredRegions()
-
-      for (const region of preferredRegions) {
-        const regionGateways = gatewaysByRegion.get(region) || []
-        if (regionGateways.length > 0) {
-          return this.selectFromRegion(regionGateways)
-        }
-      }
-    }
-
-    return super.selectGateway({ gateways })
-  }
-
-  groupGatewaysByRegion(gateways) {
-    const regions = new Map()
-
-    for (const gateway of gateways) {
-      const location = this.gatewayLocations.get(gateway)
-      const region = location ? this.getRegion(location) : 'unknown'
-
-      if (!regions.has(region)) {
-        regions.set(region, [])
-      }
-      regions.get(region).push(gateway)
-    }
-
-    return regions
-  }
-
-  getRegion(location) {
-    // Simple region classification
-    if (
-      location.lat > 35 &&
-      location.lat < 70 &&
-      location.lon > -10 &&
-      location.lon < 40
-    ) {
-      return 'europe'
-    } else if (
-      location.lat > 25 &&
-      location.lat < 50 &&
-      location.lon > -125 &&
-      location.lon < -65
-    ) {
-      return 'north-america'
-    } else if (
-      location.lat > -35 &&
-      location.lat < 35 &&
-      location.lon > 95 &&
-      location.lon < 155
-    ) {
-      return 'asia-pacific'
-    }
-    return 'other'
-  }
-
-  getPreferredRegions() {
-    const userRegion = this.getRegion(this.userLocation)
-    return [userRegion, 'other'] // Prefer user's region, then others
-  }
-}
-10:T517,class ConcurrentRoundRobinStrategy extends RoundRobinRoutingStrategy {
-  constructor(options) {
-    super(options)
-    this.concurrentRequests = new Map()
-    this.maxConcurrentPerGateway = options.maxConcurrentPerGateway || 10
-  }
-
-  async selectGateway({ gateways }) {
-    // Find gateway with lowest concurrent requests
-    let selectedGateway = null
-    let minConcurrent = Infinity
-
-    for (const gateway of gateways) {
-      const concurrent = this.concurrentRequests.get(gateway) || 0
-
-      if (
-        concurrent < this.maxConcurrentPerGateway &&
-        concurrent < minConcurrent
-      ) {
-        minConcurrent = concurrent
-        selectedGateway = gateway
-      }
-    }
-
-    // If all gateways are at max capacity, use round robin
-    if (!selectedGateway) {
-      selectedGateway = await super.selectGateway({ gateways })
-    }
-
-    // Track concurrent request
-    this.incrementConcurrentRequests(selectedGateway)
-
-    return selectedGateway
-  }
-
-  incrementConcurrentRequests(gateway) {
-    const current = this.concurrentRequests.get(gateway) || 0
-    this.concurrentRequests.set(gateway, current + 1)
-  }
-
-  decrementConcurrentRequests(gateway) {
-    const current = this.concurrentRequests.get(gateway) || 0
-    this.concurrentRequests.set(gateway, Math.max(0, current - 1))
-  }
-}
-11:T517,class ConcurrentRoundRobinStrategy extends RoundRobinRoutingStrategy {
-  constructor(options) {
-    super(options)
-    this.concurrentRequests = new Map()
-    this.maxConcurrentPerGateway = options.maxConcurrentPerGateway || 10
-  }
-
-  async selectGateway({ gateways }) {
-    // Find gateway with lowest concurrent requests
-    let selectedGateway = null
-    let minConcurrent = Infinity
-
-    for (const gateway of gateways) {
-      const concurrent = this.concurrentRequests.get(gateway) || 0
-
-      if (
-        concurrent < this.maxConcurrentPerGateway &&
-        concurrent < minConcurrent
-      ) {
-        minConcurrent = concurrent
-        selectedGateway = gateway
-      }
-    }
-
-    // If all gateways are at max capacity, use round robin
-    if (!selectedGateway) {
-      selectedGateway = await super.selectGateway({ gateways })
-    }
-
-    // Track concurrent request
-    this.incrementConcurrentRequests(selectedGateway)
-
-    return selectedGateway
-  }
-
-  incrementConcurrentRequests(gateway) {
-    const current = this.concurrentRequests.get(gateway) || 0
-    this.concurrentRequests.set(gateway, current + 1)
-  }
-
-  decrementConcurrentRequests(gateway) {
-    const current = this.concurrentRequests.get(gateway) || 0
-    this.concurrentRequests.set(gateway, Math.max(0, current - 1))
-  }
-}
-12:T7bf,import { RoundRobinRoutingStrategy } from '@ar.io/wayfinder-core'
-
-describe('RoundRobinRoutingStrategy', () => {
-  let strategy
-
-  beforeEach(() => {
-    strategy = new RoundRobinRoutingStrategy({
-      gateways: [
-        'https://gateway-1.com',
-        'https://gateway-2.com',
-        'https://gateway-3.com',
-      ],
-    })
-  })
-
-  test('should rotate through gateways in order', async () => {
-    const results = []
-
-    for (let i = 0; i < 6; i++) {
-      const gateway = await strategy.selectGateway({
-        gateways: strategy.gateways,
-      })
-      results.push(gateway)
-    }
-
-    expect(results).toEqual([
-      'https://gateway-1.com',
-      'https://gateway-2.com',
-      'https://gateway-3.com',
-      'https://gateway-1.com',
-      'https://gateway-2.com',
-      'https://gateway-3.com',
-    ])
-  })
-
-  test('should handle empty gateway list', async () => {
-    const emptyStrategy = new RoundRobinRoutingStrategy({
-      gateways: [],
-    })
-
-    await expect(emptyStrategy.selectGateway({ gateways: [] })).rejects.toThrow(
-      'No gateways available',
-    )
-  })
-
-  test('should skip unhealthy gateways', async () => {
-    const healthAwareStrategy = new RoundRobinRoutingStrategy({
-      gateways: [
-        'https://gateway-1.com',
-        'https://gateway-2.com',
-        'https://gateway-3.com',
-      ],
-      skipUnhealthyGateways: true,
-    })
-
-    // Mock health check to mark gateway-2 as unhealthy
-    jest
-      .spyOn(healthAwareStrategy, 'isGatewayHealthy')
-      .mockImplementation((gateway) => gateway !== 'https://gateway-2.com')
-
-    const results = []
-    for (let i = 0; i < 4; i++) {
-      const gateway = await healthAwareStrategy.selectGateway({
-        gateways: healthAwareStrategy.gateways,
-      })
-      results.push(gateway)
-    }
-
-    // Should skip gateway-2
-    expect(results).toEqual([
-      'https://gateway-1.com',
-      'https://gateway-3.com',
-      'https://gateway-1.com',
-      'https://gateway-3.com',
-    ])
-  })
-})
-13:T7bf,import { RoundRobinRoutingStrategy } from '@ar.io/wayfinder-core'
-
-describe('RoundRobinRoutingStrategy', () => {
-  let strategy
-
-  beforeEach(() => {
-    strategy = new RoundRobinRoutingStrategy({
-      gateways: [
-        'https://gateway-1.com',
-        'https://gateway-2.com',
-        'https://gateway-3.com',
-      ],
-    })
-  })
-
-  test('should rotate through gateways in order', async () => {
-    const results = []
-
-    for (let i = 0; i < 6; i++) {
-      const gateway = await strategy.selectGateway({
-        gateways: strategy.gateways,
-      })
-      results.push(gateway)
-    }
-
-    expect(results).toEqual([
-      'https://gateway-1.com',
-      'https://gateway-2.com',
-      'https://gateway-3.com',
-      'https://gateway-1.com',
-      'https://gateway-2.com',
-      'https://gateway-3.com',
-    ])
-  })
-
-  test('should handle empty gateway list', async () => {
-    const emptyStrategy = new RoundRobinRoutingStrategy({
-      gateways: [],
-    })
-
-    await expect(emptyStrategy.selectGateway({ gateways: [] })).rejects.toThrow(
-      'No gateways available',
-    )
-  })
-
-  test('should skip unhealthy gateways', async () => {
-    const healthAwareStrategy = new RoundRobinRoutingStrategy({
-      gateways: [
-        'https://gateway-1.com',
-        'https://gateway-2.com',
-        'https://gateway-3.com',
-      ],
-      skipUnhealthyGateways: true,
-    })
-
-    // Mock health check to mark gateway-2 as unhealthy
-    jest
-      .spyOn(healthAwareStrategy, 'isGatewayHealthy')
-      .mockImplementation((gateway) => gateway !== 'https://gateway-2.com')
-
-    const results = []
-    for (let i = 0; i < 4; i++) {
-      const gateway = await healthAwareStrategy.selectGateway({
-        gateways: healthAwareStrategy.gateways,
-      })
-      results.push(gateway)
-    }
-
-    // Should skip gateway-2
-    expect(results).toEqual([
-      'https://gateway-1.com',
-      'https://gateway-3.com',
-      'https://gateway-1.com',
-      'https://gateway-3.com',
-    ])
-  })
-})
-0:{"P":null,"b":"5A8qhMKlSFMMYTbELPfLs","p":"/docs-v2","c":["","wayfinder","routing-strategies","round-robin"],"i":false,"f":[[["",{"children":["wayfinder",{"children":["routing-strategies",{"children":["round-robin",{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/docs-v2/_next/static/css/84890fa81a3c91a8.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"h-full","suppressHydrationWarning":true,"children":["$","body",null,{"className":"flex min-h-full bg-white antialiased dark:bg-zinc-900","children":["$","$L2",null,{"children":["$","$L3",null,{"children":["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","$L6",null,{}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]}]}]]}],{"children":["wayfinder",["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["routing-strategies",["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["round-robin",["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","article",null,{"className":"flex h-full flex-col pb-10 pt-16","children":[["$","div",null,{"className":"flex-auto prose dark:prose-invert [html_:where(&>*)]:mx-auto [html_:where(&>*)]:max-w-2xl [html_:where(&>*)]:lg:mx-[calc(50%-min(50%,theme(maxWidth.lg)))] [html_:where(&>*)]:lg:max-w-3xl","children":[["$","h1",null,{"children":"RoundRobinRoutingStrategy"}],"\n",["$","$L7",null,{"level":2,"id":"overview","children":"Overview"}],"\n",["$","p",null,{"language":"txt","children":["The ",["$","$L8",null,{"children":"RoundRobinRoutingStrategy"}]," distributes requests evenly across all available gateways in a cyclical manner. Each gateway is selected in turn, ensuring fair load distribution and preventing any single gateway from being overwhelmed."]}],"\n",["$","$L7",null,{"level":2,"id":"how-it-works","children":"How It Works"}],"\n",["$","ol",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"Initialize Gateway List"}],": Start with an ordered list of available gateways"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Track Current Position"}],": Maintain a pointer to the current gateway in the rotation"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Select Next Gateway"}],": Choose the next gateway in the sequence"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Cycle Through List"}],": Return to the first gateway after reaching the end"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Handle Failures"}],": Skip failed gateways and continue rotation"]}],"\n"]}],"\n",["$","$L7",null,{"level":2,"id":"configuration","children":"Configuration"}],"\n",["$","h3",null,{"children":"Basic Usage"}],"\n",["$","$L9",null,{"language":"javascript","code":"import { RoundRobinRoutingStrategy } from '@ar.io/wayfinder-core'\n\nconst strategy = new RoundRobinRoutingStrategy({\n  gateways: [\n    'https://arweave.net',\n    'https://ar-io.net',\n    'https://permagate.io',\n  ],\n})\n","children":["$","$L8",null,{"className":"language-javascript","children":"import { RoundRobinRoutingStrategy } from '@ar.io/wayfinder-core'\n\nconst strategy = new RoundRobinRoutingStrategy({\n  gateways: [\n    'https://arweave.net',\n    'https://ar-io.net',\n    'https://permagate.io',\n  ],\n})\n"}]}],"\n",["$","h3",null,{"children":"Advanced Configuration"}],"\n",["$","$L9",null,{"language":"javascript","code":"const strategy = new RoundRobinRoutingStrategy({\n  gateways: [\n    'https://primary-gateway.com',\n    'https://secondary-gateway.com',\n    'https://tertiary-gateway.com',\n  ],\n  healthCheckEnabled: true,\n  healthCheckInterval: 30000,\n  healthCheckPath: '/ar-io/health',\n  healthCheckTimeout: 5000,\n  skipUnhealthyGateways: true,\n  resetOnFailure: false,\n  shuffleOnStart: false,\n  weightedRotation: false,\n  weights: new Map([\n    ['https://primary-gateway.com', 3],\n    ['https://secondary-gateway.com', 2],\n    ['https://tertiary-gateway.com', 1],\n  ]),\n})\n","children":["$","$L8",null,{"className":"language-javascript","children":"const strategy = new RoundRobinRoutingStrategy({\n  gateways: [\n    'https://primary-gateway.com',\n    'https://secondary-gateway.com',\n    'https://tertiary-gateway.com',\n  ],\n  healthCheckEnabled: true,\n  healthCheckInterval: 30000,\n  healthCheckPath: '/ar-io/health',\n  healthCheckTimeout: 5000,\n  skipUnhealthyGateways: true,\n  resetOnFailure: false,\n  shuffleOnStart: false,\n  weightedRotation: false,\n  weights: new Map([\n    ['https://primary-gateway.com', 3],\n    ['https://secondary-gateway.com', 2],\n    ['https://tertiary-gateway.com', 1],\n  ]),\n})\n"}]}],"\n",["$","$L7",null,{"level":2,"id":"parameters","children":"Parameters"}],"\n",["$","div",null,{"className":"my-6 overflow-hidden rounded-lg border border-zinc-200 shadow-sm dark:border-zinc-700","children":["$","div",null,{"className":"-webkit-overflow-scrolling-touch overflow-x-auto","children":["$","table",null,{"className":"inline-table w-full min-w-[600px]","children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Parameter"}],["$","th",null,{"children":"Type"}],["$","th",null,{"children":"Default"}],["$","th",null,{"children":"Description"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"gateways"}]}],["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"string[]"}]}],["$","td",null,{"children":["$","strong",null,{"children":"required"}]}],["$","td",null,{"children":"Array of gateway URLs to rotate through"}]]}],["$","tr",null,{"children":[["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"healthCheckEnabled"}]}],["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"boolean"}]}],["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"false"}]}],["$","td",null,{"children":"Whether to perform health checks"}]]}],["$","tr",null,{"children":[["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"healthCheckInterval"}]}],["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"number"}]}],["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"30000"}]}],["$","td",null,{"children":"Health check interval in milliseconds"}]]}],["$","tr",null,{"children":[["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"healthCheckPath"}]}],["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"string"}]}],["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"'/ar-io/info'"}]}],["$","td",null,{"children":"Path for health checks"}]]}],["$","tr",null,{"children":[["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"healthCheckTimeout"}]}],["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"number"}]}],["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"5000"}]}],["$","td",null,{"children":"Health check timeout"}]]}],["$","tr",null,{"children":[["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"skipUnhealthyGateways"}]}],["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"boolean"}]}],["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"true"}]}],["$","td",null,{"children":"Skip gateways that fail health checks"}]]}],["$","tr",null,{"children":[["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"resetOnFailure"}]}],["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"boolean"}]}],["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"false"}]}],["$","td",null,{"children":"Reset rotation on gateway failure"}]]}],["$","tr",null,{"children":[["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"shuffleOnStart"}]}],["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"boolean"}]}],["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"false"}]}],["$","td",null,{"children":"Randomize initial gateway order"}]]}],["$","tr",null,{"children":[["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"weightedRotation"}]}],["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"boolean"}]}],["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"false"}]}],["$","td",null,{"children":"Use weighted rotation"}]]}],["$","tr",null,{"children":[["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"weights"}]}],["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"Map<string, number>"}]}],["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"new Map()"}]}],["$","td",null,{"children":"Gateway weights for weighted rotation"}]]}]]}]]}]}]}],"\n",["$","$L7",null,{"level":2,"id":"integration-examples","children":"Integration Examples"}],"\n",["$","h3",null,{"children":"With Wayfinder"}],"\n",["$","$L9",null,{"language":"javascript","code":"import { Wayfinder, RoundRobinRoutingStrategy } from '@ar.io/wayfinder-core'\n\nconst wayfinder = new Wayfinder({\n  routingSettings: {\n    strategy: new RoundRobinRoutingStrategy({\n      gateways: [\n        'https://gateway-1.com',\n        'https://gateway-2.com',\n        'https://gateway-3.com',\n      ],\n      healthCheckEnabled: true,\n    }),\n    events: {\n      onRoutingStarted: (event) => {\n        console.log('🔄 Round robin routing for:', event.originalUrl)\n      },\n      onGatewaySelected: (event) => {\n        console.log('✅ Selected gateway:', {\n          gateway: event.selectedGateway,\n          position: event.rotationPosition,\n          totalGateways: event.totalGateways,\n        })\n      },\n      onGatewaySkipped: (event) => {\n        console.log('⚠️ Skipped unhealthy gateway:', event.gateway)\n      },\n    },\n  },\n})\n","children":["$","$L8",null,{"className":"language-javascript","children":"import { Wayfinder, RoundRobinRoutingStrategy } from '@ar.io/wayfinder-core'\n\nconst wayfinder = new Wayfinder({\n  routingSettings: {\n    strategy: new RoundRobinRoutingStrategy({\n      gateways: [\n        'https://gateway-1.com',\n        'https://gateway-2.com',\n        'https://gateway-3.com',\n      ],\n      healthCheckEnabled: true,\n    }),\n    events: {\n      onRoutingStarted: (event) => {\n        console.log('🔄 Round robin routing for:', event.originalUrl)\n      },\n      onGatewaySelected: (event) => {\n        console.log('✅ Selected gateway:', {\n          gateway: event.selectedGateway,\n          position: event.rotationPosition,\n          totalGateways: event.totalGateways,\n        })\n      },\n      onGatewaySkipped: (event) => {\n        console.log('⚠️ Skipped unhealthy gateway:', event.gateway)\n      },\n    },\n  },\n})\n"}]}],"\n",["$","h3",null,{"children":"With Dynamic Gateway Updates"}],"\n",["$","$L9",null,{"language":"javascript","code":"$a","children":["$","$L8",null,{"className":"language-javascript","children":"$b"}]}],"\n",["$","h3",null,{"children":"With Weighted Rotation"}],"\n",["$","$L9",null,{"language":"javascript","code":"const weightedStrategy = new RoundRobinRoutingStrategy({\n  gateways: [\n    'https://high-capacity-gateway.com',\n    'https://medium-capacity-gateway.com',\n    'https://low-capacity-gateway.com',\n  ],\n  weightedRotation: true,\n  weights: new Map([\n    ['https://high-capacity-gateway.com', 5], // 5x more requests\n    ['https://medium-capacity-gateway.com', 3], // 3x more requests\n    ['https://low-capacity-gateway.com', 1], // 1x requests (baseline)\n  ]),\n})\n","children":["$","$L8",null,{"className":"language-javascript","children":"const weightedStrategy = new RoundRobinRoutingStrategy({\n  gateways: [\n    'https://high-capacity-gateway.com',\n    'https://medium-capacity-gateway.com',\n    'https://low-capacity-gateway.com',\n  ],\n  weightedRotation: true,\n  weights: new Map([\n    ['https://high-capacity-gateway.com', 5], // 5x more requests\n    ['https://medium-capacity-gateway.com', 3], // 3x more requests\n    ['https://low-capacity-gateway.com', 1], // 1x requests (baseline)\n  ]),\n})\n"}]}],"\n",["$","$L7",null,{"level":2,"id":"advanced-features","children":"Advanced Features"}],"\n",["$","h3",null,{"children":"Health-Aware Round Robin"}],"\n",["$","$L9",null,{"language":"javascript","code":"$c","children":["$","$L8",null,{"className":"language-javascript","children":"$d"}]}],"\n",["$","h3",null,{"children":"Geographic Round Robin"}],"\n",["$","$L9",null,{"language":"javascript","code":"$e","children":["$","$L8",null,{"className":"language-javascript","children":"$f"}]}],"\n",["$","$L7",null,{"level":2,"id":"performance-optimization","children":"Performance Optimization"}],"\n",["$","h3",null,{"children":"Efficient Gateway Cycling"}],"\n",["$","$L9",null,{"language":"javascript","code":"class OptimizedRoundRobinStrategy extends RoundRobinRoutingStrategy {\n  constructor(options) {\n    super(options)\n    this.gatewayQueue = [...options.gateways]\n    this.currentIndex = 0\n    this.lastUsed = new Map()\n  }\n\n  async selectGateway({ gateways }) {\n    // Use pre-computed rotation to avoid recalculation\n    if (this.gatewayQueue.length === 0) {\n      this.gatewayQueue = [...gateways]\n      this.currentIndex = 0\n    }\n\n    const selectedGateway = this.gatewayQueue[this.currentIndex]\n    this.currentIndex = (this.currentIndex + 1) % this.gatewayQueue.length\n\n    // Track usage for analytics\n    this.lastUsed.set(selectedGateway, Date.now())\n\n    return selectedGateway\n  }\n\n  getUsageStats() {\n    const stats = new Map()\n    const now = Date.now()\n\n    for (const [gateway, lastUsedTime] of this.lastUsed.entries()) {\n      stats.set(gateway, {\n        lastUsed: lastUsedTime,\n        timeSinceLastUse: now - lastUsedTime,\n      })\n    }\n\n    return stats\n  }\n}\n","children":["$","$L8",null,{"className":"language-javascript","children":"class OptimizedRoundRobinStrategy extends RoundRobinRoutingStrategy {\n  constructor(options) {\n    super(options)\n    this.gatewayQueue = [...options.gateways]\n    this.currentIndex = 0\n    this.lastUsed = new Map()\n  }\n\n  async selectGateway({ gateways }) {\n    // Use pre-computed rotation to avoid recalculation\n    if (this.gatewayQueue.length === 0) {\n      this.gatewayQueue = [...gateways]\n      this.currentIndex = 0\n    }\n\n    const selectedGateway = this.gatewayQueue[this.currentIndex]\n    this.currentIndex = (this.currentIndex + 1) % this.gatewayQueue.length\n\n    // Track usage for analytics\n    this.lastUsed.set(selectedGateway, Date.now())\n\n    return selectedGateway\n  }\n\n  getUsageStats() {\n    const stats = new Map()\n    const now = Date.now()\n\n    for (const [gateway, lastUsedTime] of this.lastUsed.entries()) {\n      stats.set(gateway, {\n        lastUsed: lastUsedTime,\n        timeSinceLastUse: now - lastUsedTime,\n      })\n    }\n\n    return stats\n  }\n}\n"}]}],"\n",["$","h3",null,{"children":"Concurrent Request Handling"}],"\n",["$","$L9",null,{"language":"javascript","code":"$10","children":["$","$L8",null,{"className":"language-javascript","children":"$11"}]}],"\n",["$","$L7",null,{"level":2,"id":"use-cases","children":"Use Cases"}],"\n",["$","h3",null,{"children":"Load Balancing Web Services"}],"\n",["$","$L9",null,{"language":"javascript","code":"const loadBalancerStrategy = new RoundRobinRoutingStrategy({\n  gateways: [\n    'https://web-1.myapp.com',\n    'https://web-2.myapp.com',\n    'https://web-3.myapp.com',\n  ],\n  healthCheckEnabled: true,\n  healthCheckInterval: 15000,\n  skipUnhealthyGateways: true,\n})\n\nconst wayfinder = new Wayfinder({\n  routingSettings: {\n    strategy: loadBalancerStrategy,\n  },\n})\n","children":["$","$L8",null,{"className":"language-javascript","children":"const loadBalancerStrategy = new RoundRobinRoutingStrategy({\n  gateways: [\n    'https://web-1.myapp.com',\n    'https://web-2.myapp.com',\n    'https://web-3.myapp.com',\n  ],\n  healthCheckEnabled: true,\n  healthCheckInterval: 15000,\n  skipUnhealthyGateways: true,\n})\n\nconst wayfinder = new Wayfinder({\n  routingSettings: {\n    strategy: loadBalancerStrategy,\n  },\n})\n"}]}],"\n",["$","h3",null,{"children":"Development Environment"}],"\n",["$","$L9",null,{"language":"javascript","code":"const devStrategy = new RoundRobinRoutingStrategy({\n  gateways: [\n    'http://localhost:3000',\n    'http://localhost:3001',\n    'http://localhost:3002',\n  ],\n  healthCheckEnabled: false, // Disable for local dev\n  shuffleOnStart: true, // Randomize for testing\n})\n","children":["$","$L8",null,{"className":"language-javascript","children":"const devStrategy = new RoundRobinRoutingStrategy({\n  gateways: [\n    'http://localhost:3000',\n    'http://localhost:3001',\n    'http://localhost:3002',\n  ],\n  healthCheckEnabled: false, // Disable for local dev\n  shuffleOnStart: true, // Randomize for testing\n})\n"}]}],"\n",["$","h3",null,{"children":"Production Load Distribution"}],"\n",["$","$L9",null,{"language":"javascript","code":"const prodStrategy = new RoundRobinRoutingStrategy({\n  gateways: [\n    'https://prod-gateway-1.com',\n    'https://prod-gateway-2.com',\n    'https://prod-gateway-3.com',\n    'https://prod-gateway-4.com',\n  ],\n  healthCheckEnabled: true,\n  healthCheckInterval: 30000,\n  skipUnhealthyGateways: true,\n  weightedRotation: true,\n  weights: new Map([\n    ['https://prod-gateway-1.com', 2], // Higher capacity\n    ['https://prod-gateway-2.com', 2],\n    ['https://prod-gateway-3.com', 1],\n    ['https://prod-gateway-4.com', 1],\n  ]),\n})\n","children":["$","$L8",null,{"className":"language-javascript","children":"const prodStrategy = new RoundRobinRoutingStrategy({\n  gateways: [\n    'https://prod-gateway-1.com',\n    'https://prod-gateway-2.com',\n    'https://prod-gateway-3.com',\n    'https://prod-gateway-4.com',\n  ],\n  healthCheckEnabled: true,\n  healthCheckInterval: 30000,\n  skipUnhealthyGateways: true,\n  weightedRotation: true,\n  weights: new Map([\n    ['https://prod-gateway-1.com', 2], // Higher capacity\n    ['https://prod-gateway-2.com', 2],\n    ['https://prod-gateway-3.com', 1],\n    ['https://prod-gateway-4.com', 1],\n  ]),\n})\n"}]}],"\n",["$","h3",null,{"children":"High-Availability Setup"}],"\n",["$","$L9",null,{"language":"javascript","code":"const haStrategy = new RoundRobinRoutingStrategy({\n  gateways: [\n    'https://primary-dc-1.com',\n    'https://primary-dc-2.com',\n    'https://secondary-dc-1.com',\n    'https://secondary-dc-2.com',\n  ],\n  healthCheckEnabled: true,\n  healthCheckInterval: 10000, // Frequent health checks\n  skipUnhealthyGateways: true,\n  resetOnFailure: true, // Reset rotation on failure\n})\n","children":["$","$L8",null,{"className":"language-javascript","children":"const haStrategy = new RoundRobinRoutingStrategy({\n  gateways: [\n    'https://primary-dc-1.com',\n    'https://primary-dc-2.com',\n    'https://secondary-dc-1.com',\n    'https://secondary-dc-2.com',\n  ],\n  healthCheckEnabled: true,\n  healthCheckInterval: 10000, // Frequent health checks\n  skipUnhealthyGateways: true,\n  resetOnFailure: true, // Reset rotation on failure\n})\n"}]}],"\n",["$","$L7",null,{"level":2,"id":"error-handling","children":"Error Handling"}],"\n",["$","h3",null,{"children":"Common Error Types"}],"\n",["$","$L9",null,{"language":"javascript","code":"try {\n  const selectedGateway = await strategy.selectGateway({ gateways })\n  console.log('Selected gateway:', selectedGateway)\n} catch (error) {\n  switch (error.constructor.name) {\n    case 'NoHealthyGatewaysError':\n      console.error('All gateways in rotation are unhealthy')\n      // Implement fallback strategy or alert\n      break\n\n    case 'EmptyGatewayListError':\n      console.error('No gateways provided for round robin')\n      // Check gateway configuration\n      break\n\n    case 'GatewayRotationError':\n      console.error('Error in gateway rotation logic')\n      // Reset rotation state\n      break\n\n    default:\n      console.error('Unknown routing error:', error.message)\n  }\n}\n","children":["$","$L8",null,{"className":"language-javascript","children":"try {\n  const selectedGateway = await strategy.selectGateway({ gateways })\n  console.log('Selected gateway:', selectedGateway)\n} catch (error) {\n  switch (error.constructor.name) {\n    case 'NoHealthyGatewaysError':\n      console.error('All gateways in rotation are unhealthy')\n      // Implement fallback strategy or alert\n      break\n\n    case 'EmptyGatewayListError':\n      console.error('No gateways provided for round robin')\n      // Check gateway configuration\n      break\n\n    case 'GatewayRotationError':\n      console.error('Error in gateway rotation logic')\n      // Reset rotation state\n      break\n\n    default:\n      console.error('Unknown routing error:', error.message)\n  }\n}\n"}]}],"\n",["$","h3",null,{"children":"Graceful Degradation"}],"\n",["$","$L9",null,{"language":"javascript","code":"const robustStrategy = new RoundRobinRoutingStrategy({\n  gateways: [\n    'https://gateway-1.com',\n    'https://gateway-2.com',\n    'https://gateway-3.com',\n  ],\n  healthCheckEnabled: true,\n  onGatewayFailure: (gateway, error) => {\n    console.warn('Gateway failed:', gateway, error.message)\n    // Report to monitoring\n    monitoring.reportGatewayFailure(gateway, error)\n\n    // Continue with next gateway in rotation\n    return true\n  },\n  onAllGatewaysFailed: (gateways) => {\n    console.error('All gateways failed, using emergency fallback')\n    // Return emergency gateway\n    return 'https://emergency-gateway.com'\n  },\n})\n","children":["$","$L8",null,{"className":"language-javascript","children":"const robustStrategy = new RoundRobinRoutingStrategy({\n  gateways: [\n    'https://gateway-1.com',\n    'https://gateway-2.com',\n    'https://gateway-3.com',\n  ],\n  healthCheckEnabled: true,\n  onGatewayFailure: (gateway, error) => {\n    console.warn('Gateway failed:', gateway, error.message)\n    // Report to monitoring\n    monitoring.reportGatewayFailure(gateway, error)\n\n    // Continue with next gateway in rotation\n    return true\n  },\n  onAllGatewaysFailed: (gateways) => {\n    console.error('All gateways failed, using emergency fallback')\n    // Return emergency gateway\n    return 'https://emergency-gateway.com'\n  },\n})\n"}]}],"\n",["$","$L7",null,{"level":2,"id":"testing","children":"Testing"}],"\n",["$","h3",null,{"children":"Unit Testing"}],"\n",["$","$L9",null,{"language":"javascript","code":"$12","children":["$","$L8",null,{"className":"language-javascript","children":"$13"}]}],"\n",["$","$L7",null,{"level":2,"id":"best-practices","children":"Best Practices"}],"\n",["$","ol",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"Monitor Gateway Health"}],": Enable health checks to avoid routing to failed gateways"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Use Appropriate Weights"}],": Configure weights based on gateway capacity and performance"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Handle Failures Gracefully"}],": Implement proper error handling and fallback mechanisms"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Track Usage Metrics"}],": Monitor rotation patterns and gateway utilization"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Consider Geographic Distribution"}],": Use geographic awareness for better performance"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Test Rotation Logic"}],": Verify that rotation works correctly under various conditions"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Update Gateway Lists Dynamically"}],": Keep gateway lists current with dynamic updates"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Implement Circuit Breakers"}],": Prevent cascade failures with circuit breaker patterns"]}],"\n"]}],"\n",["$","$L7",null,{"level":2,"id":"comparison-with-other-strategies","children":"Comparison with Other Strategies"}],"\n",["$","div",null,{"className":"my-6 overflow-hidden rounded-lg border border-zinc-200 shadow-sm dark:border-zinc-700","children":["$","div",null,{"className":"-webkit-overflow-scrolling-touch overflow-x-auto","children":["$","table",null,{"className":"inline-table w-full min-w-[600px]","children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Aspect"}],["$","th",null,{"children":"Round Robin"}],["$","th",null,{"children":"Fastest Ping"}],["$","th",null,{"children":"Preferred + Fallback"}],["$","th",null,{"children":"Random"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":["$","strong",null,{"children":"Performance"}]}],["$","td",null,{"children":"⭐⭐"}],["$","td",null,{"children":"⭐⭐⭐⭐⭐"}],["$","td",null,{"children":"⭐⭐⭐⭐"}],["$","td",null,{"children":"⭐⭐"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","strong",null,{"children":"Reliability"}]}],["$","td",null,{"children":"⭐⭐⭐"}],["$","td",null,{"children":"⭐⭐⭐⭐"}],["$","td",null,{"children":"⭐⭐⭐"}],["$","td",null,{"children":"⭐⭐⭐"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","strong",null,{"children":"Load Distribution"}]}],["$","td",null,{"children":"⭐⭐⭐⭐⭐"}],["$","td",null,{"children":"⭐⭐"}],["$","td",null,{"children":"⭐"}],["$","td",null,{"children":"⭐⭐⭐⭐"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","strong",null,{"children":"Predictability"}]}],["$","td",null,{"children":"⭐⭐⭐⭐"}],["$","td",null,{"children":"⭐⭐⭐"}],["$","td",null,{"children":"⭐⭐⭐⭐⭐"}],["$","td",null,{"children":"⭐"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","strong",null,{"children":"Complexity"}]}],["$","td",null,{"children":"⭐⭐"}],["$","td",null,{"children":"⭐⭐⭐"}],["$","td",null,{"children":"⭐⭐⭐⭐"}],["$","td",null,{"children":"⭐⭐⭐⭐⭐"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":["$","strong",null,{"children":"Use Case"}]}],["$","td",null,{"children":"Load balancing"}],["$","td",null,{"children":"Real-time apps"}],["$","td",null,{"children":"Dedicated infrastructure"}],["$","td",null,{"children":"Simple distribution"}]]}]]}]]}]}]}],"\n",["$","p",null,{"language":"txt","children":["The ",["$","$L8",null,{"children":"RoundRobinRoutingStrategy"}]," is ideal for applications that need even load distribution across multiple gateways with predictable routing patterns."]}]]}],["$","footer",null,{"className":"mx-auto mt-16 w-full max-w-2xl lg:max-w-5xl","children":["$","$L14",null,{}]}]]}],null,["$","$L15",null,{"children":["$L16","$L17",["$","$L18",null,{"promise":"$@19"}]]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","NguKjDww87H_0bPFwgbUIv",{"children":[["$","$L1a",null,{"children":"$L1b"}],null]}],["$","$L1c",null,{"children":"$L1d"}]]}],false]],"m":"$undefined","G":["$1e","$undefined"],"s":false,"S":true}
-1f:"$Sreact.suspense"
-20:I[74911,[],"AsyncMetadata"]
-1d:["$","div",null,{"hidden":true,"children":["$","$1f",null,{"fallback":null,"children":["$","$L20",null,{"promise":"$@21"}]}]}]
-17:null
-1b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
-16:null
-19:{"metadata":[["$","title","0",{"children":"AR.IO Docs"}],["$","meta","1",{"name":"description","content":"AR.IO is a decentralized compute network that makes the permaweb more accessible."}],["$","link","2",{"rel":"icon","href":"/docs-v2/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
-21:{"metadata":"$19:metadata","error":null,"digest":"$undefined"}
+a:T871,<span><span style="color: var(--shiki-token-keyword)">import</span><span style="color: var(--shiki-color-text)"> { RoundRobinRoutingStrategy } </span><span style="color: var(--shiki-token-keyword)">from</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-string-expression)">&#39;@ar.io/wayfinder-core&#39;</span></span>
+<span></span>
+<span><span style="color: var(--shiki-token-keyword)">const</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-constant)">strategy</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-keyword)">=</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-keyword)">new</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-function)">RoundRobinRoutingStrategy</span><span style="color: var(--shiki-color-text)">({</span></span>
+<span><span style="color: var(--shiki-color-text)">  gateways</span><span style="color: var(--shiki-token-keyword)">:</span><span style="color: var(--shiki-color-text)"> [</span><span style="color: var(--shiki-token-keyword)">new</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-function)">URL</span><span style="color: var(--shiki-color-text)">(</span><span style="color: var(--shiki-token-string-expression)">&#39;https://arweave.net&#39;</span><span style="color: var(--shiki-color-text)">)</span><span style="color: var(--shiki-token-punctuation)">,</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-keyword)">new</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-function)">URL</span><span style="color: var(--shiki-color-text)">(</span><span style="color: var(--shiki-token-string-expression)">&#39;https://permagate.io&#39;</span><span style="color: var(--shiki-color-text)">)]</span><span style="color: var(--shiki-token-punctuation)">,</span></span>
+<span><span style="color: var(--shiki-color-text)">})</span></span>
+<span></span>b:T12a8,<span><span style="color: var(--shiki-token-keyword)">const</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-constant)">strategy</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-keyword)">=</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-keyword)">new</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-function)">RoundRobinRoutingStrategy</span><span style="color: var(--shiki-color-text)">({</span></span>
+<span><span style="color: var(--shiki-color-text)">  gateways</span><span style="color: var(--shiki-token-keyword)">:</span><span style="color: var(--shiki-color-text)"> [</span></span>
+<span><span style="color: var(--shiki-color-text)">    </span><span style="color: var(--shiki-token-keyword)">new</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-function)">URL</span><span style="color: var(--shiki-color-text)">(</span><span style="color: var(--shiki-token-string-expression)">&#39;https://high-capacity-gateway.com&#39;</span><span style="color: var(--shiki-color-text)">)</span><span style="color: var(--shiki-token-punctuation)">,</span></span>
+<span><span style="color: var(--shiki-color-text)">    </span><span style="color: var(--shiki-token-keyword)">new</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-function)">URL</span><span style="color: var(--shiki-color-text)">(</span><span style="color: var(--shiki-token-string-expression)">&#39;https://medium-capacity-gateway.com&#39;</span><span style="color: var(--shiki-color-text)">)</span><span style="color: var(--shiki-token-punctuation)">,</span></span>
+<span><span style="color: var(--shiki-color-text)">    </span><span style="color: var(--shiki-token-keyword)">new</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-function)">URL</span><span style="color: var(--shiki-color-text)">(</span><span style="color: var(--shiki-token-string-expression)">&#39;https://low-capacity-gateway.com&#39;</span><span style="color: var(--shiki-color-text)">)</span><span style="color: var(--shiki-token-punctuation)">,</span></span>
+<span><span style="color: var(--shiki-color-text)">  ]</span><span style="color: var(--shiki-token-punctuation)">,</span></span>
+<span><span style="color: var(--shiki-color-text)">  weightedRotation</span><span style="color: var(--shiki-token-keyword)">:</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-constant)">true</span><span style="color: var(--shiki-token-punctuation)">,</span></span>
+<span><span style="color: var(--shiki-color-text)">  weights</span><span style="color: var(--shiki-token-keyword)">:</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-keyword)">new</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-function)">Map</span><span style="color: var(--shiki-color-text)">([</span></span>
+<span><span style="color: var(--shiki-color-text)">    [</span><span style="color: var(--shiki-token-string-expression)">&#39;https://high-capacity-gateway.com&#39;</span><span style="color: var(--shiki-token-punctuation)">,</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-constant)">3</span><span style="color: var(--shiki-color-text)">]</span><span style="color: var(--shiki-token-punctuation)">,</span></span>
+<span><span style="color: var(--shiki-color-text)">    [</span><span style="color: var(--shiki-token-string-expression)">&#39;https://medium-capacity-gateway.com&#39;</span><span style="color: var(--shiki-token-punctuation)">,</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-constant)">2</span><span style="color: var(--shiki-color-text)">]</span><span style="color: var(--shiki-token-punctuation)">,</span></span>
+<span><span style="color: var(--shiki-color-text)">    [</span><span style="color: var(--shiki-token-string-expression)">&#39;https://low-capacity-gateway.com&#39;</span><span style="color: var(--shiki-token-punctuation)">,</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-constant)">1</span><span style="color: var(--shiki-color-text)">]</span><span style="color: var(--shiki-token-punctuation)">,</span></span>
+<span><span style="color: var(--shiki-color-text)">  ])</span><span style="color: var(--shiki-token-punctuation)">,</span></span>
+<span><span style="color: var(--shiki-color-text)">})</span></span>
+<span></span>c:Tf37,<span><span style="color: var(--shiki-token-keyword)">import</span><span style="color: var(--shiki-color-text)"> { Wayfinder</span><span style="color: var(--shiki-token-punctuation)">,</span><span style="color: var(--shiki-color-text)"> RoundRobinRoutingStrategy } </span><span style="color: var(--shiki-token-keyword)">from</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-string-expression)">&#39;@ar.io/wayfinder-core&#39;</span></span>
+<span></span>
+<span><span style="color: var(--shiki-token-keyword)">const</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-constant)">wayfinder</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-keyword)">=</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-keyword)">new</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-function)">Wayfinder</span><span style="color: var(--shiki-color-text)">({</span></span>
+<span><span style="color: var(--shiki-color-text)">  routingSettings</span><span style="color: var(--shiki-token-keyword)">:</span><span style="color: var(--shiki-color-text)"> {</span></span>
+<span><span style="color: var(--shiki-color-text)">    strategy</span><span style="color: var(--shiki-token-keyword)">:</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-keyword)">new</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-function)">RoundRobinRoutingStrategy</span><span style="color: var(--shiki-color-text)">({</span></span>
+<span><span style="color: var(--shiki-color-text)">      gateways</span><span style="color: var(--shiki-token-keyword)">:</span><span style="color: var(--shiki-color-text)"> [</span></span>
+<span><span style="color: var(--shiki-color-text)">        </span><span style="color: var(--shiki-token-keyword)">new</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-function)">URL</span><span style="color: var(--shiki-color-text)">(</span><span style="color: var(--shiki-token-string-expression)">&#39;https://gateway-1.com&#39;</span><span style="color: var(--shiki-color-text)">)</span><span style="color: var(--shiki-token-punctuation)">,</span></span>
+<span><span style="color: var(--shiki-color-text)">        </span><span style="color: var(--shiki-token-keyword)">new</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-function)">URL</span><span style="color: var(--shiki-color-text)">(</span><span style="color: var(--shiki-token-string-expression)">&#39;https://gateway-2.com&#39;</span><span style="color: var(--shiki-color-text)">)</span><span style="color: var(--shiki-token-punctuation)">,</span></span>
+<span><span style="color: var(--shiki-color-text)">        </span><span style="color: var(--shiki-token-keyword)">new</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-function)">URL</span><span style="color: var(--shiki-color-text)">(</span><span style="color: var(--shiki-token-string-expression)">&#39;https://gateway-3.com&#39;</span><span style="color: var(--shiki-color-text)">)</span><span style="color: var(--shiki-token-punctuation)">,</span></span>
+<span><span style="color: var(--shiki-color-text)">      ]</span><span style="color: var(--shiki-token-punctuation)">,</span></span>
+<span><span style="color: var(--shiki-color-text)">    })</span><span style="color: var(--shiki-token-punctuation)">,</span></span>
+<span><span style="color: var(--shiki-color-text)">  }</span><span style="color: var(--shiki-token-punctuation)">,</span></span>
+<span><span style="color: var(--shiki-color-text)">})</span></span>
+<span></span>d:Tbc6,<span><span style="color: var(--shiki-token-keyword)">const</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-constant)">loadBalanceStrategy</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-keyword)">=</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-keyword)">new</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-function)">RoundRobinRoutingStrategy</span><span style="color: var(--shiki-color-text)">({</span></span>
+<span><span style="color: var(--shiki-color-text)">  gateways</span><span style="color: var(--shiki-token-keyword)">:</span><span style="color: var(--shiki-color-text)"> [</span></span>
+<span><span style="color: var(--shiki-color-text)">    </span><span style="color: var(--shiki-token-keyword)">new</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-function)">URL</span><span style="color: var(--shiki-color-text)">(</span><span style="color: var(--shiki-token-string-expression)">&#39;https://gateway-1.com&#39;</span><span style="color: var(--shiki-color-text)">)</span><span style="color: var(--shiki-token-punctuation)">,</span></span>
+<span><span style="color: var(--shiki-color-text)">    </span><span style="color: var(--shiki-token-keyword)">new</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-function)">URL</span><span style="color: var(--shiki-color-text)">(</span><span style="color: var(--shiki-token-string-expression)">&#39;https://gateway-2.com&#39;</span><span style="color: var(--shiki-color-text)">)</span><span style="color: var(--shiki-token-punctuation)">,</span></span>
+<span><span style="color: var(--shiki-color-text)">    </span><span style="color: var(--shiki-token-keyword)">new</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-function)">URL</span><span style="color: var(--shiki-color-text)">(</span><span style="color: var(--shiki-token-string-expression)">&#39;https://gateway-3.com&#39;</span><span style="color: var(--shiki-color-text)">)</span><span style="color: var(--shiki-token-punctuation)">,</span></span>
+<span><span style="color: var(--shiki-color-text)">    </span><span style="color: var(--shiki-token-keyword)">new</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-function)">URL</span><span style="color: var(--shiki-color-text)">(</span><span style="color: var(--shiki-token-string-expression)">&#39;https://gateway-4.com&#39;</span><span style="color: var(--shiki-color-text)">)</span><span style="color: var(--shiki-token-punctuation)">,</span></span>
+<span><span style="color: var(--shiki-color-text)">  ]</span><span style="color: var(--shiki-token-punctuation)">,</span></span>
+<span><span style="color: var(--shiki-color-text)">})</span></span>
+<span></span>e:T1280,<span><span style="color: var(--shiki-token-keyword)">const</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-constant)">capacityStrategy</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-keyword)">=</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-keyword)">new</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-function)">RoundRobinRoutingStrategy</span><span style="color: var(--shiki-color-text)">({</span></span>
+<span><span style="color: var(--shiki-color-text)">  gateways</span><span style="color: var(--shiki-token-keyword)">:</span><span style="color: var(--shiki-color-text)"> [</span></span>
+<span><span style="color: var(--shiki-color-text)">    </span><span style="color: var(--shiki-token-keyword)">new</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-function)">URL</span><span style="color: var(--shiki-color-text)">(</span><span style="color: var(--shiki-token-string-expression)">&#39;https://high-capacity.com&#39;</span><span style="color: var(--shiki-color-text)">)</span><span style="color: var(--shiki-token-punctuation)">,</span></span>
+<span><span style="color: var(--shiki-color-text)">    </span><span style="color: var(--shiki-token-keyword)">new</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-function)">URL</span><span style="color: var(--shiki-color-text)">(</span><span style="color: var(--shiki-token-string-expression)">&#39;https://medium-capacity.com&#39;</span><span style="color: var(--shiki-color-text)">)</span><span style="color: var(--shiki-token-punctuation)">,</span></span>
+<span><span style="color: var(--shiki-color-text)">    </span><span style="color: var(--shiki-token-keyword)">new</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-function)">URL</span><span style="color: var(--shiki-color-text)">(</span><span style="color: var(--shiki-token-string-expression)">&#39;https://low-capacity.com&#39;</span><span style="color: var(--shiki-color-text)">)</span><span style="color: var(--shiki-token-punctuation)">,</span></span>
+<span><span style="color: var(--shiki-color-text)">  ]</span><span style="color: var(--shiki-token-punctuation)">,</span></span>
+<span><span style="color: var(--shiki-color-text)">  weightedRotation</span><span style="color: var(--shiki-token-keyword)">:</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-constant)">true</span><span style="color: var(--shiki-token-punctuation)">,</span></span>
+<span><span style="color: var(--shiki-color-text)">  weights</span><span style="color: var(--shiki-token-keyword)">:</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-keyword)">new</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-function)">Map</span><span style="color: var(--shiki-color-text)">([</span></span>
+<span><span style="color: var(--shiki-color-text)">    [</span><span style="color: var(--shiki-token-string-expression)">&#39;https://high-capacity.com&#39;</span><span style="color: var(--shiki-token-punctuation)">,</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-constant)">5</span><span style="color: var(--shiki-color-text)">]</span><span style="color: var(--shiki-token-punctuation)">,</span></span>
+<span><span style="color: var(--shiki-color-text)">    [</span><span style="color: var(--shiki-token-string-expression)">&#39;https://medium-capacity.com&#39;</span><span style="color: var(--shiki-token-punctuation)">,</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-constant)">3</span><span style="color: var(--shiki-color-text)">]</span><span style="color: var(--shiki-token-punctuation)">,</span></span>
+<span><span style="color: var(--shiki-color-text)">    [</span><span style="color: var(--shiki-token-string-expression)">&#39;https://low-capacity.com&#39;</span><span style="color: var(--shiki-token-punctuation)">,</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-constant)">1</span><span style="color: var(--shiki-color-text)">]</span><span style="color: var(--shiki-token-punctuation)">,</span></span>
+<span><span style="color: var(--shiki-color-text)">  ])</span><span style="color: var(--shiki-token-punctuation)">,</span></span>
+<span><span style="color: var(--shiki-color-text)">})</span></span>
+<span></span>f:T9aa,<span><span style="color: var(--shiki-token-keyword)">const</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-constant)">testStrategy</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-keyword)">=</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-keyword)">new</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-function)">RoundRobinRoutingStrategy</span><span style="color: var(--shiki-color-text)">({</span></span>
+<span><span style="color: var(--shiki-color-text)">  gateways</span><span style="color: var(--shiki-token-keyword)">:</span><span style="color: var(--shiki-color-text)"> [</span></span>
+<span><span style="color: var(--shiki-color-text)">    </span><span style="color: var(--shiki-token-keyword)">new</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-function)">URL</span><span style="color: var(--shiki-color-text)">(</span><span style="color: var(--shiki-token-string-expression)">&#39;https://test-gateway-1.com&#39;</span><span style="color: var(--shiki-color-text)">)</span><span style="color: var(--shiki-token-punctuation)">,</span></span>
+<span><span style="color: var(--shiki-color-text)">    </span><span style="color: var(--shiki-token-keyword)">new</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-function)">URL</span><span style="color: var(--shiki-color-text)">(</span><span style="color: var(--shiki-token-string-expression)">&#39;https://test-gateway-2.com&#39;</span><span style="color: var(--shiki-color-text)">)</span><span style="color: var(--shiki-token-punctuation)">,</span></span>
+<span><span style="color: var(--shiki-color-text)">  ]</span><span style="color: var(--shiki-token-punctuation)">,</span></span>
+<span><span style="color: var(--shiki-color-text)">  shuffleOnStart</span><span style="color: var(--shiki-token-keyword)">:</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-constant)">false</span><span style="color: var(--shiki-token-punctuation)">,</span><span style="color: var(--shiki-color-text)"> </span><span style="color: var(--shiki-token-comment)">// Maintain order for predictable testing</span></span>
+<span><span style="color: var(--shiki-color-text)">})</span></span>
+<span></span>0:{"P":null,"b":"dNQnTYU4CCFc8-xpcnPPV","p":"/docs-v2","c":["","wayfinder","routing-strategies","round-robin"],"i":false,"f":[[["",{"children":["wayfinder",{"children":["routing-strategies",{"children":["round-robin",{"children":["__PAGE__",{}]}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/docs-v2/_next/static/css/84890fa81a3c91a8.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","className":"h-full","suppressHydrationWarning":true,"children":["$","body",null,{"className":"flex min-h-full bg-white antialiased dark:bg-zinc-900","children":["$","$L2",null,{"children":["$","$L3",null,{"children":["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","$L6",null,{}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]}]}]]}],{"children":["wayfinder",["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["routing-strategies",["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["round-robin",["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","article",null,{"className":"flex h-full flex-col pb-10 pt-16","children":[["$","div",null,{"className":"flex-auto prose dark:prose-invert [html_:where(&>*)]:mx-auto [html_:where(&>*)]:max-w-2xl [html_:where(&>*)]:lg:mx-[calc(50%-min(50%,theme(maxWidth.lg)))] [html_:where(&>*)]:lg:max-w-3xl","children":[["$","h1",null,{"children":"RoundRobinRoutingStrategy"}],"\n",["$","$L7",null,{"level":2,"id":"overview","children":"Overview"}],"\n",["$","p",null,{"language":"txt","children":["The ",["$","$L8",null,{"children":"RoundRobinRoutingStrategy"}]," distributes requests evenly across all available gateways in a cyclical manner. Each gateway is selected in turn, ensuring fair load distribution and preventing any single gateway from being overwhelmed."]}],"\n",["$","$L7",null,{"level":2,"id":"routing-strategy-comparison","children":"Routing Strategy Comparison"}],"\n",["$","div",null,{"className":"my-6 flex w-full justify-center","style":"$undefined","children":["$","div",null,{"className":"w-full overflow-x-auto rounded-lg border border-zinc-200 shadow-sm dark:border-zinc-700","children":[["$","div",null,{"className":"block border-b border-zinc-200 py-2 text-center text-xs text-zinc-500 sm:hidden dark:border-zinc-700 dark:text-zinc-400","children":"← Swipe to see more →"}],["$","div",null,{"className":"inline-block","children":["$","table",null,{"className":"w-full border-collapse","style":{"minWidth":"600px"},"children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Strategy"}],["$","th",null,{"children":"Best For"}],["$","th",null,{"children":"Use Case"}],["$","th",null,{"children":"Predictability"}],["$","th",null,{"children":"Infrastructure Control"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":"Round Robin"}],["$","td",null,{"children":"Load balancing"}],["$","td",null,{"children":"Even distribution across known gateways"}],["$","td",null,{"children":"High"}],["$","td",null,{"children":"High"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Fastest Ping"}],["$","td",null,{"children":"Real-time applications"}],["$","td",null,{"children":"Performance-critical apps, gaming"}],["$","td",null,{"children":"Medium"}],["$","td",null,{"children":"Low"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Preferred + Fallback"}],["$","td",null,{"children":"Dedicated infrastructure"}],["$","td",null,{"children":"CDN with origin fallback, enterprise gateways"}],["$","td",null,{"children":"High"}],["$","td",null,{"children":"Maximum"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Random"}],["$","td",null,{"children":"Simple distribution"}],["$","td",null,{"children":"Basic load spreading, testing"}],["$","td",null,{"children":"Low"}],["$","td",null,{"children":"Medium"}]]}],["$","tr",null,{"children":[["$","td",null,{"children":"Static"}],["$","td",null,{"children":"Single gateway"}],["$","td",null,{"children":"Development, specific gateway requirements"}],["$","td",null,{"children":"Maximum"}],["$","td",null,{"children":"High"}]]}]]}]]}]}],["$","div",null,{"className":"block border-t border-zinc-200 py-2 text-center text-xs text-zinc-500 sm:hidden dark:border-zinc-700 dark:text-zinc-400","children":"← Swipe to see more →"}]]}]}],"\n",["$","$L7",null,{"level":2,"id":"how-it-works","children":"How It Works"}],"\n",["$","ol",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"Initialize Gateway List"}],": Start with an ordered list of available gateways"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Track Current Position"}],": Maintain a pointer to the current gateway in the rotation"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Select Next Gateway"}],": Choose the next gateway in the sequence"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Cycle Through List"}],": Return to the first gateway after reaching the end"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Handle Failures"}],": Skip failed gateways and continue rotation"]}],"\n"]}],"\n",["$","$L7",null,{"level":2,"id":"configuration","children":"Configuration"}],"\n",["$","h3",null,{"children":"Basic Usage"}],"\n",["$","$L9",null,{"language":"javascript","code":"import { RoundRobinRoutingStrategy } from '@ar.io/wayfinder-core'\n\nconst strategy = new RoundRobinRoutingStrategy({\n  gateways: [new URL('https://arweave.net'), new URL('https://permagate.io')],\n})\n","children":["$","$L8",null,{"className":"language-javascript","children":"$a"}]}],"\n",["$","h3",null,{"children":"With Weighted Rotation"}],"\n",["$","$L9",null,{"language":"javascript","code":"const strategy = new RoundRobinRoutingStrategy({\n  gateways: [\n    new URL('https://high-capacity-gateway.com'),\n    new URL('https://medium-capacity-gateway.com'),\n    new URL('https://low-capacity-gateway.com'),\n  ],\n  weightedRotation: true,\n  weights: new Map([\n    ['https://high-capacity-gateway.com', 3],\n    ['https://medium-capacity-gateway.com', 2],\n    ['https://low-capacity-gateway.com', 1],\n  ]),\n})\n","children":["$","$L8",null,{"className":"language-javascript","children":"$b"}]}],"\n",["$","$L7",null,{"level":2,"id":"parameters","children":"Parameters"}],"\n",["$","div",null,{"className":"my-6 overflow-hidden rounded-lg border border-zinc-200 shadow-sm dark:border-zinc-700","children":["$","div",null,{"className":"-webkit-overflow-scrolling-touch overflow-x-auto","children":["$","table",null,{"className":"inline-table w-full min-w-[600px]","children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Parameter"}],["$","th",null,{"children":"Type"}],["$","th",null,{"children":"Default"}],["$","th",null,{"children":"Description"}]]}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"gateways"}]}],["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"URL[]"}]}],["$","td",null,{"children":["$","strong",null,{"children":"required"}]}],["$","td",null,{"children":"Array of gateway URLs to rotate through"}]]}],["$","tr",null,{"children":[["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"weightedRotation"}]}],["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"boolean"}]}],["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"false"}]}],["$","td",null,{"children":"Use weighted rotation"}]]}],["$","tr",null,{"children":[["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"weights"}]}],["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"Map<string, number>"}]}],["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"new Map()"}]}],["$","td",null,{"children":"Gateway weights for weighted rotation"}]]}],["$","tr",null,{"children":[["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"shuffleOnStart"}]}],["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"boolean"}]}],["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"false"}]}],["$","td",null,{"children":"Randomize initial gateway order"}]]}],["$","tr",null,{"children":[["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"logger"}]}],["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"Logger"}]}],["$","td",null,{"language":"txt","children":["$","$L8",null,{"children":"defaultLogger"}]}],["$","td",null,{"children":"Optional logger instance"}]]}]]}]]}]}]}],"\n",["$","$L7",null,{"level":2,"id":"integration-with-wayfinder","children":"Integration with Wayfinder"}],"\n",["$","$L9",null,{"language":"javascript","code":"import { Wayfinder, RoundRobinRoutingStrategy } from '@ar.io/wayfinder-core'\n\nconst wayfinder = new Wayfinder({\n  routingSettings: {\n    strategy: new RoundRobinRoutingStrategy({\n      gateways: [\n        new URL('https://gateway-1.com'),\n        new URL('https://gateway-2.com'),\n        new URL('https://gateway-3.com'),\n      ],\n    }),\n  },\n})\n","children":["$","$L8",null,{"className":"language-javascript","children":"$c"}]}],"\n",["$","$L7",null,{"level":2,"id":"use-cases","children":"Use Cases"}],"\n",["$","h3",null,{"children":"Even Load Distribution"}],"\n",["$","p",null,{"children":"Perfect for distributing load evenly across multiple known gateways."}],"\n",["$","$L9",null,{"language":"javascript","code":"const loadBalanceStrategy = new RoundRobinRoutingStrategy({\n  gateways: [\n    new URL('https://gateway-1.com'),\n    new URL('https://gateway-2.com'),\n    new URL('https://gateway-3.com'),\n    new URL('https://gateway-4.com'),\n  ],\n})\n","children":["$","$L8",null,{"className":"language-javascript","children":"$d"}]}],"\n",["$","h3",null,{"children":"Capacity-Based Distribution"}],"\n",["$","p",null,{"children":"Ideal for gateways with different capacities using weighted rotation."}],"\n",["$","$L9",null,{"language":"javascript","code":"const capacityStrategy = new RoundRobinRoutingStrategy({\n  gateways: [\n    new URL('https://high-capacity.com'),\n    new URL('https://medium-capacity.com'),\n    new URL('https://low-capacity.com'),\n  ],\n  weightedRotation: true,\n  weights: new Map([\n    ['https://high-capacity.com', 5],\n    ['https://medium-capacity.com', 3],\n    ['https://low-capacity.com', 1],\n  ]),\n})\n","children":["$","$L8",null,{"className":"language-javascript","children":"$e"}]}],"\n",["$","h3",null,{"children":"Predictable Testing"}],"\n",["$","p",null,{"children":"Useful for testing scenarios where you need predictable gateway selection."}],"\n",["$","$L9",null,{"language":"javascript","code":"const testStrategy = new RoundRobinRoutingStrategy({\n  gateways: [\n    new URL('https://test-gateway-1.com'),\n    new URL('https://test-gateway-2.com'),\n  ],\n  shuffleOnStart: false, // Maintain order for predictable testing\n})\n","children":["$","$L8",null,{"className":"language-javascript","children":"$f"}]}],"\n",["$","$L7",null,{"level":2,"id":"best-practices","children":"Best Practices"}],"\n",["$","ol",null,{"children":["\n",["$","li",null,{"children":[["$","strong",null,{"children":"Define Gateway Order"}],": Carefully consider the order of gateways in your list"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Use Weighted Rotation"}],": Apply weights when gateways have different capacities"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Monitor Distribution"}],": Track requests to ensure even distribution"]}],"\n",["$","li",null,{"language":"txt","children":[["$","strong",null,{"children":"Consider Shuffling"}],": Use ",["$","$L8",null,{"children":"shuffleOnStart"}]," to avoid predictable patterns"]}],"\n",["$","li",null,{"children":[["$","strong",null,{"children":"Plan for Failures"}],": Combine with health checking for production use"]}],"\n"]}],"\n",["$","p",null,{"language":"txt","children":["The ",["$","$L8",null,{"children":"RoundRobinRoutingStrategy"}]," is ideal for applications that need predictable, even distribution of requests across a known set of gateways."]}]]}],["$","footer",null,{"className":"mx-auto mt-16 w-full max-w-2xl lg:max-w-5xl","children":["$","$L10",null,{}]}]]}],null,["$","$L11",null,{"children":["$L12","$L13",["$","$L14",null,{"promise":"$@15"}]]}]]}],{},null,false]},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","IW3zYpmfCYv7OO7u96BLpv",{"children":[["$","$L16",null,{"children":"$L17"}],null]}],["$","$L18",null,{"children":"$L19"}]]}],false]],"m":"$undefined","G":["$1a","$undefined"],"s":false,"S":true}
+1b:"$Sreact.suspense"
+1c:I[74911,[],"AsyncMetadata"]
+19:["$","div",null,{"hidden":true,"children":["$","$1b",null,{"fallback":null,"children":["$","$L1c",null,{"promise":"$@1d"}]}]}]
+13:null
+17:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+12:null
+15:{"metadata":[["$","title","0",{"children":"AR.IO Docs"}],["$","meta","1",{"name":"description","content":"AR.IO is a decentralized compute network that makes the permaweb more accessible."}],["$","link","2",{"rel":"icon","href":"/docs-v2/favicon.ico","type":"image/x-icon","sizes":"16x16"}]],"error":null,"digest":"$undefined"}
+1d:{"metadata":"$15:metadata","error":null,"digest":"$undefined"}
