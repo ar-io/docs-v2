@@ -1289,6 +1289,10 @@ export const singleNavigation: Array<NavGroup> = [
             title: 'AO Compute Unit (CU) Sidecar',
             href: '/gateways/cu',
           },
+          {                                     
+            title: 'AO HyperBEAM (HB) Sidecar',
+            href: '/gateways/hb',       
+          }, 
           {
             title: 'Automating SSL',
             // href: '/build/gateways/networking',

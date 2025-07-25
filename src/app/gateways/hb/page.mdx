@@ -1,0 +1,75 @@
+export const metadata = {
+  title: 'AO HyperBEAM (HB)',
+  description: 'Steps for deploying an AO HyperBEAM (HB) sidecar alongside your AR.IO Gateway.',
+  openGraph: {
+    title: 'AO HyperBEAM (HB)',
+  },
+}
+
+# AO HyperBEAM (HB)
+
+## Overview
+
+HyperBeam is a client implementation of the AO-Core protocol, written in Erlang. It can be seen as the 'node' software for the decentralized operating system that AO enables; abstracting hardware provisioning and details from the exeHBtion of individual programs.
+
+HyperBEAM node operators can offer the services of their machine to others inside the network by electing to exeHBte any number of different devices, charging users for their computation as necessary.
+
+Each HyperBEAM node is configured using the ~meta@1.0 device, which provides an interface for specifying the node's hardware, supported devices, metering and payments information, amongst other configuration options.
+
+For more detailed information about HyperBEAM, please refer to the [Running a HyperBEAM Node](https://hyperbeam.arweave.net/run/running-a-hyperbeam-node.html).
+
+## System Requirements
+
+Before deploying a HB, ensure your system meets the following requirements:
+
+- CPU: 2+ cores recommended
+- RAM: 4GB minimum, 8GB+ recommended
+- Storage: 10GB free space for the Docker image and data
+- Network: Stable internet connection
+
+## Deploying an AO HB
+
+### Step 1: Navigate to Gateway Directory
+
+First, navigate to the root directory of your gateway:
+
+```bash
+cd /path/to/your/gateway
+```
+
+### Step 2: Start the HB Container
+
+Once your environment file is configured, start the HB container:
+
+```bash
+docker compose -f docker-compose.hyperbeam.yaml up -d
+```
+
+This command uses the following flags:
+- `-f docker-compose.hyperbeam.yaml`: Specifies the Docker Compose file to use
+- `up`: Creates and starts the containers
+- `-d`: Runs containers in detached mode (background)
+
+### Step 3: Check the Logs
+
+To check the logs of your HB container:
+
+```bash
+docker compose -f docker-compose.hyperbeam.yaml logs -f --tail=20
+```
+
+This command uses the following flags:
+- `-f`: Follows the log output (continuous display)
+- `--tail=20`: Shows only the last 20 lines of logs
+
+Exit the logs by pressing `Ctrl+C`.
+
+### Accessing Your HB
+
+Once properly set up and connected to your gateway, you can access your HB via:
+
+```
+https://<your-gateway-domain>:10000
+```
+
+This endpoint allows you to interact with your HB directly through your gateway's domain.
