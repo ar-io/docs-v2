@@ -62,3 +62,19 @@ The `getEpochSettings` method does not accept any parameters.
   "pruneEpochsCount": 14                     // Number of epochs to keep in history
 }
 ```
+
+## Try it out
+
+<CodeExecutor
+title="getEpochSettings()"
+language="javascript"
+code={`// Example: Get epoch settings
+async function main() {
+      const ario = ARIO.init();
+      const settings = await ario.getEpochSettings();
+
+      console.log(settings);
+    }
+
+    main();`}
+/>

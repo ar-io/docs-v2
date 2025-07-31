@@ -1,6 +1,14 @@
 import { CodeGroup } from '@/components/Code'
 import { Table } from '@/components/Table'
 
+export const metadata = {
+  title: 'getPrescribedObservers',
+  description:
+    'Get the prescribed observers of the ARIO process',
+  openGraph: {
+    title: 'getPrescribedObservers',
+  },
+}
 
 # getPrescribedObservers
 
@@ -79,3 +87,19 @@ import { Table } from '@/components/Table'
   }
 ]
 ```
+
+## Try it out
+
+<CodeExecutor
+title="getPrescribedObservers()"
+language="javascript"
+code={`// Example: Get prescribed observers
+async function main() {
+      const ario = ARIO.init();
+      const observers = await ario.getPrescribedObservers({ epochIndex: 0 });
+
+      console.log(observers);
+    }
+
+    main();`}
+/>

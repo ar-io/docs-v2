@@ -1,6 +1,6 @@
 import { CodeGroup } from '@/components/Code'
 import { Table } from '@/components/Table'
-import { CodeExecutor } from '@/components/CodeExecutor'
+
 
 export const metadata = {
   title: 'getDistributions',
@@ -99,42 +99,18 @@ export const metadata = {
 ## Try it out
 
 <CodeExecutor
-title="Basic JavaScript Test"
-language="javascript"
-code={`// Basic JavaScript test
-console.log('Hello from eval5!');
-
-const numbers = [1, 2, 3, 4, 5];
-const doubled = numbers.map(n => n \* 2);
-console.log('Original:', numbers);
-console.log('Doubled:', doubled);
-
-const result = {
-message: 'Code execution successful',
-timestamp: new Date().toISOString(),
-data: doubled
-};
-
-console.log('Result:', result);
-return result;`}
-/>
-
-<CodeExecutor
 title="getDistributions()"
 language="javascript"
 code={`// Example: Get distributions for epoch 140
-// This will make a real API call to the ARIO network
-
 async function main() {
+
 try {
+
 console.log('Loading ARIO SDK...');
 
     // Initialize the ARIO SDK
     const ario = ARIO.init();
 
-    console.log('Fetching distributions for epoch 140...');
-
-    // Make the actual API call
     const distributions = await ario.getDistributions({ epochIndex: 140 });
 
     console.log('Distributions:');
@@ -147,6 +123,5 @@ throw error;
 }
 }
 
-// Run the example
 main();`}
 />

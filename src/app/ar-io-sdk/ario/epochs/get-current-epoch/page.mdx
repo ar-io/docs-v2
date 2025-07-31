@@ -70,3 +70,19 @@ The `getCurrentEpoch` method does not accept any parameters.
   "prescribedNames": ["ardrive", "permaweb", "ar-io"]
 }
 ```
+
+## Try it out
+
+<CodeExecutor
+title="getCurrentEpoch()"
+language="javascript"
+code={`// Example: Get current epoch
+async function main() {
+      const ario = ARIO.init();
+      const currentEpoch = await ario.getCurrentEpoch();
+
+      console.log(currentEpoch);
+    }
+
+    main();`}
+/>

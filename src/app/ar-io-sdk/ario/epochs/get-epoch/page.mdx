@@ -101,3 +101,19 @@ export const metadata = {
   }
 }
 ```
+
+## Try it out
+
+<CodeExecutor
+title="getEpoch()"
+language="javascript"
+code={`// Example: Get epoch 150
+async function main() {
+      const ario = ARIO.init();
+      const epoch = await ario.getEpoch({ epochIndex: 150 });
+
+      console.log(epoch);
+    }
+
+    main();`}
+/>

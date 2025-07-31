@@ -21,11 +21,11 @@ export { CodeGroup, Code as code, Pre as pre } from '@/components/Code'
 export const Diagram = DiagramWithWayfinder
 export const Tip = TipComponent
 export { Table } from '@/components/Table'
-export {
-  CodeExecutor,
-  JavaScriptExecutor,
-  TypeScriptExecutor,
-} from '@/components/CodeExecutor'
+export { CodeExecutor, JavaScriptExecutor, TypeScriptExecutor }
+
+// Shorthand aliases for easier use
+export const JS = JavaScriptExecutor
+export const TS = TypeScriptExecutor
 
 export function wrapper({ children }: { children: React.ReactNode }) {
   return (

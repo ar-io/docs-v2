@@ -1,6 +1,14 @@
 import { CodeGroup } from '@/components/Code'
 import { Table } from '@/components/Table'
 
+export const metadata = {
+  title: 'getObservations',
+  description:
+    'Get the epoch-specific observation list',
+  openGraph: {
+    title: 'getObservations',
+  },
+}
 
 # getObservations
 
@@ -81,3 +89,19 @@ import { Table } from '@/components/Table'
   }
 }
 ```
+
+## Try it out
+
+<CodeExecutor
+title="getObservations()"
+language="javascript"
+code={`// Example: Get observations
+async function main() {
+      const ario = ARIO.init();
+      const observations = await ario.getObservations();
+
+      console.log(observations);
+    }
+
+    main();`}
+/>

@@ -38,6 +38,9 @@ export function Layout({
     CodeExecutor: CodeExecutor,
     JavaScriptExecutor: JavaScriptExecutor,
     TypeScriptExecutor: TypeScriptExecutor,
+    // Shorthand aliases for easier use
+    JS: JavaScriptExecutor,
+    TS: TypeScriptExecutor,
   }
 
   return (
