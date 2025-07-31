@@ -15,6 +15,11 @@ import Tip from '@/components/Tip'
 import { Table } from '@/components/Table'
 import { GatewayProvider } from '@/components/GatewayProvider'
 import { HeroPattern } from '@/components/HeroPattern'
+import {
+  CodeExecutor,
+  JavaScriptExecutor,
+  TypeScriptExecutor,
+} from '@/components/CodeExecutor'
 
 export function Layout({
   children,
@@ -30,6 +35,9 @@ export function Layout({
     Diagram: DiagramWithWayfinder, // Automatically replaces <Diagram /> in MDX
     Tip: Tip,
     Table: Table, // Make Table component globally available in MDX
+    CodeExecutor: CodeExecutor,
+    JavaScriptExecutor: JavaScriptExecutor,
+    TypeScriptExecutor: TypeScriptExecutor,
   }
 
   return (
@@ -49,6 +57,7 @@ export function Layout({
           data-domain="docs.ar.io"
           onError={() => console.warn('Plausible script failed to load')}
         ></script>
+
         <div className="h-full lg:ml-72 xl:ml-80">
           <motion.header
             layoutScroll
