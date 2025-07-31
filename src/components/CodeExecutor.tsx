@@ -8,13 +8,44 @@ let ARIOSDK: any = null
 try {
   // Dynamic import to avoid SSR issues
   if (typeof window !== 'undefined') {
-    import('@ar.io/sdk')
-      .then((module) => {
-        ARIOSDK = module.ARIO
-      })
-      .catch((error) => {
-        console.warn('Failed to preload ARIO SDK:', error)
-      })
+    // Try to load from CDN for production deployments
+    const loadSDK = async () => {
+      try {
+        // For production/GitHub Pages, try CDN version
+        if (
+          window.location.hostname !== 'localhost' &&
+          window.location.hostname !== '127.0.0.1'
+        ) {
+          // Use CDN version for production
+          const script = document.createElement('script')
+          script.src = 'https://unpkg.com/@ar.io/sdk@latest/dist/browser.js'
+          script.onload = () => {
+            if ((window as any).ARIO) {
+              ARIOSDK = (window as any).ARIO
+            }
+          }
+          script.onerror = () => {
+            // Fallback to local import if CDN fails
+            import('@ar.io/sdk')
+              .then((module) => {
+                ARIOSDK = module.ARIO
+              })
+              .catch((error) => {
+                console.warn('Failed to load ARIO SDK:', error)
+              })
+          }
+          document.head.appendChild(script)
+        } else {
+          // Use local import for development
+          const { ARIO } = await import('@ar.io/sdk')
+          ARIOSDK = ARIO
+        }
+      } catch (error) {
+        console.warn('Failed to load ARIO SDK:', error)
+      }
+    }
+
+    loadSDK()
   }
 } catch (error) {
   console.warn('ARIO SDK import failed:', error)
@@ -147,7 +178,11 @@ export function CodeExecutor({
       try {
         if (ARIOSDK) {
           arioSDK = ARIOSDK
+        } else if ((window as any).ARIO) {
+          // Check if CDN-loaded SDK is available
+          arioSDK = (window as any).ARIO
         } else {
+          // Fallback to local import
           const { ARIO } = await import('@ar.io/sdk')
           arioSDK = ARIO
         }
