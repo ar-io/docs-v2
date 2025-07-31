@@ -9,6 +9,11 @@ import DiagramWithWayfinder from '@/components/DiagramWithWayfinder'
 import TipComponent from '@/components/Tip'
 import WayfinderLink from '@/components/WayfinderLink'
 import { Table } from '@/components/Table'
+import {
+  CodeExecutor,
+  JavaScriptExecutor,
+  TypeScriptExecutor,
+} from '@/components/CodeExecutor'
 
 export const a = WayfinderLink
 export { Button } from '@/components/Button'
@@ -16,6 +21,11 @@ export { CodeGroup, Code as code, Pre as pre } from '@/components/Code'
 export const Diagram = DiagramWithWayfinder
 export const Tip = TipComponent
 export { Table } from '@/components/Table'
+export { CodeExecutor, JavaScriptExecutor, TypeScriptExecutor }
+
+// Shorthand aliases for easier use
+export const JS = JavaScriptExecutor
+export const TS = TypeScriptExecutor
 
 export function wrapper({ children }: { children: React.ReactNode }) {
   return (

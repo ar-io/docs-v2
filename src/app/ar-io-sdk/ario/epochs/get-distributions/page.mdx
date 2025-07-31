@@ -2,6 +2,15 @@ import { CodeGroup } from '@/components/Code'
 import { Table } from '@/components/Table'
 
 
+export const metadata = {
+  title: 'getDistributions',
+  description:
+    'Get the rewards distribution information for the specified epoch',
+  openGraph: {
+    title: 'getDistributions',
+  },
+}
+
 # getDistributions
 
 `getDistributions` is a method on the `ARIO` class that returns the rewards distribution information for the specified epoch. If no epoch index is provided, the current epoch is used.
@@ -23,7 +32,9 @@ import { Table } from '@/components/Table'
     <Table.Row>
       <Table.Cell className="font-semibold">epochIndex</Table.Cell>
       <Table.Cell>number</Table.Cell>
-      <Table.Cell>The epoch index for which to retrieve distribution data.</Table.Cell>
+      <Table.Cell>
+        The epoch index for which to retrieve distribution data.
+      </Table.Cell>
       <Table.Cell>No</Table.Cell>
     </Table.Row>
   </Table.Body>
@@ -63,7 +74,7 @@ import { Table } from '@/components/Table'
 
 ## Output
 
-```js
+```json
 {
   "totalEligibleGateways": 1,
   "totalEligibleRewards": 100000000,
@@ -84,3 +95,33 @@ import { Table } from '@/components/Table'
   }
 }
 ```
+
+## Try it out
+
+<CodeExecutor
+title="getDistributions()"
+language="javascript"
+code={`// Example: Get distributions for epoch 140
+async function main() {
+
+try {
+
+console.log('Loading ARIO SDK...');
+
+    // Initialize the ARIO SDK
+    const ario = ARIO.init();
+
+    const distributions = await ario.getDistributions({ epochIndex: 140 });
+
+    console.log('Distributions:');
+    console.log(JSON.stringify(distributions, null, 2));
+    return distributions;
+
+} catch (error) {
+console.error('Error:', error.message);
+throw error;
+}
+}
+
+main();`}
+/>

@@ -78,3 +78,19 @@ export const metadata = {
 ```js
 ;['ardrive', 'ar-io', 'arweave', 'fwd', 'ao']
 ```
+
+## Try it out
+
+<CodeExecutor
+title="getPrescribedNames()"
+language="javascript"
+code={`// Example: Get prescribed names
+async function main() {
+      const ario = ARIO.init();
+      const prescribedNames = await ario.getPrescribedNames({ epochIndex: 0 });
+
+      console.log(prescribedNames);
+    }
+
+    main();`}
+/>
