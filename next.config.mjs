@@ -45,12 +45,44 @@ const nextConfig = {
     }
 
     // Fix chunk loading for GitHub Pages with basePath
-    if (
-      !isServer &&
-      process.env.BASE_PATH &&
-      process.env.NODE_ENV === 'production'
-    ) {
-      config.output.publicPath = `${process.env.BASE_PATH}/_next/`
+    if (!isServer) {
+      if (process.env.BASE_PATH && process.env.NODE_ENV === 'production') {
+        config.output.publicPath = `${process.env.BASE_PATH}/_next/`
+      }
+      
+      // Fix for ARIO SDK and other dynamic imports
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        // Ensure ARIO SDK uses the browser bundle
+        '@ar.io/sdk': '@ar.io/sdk/web',
+      }
+      
+      // Ensure all chunks use relative paths to avoid GitHub Pages issues
+      config.output.chunkFilename = 'static/chunks/[name].[chunkhash].js'
+      config.output.filename = 'static/chunks/[name].[chunkhash].js'
+      
+      // Fix for dynamic imports and chunk loading
+      config.optimization = {
+        ...config.optimization,
+        splitChunks: {
+          ...config.optimization.splitChunks,
+          cacheGroups: {
+            ...config.optimization.splitChunks.cacheGroups,
+            default: {
+              minChunks: 1,
+              priority: -20,
+              reuseExistingChunk: true,
+            },
+            // Bundle ARIO SDK into a single chunk to avoid chunk loading issues
+            arioSDK: {
+              test: /[\\/]node_modules[\\/]@ar\.io[\\/]sdk[\\/]/,
+              name: 'ario-sdk',
+              chunks: 'all',
+              priority: 10,
+            },
+          },
+        },
+      }
     }
 
     return config

@@ -14,7 +14,8 @@ try {
         // Add a small delay to ensure browser environment is settled
         await new Promise((resolve) => setTimeout(resolve, 100))
 
-        const { ARIO } = await import('@ar.io/sdk/web')
+        // Use the main import which will be aliased to /web by webpack
+        const { ARIO } = await import('@ar.io/sdk')
         ARIOSDK = ARIO
       } catch (error) {
         console.warn('Failed to load ARIO SDK:', error)
@@ -168,7 +169,7 @@ export function CodeExecutor({
             }
 
             // Fallback to local import if not preloaded - web version for browser execution
-            const { ARIO } = await import('@ar.io/sdk/web')
+            const { ARIO } = await import('@ar.io/sdk')
             arioSDK = ARIO
           }
         } catch (sdkError) {
