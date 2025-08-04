@@ -14,6 +14,11 @@ import {
   JavaScriptExecutor,
   TypeScriptExecutor,
 } from '@/components/CodeExecutor'
+import {
+  WebContainerExecutor,
+  WebContainerJavaScriptExecutor,
+  WebContainerTypeScriptExecutor,
+} from '@/components/WebContainerExecutor'
 
 export const a = WayfinderLink
 export { Button } from '@/components/Button'
@@ -22,10 +27,18 @@ export const Diagram = DiagramWithWayfinder
 export const Tip = TipComponent
 export { Table } from '@/components/Table'
 export { CodeExecutor, JavaScriptExecutor, TypeScriptExecutor }
+export {
+  WebContainerExecutor,
+  WebContainerJavaScriptExecutor,
+  WebContainerTypeScriptExecutor,
+}
 
 // Shorthand aliases for easier use
 export const JS = JavaScriptExecutor
 export const TS = TypeScriptExecutor
+export const WC = WebContainerExecutor
+export const WCJS = WebContainerJavaScriptExecutor
+export const WCTS = WebContainerTypeScriptExecutor
 
 export function wrapper({ children }: { children: React.ReactNode }) {
   return (

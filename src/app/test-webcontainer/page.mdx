@@ -1,0 +1,56 @@
+# WebContainer Test
+
+This page tests the WebContainer implementation.
+
+## Basic JavaScript Test
+
+<WebContainerExecutor
+title="Basic Test"
+language="javascript"
+code={`console.log('Hello from WebContainer!');
+console.log('Current time:', new Date().toISOString());
+console.log('Node.js version:', process.version);
+
+// Simple math
+const result = 2 + 2;
+console.log('2 + 2 =', result);
+
+// Array operations
+const numbers = [1, 2, 3, 4, 5];
+const sum = numbers.reduce((a, b) => a + b, 0);
+console.log('Sum of numbers:', sum);`}
+/>
+
+## ARIO SDK Test
+
+<WebContainerExecutor
+title="ARIO SDK Test"
+language="javascript"
+code={`// Test ARIO SDK installation and basic functionality
+async function main() {
+  try {
+    console.log('Testing ARIO SDK...');
+    
+    // Try to import the SDK
+    const { ARIO } = await import('@ar.io/sdk');
+    console.log('✅ ARIO SDK imported successfully');
+    
+    // Initialize the SDK
+    const ario = ARIO.init();
+    console.log('✅ ARIO SDK initialized successfully');
+    
+    // Test a simple method
+    console.log('Testing getCurrentEpoch...');
+    const epoch = await ario.getCurrentEpoch();
+    console.log('✅ Current epoch:', epoch);
+    
+    return { success: true, epoch };
+    
+  } catch (error) {
+    console.error('❌ Error:', error.message);
+    throw error;
+  }
+}
+
+main();`}
+/>

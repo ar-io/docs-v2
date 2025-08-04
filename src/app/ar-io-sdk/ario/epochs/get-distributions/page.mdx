@@ -1,7 +1,6 @@
 import { CodeGroup } from '@/components/Code'
 import { Table } from '@/components/Table'
 
-
 export const metadata = {
   title: 'getDistributions',
   description:
@@ -103,25 +102,87 @@ title="getDistributions()"
 language="javascript"
 code={`// Example: Get distributions for epoch 140
 async function main() {
-
-try {
-
-console.log('Loading ARIO SDK...');
-
+  try {
+    console.log('Loading ARIO SDK...');
+    
     // Initialize the ARIO SDK
+    const { ARIO } = await import('@ar.io/sdk');
     const ario = ARIO.init();
-
+    
+    console.log('Fetching distributions for epoch 140...');
+    
+    // Make the actual API call
     const distributions = await ario.getDistributions({ epochIndex: 140 });
-
+    
     console.log('Distributions:');
     console.log(JSON.stringify(distributions, null, 2));
     return distributions;
+    
+  } catch (error) {
+    console.error('Error:', error.message);
+    throw error;
+  }
+}
+
+// Run the example
+main();`}
+/>
+
+## Try it out (Node.js Environment)
+
+This example runs in a full Node.js environment using WebContainer, allowing you to use real npm packages and Node.js APIs.
+
+> **Note:** WebContainer requires specific CORS headers that may not be available in all environments. If you encounter initialization errors, the browser-based CodeExecutor above will work in all environments.
+
+<WebContainerExecutor
+title="getDistributions() - Node.js"
+language="javascript"
+code={`// Example: Get distributions for epoch 140 using Node.js environment
+// This runs in a full Node.js environment with real npm packages
+
+async function main() {
+try {
+console.log('Node.js Environment Test');
+console.log('Node version:', process.version);
+console.log('Platform:', process.platform);
+console.log('Architecture:', process.arch);
+
+    console.log('\\nLoading ARIO SDK...');
+
+    // Initialize the ARIO SDK
+    const { ARIO } = await import('@ar.io/sdk');
+    const ario = ARIO.init();
+
+    console.log('✅ ARIO SDK loaded successfully');
+    console.log('\\nFetching distributions for epoch 140...');
+
+    // Make the actual API call
+    const distributions = await ario.getDistributions({ epochIndex: 140 });
+
+    console.log('✅ Distributions fetched successfully');
+    console.log('\\nDistributions:');
+    console.log(JSON.stringify(distributions, null, 2));
+
+    // Additional Node.js specific features
+    console.log('\\n--- Node.js Environment Info ---');
+    console.log('Current working directory:', process.cwd());
+    console.log('Environment variables available:', Object.keys(process.env).length);
+    console.log('Memory usage:', process.memoryUsage());
+
+    return distributions;
 
 } catch (error) {
-console.error('Error:', error.message);
+console.error('❌ Error:', error.message);
+console.error('Stack trace:', error.stack);
 throw error;
 }
 }
 
-main();`}
+// Run the example
+main().then(result => {
+console.log('\\n✅ Execution completed successfully');
+}).catch(error => {
+console.error('\\n❌ Execution failed');
+process.exit(1);
+});`}
 />
