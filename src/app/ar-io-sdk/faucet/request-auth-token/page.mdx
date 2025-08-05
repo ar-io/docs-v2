@@ -1,0 +1,93 @@
+import { CodeGroup } from '@/components/Code'
+import { Table } from '@/components/Table'
+
+export const metadata = {
+  title: 'requestAuthToken',
+  description: 'Request an auth token using captcha response',
+  openGraph: {
+    title: 'requestAuthToken',
+  },
+}
+
+# requestAuthToken
+
+`requestAuthToken` is a method on the `faucet` object that requests an authentication token using a captcha response. This token can then be used to claim tokens without needing to solve another captcha.
+
+`requestAuthToken` does not require authentication.
+
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Optional</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">captchaResponse</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>
+        The captcha response from solving the captcha challenge
+      </Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
+
+## Examples
+
+<CodeGroup title="requestAuthToken">
+
+    ```typescript {{ title: 'NodeJS' }}
+    const { ARIO } = require('@ar.io/sdk');
+
+    async function main() {
+      const ario = ARIO.testnet(); // faucetUrl defaults to 'https://faucet.ario.permaweb.services'
+
+      const result = await ario.faucet.requestAuthToken({
+        captchaResponse: 'captcha_response_token_here'
+      });
+
+      if (result.status === 'success') {
+        console.log('Auth token:', result.token);
+        console.log('Expires at:', new Date(result.expiresAt));
+      }
+    }
+
+    main();
+    ```
+
+    ```typescript {{ title: 'Web' }}
+    import { ARIO } from '@ar.io/sdk/web';
+
+    async function main() {
+      const ario = ARIO.testnet(); // faucetUrl defaults to 'https://faucet.ario.permaweb.services'
+
+      const result = await ario.faucet.requestAuthToken({
+        captchaResponse: 'captcha_response_token_here'
+      });
+
+      if (result.status === 'success') {
+        console.log('Auth token:', result.token);
+        console.log('Expires at:', new Date(result.expiresAt));
+      }
+    }
+
+    main();
+    ```
+
+</CodeGroup>
+
+## Output
+
+```js
+{
+  "status": "success",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "expiresAt": 1640995200000
+}
+```

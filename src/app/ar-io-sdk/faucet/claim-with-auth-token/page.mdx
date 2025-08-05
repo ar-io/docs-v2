@@ -1,0 +1,104 @@
+import { CodeGroup } from '@/components/Code'
+import { Table } from '@/components/Table'
+
+export const metadata = {
+  title: 'claimWithAuthToken',
+  description: 'Claim tokens using an auth token',
+  openGraph: {
+    title: 'claimWithAuthToken',
+  },
+}
+
+# claimWithAuthToken
+
+`claimWithAuthToken` is a method on the `faucet` object that claims tokens using an authentication token. This method is useful when you already have a valid auth token from a previous captcha verification.
+
+`claimWithAuthToken` does not require authentication.
+
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Optional</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">authToken</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>
+        The authentication token obtained from requestAuthToken
+      </Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">recipient</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>The wallet address to receive the claimed tokens</Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">quantity</Table.Cell>
+      <Table.Cell>number</Table.Cell>
+      <Table.Cell>The quantity of tokens to claim</Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
+
+## Examples
+
+<CodeGroup title="claimWithAuthToken">
+
+    ```typescript {{ title: 'NodeJS' }}
+    const { ARIO } = require('@ar.io/sdk');
+
+    async function main() {
+      const ario = ARIO.testnet(); // faucetUrl defaults to 'https://faucet.ario.permaweb.services'
+
+      const result = await ario.faucet.claimWithAuthToken({
+        authToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+        recipient: '7oqF5r...LbpfT7',
+        quantity: 1000000000
+      });
+
+      console.log('Claim ID:', result.id);
+      console.log('Success:', result.success);
+    }
+
+    main();
+    ```
+
+    ```typescript {{ title: 'Web' }}
+    import { ARIO } from '@ar.io/sdk/web';
+
+    async function main() {
+      const ario = ARIO.testnet(); // faucetUrl defaults to 'https://faucet.ario.permaweb.services'
+
+      const result = await ario.faucet.claimWithAuthToken({
+        authToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+        recipient: '7oqF5r...LbpfT7',
+        quantity: 1000000000
+      });
+
+      console.log('Claim ID:', result.id);
+      console.log('Success:', result.success);
+    }
+
+    main();
+    ```
+
+</CodeGroup>
+
+## Output
+
+```js
+{
+  "id": "claim_123456789",
+  "success": true
+}
+```

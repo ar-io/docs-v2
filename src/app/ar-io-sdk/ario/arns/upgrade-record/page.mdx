@@ -43,6 +43,12 @@ export const metadata = {
         <td>true</td>
       </tr>
       <tr>
+        <th>paidBy</th>
+        <td>string | string[]</td>
+        <td>Wallet address(es) that will pay for the purchase (used with fundFrom: 'turbo')</td>
+        <td>true</td>
+      </tr>
+      <tr>
         <th>tags</th>
         <td>array</td>
         <td>
@@ -98,6 +104,28 @@ export const metadata = {
                 },
             );
         }
+
+    main();
+    ```
+
+    ```typescript {{ title: 'Turbo Funding' }}
+    const { ARIO, ArweaveSigner } = require('@ar.io/sdk');
+
+    async function main() {
+        const jwk = JSON.parse(fs.readFileSync("KeyFile.json"));
+        const ario = ARIO.init({
+            signer: new ArweaveSigner(jwk),
+        });
+
+        // Upgrade using turbo funding with specific wallet addresses
+        const { id: txId } = await ario.upgradeRecord({
+            name: 'ardrive',
+            fundFrom: 'turbo',
+            paidBy: ['7oqF5r...LbpfT7', 'abc123...def789'] // Multiple wallet addresses
+        });
+
+        console.log(txId);
+    }
 
     main();
     ```

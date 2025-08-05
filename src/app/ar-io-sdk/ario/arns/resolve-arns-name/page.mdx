@@ -1,0 +1,98 @@
+import { CodeGroup } from '@/components/Code'
+import { Table } from '@/components/Table'
+
+export const metadata = {
+  title: 'resolveArNSName',
+  description:
+    'Resolve an ArNS name to get detailed information including owner, transaction ID, and TTL',
+  openGraph: {
+    title: 'resolveArNSName',
+  },
+}
+
+# resolveArNSName
+
+`resolveArNSName` is a method on the `ARIO` class that resolves an ArNS name (including undernames) to get detailed information about the name, including the owner, transaction ID, process ID, and TTL.
+
+`resolveArNSName` does not require authentication.
+
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Optional</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">name</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>
+        The ArNS name to resolve (can include undernames like
+        'subdomain_domain')
+      </Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
+
+## Examples
+
+<CodeGroup title="resolveArNSName">
+
+    ```typescript {{ title: 'NodeJS' }}
+    const { ARIO } = require('@ar.io/sdk');
+
+    async function main() {
+      const ario = ARIO.init();
+
+      // Resolve a base name
+      const baseName = await ario.resolveArNSName({ name: 'ardrive' });
+      console.log(baseName);
+
+      // Resolve an undername
+      const undername = await ario.resolveArNSName({ name: 'subdomain_ardrive' });
+      console.log(undername);
+    }
+
+    main();
+    ```
+
+    ```typescript {{ title: 'Web' }}
+    import { ARIO } from '@ar.io/sdk/web';
+
+    async function main() {
+      const ario = ARIO.init();
+
+      // Resolve a base name
+      const baseName = await ario.resolveArNSName({ name: 'ardrive' });
+      console.log(baseName);
+
+      // Resolve an undername
+      const undername = await ario.resolveArNSName({ name: 'subdomain_ardrive' });
+      console.log(undername);
+    }
+
+    main();
+    ```
+
+</CodeGroup>
+
+## Output
+
+```js
+{
+  "name": "subdomain_ardrive",
+  "owner": "7oqF5r...LbpfT7",
+  "txId": "abc123...def789",
+  "processId": "bh9l1cy0aksiL_x9M359faGzM_yjralacHIUo8_nQXM",
+  "ttlSeconds": 86400,
+  "type": "lease",
+  "undernameLimit": 10,
+  "priority": 1
+}
+```

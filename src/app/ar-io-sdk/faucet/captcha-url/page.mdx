@@ -1,0 +1,64 @@
+import { CodeGroup } from '@/components/Code'
+
+export const metadata = {
+  title: 'captchaUrl',
+  description: 'Get the captcha URL for the current process',
+  openGraph: {
+    title: 'captchaUrl',
+  },
+}
+
+# captchaUrl
+
+`captchaUrl` is a method on the `faucet` object that returns the captcha URL for the current process. This URL can be used to present a captcha challenge to users.
+
+`captchaUrl` does not require authentication.
+
+## Parameters
+
+The `captchaUrl` method does not accept any parameters.
+
+## Examples
+
+<CodeGroup title="captchaUrl">
+
+    ```typescript {{ title: 'NodeJS' }}
+    const { ARIO } = require('@ar.io/sdk');
+
+    async function main() {
+      const ario = ARIO.testnet(); // faucetUrl defaults to 'https://faucet.ario.permaweb.services'
+
+      const { processId, captchaUrl } = await ario.faucet.captchaUrl();
+
+      console.log('Process ID:', processId);
+      console.log('Captcha URL:', captchaUrl);
+    }
+
+    main();
+    ```
+
+    ```typescript {{ title: 'Web' }}
+    import { ARIO } from '@ar.io/sdk/web';
+
+    async function main() {
+      const ario = ARIO.testnet(); // faucetUrl defaults to 'https://faucet.ario.permaweb.services'
+
+      const { processId, captchaUrl } = await ario.faucet.captchaUrl();
+
+      console.log('Process ID:', processId);
+      console.log('Captcha URL:', captchaUrl);
+    }
+
+    main();
+    ```
+
+</CodeGroup>
+
+## Output
+
+```js
+{
+  "processId": "bh9l1cy0aksiL_x9M359faGzM_yjralacHIUo8_nQXM",
+  "captchaUrl": "https://faucet.ar.io/captcha?process-id=bh9l1cy0aksiL_x9M359faGzM_yjralacHIUo8_nQXM"
+}
+```

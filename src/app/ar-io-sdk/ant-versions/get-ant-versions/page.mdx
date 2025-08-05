@@ -1,0 +1,73 @@
+import { CodeGroup } from '@/components/Code'
+
+export const metadata = {
+  title: 'getANTVersions',
+  description: 'Retrieve all versions for an ANT',
+  openGraph: {
+    title: 'getANTVersions',
+  },
+}
+
+# getANTVersions
+
+`getANTVersions` is a method on the `ANTVersions` class that retrieves all versions for an ANT, sorted alphabetically by version number.
+
+`getANTVersions` does not require authentication.
+
+## Parameters
+
+The `getANTVersions` method does not accept any parameters.
+
+## Examples
+
+<CodeGroup title="getANTVersions">
+
+    ```typescript {{ title: 'NodeJS' }}
+    const { ANTVersions } = require('@ar.io/sdk');
+
+    async function main() {
+      const versions = ANTVersions.init();
+      const allVersions = await versions.getANTVersions();
+
+      console.log(allVersions);
+    }
+
+    main();
+    ```
+
+    ```typescript {{ title: 'Web' }}
+    import { ANTVersions } from '@ar.io/sdk/web';
+
+    async function main() {
+      const versions = ANTVersions.init();
+      const allVersions = await versions.getANTVersions();
+
+      console.log(allVersions);
+    }
+
+    main();
+    ```
+
+</CodeGroup>
+
+## Output
+
+```js
+{
+  "1.0.0": {
+    "moduleId": "abc123...def789",
+    "luaSourceId": "ghi012...jkl345",
+    "notes": "Initial version"
+  },
+  "1.1.0": {
+    "moduleId": "mno678...pqr901",
+    "luaSourceId": "stu234...vwx567",
+    "notes": "Bug fixes and improvements"
+  },
+  "2.0.0": {
+    "moduleId": "yza890...bcd123",
+    "luaSourceId": "efg456...hij789",
+    "notes": "Major update with new features"
+  }
+}
+``` 

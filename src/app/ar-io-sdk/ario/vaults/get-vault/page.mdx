@@ -8,7 +8,6 @@ export const metadata = {
   },
 }
 
-
 # getVault
 
 `getVault` is a method on the `ARIO` class that retrieves detailed information about a specific vault using its ID.
@@ -28,6 +27,12 @@ export const metadata = {
   </Table.Head>
   <Table.Body>
     <Table.Row>
+      <Table.Cell className="font-semibold">address</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>The wallet address that owns the vault</Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+    <Table.Row>
       <Table.Cell className="font-semibold">vaultId</Table.Cell>
       <Table.Cell>string</Table.Cell>
       <Table.Cell>The ID of the vault to retrieve</Table.Cell>
@@ -46,6 +51,7 @@ export const metadata = {
     async function main() {
       const ario = ARIO.init();
       const vault = await ario.getVault({
+        address: '7oqF5r...LbpfT7',
         vaultId: 'vault_123'
       });
 
@@ -61,6 +67,7 @@ export const metadata = {
     async function main() {
       const ario = ARIO.init();
       const vault = await ario.getVault({
+        address: '7oqF5r...LbpfT7',
         vaultId: 'vault_123'
       });
 

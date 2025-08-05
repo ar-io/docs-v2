@@ -1,0 +1,58 @@
+
+export const metadata = {
+  title: 'ANTVersions',
+  description: 'Manage ANT versions and updates',
+  openGraph: {
+    title: 'ANTVersions',
+  },
+}
+
+# ANTVersions
+
+## Overview
+
+The `ANTVersions` class provides functionality to manage ANT versions and track updates through the ANT Registry. This feature was added in SDK version 3.9.0.
+
+The `ANTVersions` class in the AR.IO SDK contains several methods:
+
+- [`getANTVersions`](/ar-io-sdk/ant-versions/get-ant-versions) which retrieves all versions for an ANT
+- [`getLatestANTVersion`](/ar-io-sdk/ant-versions/get-latest-ant-version) which retrieves the latest version for an ANT
+- [`addVersion`](/ar-io-sdk/ant-versions/add-version) which adds a new version to an ANT (requires signer)
+
+## Initialization
+
+The `ANTVersions` class can be initialized in different ways depending on your needs:
+
+### Read-only Access
+
+```typescript
+// Default initialization (uses ANT_REGISTRY_ID)
+const versions = ANTVersions.init()
+
+// With custom process ID
+const versions = ANTVersions.init({
+  processId: 'your-process-id',
+})
+```
+
+### Read/Write Access
+
+```typescript
+// With signer for write operations
+const versions = ANTVersions.init({
+  processId: 'your-process-id',
+  signer: yourSigner,
+})
+```
+
+## Parameters
+
+The initialization accepts the following configuration:
+
+- `processId` (string, optional): The process ID of the ANT Registry. Defaults to the main ANT Registry ID if not provided.
+- `signer` (AoSigner, optional): Signer instance for write operations. Required for `addVersion` method.
+
+<Tip title="Note">
+  Write operations like `addVersion` require a signer to be provided during
+  initialization. Read operations can be performed without a signer.
+</Tip>

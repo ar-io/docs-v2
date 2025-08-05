@@ -684,6 +684,7 @@ export const singleNavigation: Array<NavGroup> = [
   },
   {
     title: 'AR.IO SDK',
+    href: '/ar-io-sdk',
     links: [
       {
         title: 'Info',
@@ -699,6 +700,7 @@ export const singleNavigation: Array<NavGroup> = [
       },
       {
         title: 'ARIO Class',
+        href: '/ar-io-sdk/ario/configuration',
         children: [
           {
             title: 'Configuration',
@@ -888,6 +890,10 @@ export const singleNavigation: Array<NavGroup> = [
                 href: '/ar-io-sdk/ario/arns/get-arns-reserved-names',
               },
               {
+                title: 'resolveArNSName',
+                href: '/ar-io-sdk/ario/arns/resolve-arns-name',
+              },
+              {
                 title: 'getCostDetails',
                 href: '/ar-io-sdk/ario/arns/get-cost-details',
               },
@@ -942,10 +948,41 @@ export const singleNavigation: Array<NavGroup> = [
               },
             ],
           },
+          {
+            title: 'Faucet',
+            href: '/ar-io-sdk/faucet',
+            children: [
+              {
+                title: 'Info',
+                href: '/ar-io-sdk/faucet',
+              },
+              {
+                title: 'captchaUrl',
+                href: '/ar-io-sdk/faucet/captcha-url',
+              },
+              {
+                title: 'requestAuthToken',
+                href: '/ar-io-sdk/faucet/request-auth-token',
+              },
+              {
+                title: 'claimWithCaptchaResponse',
+                href: '/ar-io-sdk/faucet/claim-with-captcha-response',
+              },
+              {
+                title: 'claimWithAuthToken',
+                href: '/ar-io-sdk/faucet/claim-with-auth-token',
+              },
+              {
+                title: 'verifyAuthToken',
+                href: '/ar-io-sdk/faucet/verify-auth-token',
+              },
+            ],
+          },
         ],
       },
       {
         title: 'ANT Class',
+        href: '/ar-io-sdk/ants/configuration',
         children: [
           {
             title: 'Configuration',
@@ -1059,6 +1096,7 @@ export const singleNavigation: Array<NavGroup> = [
       },
       {
         title: 'ANTRegistry Class',
+        href: '/ar-io-sdk/ant-registry',
         children: [
           {
             title: 'Info',
@@ -1069,8 +1107,34 @@ export const singleNavigation: Array<NavGroup> = [
             href: '/ar-io-sdk/ant-registry/access-control-list',
           },
           {
+            title: 'getAntsForAddress',
+            href: '/ar-io-sdk/ant-registry/get-ants-for-address',
+          },
+          {
             title: 'register',
             href: '/ar-io-sdk/ant-registry/register',
+          },
+        ],
+      },
+      {
+        title: 'ANTVersions Class',
+        href: '/ar-io-sdk/ant-versions',
+        children: [
+          {
+            title: 'Info',
+            href: '/ar-io-sdk/ant-versions',
+          },
+          {
+            title: 'getANTVersions',
+            href: '/ar-io-sdk/ant-versions/get-ant-versions',
+          },
+          {
+            title: 'getLatestANTVersion',
+            href: '/ar-io-sdk/ant-versions/get-latest-ant-version',
+          },
+          {
+            title: 'addVersion',
+            href: '/ar-io-sdk/ant-versions/add-version',
           },
         ],
       },
@@ -1166,7 +1230,6 @@ export const singleNavigation: Array<NavGroup> = [
                 title: 'Data Root Verification',
                 href: '/wayfinder/core/verification-strategies/data-root-verification',
               },
-
             ],
           },
         ],

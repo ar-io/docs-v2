@@ -42,6 +42,14 @@ import { CodeGroup } from '@/components/Code'
       <Table.Cell>true</Table.Cell>
     </Table.Row>
     <Table.Row>
+      <Table.Cell className="font-semibold">paidBy</Table.Cell>
+      <Table.Cell>string | string[]</Table.Cell>
+      <Table.Cell>
+        Wallet address(es) that will pay for the purchase (used with fundFrom: 'turbo')
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+    <Table.Row>
       <Table.Cell className="font-semibold">tags</Table.Cell>
       <Table.Cell>array</Table.Cell>
       <Table.Cell>
@@ -96,6 +104,29 @@ import { CodeGroup } from '@/components/Code'
                 { tags: [{ name: 'App-Name', value: 'My-Awesome-App' }] },
             );
         }
+
+    main();
+    ```
+
+    ```typescript {{ title: 'Turbo Funding' }}
+    const { ARIO, ArweaveSigner } = require('@ar.io/sdk');
+
+    async function main() {
+        const jwk = JSON.parse(fs.readFileSync("KeyFile.json"));
+        const ario = ARIO.init({
+            signer: new ArweaveSigner(jwk),
+        });
+
+        // Extend lease using turbo funding with specific wallet addresses
+        const { id: txId } = await ario.extendLease({
+            name: 'ar-io',
+            years: 1,
+            fundFrom: 'turbo',
+            paidBy: ['7oqF5r...LbpfT7', 'abc123...def789'] // Multiple wallet addresses
+        });
+
+        console.log(txId);
+    }
 
     main();
     ```

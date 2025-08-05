@@ -8,7 +8,6 @@ export const metadata = {
   },
 }
 
-
 # ANTRegistry
 
 ## Overview
@@ -20,10 +19,13 @@ which means every individual ANT would normally need to be queried in order to c
 When [appropriately constructed ANTs](https://github.com/ar-io/ar-io-ant-process) are registered with the registry, they will send updates to the registry whenever they update their own owner or controller data,
 creating a single index where the information can be quickly queried by apps that have use for that information.
 
-The `ANTRegistry` class in the AR.IO SDK contains 2 methods.
+The `ANTRegistry` class in the AR.IO SDK contains several methods:
 
 - [`accessControlList`](/ar-io-sdk/ant-registry/access-control-list) which accepts a wallet address and returns a list of all ANTs owned or controlled by that address,
+- [`getAntsForAddress`](/ar-io-sdk/ant-registry/get-ants-for-address) which provides a cleaner API for fetching ANTs owned or controlled by a wallet address (added in v3.15.0),
 - [`register`](/ar-io-sdk/ant-registry/register) which registers a new ANT with the registry process
+
+For managing ANT versions and updates, see the [`ANTVersions`](/ar-io-sdk/ant-versions) class (added in v3.9.0).
 
 ArNS names that are purchased via [ar://arns](https://arns.arweave.net) which use default ANTs are registered without further input during the creation process,
 but users who bring their own custom ANTs to assign new ArNS names to will need to call the `ANTRegistry.register()` method in order for apps using the registry to see the new ArNS name.
@@ -31,6 +33,6 @@ but users who bring their own custom ANTs to assign new ArNS names to will need 
 <Tip title="Optional">
   The ANT Registry is separate from the AR.IO Network Contract, ANT registration
   is not essential for ANTs and their corresponding ArNS name to function
-  correctly, though some applications, like ar://arns, may have features that rely on the
-  registry.
+  correctly, though some applications, like ar://arns, may have features that
+  rely on the registry.
 </Tip>

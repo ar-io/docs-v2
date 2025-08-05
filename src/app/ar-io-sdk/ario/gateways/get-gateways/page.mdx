@@ -8,7 +8,6 @@ export const metadata = {
   },
 }
 
-
 # getGateways
 
 `getGateways` is a method on the `ARIO` class that retrieves all gateways with optional pagination and filtering support.
@@ -60,6 +59,16 @@ export const metadata = {
       <Table.Cell>true</Table.Cell>
       <Table.Cell>desc</Table.Cell>
     </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">filters</Table.Cell>
+      <Table.Cell>Record&lt;string, string | string[]&gt;</Table.Cell>
+      <Table.Cell>
+        Filters to apply to the results. Keys must match object properties.
+        Arrays act as OR conditions, multiple keys act as AND conditions.
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+      <Table.Cell>None</Table.Cell>
+    </Table.Row>
   </Table.Body>
 </Table>
 
@@ -96,6 +105,36 @@ export const metadata = {
       });
 
       console.log(gateways);
+    }
+
+    main();
+    ```
+
+    ```typescript {{ title: 'With Filters' }}
+    const { ARIO } = require('@ar.io/sdk');
+
+    async function main() {
+      const ario = ARIO.init();
+
+      // Filter gateways by status (OR condition)
+      const activeGateways = await ario.getGateways({
+        limit: 50,
+        filters: {
+          status: ['joined', 'active'] // Returns gateways with status 'joined' OR 'active'
+        }
+      });
+
+      // Filter by multiple criteria (AND condition)
+      const filteredGateways = await ario.getGateways({
+        limit: 50,
+        filters: {
+          status: 'joined',                    // Must have status 'joined'
+          'settings.allowDelegatedStaking': 'true'  // AND must allow delegated staking
+        }
+      });
+
+      console.log(activeGateways);
+      console.log(filteredGateways);
     }
 
     main();

@@ -61,6 +61,15 @@ export const metadata = {
       <Table.Cell>true</Table.Cell>
       <Table.Cell>desc</Table.Cell>
     </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">filters</Table.Cell>
+      <Table.Cell>Record&lt;string, string | string[]&gt;</Table.Cell>
+      <Table.Cell>
+        Filters to apply to the results. Keys must match object properties. Arrays act as OR conditions, multiple keys act as AND conditions.
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+      <Table.Cell>None</Table.Cell>
+    </Table.Row>
   </Table.Body>
 </Table>
 
@@ -101,6 +110,37 @@ export const metadata = {
 
     main();
     ```
+
+    ```typescript {{ title: 'With Filters' }}
+    const { ARIO } = require('@ar.io/sdk');
+
+    async function main() {
+      const ario = ARIO.init();
+      
+      // Filter records by specific names (OR condition)
+      const records = await ario.getArNSRecords({
+        limit: 50,
+        filters: {
+          name: ['ardrive', 'ar-io', 'permaweb'] // Returns records with name 'ardrive' OR 'ar-io' OR 'permaweb'
+        }
+      });
+
+      // Filter by multiple criteria (AND condition)
+      const filteredRecords = await ario.getArNSRecords({
+        limit: 50,
+        filters: {
+          name: 'ardrive',           // Must have name 'ardrive'
+          type: ['lease', 'perm']    // AND type must be 'lease' OR 'perm'
+        }
+      });
+
+      console.log(records);
+      console.log(filteredRecords);
+    }
+
+    main();
+    ```
+
 
 </CodeGroup>
 

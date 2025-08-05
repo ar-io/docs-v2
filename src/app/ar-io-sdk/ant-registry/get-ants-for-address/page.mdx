@@ -1,0 +1,125 @@
+import { CodeGroup } from '@/components/Code'
+
+export const metadata = {
+  title: 'getAntsForAddress',
+  description: 'Get ANTs owned or controlled by a wallet address',
+  openGraph: {
+    title: 'getAntsForAddress',
+  },
+}
+
+# getAntsForAddress
+
+`getAntsForAddress` is a method on the `ANTRegistry` class that provides a cleaner API for fetching ANTs owned or controlled by a specific wallet address. This method is functionally equivalent to `accessControlList` but provides a more intuitive interface.
+
+`getAntsForAddress` does not require authentication.
+
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Optional</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">address</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>
+        The wallet address to query for owned or controlled ANTs
+      </Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
+
+## Examples
+
+<CodeGroup title="getAntsForAddress">
+
+    ```typescript {{ title: 'NodeJS' }}
+    const { ANTRegistry } = require('@ar.io/sdk');
+
+    async function main() {
+      const registry = ANTRegistry.init();
+
+      const ants = await registry.getAntsForAddress({
+        address: '7oqF5r...LbpfT7'
+      });
+
+      console.log('Owned ANTs:', ants.Owned);
+      console.log('Controlled ANTs:', ants.Controlled);
+    }
+
+    main();
+    ```
+
+    ```typescript {{ title: 'Web' }}
+    import { ANTRegistry } from '@ar.io/sdk/web';
+
+    async function main() {
+      const registry = ANTRegistry.init();
+
+      const ants = await registry.getAntsForAddress({
+        address: '7oqF5r...LbpfT7'
+      });
+
+      console.log('Owned ANTs:', ants.Owned);
+      console.log('Controlled ANTs:', ants.Controlled);
+    }
+
+    main();
+    ```
+
+    ```typescript {{ title: 'With Custom Process' }}
+    const { ANTRegistry, AOProcess } = require('@ar.io/sdk');
+    const { connect } = require('@permaweb/aoconnect');
+
+    async function main() {
+      const registry = ANTRegistry.init({
+        process: new AOProcess({
+          processId: 'custom-ant-registry-process-id',
+          ao: connect({
+            MODE: 'legacy',
+            CU_URL: 'https://custom-cu-url.com'
+          })
+        })
+      });
+
+      const ants = await registry.getAntsForAddress({
+        address: '7oqF5r...LbpfT7'
+      });
+
+      console.log(ants);
+    }
+
+    main();
+    ```
+
+</CodeGroup>
+
+## Output
+
+```js
+{
+  "Owned": [
+    "bh9l1cy0aksiL_x9M359faGzM_yjralacHIUo8_nQXM",
+    "abc123def456ghi789jkl012mno345pqr678stu901"
+  ],
+  "Controlled": [
+    "xyz987wvu654tsr321qpo098nml765kji432hgf876"
+  ]
+}
+```
+
+## Notes
+
+- This method returns the same data structure as `accessControlList`
+- The `Owned` array contains ANT process IDs where the address is the owner
+- The `Controlled` array contains ANT process IDs where the address is a controller
+- If no ANTs are found for the address, both arrays will be empty
+- This method automatically uses HyperBeam caching when available for improved performance

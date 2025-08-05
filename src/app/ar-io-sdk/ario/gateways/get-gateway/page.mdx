@@ -8,7 +8,6 @@ export const metadata = {
   },
 }
 
-
 # getGateway
 
 `getGateway` is a method on the `ARIO` class that retrieves detailed information about a specific gateway using its wallet address.
@@ -28,7 +27,7 @@ export const metadata = {
   </Table.Head>
   <Table.Body>
     <Table.Row>
-      <Table.Cell className="font-semibold">gatewayAddress</Table.Cell>
+      <Table.Cell className="font-semibold">address</Table.Cell>
       <Table.Cell>string - WalletAddress</Table.Cell>
       <Table.Cell>The wallet address of the gateway to retrieve</Table.Cell>
       <Table.Cell>false</Table.Cell>
@@ -46,7 +45,7 @@ export const metadata = {
     async function main() {
       const ario = ARIO.init();
       const gateway = await ario.getGateway({
-        gatewayAddress: 't4Xr0_J4Iurt7caNST02cMotaz2FIbWQ4Kbj616RHl3'
+        address: 't4Xr0_J4Iurt7caNST02cMotaz2FIbWQ4Kbj616RHl3'
       });
 
       console.log(gateway);
@@ -61,7 +60,7 @@ export const metadata = {
     async function main() {
       const ario = ARIO.init();
       const gateway = await ario.getGateway({
-        gatewayAddress: 't4Xr0_J4Iurt7caNST02cMotaz2FIbWQ4Kbj616RHl3'
+        address: 't4Xr0_J4Iurt7caNST02cMotaz2FIbWQ4Kbj616RHl3'
       });
 
       console.log(gateway);

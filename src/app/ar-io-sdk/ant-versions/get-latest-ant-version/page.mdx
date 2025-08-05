@@ -1,0 +1,62 @@
+import { CodeGroup } from '@/components/Code'
+
+export const metadata = {
+  title: 'getLatestANTVersion',
+  description: 'Retrieve the latest version for an ANT',
+  openGraph: {
+    title: 'getLatestANTVersion',
+  },
+}
+
+# getLatestANTVersion
+
+`getLatestANTVersion` is a method on the `ANTVersions` class that retrieves the latest version for an ANT based on alphabetical sorting of version numbers.
+
+`getLatestANTVersion` does not require authentication.
+
+## Parameters
+
+The `getLatestANTVersion` method does not accept any parameters.
+
+## Examples
+
+<CodeGroup title="getLatestANTVersion">
+
+    ```typescript {{ title: 'NodeJS' }}
+    const { ANTVersions } = require('@ar.io/sdk');
+
+    async function main() {
+      const versions = ANTVersions.init();
+      const latestVersion = await versions.getLatestANTVersion();
+
+      console.log(latestVersion);
+    }
+
+    main();
+    ```
+
+    ```typescript {{ title: 'Web' }}
+    import { ANTVersions } from '@ar.io/sdk/web';
+
+    async function main() {
+      const versions = ANTVersions.init();
+      const latestVersion = await versions.getLatestANTVersion();
+
+      console.log(latestVersion);
+    }
+
+    main();
+    ```
+
+</CodeGroup>
+
+## Output
+
+```js
+{
+  "version": "2.0.0",
+  "moduleId": "yza890...bcd123",
+  "luaSourceId": "efg456...hij789",
+  "notes": "Major update with new features"
+}
+```

@@ -1,0 +1,57 @@
+import Tip from '@/components/Tip'
+
+export const metadata = {
+  title: 'Token Faucet',
+  description:
+    'Request tokens from the AR.IO token faucet using captcha verification',
+  openGraph: {
+    title: 'Token Faucet',
+  },
+}
+
+# Token Faucet
+
+## Overview
+
+The Token Faucet functionality allows developers to request AR.IO tokens through a captcha-protected API service. This feature was added in SDK version 3.10.0.
+
+The faucet leverages a new API service with hCaptcha integration. Developers can request JSON Web Tokens (JWT) by solving a captcha, and then use those tokens to claim AR.IO tokens to wallet addresses, subject to rate limits.
+
+## Initialization
+
+The faucet functionality is available on ARIO instances when initialized with a faucet URL:
+
+```typescript
+// Initialize ARIO with faucet support (faucetUrl is optional)
+const ario = ARIO.init({
+  faucetUrl: 'https://faucet.ar.io', // optional, defaults to 'https://faucet.ario.permaweb.services'
+})
+
+// Or use the default faucet URL
+const ario = ARIO.testnet() // faucetUrl defaults to 'https://faucet.ario.permaweb.services'
+
+// Access faucet methods
+const captchaUrl = await ario.faucet.captchaUrl()
+```
+
+## Available Methods
+
+The `faucet` object on ARIO instances provides the following methods:
+
+- [`captchaUrl`](/ar-io-sdk/faucet/captcha-url) - Get the captcha URL for the current process
+- [`requestAuthToken`](/ar-io-sdk/faucet/request-auth-token) - Request an auth token using captcha response
+- [`claimWithCaptchaResponse`](/ar-io-sdk/faucet/claim-with-captcha-response) - Claim tokens directly with captcha response
+- [`claimWithAuthToken`](/ar-io-sdk/faucet/claim-with-auth-token) - Claim tokens using an auth token
+- [`verifyAuthToken`](/ar-io-sdk/faucet/verify-auth-token) - Verify if an auth token is still valid
+
+## Usage Flow
+
+1. **Get Captcha URL** - Retrieve the captcha URL for the process
+2. **Solve Captcha** - User solves the captcha on the provided URL
+3. **Request Auth Token** - Use captcha response to get an auth token
+4. **Claim Tokens** - Use auth token to claim tokens to a wallet address
+
+<Tip title="Note">
+  The faucet functionality is only available on testnet instances. The faucetUrl
+  parameter is optional and defaults to 'https://faucet.ario.permaweb.services'.
+</Tip>
