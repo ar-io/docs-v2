@@ -22,7 +22,13 @@ export const metadata = {
   separately before calling `buyRecord`.**
 </Tip>
 
-
+<Tip title="New in v3.16.0: Progress Callbacks">
+  The `spawnANT` utility now supports an optional `onSigningProgress` callback
+  that provides real-time updates during the ANT spawning process. This callback
+  receives progress steps like 'spawning' and 'verifying-ownership' along with
+  relevant event data, making it easier to track the progress of ANT creation
+  and provide better user feedback.
+</Tip>
 
 ## Examples
 
@@ -60,7 +66,16 @@ export const metadata = {
         const antProcessId = await spawnANT({
             signer: aoSigner,
             module: latestVersion.moduleId,
-            state: antState
+            state: antState,
+            onSigningProgress: (step, event) => {
+                console.log(`ANT spawning progress: ${step}`);
+                if (step === 'spawning') {
+                    console.log('Spawning ANT process:', event);
+                }
+                if (step === 'verifying-ownership') {
+                    console.log('Verifying ANT ownership:', event);
+                }
+            }
         });
 
         // Configure ANT
@@ -151,7 +166,16 @@ export const metadata = {
         const antProcessId = await spawnANT({
             signer: aoSigner,
             module: latestVersion.moduleId,
-            state: antState
+            state: antState,
+            onSigningProgress: (step, event) => {
+                console.log(`ANT spawning progress: ${step}`);
+                if (step === 'spawning') {
+                    console.log('Spawning ANT process:', event);
+                }
+                if (step === 'verifying-ownership') {
+                    console.log('Verifying ANT ownership:', event);
+                }
+            }
         });
 
         // Configure ANT
@@ -236,7 +260,6 @@ export const metadata = {
     ```
 
 </CodeGroup>
-
 
 ## Parameters
 
