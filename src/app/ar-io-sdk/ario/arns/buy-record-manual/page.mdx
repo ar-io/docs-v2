@@ -2,7 +2,8 @@ import { CodeGroup } from '@/components/Code'
 
 export const metadata = {
   title: 'buyRecord (manual)',
-  description: 'Purchase an ArNS record for a specified name and duration with manual ANT creation',
+  description:
+    'Purchase an ArNS record for a specified name and duration with manual ANT creation',
   openGraph: {
     title: 'buyRecord (manual)',
   },
@@ -23,70 +24,73 @@ export const metadata = {
 
 ## Parameters
 
-<Table>
-  <Table.Head>
-    <Table.Row>
-      <Table.Header>Parameter</Table.Header>
-      <Table.Header>Type</Table.Header>
-      <Table.Header>Description</Table.Header>
-      <Table.Header>Optional</Table.Header>
-    </Table.Row>
-  </Table.Head>
-  <Table.Body>
-    <Table.Row>
-      <Table.Cell className="font-semibold">name</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>The ArNS name to purchase</Table.Cell>
-      <Table.Cell>false</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">years</Table.Cell>
-      <Table.Cell>number</Table.Cell>
-      <Table.Cell>The number of years to lease the name for (1-5)</Table.Cell>
-      <Table.Cell>false</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">processId</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>
-        The ANT process ID to set for this name. Must be an existing ANT that
-        you own or control
-      </Table.Cell>
-      <Table.Cell>false</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">type</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>The type of purchase: 'lease' or 'permabuy'</Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">fundFrom</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>
-        The source of funds: 'balance', 'stakes', 'any', or 'turbo'
-      </Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">paidBy</Table.Cell>
-      <Table.Cell>string | string[]</Table.Cell>
-      <Table.Cell>
-        Wallet address(es) that will pay for the purchase (used with fundFrom:
-        'turbo')
-      </Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">tags</Table.Cell>
-      <Table.Cell>array</Table.Cell>
-      <Table.Cell>
-        An array of GQL tag objects to attach to the transfer AO message
-      </Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-  </Table.Body>
-</Table>
+{
+
+<div style={{ textAlign: 'center' }}>
+  <table className="inline-table">
+    <thead>
+      <tr>
+        <th>Parameter</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Optional</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>name</th>
+        <td>string</td>
+        <td>The ArNS name to purchase</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <th>years</th>
+        <td>number</td>
+        <td>The number of years to lease the name for (1-5)</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <th>processId</th>
+        <td>string</td>
+        <td>
+          The ANT process ID to set for this name. Must be an existing ANT that
+          you own or control
+        </td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <th>type</th>
+        <td>string</td>
+        <td>The type of purchase: 'lease' or 'permabuy'</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th>fundFrom</th>
+        <td>string</td>
+        <td>The source of funds: 'balance', 'stakes', 'any', or 'turbo'</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th>paidBy</th>
+        <td>string | string[]</td>
+        <td>
+          Wallet address(es) that will pay for the purchase (used with fundFrom:
+          'turbo')
+        </td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th>tags</th>
+        <td>array</td>
+        <td>
+          An array of GQL tag objects to attach to the transfer AO message
+        </td>
+        <td>true</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+}
 
 ## Examples
 
@@ -191,7 +195,7 @@ export const metadata = {
         // Connect wallet
         await window.arweaveWallet.connect([
           'ACCESS_ADDRESS',
-          'ACCESS_ALL_ADDRESSES', 
+          'ACCESS_ALL_ADDRESSES',
           'ACCESS_PUBLIC_KEY',
           'SIGN_TRANSACTION',
           'ACCESS_ARWEAVE_CONFIG',
@@ -274,7 +278,7 @@ export const metadata = {
         // Connect wallet
         await window.arweaveWallet.connect([
             'ACCESS_ADDRESS',
-            'ACCESS_ALL_ADDRESSES', 
+            'ACCESS_ALL_ADDRESSES',
             'ACCESS_PUBLIC_KEY',
             'SIGN_TRANSACTION',
             'ACCESS_ARWEAVE_CONFIG',
@@ -299,5 +303,4 @@ export const metadata = {
     main().catch(console.error);
     ```
 
-    
 </CodeGroup>

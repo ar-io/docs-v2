@@ -1,78 +1,89 @@
 export const metadata = {
   title: 'buyRecord',
-  description: 'buyRecord is a method on the ARIO class that purchases a new ArNS record with the specified name, type, processId, and duration.',
+  description:
+    'buyRecord is a method on the ARIO class that purchases a new ArNS record with the specified name, type, processId, and duration.',
 }
 
 # buyRecord
 
 `buyRecord` is a method on the `ARIO` class that purchases a new ArNS record with the specified name, type, processId, and duration.
 
-
 ## Parameters
 
-<Table>
-  <Table.Head>
-    <Table.Row>
-      <Table.Header>Parameter</Table.Header>
-      <Table.Header>Type</Table.Header>
-      <Table.Header>Description</Table.Header>
-      <Table.Header>Optional</Table.Header>
-    </Table.Row>
-  </Table.Head>
-  <Table.Body>
-    <Table.Row>
-      <Table.Cell className="font-semibold">name</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>The ArNS name to purchase</Table.Cell>
-      <Table.Cell>false</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">type</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>The type of record: 'lease' or 'permabuy'</Table.Cell>
-      <Table.Cell>false</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">years</Table.Cell>
-      <Table.Cell>number</Table.Cell>
-      <Table.Cell>
-        The number of years to lease (for lease type) or purchase permanently
-        (for permabuy type)
-      </Table.Cell>
-      <Table.Cell>false</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">processId</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>
-        The process id of an existing ANT process. If not provided, a new ANT
-        process using the provided signer will be spawned, and the ArNS record
-        will be assigned to that process.
-      </Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">referrer</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>
-        Track purchase referrals for analytics (e.g. my-app.com)
-      </Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">tags</Table.Cell>
-      <Table.Cell>array</Table.Cell>
-      <Table.Cell>
-        An array of GQL tag objects to attach to the buyRecord AO message
-      </Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-  </Table.Body>
-</Table>
+{
+
+<div style={{ textAlign: 'center' }}>
+  <table className="inline-table">
+    <thead>
+      <tr>
+        <th>Parameter</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Optional</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>name</th>
+        <td>string</td>
+        <td>The ArNS name to purchase</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <th>type</th>
+        <td>string</td>
+        <td>The type of record: 'lease' or 'permabuy'</td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <th>years</th>
+        <td>number</td>
+        <td>
+          The number of years to lease (for lease type) or purchase permanently
+          (for permabuy type)
+        </td>
+        <td>false</td>
+      </tr>
+      <tr>
+        <th>processId</th>
+        <td>string</td>
+        <td>
+          The process id of an existing ANT process. If not provided, a new ANT
+          process using the provided signer will be spawned, and the ArNS record
+          will be assigned to that process.
+        </td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th>referrer</th>
+        <td>string</td>
+        <td>Track purchase referrals for analytics (e.g. my-app.com)</td>
+        <td>true</td>
+      </tr>
+      <tr>
+        <th>tags</th>
+        <td>array</td>
+        <td>
+          An array of GQL tag objects to attach to the buyRecord AO message
+        </td>
+        <td>true</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+}
 
 ## Examples
 
 <CodeGroup title="buyRecord">
+
+```typescript {{title: "Basic"}}
+const record = await ario.buyRecord({
+  name: 'ardrive',
+  type: 'lease',
+  years: 1,
+})
+```
 
 ```typescript {{title: "NodeJS"}}
 const fs = require('fs')
@@ -132,7 +143,7 @@ async function main() {
     signer: new ArConnectSigner(window.arweaveWallet),
   })
 
- const record = await ario.buyRecord(
+  const record = await ario.buyRecord(
     {
       name: 'ardrive',
       type: 'lease',
@@ -205,13 +216,8 @@ async function main() {
 main()
 ```
 
-
 </CodeGroup>
-
-
 
 ## Manual ANT Creation
 
 If you prefer to manually create an ANT during the purchase process, see the [manual ANT creation workflow](/ar-io-sdk/ario/arns/buy-record-manual).
-
-
