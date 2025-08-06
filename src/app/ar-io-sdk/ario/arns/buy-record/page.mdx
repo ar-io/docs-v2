@@ -1,25 +1,12 @@
-import { CodeGroup } from '@/components/Code'
-
 export const metadata = {
   title: 'buyRecord',
-  description: 'Purchase an ArNS record for a specified name and duration',
-  openGraph: {
-    title: 'buyRecord',
-  },
+  description: 'buyRecord is a method on the ARIO class that purchases a new ArNS record with the specified name, type, processId, and duration.',
 }
 
 # buyRecord
 
-`buyRecord` is a method on the `ARIO` class that purchases a record in the ArNS registry for a specified name and duration.
+`buyRecord` is a method on the `ARIO` class that purchases a new ArNS record with the specified name, type, processId, and duration.
 
-`buyRecord` requires authentication.
-
-<Tip title="Important: ANT Process ID">
-  The `processId` parameter must be the process ID of an **ANT (Arweave Name
-  Token)** that you own or control. You cannot use the ARIO contract address or
-  create ANTs automatically through this method. **You must create your ANT
-  separately before calling `buyRecord`.**
-</Tip>
 
 ## Parameters
 
@@ -40,40 +27,35 @@ export const metadata = {
       <Table.Cell>false</Table.Cell>
     </Table.Row>
     <Table.Row>
+      <Table.Cell className="font-semibold">type</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>The type of record: 'lease' or 'permabuy'</Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+    <Table.Row>
       <Table.Cell className="font-semibold">years</Table.Cell>
       <Table.Cell>number</Table.Cell>
-      <Table.Cell>The number of years to lease the name for (1-5)</Table.Cell>
+      <Table.Cell>
+        The number of years to lease (for lease type) or purchase permanently
+        (for permabuy type)
+      </Table.Cell>
       <Table.Cell>false</Table.Cell>
     </Table.Row>
     <Table.Row>
       <Table.Cell className="font-semibold">processId</Table.Cell>
       <Table.Cell>string</Table.Cell>
       <Table.Cell>
-        The ANT process ID to set for this name. Must be an existing ANT that
-        you own or control
-      </Table.Cell>
-      <Table.Cell>false</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">type</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>The type of purchase: 'lease' or 'permabuy'</Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">fundFrom</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>
-        The source of funds: 'balance', 'stakes', 'any', or 'turbo'
+        The process id of an existing ANT process. If not provided, a new ANT
+        process using the provided signer will be spawned, and the ArNS record
+        will be assigned to that process.
       </Table.Cell>
       <Table.Cell>true</Table.Cell>
     </Table.Row>
     <Table.Row>
-      <Table.Cell className="font-semibold">paidBy</Table.Cell>
-      <Table.Cell>string | string[]</Table.Cell>
+      <Table.Cell className="font-semibold">referrer</Table.Cell>
+      <Table.Cell>string</Table.Cell>
       <Table.Cell>
-        Wallet address(es) that will pay for the purchase (used with fundFrom:
-        'turbo')
+        Track purchase referrals for analytics (e.g. my-app.com)
       </Table.Cell>
       <Table.Cell>true</Table.Cell>
     </Table.Row>
@@ -81,7 +63,7 @@ export const metadata = {
       <Table.Cell className="font-semibold">tags</Table.Cell>
       <Table.Cell>array</Table.Cell>
       <Table.Cell>
-        An array of GQL tag objects to attach to the transfer AO message
+        An array of GQL tag objects to attach to the buyRecord AO message
       </Table.Cell>
       <Table.Cell>true</Table.Cell>
     </Table.Row>
@@ -92,283 +74,144 @@ export const metadata = {
 
 <CodeGroup title="buyRecord">
 
-    ```typescript {{title: "Complete Workflow - NodeJS"}}
-    const fs = require("fs");
-    const {
-      ARIO,
-      ANT,
-      ANTRegistry,
-      ArweaveSigner,
-      spawnANT,
-      createAoSigner,
-      initANTStateForAddress
-    } = require("@ar.io/sdk");
+```typescript {{title: "NodeJS"}}
+const fs = require('fs')
+const { ARIO, ArweaveSigner } = require('@ar.io/sdk')
 
-    async function main() {
-        const jwk = JSON.parse(fs.readFileSync("KeyFile.json"));
-        const signer = new ArweaveSigner(jwk);
-        const aoSigner = createAoSigner(signer);
-
-        // Get latest ANT version
-        const antVersions = ANT.versions.init();
-        const latestVersion = await antVersions.getLatestANTVersion();
-
-        // Spawn ANT process
-        const antState = initANTStateForAddress({
-            owner: signer.address,
-            name: 'My Awesome Domain',
-            ticker: 'MAD',
-            description: 'My awesome ArNS domain'
-        });
-
-        const antProcessId = await spawnANT({
-            signer: aoSigner,
-            module: latestVersion.moduleId,
-            state: antState
-        });
-
-        // Configure ANT
-        const ant = ANT.init({
-            signer,
-            processId: antProcessId
-        });
-
-        await ant.setName({ name: 'My Awesome Domain' });
-        await ant.setTicker({ ticker: 'MAD' });
-
-        // Register ANT with registry
-        const antRegistry = ANTRegistry.init({ signer });
-        await antRegistry.register({ processId: antProcessId });
-
-        // Wait for registration to be processed
-        let isRegistered = false;
-        let attempts = 0;
-        while (!isRegistered && attempts < 15) {
-            await new Promise(resolve => setTimeout(resolve, 2000 * (attempts + 1)));
-            try {
-                const acl = await antRegistry.accessControlList({ address: signer.address });
-                isRegistered = [...acl.Owned, ...acl.Controlled].includes(antProcessId);
-                attempts++;
-            } catch (error) {
-                attempts++;
-            }
+async function main() {
+  const jwk = JSON.parse(fs.readFileSync('KeyFile.json'))
+  const signer = new ArweaveSigner(jwk)
+  const ario = ARIO.mainnet({ signer })
+  const record = await ario.buyRecord(
+    {
+      name: 'ardrive',
+      type: 'lease',
+      years: 1,
+      referrer: 'my-app.com', // optional: track purchase referrals for analytics
+    },
+    {
+      // optional tags
+      tags: [{ name: 'App-Name', value: 'ArNS-App' }],
+      onSigningProgress: (step, event) => {
+        console.log(`Signing progress: ${step}`)
+        if (step === 'spawning-ant') {
+          console.log('Spawning ant:', event)
         }
-
-        if (!isRegistered) {
-            throw new Error('Failed to register ANT after multiple attempts');
+        if (step === 'registering-ant') {
+          console.log('Registering ant:', event)
         }
-
-        // Purchase ArNS name
-        const ario = ARIO.init({ signer });
-        const { id: txId } = await ario.buyRecord({
-            name: 'mydomain',
-            years: 1,
-            processId: antProcessId,
-            type: 'lease',
-            fundFrom: 'balance'
-        });
-
-        console.log('ArNS name purchased successfully!');
-        console.log('Transaction ID:', txId);
-        console.log('ANT Process ID:', antProcessId);
-    }
-
-    main().catch(console.error);
-    ```
-
-    ```typescript {{ title: 'Complete Workflow - Web' }}
-    import {
-      ARIO,
-      ANT,
-      ANTRegistry,
-      ArConnectSigner,
-      spawnANT,
-      createAoSigner,
-      initANTStateForAddress
-    } from '@ar.io/sdk/web';
-
-    async function main() {
-        // Connect wallet
-        await window.arweaveWallet.connect([
-          'ACCESS_ADDRESS',
-          'ACCESS_ALL_ADDRESSES', 
-          'ACCESS_PUBLIC_KEY',
-          'SIGN_TRANSACTION',
-          'ACCESS_ARWEAVE_CONFIG',
-          'SIGNATURE',
-        ]);
-        const signer = new ArConnectSigner(window.arweaveWallet);
-        const aoSigner = createAoSigner(signer);
-
-        // Get latest ANT version
-        const antVersions = ANT.versions.init();
-        const latestVersion = await antVersions.getLatestANTVersion();
-
-        // Spawn ANT process
-        const antState = initANTStateForAddress({
-            owner: signer.address,
-            name: 'My Awesome Domain',
-            ticker: 'MAD',
-            description: 'My awesome ArNS domain'
-        });
-
-        const antProcessId = await spawnANT({
-            signer: aoSigner,
-            module: latestVersion.moduleId,
-            state: antState
-        });
-
-        // Configure ANT
-        const ant = ANT.init({
-            signer,
-            processId: antProcessId
-        });
-
-        await ant.setName({ name: 'My Awesome Domain' });
-        await ant.setTicker({ ticker: 'MAD' });
-
-        // Register ANT with registry
-        const antRegistry = ANTRegistry.init({ signer });
-        await antRegistry.register({ processId: antProcessId });
-
-        // Wait for registration to be processed
-        let isRegistered = false;
-        let attempts = 0;
-        while (!isRegistered && attempts < 15) {
-            await new Promise(resolve => setTimeout(resolve, 2000 * (attempts + 1)));
-            try {
-                const acl = await antRegistry.accessControlList({ address: signer.address });
-                isRegistered = [...acl.Owned, ...acl.Controlled].includes(antProcessId);
-                attempts++;
-            } catch (error) {
-                attempts++;
-            }
+        if (step === 'verifying-state') {
+          console.log('Verifying state:', event)
         }
-
-        if (!isRegistered) {
-            throw new Error('Failed to register ANT after multiple attempts');
+        if (step === 'buying-name') {
+          console.log('Buying name:', event)
         }
+      },
+    },
+  )
+}
 
-        // Purchase ArNS name
-        const ario = ARIO.init({ signer });
-        const { id: txId } = await ario.buyRecord({
-            name: 'mydomain',
-            years: 1,
-            processId: antProcessId,
-            type: 'lease',
-            fundFrom: 'balance'
-        });
+main()
+```
 
-        console.log('ArNS name purchased successfully!');
-        console.log('Transaction ID:', txId);
-        console.log('ANT Process ID:', antProcessId);
-    }
+```typescript {{ title: 'Web' }}
+import { ARIO, ArConnectSigner } from '@ar.io/sdk/web'
 
-    main().catch(console.error);
-    ```
+async function main() {
+  // Connect to wallet
+  await window.arweaveWallet.connect([
+    'ACCESS_ADDRESS',
+    'ACCESS_ALL_ADDRESSES',
+    'ACCESS_PUBLIC_KEY',
+    'SIGN_TRANSACTION',
+    'ACCESS_ARWEAVE_CONFIG',
+    'SIGNATURE',
+  ])
 
-    ```typescript {{ title: 'Using Existing ANT' }}
-    import { ARIO, ArConnectSigner } from '@ar.io/sdk/web';
+  const ario = ARIO.init({
+    signer: new ArConnectSigner(window.arweaveWallet),
+  })
 
-    async function main() {
-        // Connect wallet
-        await window.arweaveWallet.connect([
-            'ACCESS_ADDRESS',
-            'ACCESS_ALL_ADDRESSES', 
-            'ACCESS_PUBLIC_KEY',
-            'SIGN_TRANSACTION',
-            'ACCESS_ARWEAVE_CONFIG',
-            'SIGNATURE',
-          ]);
-        const signer = new ArConnectSigner(window.arweaveWallet);
-        const existingAntProcessId = 'your-existing-ant-process-id';
-
-        const ario = ARIO.init({ signer });
-        const { id: txId } = await ario.buyRecord({
-            name: 'mydomain',
-            years: 1,
-            processId: existingAntProcessId,
-            type: 'lease'
-        });
-
-        console.log('ArNS name purchased successfully!');
-        console.log('Transaction ID:', txId);
-        console.log('ANT Process ID:', existingAntProcessId);
-    }
-
-    main().catch(console.error);
-    ```
-
-    ```typescript {{ title: 'Turbo Funding' }}
-    const {
-      ARIO,
-      ANT,
-      ANTRegistry,
-      ArweaveSigner,
-      spawnANT,
-      createAoSigner,
-      initANTStateForAddress
-    } = require('@ar.io/sdk');
-
-    async function main() {
-        const jwk = JSON.parse(fs.readFileSync("KeyFile.json"));
-        const signer = new ArweaveSigner(jwk);
-        const aoSigner = createAoSigner(signer);
-
-        // Spawn and configure ANT
-        const antVersions = ANT.versions.init();
-        const latestVersion = await antVersions.getLatestANTVersion();
-
-        const antState = initANTStateForAddress({
-            owner: signer.address,
-            name: 'My Turbo Domain',
-            ticker: 'MTD'
-        });
-
-        const antProcessId = await spawnANT({
-            signer: aoSigner,
-            module: latestVersion.moduleId,
-            state: antState
-        });
-
-        const ant = ANT.init({ signer, processId: antProcessId });
-        await ant.setName({ name: 'My Turbo Domain' });
-
-        // Register ANT
-        const antRegistry = ANTRegistry.init({ signer });
-        await antRegistry.register({ processId: antProcessId });
-
-        // Wait for registration
-        let isRegistered = false;
-        let attempts = 0;
-        while (!isRegistered && attempts < 15) {
-            await new Promise(resolve => setTimeout(resolve, 2000 * (attempts + 1)));
-            try {
-                const acl = await antRegistry.accessControlList({ address: signer.address });
-                isRegistered = [...acl.Owned, ...acl.Controlled].includes(antProcessId);
-                attempts++;
-            } catch (error) {
-                attempts++;
-            }
+ const record = await ario.buyRecord(
+    {
+      name: 'ardrive',
+      type: 'lease',
+      years: 1,
+      referrer: 'my-app.com', // optional: track purchase referrals for analytics
+    },
+    {
+      // optional tags
+      tags: [{ name: 'App-Name', value: 'ArNS-App' }],
+      onSigningProgress: (step, event) => {
+        console.log(`Signing progress: ${step}`)
+        if (step === 'spawning-ant') {
+          console.log('Spawning ant:', event)
         }
+        if (step === 'registering-ant') {
+          console.log('Registering ant:', event)
+        }
+        if (step === 'verifying-state') {
+          console.log('Verifying state:', event)
+        }
+        if (step === 'buying-name') {
+          console.log('Buying name:', event)
+        }
+      },
+    },
+  )
+}
 
-        // Purchase using turbo funding
-        const ario = ARIO.init({ signer });
-        const { id: txId } = await ario.buyRecord({
-            name: 'myturbodomain',
-            years: 1,
-            processId: antProcessId,
-            type: 'lease',
-            fundFrom: 'turbo',
-            paidBy: ['7oqF5r...LbpfT7', 'abc123...def789']
-        });
+main()
+```
 
-        console.log('ArNS name purchased with turbo funding!');
-        console.log('Transaction ID:', txId);
-        console.log('ANT Process ID:', antProcessId);
-    }
+```typescript {{title: "With Existing ANT Process"}}
+const fs = require('fs')
+const { ARIO, ArweaveSigner } = require('@ar.io/sdk')
 
-    main().catch(console.error);
-    ```
+async function main() {
+  const jwk = JSON.parse(fs.readFileSync('KeyFile.json'))
+  const signer = new ArweaveSigner(jwk)
+  const ario = ARIO.mainnet({ signer })
+  const record = await ario.buyRecord(
+    {
+      name: 'ardrive',
+      type: 'lease',
+      processId: 'bh9l1cy0aksiL_x9M359faGzM_yjralacHIUo8_nQXM', // optional: assign to existing ANT process
+      years: 1,
+      referrer: 'my-app.com', // optional: track purchase referrals for analytics
+    },
+    {
+      // optional tags
+      tags: [{ name: 'App-Name', value: 'ArNS-App' }],
+      onSigningProgress: (step, event) => {
+        console.log(`Signing progress: ${step}`)
+        if (step === 'spawning-ant') {
+          console.log('Spawning ant:', event)
+        }
+        if (step === 'registering-ant') {
+          console.log('Registering ant:', event)
+        }
+        if (step === 'verifying-state') {
+          console.log('Verifying state:', event)
+        }
+        if (step === 'buying-name') {
+          console.log('Buying name:', event)
+        }
+      },
+    },
+  )
+}
+
+main()
+```
+
 
 </CodeGroup>
+
+
+
+## Manual ANT Creation
+
+If you prefer to manually create an ANT during the purchase process, see the [manual ANT creation workflow](/ar-io-sdk/ario/arns/buy-record-manual).
+
+
