@@ -54,27 +54,25 @@ try {
 For React applications, use the wayfinder-react package:
 
 ```jsx
-import { LocalStorageGatewaysProvider, NetworkGatewaysProvider } from '@ar.io/wayfinder-core'
 import { WayfinderProvider, useWayfinder } from '@ar.io/wayfinder-react'
 
 // Wrap your app with the provider
 function App() {
   return (
-    <WayfinderProvider
-      gatewaysProvider={new LocalStorageGatewaysProvider({
-        gatewaysProvider: new NetworkGatewaysProvider({
-          ario: ARIO.mainnet()
-        })
-      })};
-      routingSettings={{
-        strategy: new FastestPingRoutingStrategy({ timeoutMs: 500 }),
-      }}
-    >
+    <WayfinderProvider>
       <MyComponent />
     </WayfinderProvider>
   )
 }
+```
 
+<Tip title="Automatic Configuration">
+  Wayfinder React automatically configures `LocalStorageGatewaysProvider` with
+  `NetworkGatewaysProvider` to avoid rate limits and provide optimal performance
+  for web applications.
+</Tip>
+
+```jsx
 function YourComponent() {
   const txId = 'your-transaction-id'; // Replace with actual txId
 
@@ -118,6 +116,7 @@ function YourComponent() {
 }
 ```
 
+
 ### Available Strategies
 
 #### Routing Strategies
@@ -152,6 +151,11 @@ function YourComponent() {
       <Table.Cell>RandomRoutingStrategy</Table.Cell>
       <Table.Cell>Randomly selects from available gateways</Table.Cell>
       <Table.Cell>Simple load distribution</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell>PingRoutingStrategy</Table.Cell>
+      <Table.Cell>Wraps other strategies with health checks</Table.Cell>
+      <Table.Cell>Adding reliability to any routing strategy</Table.Cell>
     </Table.Row>
   </Table.Body>
 </Table>
@@ -251,7 +255,7 @@ const wayfinder = new Wayfinder({
     sampleRate: 0.1, // 10% sampling
   },
 })
-```
+````
 
 ## Core Concepts
 
@@ -262,13 +266,14 @@ Gateway providers discover and manage the list of available AR.IO gateways:
 - **NetworkGatewaysProvider**: Fetches gateways from the AR.IO Network
 - **StaticGatewaysProvider**: Uses a predefined list of gateways
 - **SimpleCacheGatewaysProvider**: Caches gateway lists for performance in-memory
-- **LocalStorageGatewaysProvider** Caches gateway lists for performance in `window.localStorage`
+- **LocalStorageGatewaysProvider**: Caches gateway lists for performance in `window.localStorage` (default for React applications)
 
 ### Routing Strategies
 
 Routing strategies determine which gateway to use for each request:
 
 - **FastestPingRoutingStrategy**: Selects the gateway with lowest latency
+- **PingRoutingStrategy**: Wraps other strategies with health checks
 - **PreferredWithFallbackRoutingStrategy**: Tries a preferred gateway first
 - **RoundRobinRoutingStrategy**: Distributes requests evenly
 - **RandomRoutingStrategy**: Randomly selects gateways

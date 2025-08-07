@@ -91,6 +91,12 @@ interface FastestPingOptions {
   maxConcurrent?: number
 }
 
+// Ping Strategy
+interface PingOptions {
+  routingStrategy: RoutingStrategy
+  timeoutMs?: number
+}
+
 // Preferred with Fallback Strategy
 interface PreferredWithFallbackOptions {
   preferred: Gateway[]

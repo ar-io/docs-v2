@@ -13,6 +13,11 @@ export const metadata = {
 
 The `useWayfinderUrl` hook resolves ar:// URLs to gateway URLs with built-in loading states and error handling. This hook is perfect for creating links, displaying resolved URLs, or managing URL resolution state in your React components.
 
+<Tip title="Performance Optimized">
+  The hook automatically memoizes parameters to avoid unnecessary rerenders and
+  improve performance. This optimization was added in version 1.0.6.
+</Tip>
+
 ## Signature
 
 ```typescript

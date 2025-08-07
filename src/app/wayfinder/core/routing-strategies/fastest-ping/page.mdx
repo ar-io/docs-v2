@@ -20,10 +20,10 @@ const strategy = new FastestPingRoutingStrategy({
   maxConcurrency: 3,
 })
 
-const selectedGateway = await strategy.selectGateawy({
-  path: '/'
+const selectedGateway = await strategy.selectGateway({
+  path: '/',
   subdomain: 'ardrive',
-  gateways: ['https://arweave.net', 'htps://permagate.io', 'https://arweave.dev']
+  gateways: ['https://arweave.net', 'https://permagate.io', 'https://arweave.dev']
 })
 
 // does a HEAD request on each and selects the one that responded the fastest

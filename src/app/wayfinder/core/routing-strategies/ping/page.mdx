@@ -1,0 +1,104 @@
+export const metadata = {
+  title: 'PingRoutingStrategy',
+  description:
+    'A routing strategy wrapper that performs HEAD checks on gateways returned from another routing strategy to ensure they are healthy before use.',
+  openGraph: {
+    title: 'PingRoutingStrategy',
+  },
+}
+
+# PingRoutingStrategy
+
+## Overview
+
+The `PingRoutingStrategy` is a wrapper strategy that performs a HEAD check on the gateway returned from a provided routing strategy. This ensures that the selected gateway is healthy and responsive before using it for requests, adding an extra layer of reliability to any routing strategy.
+
+## How It Works
+
+1. **Delegate to Inner Strategy**: Use the provided routing strategy to select a gateway
+2. **Perform Health Check**: Send a HEAD request to the selected gateway
+3. **Validate Response**: Check if the gateway responds successfully
+4. **Return Gateway**: If healthy, return the selected gateway; if unhealthy, the strategy may retry or fail
+
+## Basic Usage
+
+```javascript
+import {
+  PingRoutingStrategy,
+  RandomRoutingStrategy,
+} from '@ar.io/wayfinder-core'
+
+const strategy = new PingRoutingStrategy({
+  routingStrategy: new RandomRoutingStrategy(),
+  timeoutMs: 1000,
+})
+
+const selectedGateway = await strategy.selectGateway({
+  gateways: [
+    'https://arweave.net',
+    'https://permagate.io',
+    'https://arweave.dev',
+  ],
+})
+
+// Performs a HEAD check on the randomly selected gateway before returning it
+```
+
+## Parameters
+
+| Parameter         | Type              | Default         | Description                                     |
+| ----------------- | ----------------- | --------------- | ----------------------------------------------- |
+| `routingStrategy` | `RoutingStrategy` | **required**    | The routing strategy to wrap with health checks |
+| `timeoutMs`       | `number`          | `1000`          | Timeout for HEAD requests in milliseconds       |
+| `logger`          | `Logger`          | `defaultLogger` | Optional logger instance                        |
+
+## Advanced Usage
+
+### Combining with Other Strategies
+
+```javascript
+import {
+  PingRoutingStrategy,
+  FastestPingRoutingStrategy,
+  PreferredWithFallbackRoutingStrategy,
+} from '@ar.io/wayfinder-core'
+
+// Add health checks to fastest ping strategy
+const healthCheckedFastest = new PingRoutingStrategy({
+  routingStrategy: new FastestPingRoutingStrategy({ timeoutMs: 500 }),
+  timeoutMs: 1000,
+})
+
+// Add health checks to preferred with fallback strategy
+const healthCheckedPreferred = new PingRoutingStrategy({
+  routingStrategy: new PreferredWithFallbackRoutingStrategy({
+    preferredGateway: 'https://my-gateway.com',
+    fallbackStrategy: new FastestPingRoutingStrategy({ timeoutMs: 500 }),
+  }),
+  timeoutMs: 1000,
+})
+```
+
+### Custom Timeout Configuration
+
+```javascript
+const strategy = new PingRoutingStrategy({
+  routingStrategy: new RandomRoutingStrategy(),
+  timeoutMs: 2000, // 2 second timeout for health checks
+})
+```
+
+## Use Cases
+
+- **Production Applications**: Add health checks to any routing strategy for increased reliability
+- **Critical Systems**: Ensure gateways are responsive before making important requests
+- **High Availability**: Combine with other strategies to create robust routing systems
+- **Monitoring**: Track gateway health through the ping checks
+
+## Related
+
+- **[FastestPingRoutingStrategy](/wayfinder/core/routing-strategies/fastest-ping)**: Network-based gateway discovery
+- **[PreferredWithFallbackRoutingStrategy](/wayfinder/core/routing-strategies/prefrred-with-fallback)**: Static gateway configuration
+- **[RoundRobinRoutingStrategy](/wayfinder/core/routing-strategies/round-robin)**: Even distribution across gateways
+- **[RandomRoutingStrategy](/wayfinder/core/routing-strategies/random)**: Randomized gateway selection
+- **[StaticRoutingStrategy](/wayfinder/core/routing-strategies/static)**: Always use a single, fixed gateway

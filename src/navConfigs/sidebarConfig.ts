@@ -1201,6 +1201,10 @@ export const singleNavigation: Array<NavGroup> = [
                 href: '/wayfinder/core/routing-strategies/fastest-ping',
               },
               {
+                title: 'Ping',
+                href: '/wayfinder/core/routing-strategies/ping',
+              },
+              {
                 title: 'Preferred with Fallback',
                 href: '/wayfinder/core/routing-strategies/preferred-with-fallback',
               },
@@ -1259,6 +1263,24 @@ export const singleNavigation: Array<NavGroup> = [
                 href: '/wayfinder/react/use-wayfinder-url',
               },
             ],
+          },
+        ],
+      },
+      {
+        title: 'Release Notes',
+        href: '/wayfinder/release-notes/core',
+        children: [
+          {
+            title: 'Core',
+            href: '/wayfinder/release-notes/core',
+          },
+          {
+            title: 'React',
+            href: '/wayfinder/release-notes/react',
+          },
+          {
+            title: 'Extension',
+            href: '/wayfinder/release-notes/extension',
           },
         ],
       },

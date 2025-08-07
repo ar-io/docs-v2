@@ -1,0 +1,171 @@
+export const metadata = {
+  title: 'Wayfinder Core Release Notes',
+  description:
+    'Detailed information about each version of the Wayfinder Core library, including the enhancements, bug fixes, and any other changes introduced in every release.',
+  openGraph: {
+    title: 'Wayfinder Core Release Notes',
+  },
+}
+
+# Wayfinder Core Changelog
+
+## Overview
+
+Welcome to the documentation page for the Wayfinder Core release notes. Here, you will find detailed information about each version of the Wayfinder Core library, including the enhancements, bug fixes, and any other changes introduced in every release. This page serves as a comprehensive resource to keep you informed about the latest developments and updates in the Wayfinder Core library. For those interested in exploring the source code, each release's code is readily accessible at our GitHub repository: Wayfinder Core [change logs](https://github.com/ar-io/wayfinder/blob/main/packages/wayfinder-core/CHANGELOG.md). Stay updated with the continuous improvements and advancements in the Wayfinder Core library by referring to this page for all release-related information.
+
+## [1.2.0](https://github.com/ar-io/wayfinder/compare/@ar.io/wayfinder-core@1.1.1...@ar.io/wayfinder-core@1.2.0) (2025-08-04)
+
+### Minor Changes
+
+- **2d5970f:** Add `PingRoutingStrategy` that performs a HEAD check on gateway returned from provided routing strategy
+
+## [1.2.0-alpha.0](https://github.com/ar-io/wayfinder/compare/@ar.io/wayfinder-core@1.1.1...@ar.io/wayfinder-core@1.2.0-alpha.0) (2025-08-04)
+
+### Minor Changes
+
+- **2d5970f:** Add `PingRoutingStrategy` that performs a HEAD check on gateway returned from provided routing strategy
+
+## [1.1.1](https://github.com/ar-io/wayfinder/compare/@ar.io/wayfinder-core@1.1.0...@ar.io/wayfinder-core@1.1.1) (2025-07-30)
+
+### Patch Changes
+
+- **b246f78:** Provide gateways when calling `selectGateway` in `resolveUrl`
+
+## [1.1.0](https://github.com/ar-io/wayfinder/compare/@ar.io/wayfinder-core@1.0.7...@ar.io/wayfinder-core@1.1.0) (2025-07-30)
+
+### Minor Changes
+
+- **69ddbfb:** Add runtime configuration methods for routing and verification strategies
+
+## [1.1.0-alpha.0](https://github.com/ar-io/wayfinder/compare/@ar.io/wayfinder-core@1.0.7...@ar.io/wayfinder-core@1.1.0-alpha.0) (2025-07-23)
+
+### Minor Changes
+
+- **69ddbfb:** Add runtime configuration methods for routing and verification strategies
+
+## [1.0.7](https://github.com/ar-io/wayfinder/compare/@ar.io/wayfinder-core@1.0.6...@ar.io/wayfinder-core@1.0.7) (2025-07-23)
+
+### Patch Changes
+
+- **658c5f6:** Fix `SimpleCacheRoutingStrategy` to avoid duplicate requests to routingStrategy
+
+## [1.0.6](https://github.com/ar-io/wayfinder/compare/@ar.io/wayfinder-core@1.0.5...@ar.io/wayfinder-core@1.0.6) (2025-07-23)
+
+### Patch Changes
+
+- **a42d57c:** Allow `gatewaysProvider` to be optional, use `StaticGatewaysProvider` by default
+
+## [1.0.6-alpha.0](https://github.com/ar-io/wayfinder/compare/@ar.io/wayfinder-core@1.0.5...@ar.io/wayfinder-core@1.0.6-alpha.0) (2025-07-23)
+
+### Patch Changes
+
+- **a42d57c:** Allow `gatewaysProvider` to be optional, use `StaticGatewaysProvider` by default
+
+## [1.0.5](https://github.com/ar-io/wayfinder/compare/@ar.io/wayfinder-core@1.0.4...@ar.io/wayfinder-core@1.0.5) (2025-07-22)
+
+### Patch Changes
+
+- **73aa1b9:** Adds `RemoteVerificationStrategy` and modifies verifyData interface to support optional response headers to use when verifying data
+- **b7299cc:** Remove unused parameters from various routing strategies
+- **b81b54e:** Remove extra `gateways` arg in `RoundRobinRoutingStrategy`
+
+## [1.0.5-alpha.2](https://github.com/ar-io/wayfinder/compare/@ar.io/wayfinder-core@1.0.5-alpha.1...@ar.io/wayfinder-core@1.0.5-alpha.2) (2025-07-22)
+
+### Patch Changes
+
+- **b7299cc:** Remove unused parameters from various routing strategies
+
+## [1.0.5-alpha.1](https://github.com/ar-io/wayfinder/compare/@ar.io/wayfinder-core@1.0.5-alpha.0...@ar.io/wayfinder-core@1.0.5-alpha.1) (2025-07-22)
+
+### Patch Changes
+
+- **b81b54e:** Remove extra `gateways` arg in `RoundRobinRoutingStrategy`
+
+## [1.0.5-alpha.0](https://github.com/ar-io/wayfinder/compare/@ar.io/wayfinder-core@1.0.4...@ar.io/wayfinder-core@1.0.5-alpha.0) (2025-07-21)
+
+### Patch Changes
+
+- **73aa1b9:** Adds `RemoteVerificationStrategy` and modifies verifyData interface to support optional response headers to use when verifying data
+
+## [1.0.4](https://github.com/ar-io/wayfinder/compare/@ar.io/wayfinder-core@1.0.3...@ar.io/wayfinder-core@1.0.4) (2025-07-17)
+
+### Patch Changes
+
+- **719acbd:** Add `require` and `default` exports to wayfinder-core
+
+## [1.0.3](https://github.com/ar-io/wayfinder/compare/@ar.io/wayfinder-core@1.0.2...@ar.io/wayfinder-core@1.0.3) (2025-07-16)
+
+### Patch Changes
+
+- **86bdc2f:** Prevent duplicate requests in LocalStorageGatewaysProvider and SimpleCacheGatewaysProvider
+- **226f3af:** Fix defaultTtlSeconds in gateway caches
+
+## [1.0.3-alpha.1](https://github.com/ar-io/wayfinder/compare/@ar.io/wayfinder-core@1.0.3-alpha.0...@ar.io/wayfinder-core@1.0.3-alpha.1) (2025-07-16)
+
+### Patch Changes
+
+- **226f3af:** Fix defaultTtlSeconds in gateway caches
+
+## [1.0.3-alpha.0](https://github.com/ar-io/wayfinder/compare/@ar.io/wayfinder-core@1.0.2...@ar.io/wayfinder-core@1.0.3-alpha.0) (2025-07-16)
+
+### Patch Changes
+
+- **86bdc2f:** Prevent duplicate requests in LocalStorageGatewaysProvider and SimpleCacheGatewaysProvider
+
+## [1.0.2](https://github.com/ar-io/wayfinder/compare/@ar.io/wayfinder-core@1.0.1...@ar.io/wayfinder-core@1.0.2) (2025-07-15)
+
+### Patch Changes
+
+- **8f79caf:** Fix import of zone.js file, only load once and in browsers if not already available
+- **a3e69af:** Add support for `clientName` and `clientVersion` on telemetry settings
+- **cfcfb66:** Default Wayfinder to use `RandomRoutingStrategy`
+
+## [1.0.2-alpha.2](https://github.com/ar-io/wayfinder/compare/@ar.io/wayfinder-core@1.0.2-alpha.1...@ar.io/wayfinder-core@1.0.2-alpha.2) (2025-07-15)
+
+### Patch Changes
+
+- **8f79caf:** Fix import of zone.js file, only load once and in browsers if not already available
+
+## [1.0.2-alpha.1](https://github.com/ar-io/wayfinder/compare/@ar.io/wayfinder-core@1.0.2-alpha.0...@ar.io/wayfinder-core@1.0.2-alpha.1) (2025-07-15)
+
+### Patch Changes
+
+- **cfcfb66:** Default Wayfinder to use `RandomRoutingStrategy`
+
+## [1.0.2-alpha.0](https://github.com/ar-io/wayfinder/compare/@ar.io/wayfinder-core@1.0.1...@ar.io/wayfinder-core@1.0.2-alpha.0) (2025-07-15)
+
+### Patch Changes
+
+- **a3e69af:** Add support for `clientName` and `clientVersion` on telemetry settings
+
+## [1.0.1](https://github.com/ar-io/wayfinder/compare/@ar.io/wayfinder-core@1.0.0...@ar.io/wayfinder-core@1.0.1) (2025-07-14)
+
+### Patch Changes
+
+- **aa5700e:** Improve telemetry configuration for browsers and chrome extensions
+- **2c170be:** Adds additional telemetry support when calling resolveUrl
+- **c78effa:** Add LocalStorageGatewaysProvider cache as main export from wayfinder-core
+
+## [1.0.1-alpha.2](https://github.com/ar-io/wayfinder/compare/@ar.io/wayfinder-core@1.0.1-alpha.1...@ar.io/wayfinder-core@1.0.1-alpha.2) (2025-07-14)
+
+### Patch Changes
+
+- **c78effa:** Add LocalStorageGatewaysProvider cache as main export from wayfinder-core
+
+## [1.0.1-alpha.1](https://github.com/ar-io/wayfinder/compare/@ar.io/wayfinder-core@1.0.1-alpha.0...@ar.io/wayfinder-core@1.0.1-alpha.1) (2025-07-10)
+
+### Patch Changes
+
+- **2c170be:** Adds additional telemetry support when calling resolveUrl
+
+## [1.0.1-alpha.0](https://github.com/ar-io/wayfinder/compare/@ar.io/wayfinder-core@1.0.0...@ar.io/wayfinder-core@1.0.1-alpha.0) (2025-07-09)
+
+### Patch Changes
+
+- **aa5700e:** Improve telemetry configuration for browsers and chrome extensions
+
+## [1.0.0](https://github.com/ar-io/wayfinder/compare/@ar.io/wayfinder-core@0.0.5-alpha.7...@ar.io/wayfinder-core@1.0.0) (2025-07-01)
+
+### Major Changes
+
+- **89c0efe:** Initial wayfinder-core release

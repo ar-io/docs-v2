@@ -13,6 +13,12 @@ export const metadata = {
 
 The `@ar.io/wayfinder-react` package provides React-specific components and hooks for integrating Wayfinder into React applications. It offers a provider pattern for configuration and convenient hooks for fetching data with built-in loading states and error handling.
 
+<Tip title="Smart Defaults">
+  Wayfinder React automatically configures optimal settings for web
+  applications, including `LocalStorageGatewaysProvider` to avoid rate limits
+  and performance optimizations in hooks to prevent unnecessary rerenders.
+</Tip>
+
 ## Installation
 
 ```bash
@@ -27,25 +33,22 @@ yarn add @ar.io/wayfinder-react @ar.io/wayfinder-core
 
 ```jsx
 import { WayfinderProvider } from '@ar.io/wayfinder-react'
-import {
-  NetworkGatewaysProvider,
-  FastestPingRoutingStrategy,
-} from '@ar.io/wayfinder-core'
 import { ARIO } from '@ar.io/sdk'
 
 function App() {
   return (
-    <WayfinderProvider
-      gatewaysProvider={new LocalStorageGatewaysProvider({
-        gatewaysProvider: new NetworkGatewaysProvider({ ario: ARIO.mainnet() })
-        ttlSeconds: 3600 * 4, // 4 hours
-      })},
-    >
+    <WayfinderProvider>
       <YourApp />
     </WayfinderProvider>
   )
 }
 ```
+
+<Tip title="Default Configuration">
+  Wayfinder React automatically uses `LocalStorageGatewaysProvider` with
+  `NetworkGatewaysProvider` to avoid rate limits and improve performance. You
+  don't need to configure this manually unless you want custom settings.
+</Tip>
 
 ### 2. Use Hooks in Your Components
 

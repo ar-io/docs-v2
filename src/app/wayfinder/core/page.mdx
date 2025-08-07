@@ -48,6 +48,7 @@ import {
   Wayfinder,
   NetworkGatewaysProvider,
   FastestPingRoutingStrategy,
+  PingRoutingStrategy,
 } from '@ar.io/wayfinder-core'
 import { ARIO } from '@ar.io/sdk'
 
@@ -56,8 +57,11 @@ const wayfinder = new Wayfinder({
     ario: ARIO.mainnet(),
   }),
   routingSettings: {
-    strategy: new FastestPingRoutingStrategy({
-      timeoutMs: 500,
+    strategy: new PingRoutingStrategy({
+      routingStrategy: new FastestPingRoutingStrategy({
+        timeoutMs: 500,
+      }),
+      timeoutMs: 1000,
     }),
   },
 })

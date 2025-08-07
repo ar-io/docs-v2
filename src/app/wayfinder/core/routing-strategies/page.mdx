@@ -34,6 +34,13 @@ Routing strategies determine how Wayfinder selects which AR.IO gateway to use fo
       <td>Low</td>
     </tr>
     <tr>
+      <td>Ping</td>
+      <td>Health-checked routing</td>
+      <td>Combining custom routing with health checks</td>
+      <td>Medium</td>
+      <td>Medium</td>
+    </tr>
+    <tr>
       <td>Preferred + Fallback</td>
       <td>Dedicated infrastructure</td>
       <td>CDN with origin fallback, enterprise gateways</td>
@@ -67,6 +74,7 @@ Routing strategies determine how Wayfinder selects which AR.IO gateway to use fo
 ## Related
 
 - **[FastestPingRoutingStrategy](/wayfinder/core/routing-strategies/fastest-ping)**: Network-based gateway discovery
+- **[PingRoutingStrategy](/wayfinder/core/routing-strategies/ping)**: Health-checked routing wrapper
 - **[PreferredWithFallbackRoutingStrategy](/wayfinder/core/routing-strategies/prefrred-with-fallback)**: Static gateway configuration
 - **[RoundRobinRoutingStrategy](/wayfinder/core/routing-strategies/round-robin)**: Even distribution across gateways
 - **[RandomRoutingStrategy](/wayfinder/core/routing-strategies/random)**: Randomized gateway selection
