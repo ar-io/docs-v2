@@ -21,15 +21,19 @@ const strategy = new RandomRoutingStrategy()
 
 // randomly selects a gateway from the provided list
 const selectedGateway = strategy.selectGateway({
-  gateways: ['https://arweave.net', 'https://permagate.io', 'https://ardrive.net']
+  gateways: [
+    'https://arweave.net',
+    'https://permagate.io',
+    'https://ardrive.net',
+  ],
 })
 ```
 
 ## Parameters
 
-| Parameter           | Type                  | Default         | Description                                                 |
-| ------------------- | --------------------- | --------------- | ----------------------------------------------------------- |
-| `logger`            | `Logger`              | `defaultLogger` | Optional logger instance                                    |
+| Parameter | Type     | Default         | Description              |
+| --------- | -------- | --------------- | ------------------------ |
+| `logger`  | `Logger` | `defaultLogger` | Optional logger instance |
 
 ## Related
 

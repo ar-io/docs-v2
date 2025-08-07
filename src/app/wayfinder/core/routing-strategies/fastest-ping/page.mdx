@@ -10,7 +10,6 @@ The `FastestPingRoutingStrategy` selects the gateway with the lowest latency by 
 2. **Measure Response Times**: Records the time taken for each gateway to respond
 3. **Select Fastest**: Choose the gateway with the lowest response time
 
-
 ## Basic Usage
 
 ```javascript
@@ -32,14 +31,14 @@ const selectedGateway = await strategy.selectGateawy({
 
 ## Parameters
 
-| Parameter        | Type     | Default         | Description                                   |
-| ---------------- | -------- | --------------- | --------------------------------------------- |
-| `timeoutMs`      | `number` | `500`           | Timeout for ping requests in milliseconds     |
-| `maxConcurrency` | `number` | `3` | Number that determines how many HEAD checks to send at once |
-| `logger`         | `Logger` | `defaultLogger` | Optional logger instance                      |
-
+| Parameter        | Type     | Default         | Description                                                 |
+| ---------------- | -------- | --------------- | ----------------------------------------------------------- |
+| `timeoutMs`      | `number` | `500`           | Timeout for ping requests in milliseconds                   |
+| `maxConcurrency` | `number` | `3`             | Number that determines how many HEAD checks to send at once |
+| `logger`         | `Logger` | `defaultLogger` | Optional logger instance                                    |
 
 ## Related
+
 - **[PreferredWithFallbackRoutingStrategy](/wayfinder/core/routing-strategies/prefrred-with-fallback)**: Static gateway configuration
 - **[RoundRobinRoutingStrategy](/wayfinder/core/routing-strategies/round-robin)**: Even distribution across gateways
 - **[RandomRoutingStrategy](/wayfinder/core/routing-strategies/random)**: Randomized gateway selection

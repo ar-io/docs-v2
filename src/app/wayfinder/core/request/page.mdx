@@ -8,9 +8,8 @@ export const metadata = {
 }
 
 ## Overview
+
 `request()` fetches data from Arweave using the `ar://` protocol with intelligent routing and optional verification. This method is a wrapper around the native [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API), providing the same interface with additional Wayfinder-specific functionality.
-
-
 
 ## Parameters
 
@@ -23,16 +22,15 @@ export const metadata = {
 
 Returns a standard [Response object](https://developer.mozilla.org/en-US/docs/Web/API/Response) that can be processed with methods like `response.text()`, `response.json()`, `response.blob()`, etc.
 
-
 ## Basic Usage
 
 ```javascript
-import { ARIO } from '@ar.io/sdk';
+import { ARIO } from '@ar.io/sdk'
 import { Wayfinder, NetworkGatewaysProvider } from '@ar.io/wayfinder-core'
 
 const wayfinder = new Wayfinder({
   gatewaysProvider: new NetworkGatewaysProvider({
-    ario: ARIO.mainnet()
+    ario: ARIO.mainnet(),
   }),
 })
 
@@ -49,7 +47,6 @@ const imageResponse = await wayfinder.request('ar://image-transaction-id')
 const blob = await imageResponse.blob()
 const imageUrl = URL.createObjectURL(blob)
 ```
-
 
 ## Supported URL Formats
 
@@ -76,10 +73,11 @@ await wayfinder.request('ar:///graphql') // GraphQL endpoint (if supported)
 ```
 
 ## overrides
+
 For a given request, you can override the initialized routing and verification settings by passing an `overrides` option to `wayfinder.request()`. This allows you to specify a different routing strategy, verification strategy, or even a custom logger for just that request, without affecting the global configuration.
 
-
 Example:
+
 ```javascript
 import { HashVerificationStrategy } from '@ar.io/wayfinder-core'
 
@@ -120,6 +118,7 @@ const response = await wayfinder.request('ar://transaction-id', {
 ```
 
 ## Advanced Configurations
+
 ### Custom Headers
 
 You can pass custom headers with your requests using the standard fetch options:

@@ -77,16 +77,15 @@ console.log('Info URL:', infoUrl.toString())
 // Output: https://<some-gateway>/info
 ```
 
-
 ## Comparison with request()
 
-| Method         | Network Request | Verification | Use Case                            |
-| -------------- | --------------- | ------------ | ----------------------------------- |
+| Method         | Network Request | Verification | Use Case                                                            |
+| -------------- | --------------- | ------------ | ------------------------------------------------------------------- |
 | `resolveUrl()` | ✅ Yes          | ❌ No        | Get a dynamic URL for transaction id, ArNS name or gateway endpoint |
-| `request()`    | ✅ Yes          | ✅ Optional  | Fetch and optionally verify data from an AR.IO gateway  |
-
+| `request()`    | ✅ Yes          | ✅ Optional  | Fetch and optionally verify data from an AR.IO gateway              |
 
 ## Related
+
 - **[request()](./wayfinder/core/request)**: Fetching data via Wayfinder
 - **[Gateway Providers](/wayfinder/core/gateway-providers)**: Understand gateway discovery options
 - **[Routing Strategies](/wayfinder/core/routing-strategies)**: Explore different routing algorithms

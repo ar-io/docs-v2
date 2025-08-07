@@ -11,7 +11,6 @@ The `PreferredWithFallbackRoutingStrategy` attempts to use a designated preferre
 3. **Failure**: If the preferred gateway fails or times out, the fallback strategy is used
 4. **Logging**: All attempts and failures are logged for monitoring
 
-
 ## Basic Usage
 
 ```javascript
@@ -33,7 +32,6 @@ const strategy = new PreferredWithFallbackRoutingStrategy({
 | `preferredGateway` | `string`          | **required**                   | URL of the preferred gateway                 |
 | `fallbackStrategy` | `RoutingStrategy` | `FastestPingRoutingStrategy()` | Strategy to use when preferred gateway fails |
 | `logger`           | `Logger`          | `defaultLogger`                | Optional logger instance                     |
-
 
 ## Related
 
