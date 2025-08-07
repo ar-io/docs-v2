@@ -8,20 +8,19 @@ export const metadata = {
   },
 }
 
-
 # getControllers
 
 `getControllers` is a method on the `ANT` class that retrieves the controllers of the configured ANT process.
 
 `getControllers` does not require authentication.
 
-## Parameters
-
-The `getControllers` method does not accept any parameters.
-
 ## Examples
 
 <CodeGroup title="getControllers">
+
+    ```typescript {{title: "Basic"}}
+    const controllers = await ant.getControllers();
+    ```
 
     ```typescript {{ title: 'NodeJS' }}
     const { ANT } = require('@ar.io/sdk');
@@ -50,6 +49,10 @@ The `getControllers` method does not accept any parameters.
     ```
 
 </CodeGroup>
+
+## Parameters
+
+The `getControllers` method does not accept any parameters.
 
 ## Output
 

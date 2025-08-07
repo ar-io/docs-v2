@@ -16,33 +16,13 @@ export const metadata = {
 
 `resolveArNSName` does not require authentication.
 
-## Parameters
-
-<Table>
-  <Table.Head>
-    <Table.Row>
-      <Table.Header>Parameter</Table.Header>
-      <Table.Header>Type</Table.Header>
-      <Table.Header>Description</Table.Header>
-      <Table.Header>Optional</Table.Header>
-    </Table.Row>
-  </Table.Head>
-  <Table.Body>
-    <Table.Row>
-      <Table.Cell className="font-semibold">name</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>
-        The ArNS name to resolve (can include undernames like
-        'subdomain_domain')
-      </Table.Cell>
-      <Table.Cell>false</Table.Cell>
-    </Table.Row>
-  </Table.Body>
-</Table>
-
 ## Examples
 
 <CodeGroup title="resolveArNSName">
+
+    ```typescript {{title: "Basic"}}
+    const baseName = await ario.resolveArNSName({ name: 'ardrive' });
+    ```
 
     ```typescript {{ title: 'NodeJS' }}
     const { ARIO } = require('@ar.io/sdk');
@@ -81,6 +61,30 @@ export const metadata = {
     ```
 
 </CodeGroup>
+
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Optional</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">name</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>
+        The ArNS name to resolve (can include undernames like
+        'subdomain_domain')
+      </Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
 
 ## Output
 

@@ -1,4 +1,5 @@
 import { CodeGroup } from '@/components/Code'
+import { Table } from '@/components/Table'
 
 export const metadata = {
   title: 'getEpoch',
@@ -14,30 +15,13 @@ export const metadata = {
 
 `getEpoch` does not require authentication.
 
-## Parameters
-
-<Table>
-  <Table.Head>
-    <Table.Row>
-      <Table.Header>Parameter</Table.Header>
-      <Table.Header>Type</Table.Header>
-      <Table.Header>Description</Table.Header>
-      <Table.Header>Optional</Table.Header>
-    </Table.Row>
-  </Table.Head>
-  <Table.Body>
-    <Table.Row>
-      <Table.Cell className="font-semibold">epochIndex</Table.Cell>
-      <Table.Cell>number</Table.Cell>
-      <Table.Cell>The index of the epoch to retrieve</Table.Cell>
-      <Table.Cell>false</Table.Cell>
-    </Table.Row>
-  </Table.Body>
-</Table>
-
 ## Examples
 
 <CodeGroup title="getEpoch">
+
+    ```typescript {{title: "Basic"}}
+    const epoch = await ario.getEpoch({ epochIndex: 150 });
+    ```
 
     ```typescript {{ title: 'NodeJS' }}
     const { ARIO } = require('@ar.io/sdk');
@@ -66,6 +50,27 @@ export const metadata = {
     ```
 
 </CodeGroup>
+
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Optional</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">epochIndex</Table.Cell>
+      <Table.Cell>number</Table.Cell>
+      <Table.Cell>The index of the epoch to retrieve</Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
 
 ## Output
 

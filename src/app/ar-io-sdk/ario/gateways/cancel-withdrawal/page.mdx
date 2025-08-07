@@ -9,53 +9,22 @@ export const metadata = {
   },
 }
 
-
 # cancelWithdrawal
 
 `cancelWithdrawal` is a method on the `ARIO` class that cancels a pending withdrawal for a gateway, returning the stake back to the delegated amount.
 
 `cancelWithdrawal` requires authentication.
 
-## Parameters
-
-<Table>
-  <Table.Head>
-    <Table.Row>
-      <Table.Header>Parameter</Table.Header>
-      <Table.Header>Type</Table.Header>
-      <Table.Header>Description</Table.Header>
-      <Table.Header>Optional</Table.Header>
-    </Table.Row>
-  </Table.Head>
-  <Table.Body>
-    <Table.Row>
-      <Table.Cell className="font-semibold">gatewayAddress</Table.Cell>
-      <Table.Cell>string - WalletAddress</Table.Cell>
-      <Table.Cell>The wallet address of the gateway</Table.Cell>
-      <Table.Cell>false</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">vaultId</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>
-        The ID of the vault containing the withdrawal to cancel
-      </Table.Cell>
-      <Table.Cell>false</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">tags</Table.Cell>
-      <Table.Cell>array</Table.Cell>
-      <Table.Cell>
-        An array of GQL tag objects to attach to the transfer AO message
-      </Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-  </Table.Body>
-</Table>
-
 ## Examples
 
 <CodeGroup title="cancelWithdrawal">
+
+    ```typescript {{title: "Basic"}}
+    const { id: txId } = await ario.cancelWithdrawal({
+        gatewayAddress: 't4Xr0_J4Iurt7caNST02cMotaz2FIbWQ4Kbj616RHl3',
+        vaultId: 'vault_123'
+    });
+    ```
 
     ```typescript {{ title: 'NodeJS' }}
     const fs = require('fs');
@@ -98,3 +67,40 @@ export const metadata = {
     ```
 
 </CodeGroup>
+
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Optional</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">gatewayAddress</Table.Cell>
+      <Table.Cell>string - WalletAddress</Table.Cell>
+      <Table.Cell>The wallet address of the gateway</Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">vaultId</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>
+        The ID of the vault containing the withdrawal to cancel
+      </Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">tags</Table.Cell>
+      <Table.Cell>array</Table.Cell>
+      <Table.Cell>
+        An array of GQL tag objects to attach to the transfer AO message
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>

@@ -1,4 +1,5 @@
 import { Table } from '@/components/Table'
+import { CodeGroup } from '@/components/Code'
 
 export const metadata = {
   title: 'joinNetwork',
@@ -8,109 +9,32 @@ export const metadata = {
   },
 }
 
-
 # joinNetwork
 
 `joinNetwork` is a method on the `ARIO` class that joins a gateway to the ar.io network using its associated wallet.
 
 `joinNetwork` requires authentication.
 
-## Parameters
-
-<Table>
-  <Table.Head>
-    <Table.Row>
-      <Table.Header>Parameter</Table.Header>
-      <Table.Header>Type</Table.Header>
-      <Table.Header>Description</Table.Header>
-      <Table.Header>Required</Table.Header>
-    </Table.Row>
-  </Table.Head>
-  <Table.Body>
-    <Table.Row>
-      <Table.Cell className="font-semibold">qty</Table.Cell>
-      <Table.Cell>number</Table.Cell>
-      <Table.Cell>Amount in mARIO to stake when joining network</Table.Cell>
-      <Table.Cell>Yes</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">autoStake</Table.Cell>
-      <Table.Cell>boolean</Table.Cell>
-      <Table.Cell>Whether to automatically stake gateway rewards</Table.Cell>
-      <Table.Cell>Yes</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">allowDelegatedStaking</Table.Cell>
-      <Table.Cell>boolean</Table.Cell>
-      <Table.Cell>Whether to allow third parties to delegate stake</Table.Cell>
-      <Table.Cell>Yes</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">minDelegatedStake</Table.Cell>
-      <Table.Cell>number</Table.Cell>
-      <Table.Cell>Minimum amount in mARIO that can be delegated</Table.Cell>
-      <Table.Cell>Yes</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">delegateRewardShareRatio</Table.Cell>
-      <Table.Cell>number</Table.Cell>
-      <Table.Cell>Percentage of rewards to share with delegates (e.g., 10)</Table.Cell>
-      <Table.Cell>Yes</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">label</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>Gateway name (1-64 characters)</Table.Cell>
-      <Table.Cell>Yes</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">note</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>Gateway description (max 256 characters)</Table.Cell>
-      <Table.Cell>Yes</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">properties</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>Arweave transaction ID containing additional gateway configuration</Table.Cell>
-      <Table.Cell>Yes</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">observerWallet</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>Wallet address used for network observations</Table.Cell>
-      <Table.Cell>Yes</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">fqdn</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>Valid domain name owned by the gateway operator</Table.Cell>
-      <Table.Cell>Yes</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">port</Table.Cell>
-      <Table.Cell>number</Table.Cell>
-      <Table.Cell>Port number for gateway access (typically 443)</Table.Cell>
-      <Table.Cell>Yes</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">protocol</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>Access protocol (only 'https' supported)</Table.Cell>
-      <Table.Cell>Yes</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">tags</Table.Cell>
-      <Table.Cell>array</Table.Cell>
-      <Table.Cell>An array of GQL tag objects to attach to the transaction</Table.Cell>
-      <Table.Cell>No</Table.Cell>
-    </Table.Row>
-  </Table.Body>
-</Table>
-
-## Example
+## Examples
 
 <CodeGroup title="joinNetwork">
+
+    ```typescript {{title: "Basic"}}
+    const { id: txId } = await ario.joinNetwork({
+        qty: new ARIOToken(10_000).toMARIO(),
+        autoStake: true,
+        allowDelegatedStaking: true,
+        minDelegatedStake: new ARIOToken(100).toMARIO(),
+        delegateRewardShareRatio: 10,
+        label: 'john smith',
+        note: 'The example gateway',
+        properties: 'FH1aVetOoulPGqgYukj0VE0wIhDy90WiQoV3U2PeY44',
+        observerWallet: '0VE0wIhDy90WiQoV3U2PeY44FH1aVetOoulPGqgYukj',
+        fqdn: 'example.com',
+        port: 443,
+        protocol: 'https'
+    });
+    ```
 
        ```typescript {{title: "NodeJS"}}
         const fs = require("fs");
@@ -177,3 +101,104 @@ export const metadata = {
     ```
 
 </CodeGroup>
+
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Required</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">qty</Table.Cell>
+      <Table.Cell>number</Table.Cell>
+      <Table.Cell>Amount in mARIO to stake when joining network</Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">autoStake</Table.Cell>
+      <Table.Cell>boolean</Table.Cell>
+      <Table.Cell>Whether to automatically stake gateway rewards</Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">allowDelegatedStaking</Table.Cell>
+      <Table.Cell>boolean</Table.Cell>
+      <Table.Cell>Whether to allow third parties to delegate stake</Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">minDelegatedStake</Table.Cell>
+      <Table.Cell>number</Table.Cell>
+      <Table.Cell>Minimum amount in mARIO that can be delegated</Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">
+        delegateRewardShareRatio
+      </Table.Cell>
+      <Table.Cell>number</Table.Cell>
+      <Table.Cell>
+        Percentage of rewards to share with delegates (e.g., 10)
+      </Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">label</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>Gateway name (1-64 characters)</Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">note</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>Gateway description (max 256 characters)</Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">properties</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>
+        Arweave transaction ID containing additional gateway configuration
+      </Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">observerWallet</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>Wallet address used for network observations</Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">fqdn</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>Valid domain name owned by the gateway operator</Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">port</Table.Cell>
+      <Table.Cell>number</Table.Cell>
+      <Table.Cell>Port number for gateway access (typically 443)</Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">protocol</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>Access protocol (only 'https' supported)</Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">tags</Table.Cell>
+      <Table.Cell>array</Table.Cell>
+      <Table.Cell>
+        An array of GQL tag objects to attach to the transaction
+      </Table.Cell>
+      <Table.Cell>No</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>

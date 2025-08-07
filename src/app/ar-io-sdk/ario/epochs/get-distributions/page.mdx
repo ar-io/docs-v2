@@ -17,32 +17,13 @@ export const metadata = {
 
 `getDistributions` does not require authentication.
 
-## Parameters
-
-<Table>
-  <Table.Head>
-    <Table.Row>
-      <Table.Header>Parameter</Table.Header>
-      <Table.Header>Type</Table.Header>
-      <Table.Header>Description</Table.Header>
-      <Table.Header>Required</Table.Header>
-    </Table.Row>
-  </Table.Head>
-  <Table.Body>
-    <Table.Row>
-      <Table.Cell className="font-semibold">epochIndex</Table.Cell>
-      <Table.Cell>number</Table.Cell>
-      <Table.Cell>
-        The epoch index for which to retrieve distribution data.
-      </Table.Cell>
-      <Table.Cell>No</Table.Cell>
-    </Table.Row>
-  </Table.Body>
-</Table>
-
 ## Examples
 
 <CodeGroup title="getDistributions">
+
+    ```typescript {{title: "Basic"}}
+    const distributions = await ario.getDistributions({ epochIndex: 0 });
+    ```
 
     ```typescript {{ title: 'NodeJS' }}
     const { ARIO } = require('@ar.io/sdk');
@@ -71,6 +52,29 @@ export const metadata = {
     ```
 
 </CodeGroup>
+
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Required</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">epochIndex</Table.Cell>
+      <Table.Cell>number</Table.Cell>
+      <Table.Cell>
+        The epoch index for which to retrieve distribution data.
+      </Table.Cell>
+      <Table.Cell>No</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
 
 ## Output
 

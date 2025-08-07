@@ -14,13 +14,13 @@ export const metadata = {
 
 `getLatestANTVersion` does not require authentication.
 
-## Parameters
-
-The `getLatestANTVersion` method does not accept any parameters.
-
 ## Examples
 
 <CodeGroup title="getLatestANTVersion">
+
+    ```typescript {{title: "Basic"}}
+    const latestVersion = await versions.getLatestANTVersion();
+    ```
 
     ```typescript {{ title: 'NodeJS' }}
     const { ANTVersions } = require('@ar.io/sdk');
@@ -49,6 +49,10 @@ The `getLatestANTVersion` method does not accept any parameters.
     ```
 
 </CodeGroup>
+
+## Parameters
+
+The `getLatestANTVersion` method does not accept any parameters.
 
 ## Output
 

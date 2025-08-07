@@ -1,49 +1,22 @@
 import { CodeGroup } from '@/components/Code'
 import { Table } from '@/components/Table'
 
-
 # instantWithdrawal
 
 `instantWithdrawal` is a method on the `ARIO` class that instantly withdraws funds from an existing vault on a gateway. If no `gatewayAddress` is provided, the signer's address will be used.
 
 `instantWithdrawal` requires authentication.
 
-## Parameters
-
-<Table>
-  <Table.Head>
-    <Table.Row>
-      <Table.Header>Parameter</Table.Header>
-      <Table.Header>Type</Table.Header>
-      <Table.Header>Description</Table.Header>
-      <Table.Header>Required</Table.Header>
-    </Table.Row>
-  </Table.Head>
-  <Table.Body>
-    <Table.Row>
-      <Table.Cell className="font-semibold">gatewayAddress</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>The gateway address where the vault exists</Table.Cell>
-      <Table.Cell>No</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">vaultId</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>The ID of the vault to withdraw from</Table.Cell>
-      <Table.Cell>Yes</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">tags</Table.Cell>
-      <Table.Cell>array</Table.Cell>
-      <Table.Cell>An array of GQL tag objects to attach to the transaction</Table.Cell>
-      <Table.Cell>No</Table.Cell>
-    </Table.Row>
-  </Table.Body>
-</Table>
-
 ## Examples
 
 <CodeGroup title="instantWithdrawal">
+
+    ```typescript {{title: "Basic"}}
+    const { id: txId } = await ario.instantWithdrawal({
+        gatewayAddress: 't4Xr0_J4Iurt7caNST02cMotaz2FIbWQ4Kbj616RHl3',
+        vaultId: 'fDrr0_J4Iurt7caNST02cMotaz2FIbWQ4Kcj616RHl3'
+    });
+    ```
 
        ```typescript {{title: "NodeJS"}}
         const fs = require("fs");
@@ -110,3 +83,38 @@ import { Table } from '@/components/Table'
     ```
 
 </CodeGroup>
+
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Required</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">gatewayAddress</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>The gateway address where the vault exists</Table.Cell>
+      <Table.Cell>No</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">vaultId</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>The ID of the vault to withdraw from</Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">tags</Table.Cell>
+      <Table.Cell>array</Table.Cell>
+      <Table.Cell>
+        An array of GQL tag objects to attach to the transaction
+      </Table.Cell>
+      <Table.Cell>No</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>

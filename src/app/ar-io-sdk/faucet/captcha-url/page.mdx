@@ -14,13 +14,13 @@ export const metadata = {
 
 `captchaUrl` does not require authentication.
 
-## Parameters
-
-The `captchaUrl` method does not accept any parameters.
-
 ## Examples
 
 <CodeGroup title="captchaUrl">
+
+    ```typescript {{title: "Basic"}}
+    const { processId, captchaUrl } = await ario.faucet.captchaUrl();
+    ```
 
     ```typescript {{ title: 'NodeJS' }}
     const { ARIO } = require('@ar.io/sdk');
@@ -53,6 +53,10 @@ The `captchaUrl` method does not accept any parameters.
     ```
 
 </CodeGroup>
+
+## Parameters
+
+The `captchaUrl` method does not accept any parameters.
 
 ## Output
 

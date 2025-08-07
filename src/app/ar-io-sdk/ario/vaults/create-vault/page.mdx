@@ -1,4 +1,5 @@
 import { CodeGroup } from '@/components/Code'
+import { Table } from '@/components/Table'
 
 export const metadata = {
   title: 'createVault',
@@ -9,59 +10,22 @@ export const metadata = {
   },
 }
 
-
 # createVault
 
 `createVault` is a method on the `ARIO` class that creates a new vault to lock ARIO tokens for a specified duration. Vaulted tokens earn rewards but cannot be transferred until the lock period expires.
 
 `createVault` requires authentication.
 
-## Parameters
-
-{
-
-<div style={{ textAlign: 'center' }}>
-  <table className="inline-table">
-    <thead>
-      <tr>
-        <th>Parameter</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Optional</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th>qty</th>
-        <td>number</td>
-        <td>The amount of ARIO tokens to lock in the vault (in mARIO)</td>
-        <td>false</td>
-      </tr>
-      <tr>
-        <th>lockLength</th>
-        <td>number</td>
-        <td>
-          The duration to lock tokens in blocks (minimum 14 days, maximum 4
-          years)
-        </td>
-        <td>false</td>
-      </tr>
-      <tr>
-        <th>tags</th>
-        <td>array</td>
-        <td>
-          An array of GQL tag objects to attach to the vault creation AO message
-        </td>
-        <td>true</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-}
-
 ## Examples
 
 <CodeGroup title="createVault">
+
+    ```typescript {{title: "Basic"}}
+    const { id: txId } = await ario.createVault({
+        qty: 10000000000,
+        lockLength: 720
+    });
+    ```
 
        ```typescript {{title: "NodeJS"}}
         const fs = require("fs");
@@ -113,3 +77,42 @@ export const metadata = {
     ```
 
 </CodeGroup>
+
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Optional</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">qty</Table.Cell>
+      <Table.Cell>number</Table.Cell>
+      <Table.Cell>
+        The amount of ARIO tokens to lock in the vault (in mARIO)
+      </Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">lockLength</Table.Cell>
+      <Table.Cell>number</Table.Cell>
+      <Table.Cell>
+        The duration to lock tokens in blocks (minimum 14 days, maximum 4 years)
+      </Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">tags</Table.Cell>
+      <Table.Cell>array</Table.Cell>
+      <Table.Cell>
+        An array of GQL tag objects to attach to the vault creation AO message
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>

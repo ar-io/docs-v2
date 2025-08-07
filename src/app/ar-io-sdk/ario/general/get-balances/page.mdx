@@ -9,12 +9,59 @@ export const metadata = {
   },
 }
 
-
 # getBalances
 
 `getBalances` is a method on the `ARIO` class that retrieves token balances for multiple wallet addresses with pagination support.
 
 `getBalances` does not require authentication.
+
+## Examples
+
+<CodeGroup title="getBalances">
+
+    ```typescript {{title: "Basic"}}
+    const balances = await ario.getBalances({
+        limit: 10,
+        sortBy: 'balance',
+        sortOrder: 'desc'
+    });
+    ```
+
+    ```typescript {{ title: 'NodeJS' }}
+    const { ARIO } = require('@ar.io/sdk');
+
+    async function main() {
+      const ario = ARIO.init();
+      const balances = await ario.getBalances({
+        limit: 10,
+        sortBy: 'balance',
+        sortOrder: 'desc'
+      });
+
+      console.log(balances);
+    }
+
+    main();
+    ```
+
+    ```typescript {{ title: 'Web' }}
+    import { ARIO } from '@ar.io/sdk/web';
+
+    async function main() {
+      const ario = ARIO.init();
+      const balances = await ario.getBalances({
+        limit: 10,
+        sortBy: 'balance',
+        sortOrder: 'desc'
+      });
+
+      console.log(balances);
+    }
+
+    main();
+    ```
+
+</CodeGroup>
 
 ## Parameters
 
@@ -63,46 +110,6 @@ export const metadata = {
     </Table.Row>
   </Table.Body>
 </Table>
-
-## Examples
-
-<CodeGroup title="getBalances">
-
-    ```typescript {{ title: 'NodeJS' }}
-    const { ARIO } = require('@ar.io/sdk');
-
-    async function main() {
-      const ario = ARIO.init();
-      const balances = await ario.getBalances({
-        limit: 10,
-        sortBy: 'balance',
-        sortOrder: 'desc'
-      });
-
-      console.log(balances);
-    }
-
-    main();
-    ```
-
-    ```typescript {{ title: 'Web' }}
-    import { ARIO } from '@ar.io/sdk/web';
-
-    async function main() {
-      const ario = ARIO.init();
-      const balances = await ario.getBalances({
-        limit: 10,
-        sortBy: 'balance',
-        sortOrder: 'desc'
-      });
-
-      console.log(balances);
-    }
-
-    main();
-    ```
-
-</CodeGroup>
 
 ## Output
 

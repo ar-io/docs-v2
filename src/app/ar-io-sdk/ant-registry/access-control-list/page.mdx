@@ -9,39 +9,21 @@ export const metadata = {
   },
 }
 
-
 # accessControlList
 
 `accessControlList` is a method on the `ANTRegistry` class that retrieves the access control list (ACL) for a specific address, showing which ANTs the address owns and controls.
 
 `accessControlList` does not require authentication.
 
-## Parameters
-
-<Table>
-  <Table.Head>
-    <Table.Row>
-      <Table.Header>Parameter</Table.Header>
-      <Table.Header>Type</Table.Header>
-      <Table.Header>Description</Table.Header>
-      <Table.Header>Optional</Table.Header>
-    </Table.Row>
-  </Table.Head>
-  <Table.Body>
-    <Table.Row>
-      <Table.Cell className="font-semibold">address</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>
-        The wallet address to retrieve access control information for
-      </Table.Cell>
-      <Table.Cell>false</Table.Cell>
-    </Table.Row>
-  </Table.Body>
-</Table>
-
 ## Examples
 
 <CodeGroup title="accessControlList">
+
+    ```typescript {{title: "Basic"}}
+    const acl = await antRegistry.accessControlList({
+        address: 'ccp3blG__gKUvG3hsGC2u06aDmqv4CuhuDJGOIg0jw4'
+    });
+    ```
 
     ```typescript {{ title: 'NodeJS' }}
     const { ANTRegistry } = require('@ar.io/sdk');
@@ -74,6 +56,29 @@ export const metadata = {
     ```
 
 </CodeGroup>
+
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Optional</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">address</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>
+        The wallet address to retrieve access control information for
+      </Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
 
 ## Output
 

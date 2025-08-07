@@ -1,43 +1,21 @@
 import { CodeGroup } from '@/components/Code'
 import { Table } from '@/components/Table'
 
-
 # setTicker
 
 `setTicker` is a method on the `ANT` class that updates the ticker symbol of the ANT process.
 
 `setTicker` requires authentication.
 
-## Parameters
-
-<Table>
-  <Table.Head>
-    <Table.Row>
-      <Table.Header>Parameter</Table.Header>
-      <Table.Header>Type</Table.Header>
-      <Table.Header>Description</Table.Header>
-      <Table.Header>Optional</Table.Header>
-    </Table.Row>
-  </Table.Head>
-  <Table.Body>
-    <Table.Row>
-      <Table.Cell className="font-semibold">ticker</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>The ticker symbol to set for the ANT process</Table.Cell>
-      <Table.Cell>false</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">tags</Table.Cell>
-      <Table.Cell>array</Table.Cell>
-      <Table.Cell>An array of GQL tag objects to attach to the transfer AO message</Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-  </Table.Body>
-</Table>
-
 ## Examples
 
 <CodeGroup title="setTicker">
+
+    ```typescript {{title: "Basic"}}
+    const { id: txId } = await ant.setTicker({
+        ticker: 'ANT-NEW-TICKER'
+    });
+    ```
 
        ```typescript {{title: "NodeJS"}}
         const fs = require("fs");
@@ -81,3 +59,32 @@ import { Table } from '@/components/Table'
     ```
 
 </CodeGroup>
+
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Optional</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">ticker</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>The ticker symbol to set for the ANT process</Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">tags</Table.Cell>
+      <Table.Cell>array</Table.Cell>
+      <Table.Cell>
+        An array of GQL tag objects to attach to the transfer AO message
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>

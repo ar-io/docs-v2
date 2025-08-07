@@ -8,20 +8,19 @@ export const metadata = {
   },
 }
 
-
 # getState
 
 `getState` is a method on the `ANT` class that retrieves the complete state of the ANT process, including all records, balances, controllers, and metadata.
 
 `getState` does not require authentication.
 
-## Parameters
-
-The `getState` method does not accept any parameters.
-
 ## Examples
 
 <CodeGroup title="getState">
+
+    ```typescript {{title: "Basic"}}
+    const state = await ant.getState();
+    ```
 
     ```typescript {{ title: 'NodeJS' }}
     const { ANT } = require('@ar.io/sdk');
@@ -50,6 +49,10 @@ The `getState` method does not accept any parameters.
     ```
 
 </CodeGroup>
+
+## Parameters
+
+The `getState` method does not accept any parameters.
 
 ## Output
 

@@ -8,30 +8,15 @@ import { Table } from '@/components/Table'
 
 `getRedelegationFee` does not require authentication.
 
-## Parameters
-
-<Table>
-  <Table.Head>
-    <Table.Row>
-      <Table.Header>Parameter</Table.Header>
-      <Table.Header>Type</Table.Header>
-      <Table.Header>Description</Table.Header>
-      <Table.Header>Required</Table.Header>
-    </Table.Row>
-  </Table.Head>
-  <Table.Body>
-    <Table.Row>
-      <Table.Cell className="font-semibold">address</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>The wallet address to check for redelegation fees</Table.Cell>
-      <Table.Cell>Yes</Table.Cell>
-    </Table.Row>
-  </Table.Body>
-</Table>
-
 ## Examples
 
 <CodeGroup title="getRedelegationFee">
+
+    ```typescript {{title: "Basic"}}
+    const fee = await ario.getRedelegationFee({
+        address: 't4Xr0_J4Iurt7caNST02cMotaz2FIbWQ4Kbj616RHl3'
+    });
+    ```
 
     ```typescript {{ title: 'NodeJS' }}
     const { ARIO } = require('@ar.io/sdk');
@@ -64,6 +49,27 @@ import { Table } from '@/components/Table'
     ```
 
 </CodeGroup>
+
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Required</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">address</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>The wallet address to check for redelegation fees</Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
 
 ## Output
 

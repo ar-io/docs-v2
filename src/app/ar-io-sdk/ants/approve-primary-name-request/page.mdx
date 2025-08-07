@@ -8,59 +8,23 @@ export const metadata = {
   },
 }
 
-
 # approvePrimaryNameRequest
 
 `approvePrimaryNameRequest` is a method on the `ANT` class that approves a primary name request for a given name or address.
 
 `approvePrimaryNameRequest` requires authentication.
 
-## Parameters
-
-<Table>
-  <Table.Head>
-    <Table.Row>
-      <Table.Header>Parameter</Table.Header>
-      <Table.Header>Type</Table.Header>
-      <Table.Header>Description</Table.Header>
-      <Table.Header>Optional</Table.Header>
-    </Table.Row>
-  </Table.Head>
-  <Table.Body>
-    <Table.Row>
-      <Table.Cell className="font-semibold">name</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>ArNS name to approve as primary name.</Table.Cell>
-      <Table.Cell>false</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">address</Table.Cell>
-      <Table.Cell>string - WalletAddress</Table.Cell>
-      <Table.Cell>
-        Public wallet address that made the primary name request being approved.
-      </Table.Cell>
-      <Table.Cell>false</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">ioProcessId</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>Process Id of the ARIO contract.</Table.Cell>
-      <Table.Cell>false</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">tags</Table.Cell>
-      <Table.Cell>array</Table.Cell>
-      <Table.Cell>
-        An array of GQL tag objects to attach to the transfer AO message.
-      </Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-  </Table.Body>
-</Table>
-
 ## Examples
 
 <CodeGroup title="approvePrimaryNameRequest">
+
+    ```typescript {{title: "Basic"}}
+    const { id: txId } = await ant.approvePrimaryNameRequest({
+        name: 'arns',
+        address: 't4Xr0_J4Iurt7caNST02cMotaz2FIbWQ4Kbj616RHl3',
+        ioProcessId: ARIO_PROCESS_ID
+    });
+    ```
 
        ```typescript {{title: "NodeJS"}}
         const fs = require("fs");
@@ -104,3 +68,46 @@ export const metadata = {
     ```
 
 </CodeGroup>
+
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Optional</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">name</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>ArNS name to approve as primary name.</Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">address</Table.Cell>
+      <Table.Cell>string - WalletAddress</Table.Cell>
+      <Table.Cell>
+        Public wallet address that made the primary name request being approved.
+      </Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">ioProcessId</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>Process Id of the ARIO contract.</Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">tags</Table.Cell>
+      <Table.Cell>array</Table.Cell>
+      <Table.Cell>
+        An array of GQL tag objects to attach to the transfer AO message.
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>

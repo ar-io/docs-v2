@@ -1,4 +1,5 @@
 import { CodeGroup } from '@/components/Code'
+import { Table } from '@/components/Table'
 
 export const metadata = {
   title: 'getCostDetails',
@@ -9,12 +10,65 @@ export const metadata = {
   },
 }
 
-
 # getCostDetails
 
 `getCostDetails` is a method on the `ARIO` class that calculates detailed cost information for a specific interaction (such as buying an ArNS record). The method determines costs based on the interaction type, the payer's address, and the funding source (balance, stake, or any available funds).
 
 `getCostDetails` does not require authentication.
+
+## Examples
+
+<CodeGroup title="getCostDetails">
+
+    ```typescript {{title: "Basic"}}
+    const costDetails = await ario.getCostDetails({
+        intent: 'Buy-Record',
+        fromAddress: 't4Xr0_J4Iurt7caNST02cMotaz2FIbWQ4Kbj616RHl3',
+        fundFrom: 'stakes',
+        name: 'ar-io',
+        type: 'permabuy'
+    });
+    ```
+
+    ```typescript {{ title: 'NodeJS' }}
+    const { ARIO } = require('@ar.io/sdk');
+
+    async function main() {
+      const ario = ARIO.init();
+      const costDetails = await ario.getCostDetails({
+            intent: 'Buy-Record',
+            fromAddress: 't4Xr0_J4Iurt7caNST02cMotaz2FIbWQ4Kbj616RHl3',
+            fundFrom: 'stakes',
+            name: 'ar-io',
+            type: 'permabuy',
+        });
+
+        console.log(costDetails)
+    }
+
+    main();
+    ```
+
+    ```typescript {{ title: 'Web' }}
+    import { ARIO } from '@ar.io/sdk/web';
+
+    async function main() {
+      const ario = ARIO.init();
+      const costDetails = await ario.getCostDetails({
+            intent: 'Buy-Record',
+            fromAddress: 't4Xr0_J4Iurt7caNST02cMotaz2FIbWQ4Kbj616RHl3',
+            fundFrom: 'stakes',
+            name: 'ar-io',
+            type: 'permabuy',
+        });
+
+        console.log(costDetails)
+    }
+
+    main();
+    ```
+
+</CodeGroup>
 
 ## Parameters
 
@@ -84,50 +138,6 @@ export const metadata = {
     </Table.Row>
   </Table.Body>
 </Table>
-
-## Examples
-
-<CodeGroup title="getCostDetails">
-
-    ```typescript {{ title: 'NodeJS' }}
-    const { ARIO } = require('@ar.io/sdk');
-
-    async function main() {
-      const ario = ARIO.init();
-      const costDetails = await ario.getCostDetails({
-            intent: 'Buy-Record',
-            fromAddress: 't4Xr0_J4Iurt7caNST02cMotaz2FIbWQ4Kbj616RHl3',
-            fundFrom: 'stakes',
-            name: 'ar-io',
-            type: 'permabuy',
-        });
-
-        console.log(costDetails)
-    }
-
-    main();
-    ```
-
-    ```typescript {{ title: 'Web' }}
-    import { ARIO } from '@ar.io/sdk/web';
-
-    async function main() {
-      const ario = ARIO.init();
-      const costDetails = await ario.getCostDetails({
-            intent: 'Buy-Record',
-            fromAddress: 't4Xr0_J4Iurt7caNST02cMotaz2FIbWQ4Kbj616RHl3',
-            fundFrom: 'stakes',
-            name: 'ar-io',
-            type: 'permabuy',
-        });
-
-        console.log(costDetails)
-    }
-
-    main();
-    ```
-
-</CodeGroup>
 
 ## Output
 

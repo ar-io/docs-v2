@@ -9,20 +9,19 @@ export const metadata = {
   },
 }
 
-
 # getDemandFactorSettings
 
 `getDemandFactorSettings` is a method on the `ARIO` class that retrieves the configuration settings for the demand factor algorithm, which dynamically adjusts ArNS registration costs based on network demand.
 
 `getDemandFactorSettings` does not require authentication.
 
-## Parameters
-
-The `getDemandFactorSettings` method does not accept any parameters.
-
 ## Examples
 
 <CodeGroup title="getDemandFactorSettings">
+
+    ```typescript {{title: "Basic"}}
+    const settings = await ario.getDemandFactorSettings();
+    ```
 
     ```typescript {{ title: 'NodeJS' }}
     const { ARIO } = require('@ar.io/sdk');
@@ -51,6 +50,10 @@ The `getDemandFactorSettings` method does not accept any parameters.
     ```
 
 </CodeGroup>
+
+## Parameters
+
+The `getDemandFactorSettings` method does not accept any parameters.
 
 ## Output
 

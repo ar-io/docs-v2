@@ -1,4 +1,5 @@
 import { CodeGroup } from '@/components/Code'
+import { Table } from '@/components/Table'
 
 export const metadata = {
   title: 'register',
@@ -8,45 +9,21 @@ export const metadata = {
   },
 }
 
-
 # register
 
 `register` is a method on the `ANTRegistry` class that registers a new ANT process with the ANT Registry, making it discoverable and accessible.
 
 `register` requires authentication.
 
-## Parameters
-
-<Table>
-  <Table.Head>
-    <Table.Row>
-      <Table.Header>Parameter</Table.Header>
-      <Table.Header>Type</Table.Header>
-      <Table.Header>Description</Table.Header>
-      <Table.Header>Optional</Table.Header>
-    </Table.Row>
-  </Table.Head>
-  <Table.Body>
-    <Table.Row>
-      <Table.Cell className="font-semibold">processId</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>The process ID of the ANT to register</Table.Cell>
-      <Table.Cell>false</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">tags</Table.Cell>
-      <Table.Cell>array</Table.Cell>
-      <Table.Cell>
-        An array of GQL tag objects to attach to the registration AO message
-      </Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-  </Table.Body>
-</Table>
-
 ## Examples
 
 <CodeGroup title="register">
+
+    ```typescript {{title: "Basic"}}
+    const { id: txId } = await antRegistry.register({
+        processId: "bh9l1cy0aksiL_x9M359faGzM_yjralacHIUo8_nQXM"
+    });
+    ```
 
        ```typescript {{title: "NodeJS"}}
         const fs = require("fs");
@@ -96,3 +73,32 @@ export const metadata = {
     ```
 
 </CodeGroup>
+
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Optional</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">processId</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>The process ID of the ANT to register</Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">tags</Table.Cell>
+      <Table.Cell>array</Table.Cell>
+      <Table.Cell>
+        An array of GQL tag objects to attach to the registration AO message
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>

@@ -1,68 +1,21 @@
 import { CodeGroup } from '@/components/Code'
 
-
 # extendLease
 
 `extendLease` is a method on the `ARIO` class that extends the lease duration of a registered ArNS domain. The extension period can be 1-5 years, depending on the domain's grace period status. Note that permanently registered domains cannot have their leases extended.
 
 `extendLease` requires authentication.
 
-## Parameters
-
-<Table>
-  <Table.Head>
-    <Table.Row>
-      <Table.Header>Parameter</Table.Header>
-      <Table.Header>Type</Table.Header>
-      <Table.Header>Description</Table.Header>
-      <Table.Header>Optional</Table.Header>
-    </Table.Row>
-  </Table.Head>
-  <Table.Body>
-    <Table.Row>
-      <Table.Cell className="font-semibold">name</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>The ArNS name for which to extend the lease</Table.Cell>
-      <Table.Cell>false</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">years</Table.Cell>
-      <Table.Cell>number</Table.Cell>
-      <Table.Cell>
-        The number of years to extend the lease by (1-5 years)
-      </Table.Cell>
-      <Table.Cell>false</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">fundFrom</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>
-        The source of funds: 'balance', 'stakes', 'any', or 'turbo'
-      </Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">paidBy</Table.Cell>
-      <Table.Cell>string | string[]</Table.Cell>
-      <Table.Cell>
-        Wallet address(es) that will pay for the purchase (used with fundFrom: 'turbo')
-      </Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">tags</Table.Cell>
-      <Table.Cell>array</Table.Cell>
-      <Table.Cell>
-        An array of GQL tag objects to attach to the transfer AO message
-      </Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-  </Table.Body>
-</Table>
-
 ## Examples
 
 <CodeGroup title="extendLease">
+
+    ```typescript {{title: "Basic"}}
+    const { id: txId } = await ario.extendLease({
+        name: 'ar-io',
+        years: 1
+    });
+    ```
 
        ```typescript {{title: "NodeJS"}}
         const fs = require("fs");
@@ -132,3 +85,57 @@ import { CodeGroup } from '@/components/Code'
     ```
 
 </CodeGroup>
+
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Optional</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">name</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>The ArNS name for which to extend the lease</Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">years</Table.Cell>
+      <Table.Cell>number</Table.Cell>
+      <Table.Cell>
+        The number of years to extend the lease by (1-5 years)
+      </Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">fundFrom</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>
+        The source of funds: 'balance', 'stakes', 'any', or 'turbo'
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">paidBy</Table.Cell>
+      <Table.Cell>string | string[]</Table.Cell>
+      <Table.Cell>
+        Wallet address(es) that will pay for the purchase (used with fundFrom:
+        'turbo')
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">tags</Table.Cell>
+      <Table.Cell>array</Table.Cell>
+      <Table.Cell>
+        An array of GQL tag objects to attach to the transfer AO message
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>

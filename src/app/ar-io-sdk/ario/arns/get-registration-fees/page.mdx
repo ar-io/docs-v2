@@ -8,20 +8,19 @@ export const metadata = {
   },
 }
 
-
 # getRegistrationFees
 
 `getRegistrationFees` is a method on the `ARIO` class that retrieves the current registration fee structure for ArNS names, including base fees and any applicable multipliers.
 
 `getRegistrationFees` does not require authentication.
 
-## Parameters
-
-The `getRegistrationFees` method does not accept any parameters.
-
 ## Examples
 
 <CodeGroup title="getRegistrationFees">
+
+    ```typescript {{title: "Basic"}}
+    const fees = await ario.getRegistrationFees();
+    ```
 
     ```typescript {{ title: 'NodeJS' }}
     const { ARIO } = require('@ar.io/sdk');
@@ -50,6 +49,10 @@ The `getRegistrationFees` method does not accept any parameters.
     ```
 
 </CodeGroup>
+
+## Parameters
+
+The `getRegistrationFees` method does not accept any parameters.
 
 ## Output
 

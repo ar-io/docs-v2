@@ -1,4 +1,5 @@
 import { CodeGroup } from '@/components/Code'
+import { Table } from '@/components/Table'
 
 export const metadata = {
   title: 'getAntsForAddress',
@@ -14,32 +15,15 @@ export const metadata = {
 
 `getAntsForAddress` does not require authentication.
 
-## Parameters
-
-<Table>
-  <Table.Head>
-    <Table.Row>
-      <Table.Header>Parameter</Table.Header>
-      <Table.Header>Type</Table.Header>
-      <Table.Header>Description</Table.Header>
-      <Table.Header>Optional</Table.Header>
-    </Table.Row>
-  </Table.Head>
-  <Table.Body>
-    <Table.Row>
-      <Table.Cell className="font-semibold">address</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>
-        The wallet address to query for owned or controlled ANTs
-      </Table.Cell>
-      <Table.Cell>false</Table.Cell>
-    </Table.Row>
-  </Table.Body>
-</Table>
-
 ## Examples
 
 <CodeGroup title="getAntsForAddress">
+
+    ```typescript {{title: "Basic"}}
+    const ants = await registry.getAntsForAddress({
+        address: '7oqF5r...LbpfT7'
+    });
+    ```
 
     ```typescript {{ title: 'NodeJS' }}
     const { ANTRegistry } = require('@ar.io/sdk');
@@ -101,6 +85,29 @@ export const metadata = {
     ```
 
 </CodeGroup>
+
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Optional</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">address</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>
+        The wallet address to query for owned or controlled ANTs
+      </Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
 
 ## Output
 

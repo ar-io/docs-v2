@@ -1,6 +1,5 @@
-import {CodeGroup} from "@/components/Code"
+import { CodeGroup } from '@/components/Code'
 import { Table } from '@/components/Table'
-
 
 # getAllowedDelegates
 
@@ -8,54 +7,15 @@ import { Table } from '@/components/Table'
 
 `getAllowedDelegates` does not require authentication.
 
-## Parameters
-
-<Table>
-  <Table.Head>
-    <Table.Row>
-      <Table.Header>Parameter</Table.Header>
-      <Table.Header>Type</Table.Header>
-      <Table.Header>Description</Table.Header>
-      <Table.Header>Required</Table.Header>
-    </Table.Row>
-  </Table.Head>
-  <Table.Body>
-    <Table.Row>
-      <Table.Cell className="font-semibold">address</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>The gateway address to query for allowed delegates</Table.Cell>
-      <Table.Cell>Yes</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">cursor</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>Cursor for paginated results</Table.Cell>
-      <Table.Cell>No</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">limit</Table.Cell>
-      <Table.Cell>number</Table.Cell>
-      <Table.Cell>Maximum number of results to return (max: 1000)</Table.Cell>
-      <Table.Cell>No</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">sortBy</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>Property to sort results by</Table.Cell>
-      <Table.Cell>No</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">sortOrder</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>Sort direction (valid values: 'desc' or 'asc')</Table.Cell>
-      <Table.Cell>No</Table.Cell>
-    </Table.Row>
-  </Table.Body>
-</Table>
-
 ## Example
 
 <CodeGroup title="getAllowedDelegates">
+
+    ```javascript {{title: "Basic"}}
+    const allowedDelegates = await ario.getAllowedDelegates({
+        address: 'QGWqtJdLLgm2ehFWiiPzMaoFLD50CnGuzZIPEdoDRGQ'
+    });
+    ```
 
     ```javascript {{ title: 'NodeJS' }}
     const { ARIO } = require('@ar.io/sdk');
@@ -89,6 +49,52 @@ import { Table } from '@/components/Table'
 
 </CodeGroup>
 
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Required</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">address</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>
+        The gateway address to query for allowed delegates
+      </Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">cursor</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>Cursor for paginated results</Table.Cell>
+      <Table.Cell>No</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">limit</Table.Cell>
+      <Table.Cell>number</Table.Cell>
+      <Table.Cell>Maximum number of results to return (max: 1000)</Table.Cell>
+      <Table.Cell>No</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">sortBy</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>Property to sort results by</Table.Cell>
+      <Table.Cell>No</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">sortOrder</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>Sort direction (valid values: 'desc' or 'asc')</Table.Cell>
+      <Table.Cell>No</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
 
 ## Output
 

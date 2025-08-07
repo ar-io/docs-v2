@@ -8,20 +8,19 @@ export const metadata = {
   },
 }
 
-
 # getInfo
 
 `getInfo` is a method on the `ARIO` class that retrieves general information about the ar.io Network, including the current primary name oracle, demand factor, and more.
 
 `getInfo` does not require authentication.
 
-## Parameters
-
-The `getInfo` method does not accept any parameters.
-
 ## Examples
 
 <CodeGroup title="getInfo">
+
+    ```typescript {{title: "Basic"}}
+    const info = await ario.getInfo();
+    ```
 
     ```typescript {{ title: 'NodeJS' }}
     const { ARIO } = require('@ar.io/sdk');
@@ -50,6 +49,10 @@ The `getInfo` method does not accept any parameters.
     ```
 
 </CodeGroup>
+
+## Parameters
+
+The `getInfo` method does not accept any parameters.
 
 ## Output
 

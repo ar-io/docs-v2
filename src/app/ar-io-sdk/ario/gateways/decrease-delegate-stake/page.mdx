@@ -1,55 +1,22 @@
 import { CodeGroup } from '@/components/Code'
 import { Table } from '@/components/Table'
 
-
 # decreaseDelegateStake
 
 `decreaseDelegateStake` is a method on the `ARIO` class that decreases the caller's delegated stake on the target gateway.
 
 `decreaseDelegateStake` requires authentication.
 
-## Parameters
-
-<Table>
-  <Table.Head>
-    <Table.Row>
-      <Table.Header>Parameter</Table.Header>
-      <Table.Header>Type</Table.Header>
-      <Table.Header>Description</Table.Header>
-      <Table.Header>Required</Table.Header>
-    </Table.Row>
-  </Table.Head>
-  <Table.Body>
-    <Table.Row>
-      <Table.Cell className="font-semibold">qty</Table.Cell>
-      <Table.Cell>number</Table.Cell>
-      <Table.Cell>Amount in mARIO to remove from delegated stake</Table.Cell>
-      <Table.Cell>Yes</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">target</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>The gateway's public wallet address</Table.Cell>
-      <Table.Cell>Yes</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">instant</Table.Cell>
-      <Table.Cell>boolean</Table.Cell>
-      <Table.Cell>If true, pays a fee to make the withdrawn stake available instantly</Table.Cell>
-      <Table.Cell>No</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">tags</Table.Cell>
-      <Table.Cell>array</Table.Cell>
-      <Table.Cell>An array of GQL tag objects to attach to the transaction</Table.Cell>
-      <Table.Cell>No</Table.Cell>
-    </Table.Row>
-  </Table.Body>
-</Table>
-
 ## Example
 
 <CodeGroup title="decreaseDelegateStake">
+
+    ```typescript {{title: "Basic"}}
+    const { id: txId } = await ario.decreaseDelegateStake({
+        target: 't4Xr0_J4Iurt7caNST02cMotaz2FIbWQ4Kbj616RHl3',
+        qty: new ARIOToken(100).toMARIO()
+    });
+    ```
 
        ```typescript {{title: "NodeJS - standard"}}
         const fs = require("fs");
@@ -138,3 +105,46 @@ import { Table } from '@/components/Table'
     ```
 
 </CodeGroup>
+
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Required</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">qty</Table.Cell>
+      <Table.Cell>number</Table.Cell>
+      <Table.Cell>Amount in mARIO to remove from delegated stake</Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">target</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>The gateway's public wallet address</Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">instant</Table.Cell>
+      <Table.Cell>boolean</Table.Cell>
+      <Table.Cell>
+        If true, pays a fee to make the withdrawn stake available instantly
+      </Table.Cell>
+      <Table.Cell>No</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">tags</Table.Cell>
+      <Table.Cell>array</Table.Cell>
+      <Table.Cell>
+        An array of GQL tag objects to attach to the transaction
+      </Table.Cell>
+      <Table.Cell>No</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>

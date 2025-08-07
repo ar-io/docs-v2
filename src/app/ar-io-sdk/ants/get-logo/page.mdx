@@ -15,13 +15,13 @@ export const metadata = {
 
 `getLogo` does not require authentication.
 
-## Parameters
-
-The `getLogo` method does not accept any parameters.
-
 ## Examples
 
 <CodeGroup title="getLogo">
+
+    ```typescript {{title: "Basic"}}
+    const logoTxId = await ant.getLogo();
+    ```
 
     ```typescript {{ title: 'NodeJS' }}
     const { ANT } = require('@ar.io/sdk');
@@ -50,6 +50,10 @@ The `getLogo` method does not accept any parameters.
     ```
 
 </CodeGroup>
+
+## Parameters
+
+The `getLogo` method does not accept any parameters.
 
 ## Output
 

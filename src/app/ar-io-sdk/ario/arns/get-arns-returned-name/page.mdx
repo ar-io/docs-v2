@@ -1,6 +1,5 @@
-import {CodeGroup} from "@/components/Code"
+import { CodeGroup } from '@/components/Code'
 import { Table } from '@/components/Table'
-
 
 # getArNSReturnedName
 
@@ -8,30 +7,13 @@ import { Table } from '@/components/Table'
 
 `getArNSReturnedName` does not require authentication.
 
-## Parameters
-
-<Table>
-  <Table.Head>
-    <Table.Row>
-      <Table.Header>Parameter</Table.Header>
-      <Table.Header>Type</Table.Header>
-      <Table.Header>Description</Table.Header>
-      <Table.Header>Optional</Table.Header>
-    </Table.Row>
-  </Table.Head>
-  <Table.Body>
-    <Table.Row>
-      <Table.Cell className="font-semibold">name</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>The ArNS name to retrieve returned name information for</Table.Cell>
-      <Table.Cell>false</Table.Cell>
-    </Table.Row>
-  </Table.Body>
-</Table>
-
 ## Examples
 
 <CodeGroup title="getArNSReturnedName">
+
+    ```typescript {{title: "Basic"}}
+    const returnedName = await ario.getArNSReturnedName({ name: 'permalink' });
+    ```
 
     ```typescript {{ title: 'NodeJS' }}
     const { ARIO } = require('@ar.io/sdk');
@@ -60,6 +42,29 @@ import { Table } from '@/components/Table'
     ```
 
 </CodeGroup>
+
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Optional</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">name</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>
+        The ArNS name to retrieve returned name information for
+      </Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
 
 ## Output
 

@@ -9,12 +9,133 @@ export const metadata = {
   },
 }
 
-
 # getTokenCost
 
 `getTokenCost` is a method on the `ARIO` class that calculates the cost in mARIO tokens for various ArNS operations such as buying records, extending leases, increasing undername limits, upgrading to permabuy, and requesting primary names.
 
 `getTokenCost` does not require authentication.
+
+## Examples
+
+<CodeGroup title="getTokenCost">
+
+    ```typescript {{title: "Basic"}}
+    const cost = await ario.getTokenCost({
+        intent: 'Buy-Record',
+        name: 'example-name',
+        type: 'lease',
+        years: 1
+    });
+    ```
+
+```typescript {{title: "Buy Record - Lease"}}
+import { ARIO } from '@ar.io/sdk'
+
+async function main() {
+  const ario = ARIO.init()
+
+  const cost = await ario.getTokenCost({
+    intent: 'Buy-Record',
+    name: 'example-name',
+    type: 'lease',
+    years: 1,
+  })
+
+  console.log(`Cost for 1-year lease: ${cost.tokenCost} mARIO`)
+}
+
+main()
+```
+
+```typescript {{title: "Buy Record - Permabuy"}}
+import { ARIO } from '@ar.io/sdk'
+
+async function main() {
+  const ario = ARIO.init()
+
+  const cost = await ario.getTokenCost({
+    intent: 'Buy-Record',
+    name: 'example-name',
+    type: 'permabuy',
+  })
+
+  console.log(`Cost for permabuy: ${cost.tokenCost} mARIO`)
+}
+
+main()
+```
+
+```typescript {{title: "Extend Lease"}}
+import { ARIO } from '@ar.io/sdk'
+
+async function main() {
+  const ario = ARIO.init()
+
+  const cost = await ario.getTokenCost({
+    intent: 'Extend-Lease',
+    name: 'existing-name',
+    years: 2,
+  })
+
+  console.log(`Cost to extend by 2 years: ${cost.tokenCost} mARIO`)
+}
+
+main()
+```
+
+```typescript {{title: "Increase Undername Limit"}}
+import { ARIO } from '@ar.io/sdk'
+
+async function main() {
+  const ario = ARIO.init()
+
+  const cost = await ario.getTokenCost({
+    intent: 'Increase-Undername-Limit',
+    name: 'my-name',
+    quantity: 5,
+  })
+
+  console.log(`Cost for 5 additional undernames: ${cost.tokenCost} mARIO`)
+}
+
+main()
+```
+
+```typescript {{title: "Upgrade to Permabuy"}}
+import { ARIO } from '@ar.io/sdk'
+
+async function main() {
+  const ario = ARIO.init()
+
+  const cost = await ario.getTokenCost({
+    intent: 'Upgrade-Name',
+    name: 'leased-name',
+  })
+
+  console.log(`Cost to upgrade to permabuy: ${cost.tokenCost} mARIO`)
+}
+
+main()
+```
+
+```typescript {{title: "Primary Name Request"}}
+import { ARIO } from '@ar.io/sdk'
+
+async function main() {
+  const ario = ARIO.init()
+
+  const cost = await ario.getTokenCost({
+    intent: 'Primary-Name-Request',
+    name: 'my-primary-name',
+  })
+
+  console.log(`Cost for primary name request: ${cost.tokenCost} mARIO`)
+}
+
+main()
+```
+
+</CodeGroup>
 
 ## Parameters
 
@@ -180,119 +301,6 @@ The `getTokenCost` method accepts different parameter sets depending on the `int
     </Table.Row>
   </Table.Body>
 </Table>
-
-## Examples
-
-<CodeGroup title="getTokenCost">
-
-```typescript {{title: "Buy Record - Lease"}}
-import { ARIO } from '@ar.io/sdk'
-
-async function main() {
-  const ario = ARIO.init()
-
-  const cost = await ario.getTokenCost({
-    intent: 'Buy-Record',
-    name: 'example-name',
-    type: 'lease',
-    years: 1,
-  })
-
-  console.log(`Cost for 1-year lease: ${cost.tokenCost} mARIO`)
-}
-
-main()
-```
-
-```typescript {{title: "Buy Record - Permabuy"}}
-import { ARIO } from '@ar.io/sdk'
-
-async function main() {
-  const ario = ARIO.init()
-
-  const cost = await ario.getTokenCost({
-    intent: 'Buy-Record',
-    name: 'example-name',
-    type: 'permabuy',
-  })
-
-  console.log(`Cost for permabuy: ${cost.tokenCost} mARIO`)
-}
-
-main()
-```
-
-```typescript {{title: "Extend Lease"}}
-import { ARIO } from '@ar.io/sdk'
-
-async function main() {
-  const ario = ARIO.init()
-
-  const cost = await ario.getTokenCost({
-    intent: 'Extend-Lease',
-    name: 'existing-name',
-    years: 2,
-  })
-
-  console.log(`Cost to extend by 2 years: ${cost.tokenCost} mARIO`)
-}
-
-main()
-```
-
-```typescript {{title: "Increase Undername Limit"}}
-import { ARIO } from '@ar.io/sdk'
-
-async function main() {
-  const ario = ARIO.init()
-
-  const cost = await ario.getTokenCost({
-    intent: 'Increase-Undername-Limit',
-    name: 'my-name',
-    quantity: 5,
-  })
-
-  console.log(`Cost for 5 additional undernames: ${cost.tokenCost} mARIO`)
-}
-
-main()
-```
-
-```typescript {{title: "Upgrade to Permabuy"}}
-import { ARIO } from '@ar.io/sdk'
-
-async function main() {
-  const ario = ARIO.init()
-
-  const cost = await ario.getTokenCost({
-    intent: 'Upgrade-Name',
-    name: 'leased-name',
-  })
-
-  console.log(`Cost to upgrade to permabuy: ${cost.tokenCost} mARIO`)
-}
-
-main()
-```
-
-```typescript {{title: "Primary Name Request"}}
-import { ARIO } from '@ar.io/sdk'
-
-async function main() {
-  const ario = ARIO.init()
-
-  const cost = await ario.getTokenCost({
-    intent: 'Primary-Name-Request',
-    name: 'my-primary-name',
-  })
-
-  console.log(`Cost for primary name request: ${cost.tokenCost} mARIO`)
-}
-
-main()
-```
-
-</CodeGroup>
 
 ## Output
 

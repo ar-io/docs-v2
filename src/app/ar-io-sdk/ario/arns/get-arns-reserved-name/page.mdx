@@ -1,4 +1,5 @@
 import { CodeGroup } from '@/components/Code'
+import { Table } from '@/components/Table'
 
 export const metadata = {
   title: 'getArNSReservedName',
@@ -8,42 +9,19 @@ export const metadata = {
   },
 }
 
-
 # getArNSReservedName
 
 `getArNSReservedName` is a method on the `ARIO` class that retrieves details about a specific reserved ArNS name, including its target and any expiration information.
 
 `getArNSReservedName` does not require authentication.
 
-## Parameters
-
-{
-
-<div style={{ textAlign: 'center' }}>
-  <table className="inline-table">
-    <thead>
-      <tr>
-        <th>Parameter</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Optional</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th>name</th>
-        <td>string</td>
-        <td>The reserved ArNS name to retrieve information for</td>
-        <td>false</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-}
-
 ## Examples
 
 <CodeGroup title="getArNSReservedName">
+
+    ```typescript {{title: "Basic"}}
+    const reservedName = await ario.getArNSReservedName({ name: 'arweave' });
+    ```
 
     ```typescript {{ title: 'NodeJS' }}
     const { ARIO } = require('@ar.io/sdk');
@@ -72,6 +50,29 @@ export const metadata = {
     ```
 
 </CodeGroup>
+
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Optional</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">name</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>
+        The reserved ArNS name to retrieve information for
+      </Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
 
 ## Output
 

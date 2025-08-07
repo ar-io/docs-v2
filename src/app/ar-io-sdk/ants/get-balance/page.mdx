@@ -8,42 +8,21 @@ export const metadata = {
   },
 }
 
-
 # getBalance
 
 `getBalance` is a method on the `ANT` class that retrieves the token balance for a specific wallet address within the ANT process.
 
 `getBalance` does not require authentication.
 
-## Parameters
-
-{
-
-<div style={{ textAlign: 'center' }}>
-  <table className="inline-table">
-    <thead>
-      <tr>
-        <th>Parameter</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Optional</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th>address</th>
-        <td>string - WalletAddress</td>
-        <td>The wallet address to retrieve the balance for</td>
-        <td>false</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-}
-
 ## Examples
 
 <CodeGroup title="getBalance">
+
+    ```typescript {{title: "Basic"}}
+    const balance = await ant.getBalance({
+      address: "ccp3blG__gKUvG3hsGC2u06aDmqv4CuhuDJGOIg0jw4"
+    });
+    ```
 
     ```typescript {{ title: 'NodeJS' }}
     const { ANT } = require('@ar.io/sdk');
@@ -76,6 +55,27 @@ export const metadata = {
     ```
 
 </CodeGroup>
+
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Optional</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">address</Table.Cell>
+      <Table.Cell>string - WalletAddress</Table.Cell>
+      <Table.Cell>The wallet address to retrieve the balance for</Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
 
 ## Output
 

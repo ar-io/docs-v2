@@ -1,12 +1,61 @@
-import {CodeGroup} from "@/components/Code"
+import { CodeGroup } from '@/components/Code'
 import { Table } from '@/components/Table'
-
 
 # getDelegations
 
 `getDelegations` is a method on the `ARIO` class that retrieves all active and vaulted stakes across all gateways for a specific address. Results are paginated and sorted by the specified criteria. The cursor parameter represents the last delegationId (a combination of gateway address and delegation start timestamp) from the previous request.
 
 `getDelegations` does not require authentication.
+
+## Example
+
+<CodeGroup title="getDelegations">
+
+    ```javascript {{title: "Basic"}}
+    const vaults = await ario.getDelegations({
+        address: 't4Xr0_J4Iurt7caNST02cMotaz2FIbWQ4Kbj616RHl3'
+    });
+    ```
+
+    ```javascript {{ title: 'NodeJS' }}
+    const { ARIO } = require('@ar.io/sdk');
+
+    async function main() {
+      const ario = ARIO.init();
+      const vaults = await ario.getDelegations({
+            address: 't4Xr0_J4Iurt7caNST02cMotaz2FIbWQ4Kbj616RHl3',
+            cursor: 'QGWqtJdLLgm2ehFWiiPzMaoFLD50CnGuzZIPEdoDRGQ_123456789',
+            limit: 2,
+            sortBy: 'startTimestamp',
+            sortOrder: 'asc',
+        });
+
+      console.log(vaults);
+    }
+
+    main();
+    ```
+
+    ```javascript {{ title: 'Web' }}
+    import { ARIO } from '@ar.io/sdk/web';
+
+    async function main() {
+      const ario = ARIO.init();
+      const vaults = await ario.getDelegations({
+            address: 't4Xr0_J4Iurt7caNST02cMotaz2FIbWQ4Kbj616RHl3',
+            cursor: 'QGWqtJdLLgm2ehFWiiPzMaoFLD50CnGuzZIPEdoDRGQ_123456789',
+            limit: 2,
+            sortBy: 'startTimestamp',
+            sortOrder: 'asc',
+        });
+
+      console.log(vaults);
+    }
+
+    main();
+    ```
+
+</CodeGroup>
 
 ## Parameters
 
@@ -52,51 +101,6 @@ import { Table } from '@/components/Table'
     </Table.Row>
   </Table.Body>
 </Table>
-
-## Example
-
-<CodeGroup title="getDelegations">
-
-    ```javascript {{ title: 'NodeJS' }}
-    const { ARIO } = require('@ar.io/sdk');
-
-    async function main() {
-      const ario = ARIO.init();
-      const vaults = await ario.getDelegations({
-            address: 't4Xr0_J4Iurt7caNST02cMotaz2FIbWQ4Kbj616RHl3',
-            cursor: 'QGWqtJdLLgm2ehFWiiPzMaoFLD50CnGuzZIPEdoDRGQ_123456789',
-            limit: 2,
-            sortBy: 'startTimestamp',
-            sortOrder: 'asc',
-        });
-
-      console.log(vaults);
-    }
-
-    main();
-    ```
-
-    ```javascript {{ title: 'Web' }}
-    import { ARIO } from '@ar.io/sdk/web';
-
-    async function main() {
-      const ario = ARIO.init();
-      const vaults = await ario.getDelegations({
-            address: 't4Xr0_J4Iurt7caNST02cMotaz2FIbWQ4Kbj616RHl3',
-            cursor: 'QGWqtJdLLgm2ehFWiiPzMaoFLD50CnGuzZIPEdoDRGQ_123456789',
-            limit: 2,
-            sortBy: 'startTimestamp',
-            sortOrder: 'asc',
-        });
-
-      console.log(vaults);
-    }
-
-    main();
-    ```
-
-</CodeGroup>
-
 
 ## Output
 

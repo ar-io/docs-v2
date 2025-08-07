@@ -1,69 +1,21 @@
 import { CodeGroup } from '@/components/Code'
 
-
 # increaseUndernameLimit
 
 `increaseUndernameLimit` is a method on the `ARIO` class that increases the number of undernames an ArNS domain can support. Each domain starts with a default limit of 10 undernames and can be increased up to a maximum of 10,000 undernames.
 
 `increaseUndernameLimit` requires authentication.
 
-## Parameters
-
-<Table>
-  <Table.Head>
-    <Table.Row>
-      <Table.Header>Parameter</Table.Header>
-      <Table.Header>Type</Table.Header>
-      <Table.Header>Description</Table.Header>
-      <Table.Header>Optional</Table.Header>
-    </Table.Row>
-  </Table.Head>
-  <Table.Body>
-    <Table.Row>
-      <Table.Cell className="font-semibold">name</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>The ArNS name to increase the undername limit for</Table.Cell>
-      <Table.Cell>false</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">increaseCount</Table.Cell>
-      <Table.Cell>number</Table.Cell>
-      <Table.Cell>
-        The number of additional undername slots to purchase (up to 10,000
-        total)
-      </Table.Cell>
-      <Table.Cell>false</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">fundFrom</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>
-        The source of funds: 'balance', 'stakes', 'any', or 'turbo'
-      </Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">paidBy</Table.Cell>
-      <Table.Cell>string | string[]</Table.Cell>
-      <Table.Cell>
-        Wallet address(es) that will pay for the purchase (used with fundFrom: 'turbo')
-      </Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">tags</Table.Cell>
-      <Table.Cell>array</Table.Cell>
-      <Table.Cell>
-        An array of GQL tag objects to attach to the transfer AO message
-      </Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-  </Table.Body>
-</Table>
-
 ## Examples
 
 <CodeGroup title="increaseUndernameLimit">
+
+    ```typescript {{title: "Basic"}}
+    const { id: txId } = await ario.increaseUndernameLimit({
+        name: 'ar-io',
+        increaseCount: 90
+    });
+    ```
 
        ```typescript {{title: "NodeJS"}}
         const fs = require("fs");
@@ -140,3 +92,58 @@ import { CodeGroup } from '@/components/Code'
     ```
 
 </CodeGroup>
+
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Optional</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">name</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>The ArNS name to increase the undername limit for</Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">increaseCount</Table.Cell>
+      <Table.Cell>number</Table.Cell>
+      <Table.Cell>
+        The number of additional undername slots to purchase (up to 10,000
+        total)
+      </Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">fundFrom</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>
+        The source of funds: 'balance', 'stakes', 'any', or 'turbo'
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">paidBy</Table.Cell>
+      <Table.Cell>string | string[]</Table.Cell>
+      <Table.Cell>
+        Wallet address(es) that will pay for the purchase (used with fundFrom:
+        'turbo')
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">tags</Table.Cell>
+      <Table.Cell>array</Table.Cell>
+      <Table.Cell>
+        An array of GQL tag objects to attach to the transfer AO message
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>

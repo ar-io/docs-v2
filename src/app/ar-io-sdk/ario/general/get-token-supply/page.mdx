@@ -8,20 +8,19 @@ export const metadata = {
   },
 }
 
-
 # getTokenSupply
 
 `getTokenSupply` is a method on the `ARIO` class that retrieves detailed token supply information for the AR.IO network, including total supply, circulating supply, locked tokens, and more.
 
 `getTokenSupply` does not require authentication.
 
-## Parameters
-
-The `getTokenSupply` method does not accept any parameters.
-
 ## Examples
 
 <CodeGroup title="getTokenSupply">
+
+    ```typescript {{title: "Basic"}}
+    const tokenSupply = await ario.getTokenSupply();
+    ```
 
     ```typescript {{ title: 'NodeJS' }}
     const { ARIO } = require('@ar.io/sdk');
@@ -50,6 +49,10 @@ The `getTokenSupply` method does not accept any parameters.
     ```
 
 </CodeGroup>
+
+## Parameters
+
+The `getTokenSupply` method does not accept any parameters.
 
 ## Output
 

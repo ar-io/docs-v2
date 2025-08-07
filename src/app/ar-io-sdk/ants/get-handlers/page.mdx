@@ -1,3 +1,5 @@
+import { CodeGroup } from '@/components/Code'
+
 export const metadata = {
   title: 'getHandlers',
   description: 'Retrieve the handlers supported by an ANT',
@@ -6,20 +8,19 @@ export const metadata = {
   },
 }
 
-
 # getHandlers
 
 `getHandlers` is a method on the `ANT` class that retrieves the handlers supported by the ANT.
 
 `getHandlers` does not require authentication.
 
-## Parameters
-
-The `getHandlers` method does not accept any parameters.
-
 ## Examples
 
 <CodeGroup title="getHandlers">
+
+    ```typescript {{title: "Basic"}}
+    const handlers = await ant.getHandlers();
+    ```
 
     ```typescript {{ title: 'NodeJS' }}
     const { ANT } = require('@ar.io/sdk');
@@ -48,6 +49,10 @@ The `getHandlers` method does not accept any parameters.
     ```
 
 </CodeGroup>
+
+## Parameters
+
+The `getHandlers` method does not accept any parameters.
 
 ## Output
 

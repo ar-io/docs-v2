@@ -1,4 +1,5 @@
 import { CodeGroup } from '@/components/Code'
+import { Table } from '@/components/Table'
 
 export const metadata = {
   title: 'getPrescribedNames',
@@ -14,35 +15,13 @@ export const metadata = {
 
 `getPrescribedNames` does not require authentication.
 
-## Parameters
-
-{
-
-<div style={{ textAlign: 'center' }}>
-  <table className="inline-table">
-    <thead>
-      <tr>
-        <th>Parameter</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Optional</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th>epochIndex</th>
-        <td>number</td>
-        <td>The epoch index for which to retrieve prescribed names</td>
-        <td>true</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-}
-
 ## Examples
 
 <CodeGroup title="getPrescribedNames">
+
+    ```typescript {{title: "Basic"}}
+    const prescribedNames = await ario.getPrescribedNames({ epochIndex: 0 });
+    ```
 
     ```typescript {{ title: 'NodeJS' }}
     const { ARIO } = require('@ar.io/sdk');
@@ -71,6 +50,29 @@ export const metadata = {
     ```
 
 </CodeGroup>
+
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Optional</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">epochIndex</Table.Cell>
+      <Table.Cell>number</Table.Cell>
+      <Table.Cell>
+        The epoch index for which to retrieve prescribed names
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
 
 ## Output
 

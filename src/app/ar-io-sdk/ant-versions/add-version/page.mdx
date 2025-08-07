@@ -13,48 +13,18 @@ export const metadata = {
 
 `addVersion` is a method on the `ANTVersions` class that adds a new version to an ANT. This method requires authentication and a signer to be provided during initialization.
 
-## Parameters
-
-<Table>
-  <Table.Head>
-    <Table.Row>
-      <Table.Header>Parameter</Table.Header>
-      <Table.Header>Type</Table.Header>
-      <Table.Header>Description</Table.Header>
-      <Table.Header>Optional</Table.Header>
-    </Table.Row>
-  </Table.Head>
-  <Table.Body>
-    <Table.Row>
-      <Table.Cell className="font-semibold">version</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>The version identifier (e.g., "2.0.0")</Table.Cell>
-      <Table.Cell>false</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">moduleId</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>The module ID for the new version</Table.Cell>
-      <Table.Cell>false</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">luaSourceId</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>The Lua source ID for the new version</Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">notes</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>Notes or description for the new version</Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-  </Table.Body>
-</Table>
-
 ## Examples
 
 <CodeGroup title="addVersion">
+
+    ```typescript {{title: "Basic"}}
+    const { id: txId } = await versions.addVersion({
+        version: "2.0.0",
+        moduleId: "abc123...def789",
+        luaSourceId: "ghi012...jkl345",
+        notes: "Major update with new features"
+    });
+    ```
 
     ```typescript {{ title: 'NodeJS' }}
     const { ANTVersions, ArweaveSigner } = require('@ar.io/sdk');
@@ -102,6 +72,45 @@ export const metadata = {
     ```
 
 </CodeGroup>
+
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Optional</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">version</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>The version identifier (e.g., "2.0.0")</Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">moduleId</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>The module ID for the new version</Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">luaSourceId</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>The Lua source ID for the new version</Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">notes</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>Notes or description for the new version</Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
 
 ## Output
 

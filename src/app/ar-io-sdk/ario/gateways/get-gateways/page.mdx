@@ -1,4 +1,5 @@
 import { CodeGroup } from '@/components/Code'
+import { Table } from '@/components/Table'
 
 export const metadata = {
   title: 'getGateways',
@@ -14,67 +15,17 @@ export const metadata = {
 
 `getGateways` does not require authentication.
 
-## Parameters
-
-<Table>
-  <Table.Head>
-    <Table.Row>
-      <Table.Header>Parameter</Table.Header>
-      <Table.Header>Type</Table.Header>
-      <Table.Header>Description</Table.Header>
-      <Table.Header>Optional</Table.Header>
-      <Table.Header>Default</Table.Header>
-    </Table.Row>
-  </Table.Head>
-  <Table.Body>
-    <Table.Row>
-      <Table.Cell className="font-semibold">cursor</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>
-        The gateway address to use as the starting point for pagination
-      </Table.Cell>
-      <Table.Cell>true</Table.Cell>
-      <Table.Cell>None</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">limit</Table.Cell>
-      <Table.Cell>number</Table.Cell>
-      <Table.Cell>
-        The maximum number of gateways to return (max: 1000)
-      </Table.Cell>
-      <Table.Cell>true</Table.Cell>
-      <Table.Cell>100</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">sortBy</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>The property to sort gateways by</Table.Cell>
-      <Table.Cell>true</Table.Cell>
-      <Table.Cell>startTimestamp</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">sortOrder</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>The sort direction ('desc' or 'asc')</Table.Cell>
-      <Table.Cell>true</Table.Cell>
-      <Table.Cell>desc</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">filters</Table.Cell>
-      <Table.Cell>Record&lt;string, string | string[]&gt;</Table.Cell>
-      <Table.Cell>
-        Filters to apply to the results. Keys must match object properties.
-        Arrays act as OR conditions, multiple keys act as AND conditions.
-      </Table.Cell>
-      <Table.Cell>true</Table.Cell>
-      <Table.Cell>None</Table.Cell>
-    </Table.Row>
-  </Table.Body>
-</Table>
-
 ## Examples
 
 <CodeGroup title="getGateways">
+
+    ```typescript {{title: "Basic"}}
+    const gateways = await ario.getGateways({
+        limit: 10,
+        sortBy: 'operatorStake',
+        sortOrder: 'desc'
+    });
+    ```
 
     ```typescript {{ title: 'NodeJS' }}
     const { ARIO } = require('@ar.io/sdk');
@@ -141,6 +92,64 @@ export const metadata = {
     ```
 
 </CodeGroup>
+
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Optional</Table.Header>
+      <Table.Header>Default</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">cursor</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>
+        The gateway address to use as the starting point for pagination
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+      <Table.Cell>None</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">limit</Table.Cell>
+      <Table.Cell>number</Table.Cell>
+      <Table.Cell>
+        The maximum number of gateways to return (max: 1000)
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+      <Table.Cell>100</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">sortBy</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>The property to sort gateways by</Table.Cell>
+      <Table.Cell>true</Table.Cell>
+      <Table.Cell>startTimestamp</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">sortOrder</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>The sort direction ('desc' or 'asc')</Table.Cell>
+      <Table.Cell>true</Table.Cell>
+      <Table.Cell>desc</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">filters</Table.Cell>
+      <Table.Cell>Record&lt;string, string | string[]&gt;</Table.Cell>
+      <Table.Cell>
+        Filters to apply to the results. Keys must match object properties.
+        Arrays act as OR conditions, multiple keys act as AND conditions.
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+      <Table.Cell>None</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
 
 ## Output
 

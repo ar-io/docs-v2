@@ -21,12 +21,6 @@ export function Table({
   style,
   ...props
 }: TableProps) {
-  // Apply all style props directly to the table element
-  const tableStyle = {
-    minWidth: '600px', // Default minWidth
-    ...style, // Allow override of minWidth and other styles
-  }
-
   // Determine container classes based on override preference
   const containerClasses = overrideContainerClasses
     ? containerClassName || ''
@@ -34,30 +28,13 @@ export function Table({
 
   return (
     <div className={containerClasses} style={containerStyle}>
-      <div
-        className={clsx(
-          'w-full overflow-x-auto rounded-lg border border-zinc-200 shadow-sm dark:border-zinc-700',
-          scrollContainerClassName,
-        )}
+      <table
+        className={clsx('inline-table', className)}
+        style={style}
+        {...props}
       >
-        {/* Mobile scroll indicator - Top */}
-        <div className="block border-b border-zinc-200 py-2 text-center text-xs text-zinc-500 sm:hidden dark:border-zinc-700 dark:text-zinc-400">
-          ← Swipe to see more →
-        </div>
-        <div className="inline-block">
-          <table
-            className={clsx('w-full border-collapse', className)}
-            style={tableStyle}
-            {...props}
-          >
-            {children}
-          </table>
-        </div>
-        {/* Mobile scroll indicator - Bottom */}
-        <div className="block border-t border-zinc-200 py-2 text-center text-xs text-zinc-500 sm:hidden dark:border-zinc-700 dark:text-zinc-400">
-          ← Swipe to see more →
-        </div>
-      </div>
+        {children}
+      </table>
     </div>
   )
 }
@@ -69,13 +46,7 @@ interface TableHeadProps extends React.HTMLAttributes<HTMLTableSectionElement> {
 
 export function TableHead({ children, className, ...props }: TableHeadProps) {
   return (
-    <thead
-      className={clsx(
-        'border-b border-zinc-300 dark:border-zinc-600',
-        className,
-      )}
-      {...props}
-    >
+    <thead className={className} {...props}>
       {children}
     </thead>
   )
@@ -88,13 +59,7 @@ interface TableBodyProps extends React.HTMLAttributes<HTMLTableSectionElement> {
 
 export function TableBody({ children, className, ...props }: TableBodyProps) {
   return (
-    <tbody
-      className={clsx(
-        '[&>tr:nth-child(even)]:bg-zinc-50 dark:[&>tr:nth-child(even)]:bg-zinc-800 [&>tr:nth-child(odd)]:bg-white dark:[&>tr:nth-child(odd)]:bg-zinc-900',
-        className,
-      )}
-      {...props}
-    >
+    <tbody className={className} {...props}>
       {children}
     </tbody>
   )
@@ -107,13 +72,7 @@ interface TableRowProps extends React.HTMLAttributes<HTMLTableRowElement> {
 
 export function TableRow({ children, className, ...props }: TableRowProps) {
   return (
-    <tr
-      className={clsx(
-        'border-b border-zinc-200 last:border-b-0 dark:border-zinc-700',
-        className,
-      )}
-      {...props}
-    >
+    <tr className={className} {...props}>
       {children}
     </tr>
   )
@@ -131,13 +90,7 @@ export function TableHeader({
   ...props
 }: TableHeaderProps) {
   return (
-    <th
-      className={clsx(
-        'px-2 py-2 text-left text-xs font-semibold text-zinc-900 sm:px-3 sm:py-3 sm:text-sm md:px-4 md:py-4 dark:text-zinc-100',
-        className,
-      )}
-      {...props}
-    >
+    <th className={className} {...props}>
       {children}
     </th>
   )
@@ -150,13 +103,7 @@ interface TableCellProps extends React.TdHTMLAttributes<HTMLTableCellElement> {
 
 export function TableCell({ children, className, ...props }: TableCellProps) {
   return (
-    <td
-      className={clsx(
-        'hyphens-auto break-words px-2 py-2 text-xs text-zinc-700 sm:px-3 sm:py-3 sm:text-sm md:px-4 md:py-4 md:text-base dark:text-zinc-300',
-        className,
-      )}
-      {...props}
-    >
+    <td className={className} {...props}>
       {children}
     </td>
   )

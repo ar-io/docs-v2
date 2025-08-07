@@ -8,62 +8,21 @@ export const metadata = {
   },
 }
 
-
 # upgradeRecord
 
 `upgradeRecord` is a method on the `ARIO` class that upgrades an existing ArNS record from a lease to a permanent ownership (permabuy). This allows converting a leased name to permanent ownership.
 
 `upgradeRecord` requires authentication.
 
-## Parameters
-
-{
-
-<div style={{ textAlign: 'center' }}>
-  <table className="inline-table">
-    <thead>
-      <tr>
-        <th>Parameter</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Optional</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th>name</th>
-        <td>string</td>
-        <td>The ArNS name to upgrade to permanent ownership</td>
-        <td>false</td>
-      </tr>
-      <tr>
-        <th>fundFrom</th>
-        <td>string</td>
-        <td>The source of funds: 'balance', 'stakes', 'any', or 'turbo'</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <th>paidBy</th>
-        <td>string | string[]</td>
-        <td>Wallet address(es) that will pay for the purchase (used with fundFrom: 'turbo')</td>
-        <td>true</td>
-      </tr>
-      <tr>
-        <th>tags</th>
-        <td>array</td>
-        <td>
-          An array of GQL tag objects to attach to the transfer AO message
-        </td>
-        <td>true</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-}
-
 ## Examples
 
 <CodeGroup title="upgradeRecord">
+
+    ```typescript {{title: "Basic"}}
+    const { id: txId } = await ario.upgradeRecord({
+        name: 'ardrive'
+    });
+    ```
 
        ```typescript {{title: "NodeJS"}}
         const fs = require("fs");
@@ -131,3 +90,49 @@ export const metadata = {
     ```
 
 </CodeGroup>
+
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Optional</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">name</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>The ArNS name to upgrade to permanent ownership</Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">fundFrom</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>
+        The source of funds: 'balance', 'stakes', 'any', or 'turbo'
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">paidBy</Table.Cell>
+      <Table.Cell>string | string[]</Table.Cell>
+      <Table.Cell>
+        Wallet address(es) that will pay for the purchase (used with fundFrom:
+        'turbo')
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">tags</Table.Cell>
+      <Table.Cell>array</Table.Cell>
+      <Table.Cell>
+        An array of GQL tag objects to attach to the transfer AO message
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>

@@ -14,13 +14,13 @@ export const metadata = {
 
 `getInfo` does not require authentication.
 
-## Parameters
-
-The `getInfo` method does not accept any parameters.
-
 ## Examples
 
 <CodeGroup title="getInfo">
+
+    ```typescript {{title: "Basic"}}
+    const info = await ant.getInfo();
+    ```
 
     ```typescript {{ title: 'NodeJS' }}
     const { ANT } = require('@ar.io/sdk');
@@ -49,6 +49,10 @@ The `getInfo` method does not accept any parameters.
     ```
 
 </CodeGroup>
+
+## Parameters
+
+The `getInfo` method does not accept any parameters.
 
 ## Output
 

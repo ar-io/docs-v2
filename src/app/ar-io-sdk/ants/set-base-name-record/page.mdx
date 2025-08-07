@@ -8,12 +8,71 @@ export const metadata = {
   },
 }
 
-
 # setBaseNameRecord
 
 `setBaseNameRecord` is a method on the `ANT` class that adds or updates the base name record for the ANT. This record defines the top-level name of the ANT (e.g., ardrive.ar.io).
 
 `setBaseNameRecord` requires authentication.
+
+## Examples
+
+<CodeGroup title="setBaseNameRecord">
+
+    ```typescript {{title: "Basic"}}
+    const { id: txId } = await ant.setBaseNameRecord({
+        transactionId: '432l1cy0aksiL_x9M359faGzM_yjralacHIUo8_nQXM',
+        ttlSeconds: 3600
+    });
+    ```
+
+```typescript {{title: "NodeJS"}}
+const fs = require('fs')
+const { ANT, ArweaveSigner } = require('@ar.io/sdk')
+
+async function main() {
+  const jwk = JSON.parse(fs.readFileSync('KeyFile.json'))
+
+  // get the ant for the base name
+  const arnsRecord = await ario.getArNSRecord({ name: 'ardrive' })
+  const ant = ANT.init({
+    signer: new ArweaveSigner(jwk),
+    processId: arnsRecord.processId,
+  })
+
+  const { id: txId } = await ant.setBaseNameRecord({
+    transactionId: '432l1cy0aksiL_x9M359faGzM_yjralacHIUo8_nQXM',
+    ttlSeconds: 3600,
+  })
+
+  // ardrive.ar.io will now resolve to the provided transaction id
+}
+
+main()
+```
+
+```typescript {{ title: 'Web' }}
+import { ANT, ArConnectSigner } from '@ar.io/sdk/web'
+
+async function main() {
+  // get the ant for the base name
+  const arnsRecord = await ario.getArNSRecord({ name: 'ardrive' })
+  const ant = ANT.init({
+    signer: new ArConnectSigner(window.arweaveWallet),
+    processId: arnsRecord.processId,
+  })
+
+  const { id: txId } = await ant.setBaseNameRecord({
+    transactionId: '432l1cy0aksiL_x9M359faGzM_yjralacHIUo8_nQXM',
+    ttlSeconds: 3600,
+  })
+
+  // ardrive.ar.io will now resolve to the provided transaction id
+}
+
+main()
+```
+
+</CodeGroup>
 
 ## Parameters
 
@@ -36,13 +95,17 @@ export const metadata = {
     <Table.Row>
       <Table.Cell className="font-semibold">ttlSeconds</Table.Cell>
       <Table.Cell>number</Table.Cell>
-      <Table.Cell>The number of seconds for DNS TTL (defaults to 900)</Table.Cell>
+      <Table.Cell>
+        The number of seconds for DNS TTL (defaults to 900)
+      </Table.Cell>
       <Table.Cell>true</Table.Cell>
     </Table.Row>
     <Table.Row>
       <Table.Cell className="font-semibold">tags</Table.Cell>
       <Table.Cell>array</Table.Cell>
-      <Table.Cell>An array of GQL tag objects to attach to the transfer AO message</Table.Cell>
+      <Table.Cell>
+        An array of GQL tag objects to attach to the transfer AO message
+      </Table.Cell>
       <Table.Cell>true</Table.Cell>
     </Table.Row>
   </Table.Body>
@@ -55,57 +118,5 @@ export const metadata = {
   quickly.
 
 TTL must be between 60 seconds (1 minute) and 86400 seconds (1 day).
+
 </Tip>
-
-## Examples
-
-<CodeGroup title="setBaseNameRecord">
-
-```typescript {{title: "NodeJS"}}
-const fs = require("fs");
-const { ANT, ArweaveSigner } = require("@ar.io/sdk");
-
-async function main() {
-    const jwk = JSON.parse(fs.readFileSync("KeyFile.json"));
-    
-    // get the ant for the base name
-    const arnsRecord = await ario.getArNSRecord({ name: 'ardrive' });
-    const ant = ANT.init({
-        signer: new ArweaveSigner(jwk),
-        processId: arnsRecord.processId
-    });
-
-    const { id: txId } = await ant.setBaseNameRecord({
-        transactionId: '432l1cy0aksiL_x9M359faGzM_yjralacHIUo8_nQXM',
-        ttlSeconds: 3600
-    });
-
-    // ardrive.ar.io will now resolve to the provided transaction id
-}
-
-main();
-```
-
-```typescript {{ title: 'Web' }}
-import { ANT, ArConnectSigner } from '@ar.io/sdk/web';
-
-async function main() {
-    // get the ant for the base name
-    const arnsRecord = await ario.getArNSRecord({ name: 'ardrive' });
-    const ant = ANT.init({
-        signer: new ArConnectSigner(window.arweaveWallet),
-        processId: arnsRecord.processId
-    });
-
-    const { id: txId } = await ant.setBaseNameRecord({
-        transactionId: '432l1cy0aksiL_x9M359faGzM_yjralacHIUo8_nQXM',
-        ttlSeconds: 3600
-    });
-
-    // ardrive.ar.io will now resolve to the provided transaction id
-}
-
-main();
-```
-
-</CodeGroup>

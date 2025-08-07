@@ -9,7 +9,6 @@ export const metadata = {
   },
 }
 
-
 <Tip title="Deprecated">
   This method is deprecated. Please use `setBaseNameRecord` for top-level names
   or `setUndernameRecord` for undernames instead. See the
@@ -24,62 +23,17 @@ export const metadata = {
 
 `setRecord` requires authentication.
 
-## Parameters
-
-<Table>
-  <Table.Head>
-    <Table.Row>
-      <Table.Header>Parameter</Table.Header>
-      <Table.Header>Type</Table.Header>
-      <Table.Header>Description</Table.Header>
-      <Table.Header>Optional</Table.Header>
-    </Table.Row>
-  </Table.Head>
-  <Table.Body>
-    <Table.Row>
-      <Table.Cell className="font-semibold">undername</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>
-        The undername name for the record (use "@" for the root domain)
-      </Table.Cell>
-      <Table.Cell>false</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">transactionId</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>The Arweave transaction ID to point the record to</Table.Cell>
-      <Table.Cell>false</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">ttlSeconds</Table.Cell>
-      <Table.Cell>number</Table.Cell>
-      <Table.Cell>Time-to-live in seconds for the record cache</Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">tags</Table.Cell>
-      <Table.Cell>array</Table.Cell>
-      <Table.Cell>
-        An array of GQL tag objects to attach to the AO message
-      </Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-  </Table.Body>
-</Table>
-
-<Tip title="TTL">
-  Time-To-Live (TTL) determines how often gateways should check the ANT for updates to the corresponding record. You can have different TTLs for different records within an ANT, depending on their use case. A record that is updated frequently should have a lower
-  value to facilitate serving current data, while a record that is updated less
-  often should have a higher value to allow cached data to be served more
-  quickly.
-
-TTL must be between 60 seconds (1 minute) and 86400 seconds (1 day).
-
-</Tip>
-
 ## Examples
 
 <CodeGroup title="setRecord">
+
+    ```typescript {{title: "Basic"}}
+    const { id: txId } = await ant.setRecord({
+        undername: "@",
+        transactionId: "UyC5P5qKPZaltMmmZAWdakhlDXsBF6qmyrbWYFchRTk",
+        ttlSeconds: 3600
+    });
+    ```
 
        ```typescript {{title: "NodeJS"}}
         const fs = require("fs");
@@ -135,3 +89,56 @@ TTL must be between 60 seconds (1 minute) and 86400 seconds (1 day).
     ```
 
 </CodeGroup>
+
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Optional</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">undername</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>
+        The undername name for the record (use "@" for the root domain)
+      </Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">transactionId</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>The Arweave transaction ID to point the record to</Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">ttlSeconds</Table.Cell>
+      <Table.Cell>number</Table.Cell>
+      <Table.Cell>Time-to-live in seconds for the record cache</Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">tags</Table.Cell>
+      <Table.Cell>array</Table.Cell>
+      <Table.Cell>
+        An array of GQL tag objects to attach to the AO message
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
+
+<Tip title="TTL">
+  Time-To-Live (TTL) determines how often gateways should check the ANT for updates to the corresponding record. You can have different TTLs for different records within an ANT, depending on their use case. A record that is updated frequently should have a lower
+  value to facilitate serving current data, while a record that is updated less
+  often should have a higher value to allow cached data to be served more
+  quickly.
+
+TTL must be between 60 seconds (1 minute) and 86400 seconds (1 day).
+
+</Tip>

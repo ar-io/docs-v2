@@ -1,6 +1,5 @@
-import {CodeGroup} from "@/components/Code"
+import { CodeGroup } from '@/components/Code'
 import { Table } from '@/components/Table'
-
 
 # getPrimaryNameRequest
 
@@ -8,30 +7,15 @@ import { Table } from '@/components/Table'
 
 `getPrimaryNameRequest` does not require authentication.
 
-## Parameters
-
-<Table>
-  <Table.Head>
-    <Table.Row>
-      <Table.Header>Parameter</Table.Header>
-      <Table.Header>Type</Table.Header>
-      <Table.Header>Description</Table.Header>
-      <Table.Header>Optional</Table.Header>
-    </Table.Row>
-  </Table.Head>
-  <Table.Body>
-    <Table.Row>
-      <Table.Cell className="font-semibold">initiator</Table.Cell>
-      <Table.Cell>string - WalletAddress</Table.Cell>
-      <Table.Cell>The public wallet address for which to receive primary name request data.</Table.Cell>
-      <Table.Cell>false</Table.Cell>
-    </Table.Row>
-  </Table.Body>
-</Table>
-
 ## Examples
 
 <CodeGroup title="getPrimaryNameRequest">
+
+    ```typescript {{title: "Basic"}}
+    const request = await ario.getPrimaryNameRequest({
+        initiator: 't4Xr0_J4Iurt7caNST02cMotaz2FIbWQ4Kbj616RHl3'
+    });
+    ```
 
     ```typescript {{ title: 'NodeJS' }}
     const { ARIO } = require('@ar.io/sdk');
@@ -64,6 +48,30 @@ import { Table } from '@/components/Table'
     ```
 
 </CodeGroup>
+
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Optional</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">initiator</Table.Cell>
+      <Table.Cell>string - WalletAddress</Table.Cell>
+      <Table.Cell>
+        The public wallet address for which to receive primary name request
+        data.
+      </Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
 
 ## Output
 

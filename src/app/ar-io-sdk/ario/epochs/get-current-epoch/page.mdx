@@ -8,20 +8,19 @@ export const metadata = {
   },
 }
 
-
 # getCurrentEpoch
 
 `getCurrentEpoch` is a method on the `ARIO` class that retrieves information about the current epoch in the AR.IO network.
 
 `getCurrentEpoch` does not require authentication.
 
-## Parameters
-
-The `getCurrentEpoch` method does not accept any parameters.
-
 ## Examples
 
 <CodeGroup title="getCurrentEpoch">
+
+    ```typescript {{title: "Basic"}}
+    const currentEpoch = await ario.getCurrentEpoch();
+    ```
 
     ```typescript {{ title: 'NodeJS' }}
     const { ARIO } = require('@ar.io/sdk');
@@ -50,6 +49,10 @@ The `getCurrentEpoch` method does not accept any parameters.
     ```
 
 </CodeGroup>
+
+## Parameters
+
+The `getCurrentEpoch` method does not accept any parameters.
 
 ## Output
 

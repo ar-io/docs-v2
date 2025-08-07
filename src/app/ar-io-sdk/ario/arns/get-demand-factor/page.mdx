@@ -1,5 +1,4 @@
-import {CodeGroup} from "@/components/Code"
-
+import { CodeGroup } from '@/components/Code'
 
 # getDemandFactor
 
@@ -7,13 +6,14 @@ import {CodeGroup} from "@/components/Code"
 
 `getDemandFactor` does not require authentication.
 
-## Parameters
-
-`getDemandFactor` does not accept parameters.
-
 ## Examples
 
 <CodeGroup title="getDemandFactor">
+
+    ```typescript {{title: "Basic"}}
+    const demandFactor = await ario.getDemandFactor();
+    ```
+
     ```typescript {{ title: 'NodeJS' }}
     const { ARIO } = require('@ar.io/sdk');
 
@@ -37,10 +37,15 @@ import {CodeGroup} from "@/components/Code"
 
     main();
     ```
+
 </CodeGroup>
+
+## Parameters
+
+`getDemandFactor` does not accept parameters.
 
 ## Output
 
 ```js
-1.05256  // A multiplier where 1.0 represents baseline cost
+1.05256 // A multiplier where 1.0 represents baseline cost
 ```

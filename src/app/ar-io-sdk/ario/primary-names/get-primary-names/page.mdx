@@ -1,12 +1,61 @@
 import { CodeGroup } from '@/components/Code'
 import { Table } from '@/components/Table'
 
-
 # getPrimaryNames
 
 `getPrimaryNames` is a method on the `ARIO` class that retrieves all primary names paginated and sorted by the specified criteria. the `cursor` used for pagination is the last name from the previous request.
 
 `getPrimaryNames` does not require authentication.
+
+## Example
+
+<CodeGroup title="getPrimaryNames">
+
+    ```javascript {{title: "Basic"}}
+    const names = await ario.getPrimaryNames({
+        limit: 10,
+        sortBy: 'startTimestamp',
+        sortOrder: 'desc'
+    });
+    ```
+
+    ```javascript {{ title: 'NodeJS' }}
+    const { ARIO } = require('@ar.io/sdk');
+
+    async function main() {
+      const ario = ARIO.init();
+      const names = await ario.getPrimaryNames({
+            cursor: 'ao', // this is the last name from the previous request
+            limit: 1,
+            sortBy: 'startTimestamp',
+            sortOrder: 'desc',
+        });
+
+      console.log(names);
+    }
+
+    main();
+    ```
+
+    ```javascript {{ title: 'Web' }}
+    import { ARIO } from '@ar.io/sdk/web';
+
+    async function main() {
+      const ario = ARIO.init();
+      const names = await ario.getPrimaryNames({
+            cursor: 'ao', // this is the last name from the previous request
+            limit: 1,
+            sortBy: 'startTimestamp',
+            sortOrder: 'desc',
+        });
+
+      console.log(names);
+    }
+
+    main();
+    ```
+
+</CodeGroup>
 
 ## Parameters
 
@@ -56,48 +105,6 @@ import { Table } from '@/components/Table'
     </Table.Row>
   </Table.Body>
 </Table>
-
-## Example
-
-<CodeGroup title="getPrimaryNames">
-
-    ```javascript {{ title: 'NodeJS' }}
-    const { ARIO } = require('@ar.io/sdk');
-
-    async function main() {
-      const ario = ARIO.init();
-      const names = await ario.getPrimaryNames({
-            cursor: 'ao', // this is the last name from the previous request
-            limit: 1,
-            sortBy: 'startTimestamp',
-            sortOrder: 'desc',
-        });
-
-      console.log(names);
-    }
-
-    main();
-    ```
-
-    ```javascript {{ title: 'Web' }}
-    import { ARIO } from '@ar.io/sdk/web';
-
-    async function main() {
-      const ario = ARIO.init();
-      const names = await ario.getPrimaryNames({
-            cursor: 'ao', // this is the last name from the previous request
-            limit: 1,
-            sortBy: 'startTimestamp',
-            sortOrder: 'desc',
-        });
-
-      console.log(names);
-    }
-
-    main();
-    ```
-
-</CodeGroup>
 
 ## Output
 

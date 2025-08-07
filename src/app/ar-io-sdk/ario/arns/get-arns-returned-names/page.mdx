@@ -1,6 +1,5 @@
-import {CodeGroup} from "@/components/Code"
+import { CodeGroup } from '@/components/Code'
 import { Table } from '@/components/Table'
-
 
 # getArNSReturnedNames
 
@@ -8,53 +7,17 @@ import { Table } from '@/components/Table'
 
 `getArNSReturnedNames` does not require authentication.
 
-## Parameters
-
-<Table>
-  <Table.Head>
-    <Table.Row>
-      <Table.Header>Parameter</Table.Header>
-      <Table.Header>Type</Table.Header>
-      <Table.Header>Description</Table.Header>
-      <Table.Header>Optional</Table.Header>
-      <Table.Header>Default</Table.Header>
-    </Table.Row>
-  </Table.Head>
-  <Table.Body>
-    <Table.Row>
-      <Table.Cell className="font-semibold">cursor</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>The name to use as the starting point for the next page of results</Table.Cell>
-      <Table.Cell>true</Table.Cell>
-      <Table.Cell>None</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">limit</Table.Cell>
-      <Table.Cell>number</Table.Cell>
-      <Table.Cell>The maximum number of records to return (max: 1000)</Table.Cell>
-      <Table.Cell>true</Table.Cell>
-      <Table.Cell>100</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">sortBy</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>The property to sort results by</Table.Cell>
-      <Table.Cell>true</Table.Cell>
-      <Table.Cell>startTimestamp</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">sortOrder</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>The sort direction ('desc' or 'asc')</Table.Cell>
-      <Table.Cell>true</Table.Cell>
-      <Table.Cell>desc</Table.Cell>
-    </Table.Row>
-  </Table.Body>
-</Table>
-
 ## Example
 
 <CodeGroup title="getArNSReturnedNames">
+
+    ```javascript {{title: "Basic"}}
+    const returnedNames = await ario.getArNSReturnedNames({
+        limit: 100,
+        sortBy: 'endTimestamp',
+        sortOrder: 'asc'
+    });
+    ```
 
     ```javascript {{ title: 'NodeJS' }}
     const { ARIO } = require('@ar.io/sdk');
@@ -92,6 +55,53 @@ import { Table } from '@/components/Table'
 
 </CodeGroup>
 
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Optional</Table.Header>
+      <Table.Header>Default</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">cursor</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>
+        The name to use as the starting point for the next page of results
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+      <Table.Cell>None</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">limit</Table.Cell>
+      <Table.Cell>number</Table.Cell>
+      <Table.Cell>
+        The maximum number of records to return (max: 1000)
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+      <Table.Cell>100</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">sortBy</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>The property to sort results by</Table.Cell>
+      <Table.Cell>true</Table.Cell>
+      <Table.Cell>startTimestamp</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">sortOrder</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>The sort direction ('desc' or 'asc')</Table.Cell>
+      <Table.Cell>true</Table.Cell>
+      <Table.Cell>desc</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
 
 ## Output
 

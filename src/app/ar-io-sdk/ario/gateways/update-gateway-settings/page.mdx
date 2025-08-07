@@ -1,115 +1,21 @@
 import { CodeGroup } from '@/components/Code'
 import { Table } from '@/components/Table'
 
-
 # updateGatewaySettings
 
 `updateGatewaySettings` is a method on the `ARIO` class that writes new gateway settings to the caller's gateway configuration.
 
 `updateGatewaySettings` requires authentication.
 
-## Parameters
-
-<Table>
-  <Table.Head>
-    <Table.Row>
-      <Table.Header>Parameter</Table.Header>
-      <Table.Header>Type</Table.Header>
-      <Table.Header>Description</Table.Header>
-      <Table.Header>Optional</Table.Header>
-    </Table.Row>
-  </Table.Head>
-  <Table.Body>
-    <Table.Row>
-      <Table.Cell className="font-semibold">autoStake</Table.Cell>
-      <Table.Cell>boolean</Table.Cell>
-      <Table.Cell>If true, automatically stakes gateway rewards.</Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">allowDelegatedStaking</Table.Cell>
-      <Table.Cell>boolean</Table.Cell>
-      <Table.Cell>If true, allows third parties to delegate stake to the gateway.</Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">minDelegatedStake</Table.Cell>
-      <Table.Cell>number</Table.Cell>
-      <Table.Cell>
-        Minimum number of tokens, in `mARIO` that can be delegated to the
-        gateway.
-      </Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">delegateRewardShareRatio</Table.Cell>
-      <Table.Cell>number</Table.Cell>
-      <Table.Cell>Percentage of gateway rewards to share with delegates. e.g. 10%</Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">label</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>Friendly name for gateway, min 1 character, max 64 characters.</Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">note</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>A note to be associated with gateway, max 256 characters.</Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">properties</Table.Cell>
-      <Table.Cell>string - ArweaveTxId</Table.Cell>
-      <Table.Cell>
-        ArweaveTxId to properties object containing additional gateway
-        configuration details.
-      </Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">observerWallet</Table.Cell>
-      <Table.Cell>string - WalletAddress</Table.Cell>
-      <Table.Cell>Public wallet address for wallet used to upload network observations.</Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">fqdn</Table.Cell>
-      <Table.Cell>string</Table.Cell>
-      <Table.Cell>
-        Fully qualified domain name, must be valid domain owned by gateway
-        operator.
-      </Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">port</Table.Cell>
-      <Table.Cell>number</Table.Cell>
-      <Table.Cell>Port number to use when accessing gateway, generally 443 (https)</Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">protocol</Table.Cell>
-      <Table.Cell>string - "http" || "https"</Table.Cell>
-      <Table.Cell>
-        Protocol to use when accessing gateway, only "https" is supported for
-        network participation.
-      </Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell className="font-semibold">tags</Table.Cell>
-      <Table.Cell>array</Table.Cell>
-      <Table.Cell>An array of GQL tag objects to attach to the joinNetwork AO message.</Table.Cell>
-      <Table.Cell>true</Table.Cell>
-    </Table.Row>
-  </Table.Body>
-</Table>
-
 ## Example
 
 <CodeGroup title="updateGatewaySettings">
+
+    ```typescript {{title: "Basic"}}
+    const { id: txId } = await ario.updateGatewaySettings({
+        minDelegatedStake: new ARIOToken(100).toMARIO()
+    });
+    ```
 
        ```typescript {{title: "NodeJS"}}
         const fs = require("fs");
@@ -156,3 +62,118 @@ import { Table } from '@/components/Table'
     ```
 
 </CodeGroup>
+
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Optional</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">autoStake</Table.Cell>
+      <Table.Cell>boolean</Table.Cell>
+      <Table.Cell>If true, automatically stakes gateway rewards.</Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">allowDelegatedStaking</Table.Cell>
+      <Table.Cell>boolean</Table.Cell>
+      <Table.Cell>
+        If true, allows third parties to delegate stake to the gateway.
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">minDelegatedStake</Table.Cell>
+      <Table.Cell>number</Table.Cell>
+      <Table.Cell>
+        Minimum number of tokens, in `mARIO` that can be delegated to the
+        gateway.
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">
+        delegateRewardShareRatio
+      </Table.Cell>
+      <Table.Cell>number</Table.Cell>
+      <Table.Cell>
+        Percentage of gateway rewards to share with delegates. e.g. 10%
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">label</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>
+        Friendly name for gateway, min 1 character, max 64 characters.
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">note</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>
+        A note to be associated with gateway, max 256 characters.
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">properties</Table.Cell>
+      <Table.Cell>string - ArweaveTxId</Table.Cell>
+      <Table.Cell>
+        ArweaveTxId to properties object containing additional gateway
+        configuration details.
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">observerWallet</Table.Cell>
+      <Table.Cell>string - WalletAddress</Table.Cell>
+      <Table.Cell>
+        Public wallet address for wallet used to upload network observations.
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">fqdn</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>
+        Fully qualified domain name, must be valid domain owned by gateway
+        operator.
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">port</Table.Cell>
+      <Table.Cell>number</Table.Cell>
+      <Table.Cell>
+        Port number to use when accessing gateway, generally 443 (https)
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">protocol</Table.Cell>
+      <Table.Cell>string - "http" || "https"</Table.Cell>
+      <Table.Cell>
+        Protocol to use when accessing gateway, only "https" is supported for
+        network participation.
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">tags</Table.Cell>
+      <Table.Cell>array</Table.Cell>
+      <Table.Cell>
+        An array of GQL tag objects to attach to the joinNetwork AO message.
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
