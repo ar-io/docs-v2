@@ -625,6 +625,7 @@ export const secondaryNavigation: Array<NavGroup> = [] //Not used
 export const singleNavigation: Array<NavGroup> = [
   {
     title: 'General',
+    href: '/introduction',
     links: [
       {
         title: 'White Paper',
@@ -708,6 +709,7 @@ export const singleNavigation: Array<NavGroup> = [
           },
           {
             title: 'General',
+            href: '/ar-io-sdk/ario/general/get-info',
             children: [
               {
                 title: 'getInfo',
@@ -733,6 +735,7 @@ export const singleNavigation: Array<NavGroup> = [
           },
           {
             title: 'Gateways',
+            href: '/ar-io-sdk/ario/gateways/get-gateway',
             children: [
               {
                 title: 'getGateway',
@@ -806,6 +809,7 @@ export const singleNavigation: Array<NavGroup> = [
           },
           {
             title: 'Vaults',
+            href: '/ar-io-sdk/ario/vaults/create-vault',
             children: [
               {
                 title: 'createVault',
@@ -823,6 +827,7 @@ export const singleNavigation: Array<NavGroup> = [
           },
           {
             title: 'Epochs',
+            href: '/ar-io-sdk/ario/epochs/get-current-epoch',
             children: [
               {
                 title: 'getEpoch',
@@ -860,6 +865,7 @@ export const singleNavigation: Array<NavGroup> = [
           },
           {
             title: 'ArNS',
+            href: '/ar-io-sdk/ario/arns/buy-record',
             children: [
               {
                 title: 'buyRecord',
@@ -929,6 +935,7 @@ export const singleNavigation: Array<NavGroup> = [
           },
           {
             title: 'Primary Names',
+            href: '/ar-io-sdk/ario/primary-names/get-primary-name',
             children: [
               {
                 title: 'getPrimaryName',
@@ -1142,6 +1149,7 @@ export const singleNavigation: Array<NavGroup> = [
   },
   {
     title: 'Wayfinder SDK',
+    href: '/wayfinder',
     links: [
       {
         title: 'Info',
@@ -1288,7 +1296,7 @@ export const singleNavigation: Array<NavGroup> = [
   },
   {
     title: 'Gateways',
-    // href: '/build/gateways',
+    href: '/gateways',
     links: [
       {
         title: 'Architecture',
@@ -1300,7 +1308,7 @@ export const singleNavigation: Array<NavGroup> = [
       },
       {
         title: 'Setup and Operation',
-        // href: '/build/gateways/setup-and-operation',
+        href: '/gateways/linux-setup',
         children: [
           {
             title: 'Linux Setup',
@@ -1376,7 +1384,7 @@ export const singleNavigation: Array<NavGroup> = [
           },
           {
             title: 'Automating SSL',
-            // href: '/build/gateways/networking',
+            href: '/gateways/networking',
             children: [
               {
                 title: 'Cloudflare',
@@ -1426,6 +1434,7 @@ export const singleNavigation: Array<NavGroup> = [
       },
       {
         title: 'Deploy to Arweave',
+        href: '/guides/permaweb-deploy',
         children: [
           {
             title: 'Permaweb Deploy',
@@ -1442,15 +1451,6 @@ export const singleNavigation: Array<NavGroup> = [
         ],
       },
       {
-        title: 'Projects',
-        children: [
-          {
-            title: 'ArNS Viewer',
-            href: '/guides/arns-viewer',
-          },
-        ],
-      },
-      {
         title: 'ANTs on Bazar',
         href: '/guides/ants-on-bazar',
       },
@@ -1460,10 +1460,15 @@ export const singleNavigation: Array<NavGroup> = [
       },
       {
         title: 'Example Apps',
+        href: '/guides/example-apps/crossmint-app',
         children: [
           {
             title: 'Crossmint App',
             href: '/guides/example-apps/crossmint-app',
+          },
+          {
+            title: 'ArNS Viewer',
+            href: '/guides/arns-viewer',
           },
         ],
       },
@@ -1471,6 +1476,7 @@ export const singleNavigation: Array<NavGroup> = [
   },
   {
     title: 'References',
+    href: '/glossary',
     links: [
       {
         title: 'Glossary',
