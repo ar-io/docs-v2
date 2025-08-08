@@ -2,41 +2,53 @@
     {
         "title": "Deploy a dApp with Arlink",
         "description": "Easily deploy a web app with ArNS using Arlink",
-        "href": "/build/guides/arlink",
+        "href": "/guides/arlink",
         "icon": "https://arweave.net/50JIpXysW3NF6SmFs0G7cNeuEQRJnES6BV-6O6HqLK8"
     },
     {
         "title": "make your ArNS name tradable on Bazar",
         "description": "How to display and trade your ArNS ANTs on Bazar",
-        "href": "/learn/guides/ants-on-bazar",
+        "href": "/guides/ants-on-bazar",
         "icon": "https://arweave.net/pFjMimU8ytgnyT-vWrL_t9mAc_546CRfrVN29KFeHYc"
     },
     {
         "title": "Build a dApp using the ArNext framework",
         "description": "Build and deploy a dApp for displaying and updating ArNS names using ArNext",
-        "href": "/build/guides/arns-viewer",
+        "href": "/guides/arns-viewer",
         "icon": "https://arweave.net/AlGUpVJ920P1JTaBcc_uE8_HNIQqWmN-RAJvqCtqR_g"
     },
     {
         "title": "Automate deployment using Permaweb Deploy",
         "description": "Automate the deployment of your dApp to ArNS using Permaweb Deploy, ArNS, and Github",
-        "href": "/build/guides/permaweb-deploy"
+        "href": "/guides/permaweb-deploy"
     },
     {
         "title": "Managing Undernames",
         "description": "How to programmatically manage ArNS undernames using the AR.IO SDK",
-        "href": "/build/guides/managing-undernames"
+        "href": "/guides/managing-undernames"
     },
     {
         "title": "Query data on Arweave using GraphQL",
         "description": "Schema and best practices for constructing a GraphQL query",
-        "href": "/build/guides/gql",
+        "href": "/guides/gql",
         "icon": "https://arweave.net/64C7t4BxPNKOgDy3GaNzm3R6gcl6dk9i1F2NQ9gbqs0"
     },
     {
         "title": "Deploy a dApp with ArDrive web",
         "description": "How to upload a dApp to the permaweb using ArDrive web",
-        "href": "/build/guides/ardrive-web",
+        "href": "/guides/ardrive-web",
         "icon": "https://logo_ardrive.arweave.net"
+    },
+    {
+        "title": "Story Protocol",
+        "description": "How to register an IP asset on Arweave using the Story Protocol",
+        "href": "/guides/story",
+        "icon": "https://arweave.net/weOtL49hI1PcJND_ad3194x7Ld8aR3lbrbos-RCW7gc"
+    },
+    {
+        "title": "Crossmint NFT App",
+        "description": "How to create a Crossmint NFT app",
+        "href": "/guides/example-apps/crossmint-app",
+        "icon": "https://arweave.net/2IWWri0vrn3F0iJV7Km2NkRsdtDrh8QJPn1GSahGcp4"
     }
 ]
