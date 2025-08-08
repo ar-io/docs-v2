@@ -3,9 +3,26 @@
 import { useState, useEffect, useRef } from 'react'
 import clsx from 'clsx'
 
-// Import ARIO SDK statically to avoid runtime chunk loading issues on GitHub Pages
-import { ARIO as ARIOWeb } from '@ar.io/sdk/web'
-let ARIOSDK: any = ARIOWeb
+// Import ARIO SDK at the component level
+let ARIOSDK: any = null
+try {
+  // Dynamic import to avoid SSR issues
+  if (typeof window !== 'undefined') {
+    // Always use the locally installed SDK - web version for browser execution
+    const loadSDK = async () => {
+      try {
+        const { ARIO } = await import('@ar.io/sdk/web')
+        ARIOSDK = ARIO
+      } catch (error) {
+        console.warn('Failed to load ARIO SDK:', error)
+      }
+    }
+
+    loadSDK()
+  }
+} catch (error) {
+  console.warn('ARIO SDK import failed:', error)
+}
 
 interface CodeExecutorProps {
   children?: React.ReactNode
@@ -132,8 +149,12 @@ export function CodeExecutor({
       // Load ARIO SDK outside the function context
       let arioSDK = null
       try {
-        // Use the statically imported ARIO SDK to avoid dynamic chunk loading
-        arioSDK = ARIOSDK
+        if (ARIOSDK) {
+          arioSDK = ARIOSDK
+        } else {
+          const { ARIO } = await import('@ar.io/sdk/web')
+          arioSDK = ARIO
+        }
       } catch (sdkError) {
         console.error('Failed to load ARIO SDK:', sdkError)
         const errorMessage =
