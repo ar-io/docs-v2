@@ -3,31 +3,9 @@
 import { useState, useEffect, useRef } from 'react'
 import clsx from 'clsx'
 
-// Import ARIO SDK at the component level
-let ARIOSDK: any = null
-try {
-  // Dynamic import to avoid SSR issues
-  if (typeof window !== 'undefined') {
-    // Always use the locally installed SDK - web version for browser execution
-    const loadSDK = async () => {
-      try {
-        // Add a small delay to ensure browser environment is settled
-        await new Promise((resolve) => setTimeout(resolve, 100))
-
-        // Use the main import which will be aliased to /web by webpack
-        const { ARIO } = await import('@ar.io/sdk')
-        ARIOSDK = ARIO
-      } catch (error) {
-        console.warn('Failed to load ARIO SDK:', error)
-      }
-    }
-
-    // Delay the initial load to avoid race conditions
-    setTimeout(loadSDK, 500)
-  }
-} catch (error) {
-  console.warn('ARIO SDK import failed:', error)
-}
+// Import ARIO SDK statically to avoid runtime chunk loading issues on GitHub Pages
+import { ARIO as ARIOWeb } from '@ar.io/sdk/web'
+let ARIOSDK: any = ARIOWeb
 
 interface CodeExecutorProps {
   children?: React.ReactNode
@@ -153,40 +131,14 @@ export function CodeExecutor({
     try {
       // Load ARIO SDK outside the function context
       let arioSDK = null
-      let retryCount = 0
-      const maxRetries = 3
-
-      while (!arioSDK && retryCount < maxRetries) {
-        try {
-          if (ARIOSDK) {
-            arioSDK = ARIOSDK
-          } else {
-            // Add delay between retries to avoid race conditions
-            if (retryCount > 0) {
-              await new Promise((resolve) =>
-                setTimeout(resolve, 200 * retryCount),
-              )
-            }
-
-            // Fallback to local import if not preloaded - web version for browser execution
-            const { ARIO } = await import('@ar.io/sdk')
-            arioSDK = ARIO
-          }
-        } catch (sdkError) {
-          retryCount++
-          console.warn(
-            `Failed to load ARIO SDK (attempt ${retryCount}/${maxRetries}):`,
-            sdkError,
-          )
-
-          if (retryCount >= maxRetries) {
-            const errorMessage =
-              sdkError instanceof Error ? sdkError.message : String(sdkError)
-            throw new Error(
-              `ARIO SDK failed to load after ${maxRetries} attempts: ${errorMessage}`,
-            )
-          }
-        }
+      try {
+        // Use the statically imported ARIO SDK to avoid dynamic chunk loading
+        arioSDK = ARIOSDK
+      } catch (sdkError) {
+        console.error('Failed to load ARIO SDK:', sdkError)
+        const errorMessage =
+          sdkError instanceof Error ? sdkError.message : String(sdkError)
+        throw new Error('ARIO SDK failed to load: ' + errorMessage)
       }
 
       // Create a function that can access the ARIO SDK
