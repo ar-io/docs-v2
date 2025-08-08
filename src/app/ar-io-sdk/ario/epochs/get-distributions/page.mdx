@@ -98,34 +98,31 @@ export const metadata = {
 ## Try it out
 
 <CodeExecutor
-title="getDistributions()"
-language="javascript"
-code={`// Example: Get distributions for epoch 140
-async function main() {
-  try {
-    console.log('Loading ARIO SDK...');
-    
-    // Initialize the ARIO SDK
-    const { ARIO } = await import('@ar.io/sdk');
-    const ario = ARIO.init();
-    
-    console.log('Fetching distributions for epoch 140...');
-    
-    // Make the actual API call
-    const distributions = await ario.getDistributions({ epochIndex: 140 });
-    
-    console.log('Distributions:');
-    console.log(JSON.stringify(distributions, null, 2));
-    return distributions;
-    
-  } catch (error) {
-    console.error('Error:', error.message);
-    throw error;
-  }
-}
-
-// Run the example
-main();`}
+ title="getDistributions()"
+ language="javascript"
+ code={`// Example: Get distributions for epoch 140
+ async function main() {
+   try {
+     // ARIO is injected by the runner in this environment
+     const ario = ARIO.init();
+     
+     console.log('Fetching distributions for epoch 140...');
+     
+     // Make the actual API call
+     const distributions = await ario.getDistributions({ epochIndex: 140 });
+     
+     console.log('Distributions:');
+     console.log(JSON.stringify(distributions, null, 2));
+     return distributions;
+     
+   } catch (error) {
+     console.error('Error:', error.message);
+     throw error;
+   }
+ }
+ 
+ // Run the example
+ main();`}
 />
 
 ## Try it out (Node.js Environment)
