@@ -1,0 +1,96 @@
+import { CodeGroup } from '@/components/Code'
+import { Table } from '@/components/Table'
+
+export const metadata = {
+  title: 'getArNSNamesForAddress',
+  description: 'Retrieve ArNS names owned by a given address',
+  openGraph: {
+    title: 'getArNSNamesForAddress',
+  },
+}
+
+# getArNSNamesForAddress
+
+`getArNSNamesForAddress` is a method on the `ARIO` class that retrieves ArNS names owned by a specific address.
+
+`getArNSNamesForAddress` does not require authentication.
+
+## Examples
+
+<CodeGroup title="getArNSNamesForAddress">
+
+    ```typescript {{title: "Basic"}}
+    const names = await ario.getArNSNamesForAddress({
+      address: 'ccp3blG__gKUvG3hsGC2u06aDmqv4CuhuDJGOIg0jw4'
+    });
+    ```
+
+    ```typescript {{ title: 'NodeJS' }}
+    const { ARIO } = require('@ar.io/sdk');
+
+    async function main() {
+      const ario = ARIO.init();
+      const names = await ario.getArNSNamesForAddress({
+        address: 'ccp3blG__gKUvG3hsGC2u06aDmqv4CuhuDJGOIg0jw4'
+      });
+
+      console.log(names);
+    }
+
+    main();
+    ```
+
+    ```typescript {{ title: 'Web' }}
+    import { ARIO } from '@ar.io/sdk/web';
+
+    async function main() {
+      const ario = ARIO.init();
+      const names = await ario.getArNSNamesForAddress({
+        address: 'ccp3blG__gKUvG3hsGC2u06aDmqv4CuhuDJGOIg0jw4'
+      });
+
+      console.log(names);
+    }
+
+    main();
+    ```
+
+</CodeGroup>
+
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Optional</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">address</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>The wallet address to fetch ArNS names for</Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
+
+## Output
+
+```js
+{
+  "names": [
+    {
+      "name": "ardrive",
+      "processId": "bh9l1cy0aksiL_x9M359faGzM_yjralacHIUo8_nQXM"
+    },
+    {
+      "name": "ar-io",
+      "processId": "xWQ7UmbP0ZHDY7OLCxJsuPiLWYQo5bhHGnp-kgP8N2A"
+    }
+  ]
+}
+```
