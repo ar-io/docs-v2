@@ -29,6 +29,9 @@ const nextConfig = {
   // experimental: {
   //   disableRuntimeJS: true
   // },
+  // Note: headers() doesn't work with static export
+  // WebContainer requires COOP/COEP headers which need to be set by the hosting server
+  // For development, you can use a proxy or configure your dev server
   webpack: (config, { isServer }) => {
     config.plugins.push(new NodePolyfillPlugin())
 

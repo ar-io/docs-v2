@@ -20,6 +20,11 @@ import {
   JavaScriptExecutor,
   TypeScriptExecutor,
 } from '@/components/CodeExecutor'
+import {
+  WebContainerExecutor,
+  WebContainerJavaScriptExecutor,
+  WebContainerTypeScriptExecutor,
+} from '@/components/WebContainerExecutor'
 
 export function Layout({
   children,
@@ -38,9 +43,15 @@ export function Layout({
     CodeExecutor: CodeExecutor,
     JavaScriptExecutor: JavaScriptExecutor,
     TypeScriptExecutor: TypeScriptExecutor,
+    WebContainerExecutor: WebContainerExecutor,
+    WebContainerJavaScriptExecutor: WebContainerJavaScriptExecutor,
+    WebContainerTypeScriptExecutor: WebContainerTypeScriptExecutor,
     // Shorthand aliases for easier use
     JS: JavaScriptExecutor,
     TS: TypeScriptExecutor,
+    WC: WebContainerExecutor,
+    WCJS: WebContainerJavaScriptExecutor,
+    WCTS: WebContainerTypeScriptExecutor,
   }
 
   return (
