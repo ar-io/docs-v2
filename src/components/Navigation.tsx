@@ -443,9 +443,9 @@ function NavigationGroup({
         onClick={() => toggleCollapse(group.title)}
       >
         {group.href ? (
-          <a href={group.href} className="text-inherit no-underline">
+          <Link href={group.href} className="text-inherit no-underline">
             {group.title}
-          </a>
+          </Link>
         ) : (
           group.title
         )}
