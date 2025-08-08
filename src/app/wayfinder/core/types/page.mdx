@@ -151,15 +151,11 @@ interface VerificationResult {
 ```typescript
 interface TelemetrySettings {
   enabled: boolean
-  serviceName?: string
   clientName?: string
   clientVersion?: string
   sampleRate?: number
   exporterUrl?: string
   apiKey?: string
-  endpoint?: string
-  batchSize?: number
-  flushInterval?: number
 }
 
 interface TelemetryEvent {

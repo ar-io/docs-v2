@@ -1,3 +1,11 @@
+export const metadata = {
+  title: 'Telemetry',
+  description: 'Configure OpenTelemetry-based telemetry in Wayfinder Core.',
+  openGraph: {
+    title: 'Telemetry',
+  },
+}
+
 # Telemetry Configuration
 
 Wayfinder includes optional telemetry support built on the OpenTelemetry standard. Telemetry is **completely opt-in** and **disabled by default**.
@@ -28,7 +36,6 @@ const wayfinder = new Wayfinder({
   gatewaysProvider: new NetworkGatewaysProvider({ ario: ARIO.mainnet() }),
   telemetrySettings: {
     enabled: true,
-    serviceName: 'my-application',
     clientName: 'my-app',
     clientVersion: '1.0.0',
     sampleRate: 0.1, // 10% of requests
@@ -43,7 +50,6 @@ const wayfinder = new Wayfinder({
   gatewaysProvider: new NetworkGatewaysProvider({ ario: ARIO.mainnet() }),
   telemetrySettings: {
     enabled: true,
-    serviceName: 'my-application',
     clientName: 'my-app',
     clientVersion: '1.0.0',
     sampleRate: 0.1,
@@ -52,6 +58,13 @@ const wayfinder = new Wayfinder({
   },
 })
 ```
+
+<Tip>
+  Wayfinder uses Honeycomb OTLP by default (exporter URL and Honeycomb headers).
+  Using other endpoints may require an OTLP-compatible collector or intermediary
+  that accepts Honeycomb headers. The dataset is currently fixed to
+  `wayfinder-core`.
+</Tip>
 
 ## Configuration Options
 
@@ -70,6 +83,15 @@ const wayfinder = new Wayfinder({
   },
 })
 ```
+
+## Defaults and Behavior
+
+- Default sample rate is 0.1 (10%).
+- Default exporter URL is Honeycomb (`https://api.honeycomb.io/v1/traces`).
+- If `apiKey` is not provided, a baked-in Honeycomb key will be used. Override it for production.
+- Service name is fixed to `wayfinder-core` and is not configurable.
+- Dataset is fixed to `wayfinder-core`.
+- To send to a non-Honeycomb backend, point `exporterUrl` to an OTLP-compatible collector that can accept Honeycomb headers or front it with an adapter. Custom headers are not currently configurable.
 
 ## Frequently Asked Questions
 

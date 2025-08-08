@@ -1166,6 +1166,10 @@ export const singleNavigation: Array<NavGroup> = [
           {
             title: 'Initialization',
             href: '/wayfinder/core',
+          },
+          {
+            title: 'Methods',
+            href: '/wayfinder/core/request',
             children: [
               {
                 title: 'request()',
@@ -1176,6 +1180,10 @@ export const singleNavigation: Array<NavGroup> = [
                 href: '/wayfinder/core/resolve-url',
               },
             ],
+          },
+          {
+            title: 'Telemetry',
+            href: '/wayfinder/core/telemetry',
           },
 
           {
