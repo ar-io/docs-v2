@@ -66,33 +66,6 @@ const wayfinder = new Wayfinder({
   `wayfinder-core`.
 </Tip>
 
-## Configuration Options
-
-### Client Identification
-
-You can identify your client application and version in telemetry data:
-
-```javascript
-const wayfinder = new Wayfinder({
-  gatewaysProvider: new NetworkGatewaysProvider({ ario: ARIO.mainnet() }),
-  telemetrySettings: {
-    enabled: true,
-    clientName: 'my-react-app', // Identifies your application
-    clientVersion: '2.1.0', // Your application version
-    sampleRate: 0.1,
-  },
-})
-```
-
-## Defaults and Behavior
-
-- Default sample rate is 0.1 (10%).
-- Default exporter URL is Honeycomb (`https://api.honeycomb.io/v1/traces`).
-- If `apiKey` is not provided, a baked-in Honeycomb key will be used. Override it for production.
-- Service name is fixed to `wayfinder-core` and is not configurable.
-- Dataset is fixed to `wayfinder-core`.
-- To send to a non-Honeycomb backend, point `exporterUrl` to an OTLP-compatible collector that can accept Honeycomb headers or front it with an adapter. Custom headers are not currently configurable.
-
 ## Frequently Asked Questions
 
 **Q: Is telemetry enabled by default?**
