@@ -1181,10 +1181,7 @@ export const singleNavigation: Array<NavGroup> = [
               },
             ],
           },
-          {
-            title: 'Telemetry',
-            href: '/wayfinder/core/telemetry',
-          },
+
 
           {
             title: 'Gateway Providers',
@@ -1251,6 +1248,10 @@ export const singleNavigation: Array<NavGroup> = [
                 href: '/wayfinder/core/verification-strategies/data-root-verification',
               },
             ],
+          },
+                    {
+            title: 'Telemetry',
+            href: '/wayfinder/core/telemetry',
           },
         ],
       },
