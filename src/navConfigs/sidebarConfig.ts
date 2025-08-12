@@ -938,6 +938,10 @@ export const singleNavigation: Array<NavGroup> = [
             href: '/ar-io-sdk/ario/primary-names/get-primary-name',
             children: [
               {
+                title: 'setPrimaryName',
+                href: '/ar-io-sdk/ario/arns/set-primary-name',
+              },
+              {
                 title: 'getPrimaryName',
                 href: '/ar-io-sdk/ario/primary-names/get-primary-name',
               },
