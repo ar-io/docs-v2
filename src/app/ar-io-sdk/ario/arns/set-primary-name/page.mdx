@@ -1,0 +1,124 @@
+export const metadata = {
+  title: 'setPrimaryName',
+  description:
+    'setPrimaryName is a method on the ARIO class that allows ANT owners to set their primary name in a single API call',
+  openGraph: {
+    title: 'setPrimaryName',
+  },
+}
+
+# setPrimaryName
+
+`setPrimaryName` is a method on the `ARIO` class that allows the owner of an ANT that controls an ArNS name to set their primary name in a single API call.
+
+`setPrimaryName` requires authentication.
+
+## Examples
+
+<CodeGroup title="setPrimaryName">
+
+    ```typescript {{title: "Basic"}}
+    const { id: txId } = await ario.setPrimaryName({
+        name: 'arns'
+    });
+    ```
+
+    ```typescript {{ title: 'NodeJS' }}
+    const fs = require("fs");
+    const { ARIO, ArweaveSigner } = require("@ar.io/sdk");
+
+    async function main() {
+      const jwk = JSON.parse(fs.readFileSync("KeyFile.json"));
+      const ario = ARIO.init({
+          signer: new ArweaveSigner(jwk),
+      });
+
+      const { id: txId } = await ario.setPrimaryName({
+          name: 'arns',
+          fundFrom: 'balance',
+          referrer: 'my-app.com'
+      });
+
+      console.log('Transaction ID:', txId);
+    }
+
+    main();
+    ```
+
+    ```typescript {{ title: 'Web' }}
+    import { ARIO, ArConnectSigner } from '@ar.io/sdk/web';
+
+    async function main() {
+        const ario = ARIO.init({
+            signer: new ArConnectSigner(window.arweaveWallet)
+        });
+
+        const { id: txId } = await ario.setPrimaryName({
+            name: 'arns',
+            fundFrom: 'turbo',
+            referrer: 'my-app.com'
+        });
+
+        console.log('Transaction ID:', txId);
+    }
+
+    main();
+    ```
+
+</CodeGroup>
+
+## Parameters
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Parameter</Table.Header>
+      <Table.Header>Type</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Optional</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">name</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>
+        The ArNS name to set as the primary name for the caller's address.
+      </Table.Cell>
+      <Table.Cell>false</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">fundFrom</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>
+        The source of funds: 'balance', 'stakes', 'any', or 'turbo'
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">referrer</Table.Cell>
+      <Table.Cell>string</Table.Cell>
+      <Table.Cell>
+        Track purchase referrals for analytics (e.g. my-app.com)
+      </Table.Cell>
+      <Table.Cell>true</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
+
+## Output
+
+```js
+{
+  "id": "abc123...def789"
+}
+```
+
+## Notes
+
+- This method requires that the caller owns an ANT that controls the specified ArNS name
+- The transaction will fail if the caller does not have permission to set this name as their primary name
+- This method provides a more efficient way to set a primary name compared to the previous two-step process of requesting and approving
+- Internally, this method first calls `requestPrimaryName` and then `approvePrimaryNameRequest` on the ANT
+- The `fundFrom` parameter determines how the operation will be funded (from balance, stakes, or turbo)
+- The `referrer` parameter is used for tracking and analytics purposes

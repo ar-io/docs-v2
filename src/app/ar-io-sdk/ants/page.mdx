@@ -1,0 +1,329 @@
+import { Table } from '@/components/Table'
+
+export const metadata = {
+  title: 'ANT Class',
+  description:
+    'ANT class for interacting with Arweave Name Token (ANT) contracts',
+  openGraph: {
+    title: 'ANT Class',
+  },
+}
+
+# ANT Class
+
+## Overview
+
+The `ANT` class is a core component of the AR.IO SDK that provides a comprehensive interface for interacting with Arweave Name Token (ANT) contracts. ANTs are smart contracts that control ArNS names and provide functionality for managing records, controllers, and metadata.
+
+The ANT class supports both read and write operations, allowing developers to:
+
+- Retrieve ANT state and information
+- Manage ANT configuration and metadata
+- Control ArNS name records and undernames
+- Handle token balances and transfers
+- Manage controllers and permissions
+
+## Initialization
+
+The ANT class can be initialized in different ways depending on your needs:
+
+```typescript
+import { ANT } from '@ar.io/sdk'
+
+// Read-only mode (no signer required)
+const ant = ANT.init({
+  processId: 'your-ant-process-id',
+})
+
+// Read-write mode (signer required for write operations)
+const ant = ANT.init({
+  processId: 'your-ant-process-id',
+  signer: new ArweaveSigner(jwk),
+})
+```
+
+## Available Methods
+
+### Read Operations
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Method</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Authentication Required</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">
+        [getInfo](/ar-io-sdk/ants/get-info)
+      </Table.Cell>
+      <Table.Cell>
+        Retrieve general information about the ANT process
+      </Table.Cell>
+      <Table.Cell>No</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">
+        [getState](/ar-io-sdk/ants/get-state)
+      </Table.Cell>
+      <Table.Cell>Get the complete state of the ANT process</Table.Cell>
+      <Table.Cell>No</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">
+        [getOwner](/ar-io-sdk/ants/get-owner)
+      </Table.Cell>
+      <Table.Cell>Retrieve the owner wallet address of the ANT</Table.Cell>
+      <Table.Cell>No</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">
+        [getControllers](/ar-io-sdk/ants/get-controllers)
+      </Table.Cell>
+      <Table.Cell>Get the list of controllers for the ANT</Table.Cell>
+      <Table.Cell>No</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">
+        [getRecords](/ar-io-sdk/ants/get-records)
+      </Table.Cell>
+      <Table.Cell>Retrieve all records stored in the ANT process</Table.Cell>
+      <Table.Cell>No</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">
+        [getBalance](/ar-io-sdk/ants/get-balance)
+      </Table.Cell>
+      <Table.Cell>Get token balance for a specific wallet address</Table.Cell>
+      <Table.Cell>No</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">
+        [getBalances](/ar-io-sdk/ants/get-balances)
+      </Table.Cell>
+      <Table.Cell>
+        Retrieve all token balances within the ANT process
+      </Table.Cell>
+      <Table.Cell>No</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">
+        [getHandlers](/ar-io-sdk/ants/get-handlers)
+      </Table.Cell>
+      <Table.Cell>Get the handlers supported by the ANT</Table.Cell>
+      <Table.Cell>No</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">
+        [getLogo](/ar-io-sdk/ants/get-logo)
+      </Table.Cell>
+      <Table.Cell>Retrieve the transaction ID of the ANT's logo</Table.Cell>
+      <Table.Cell>No</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
+
+### Write Operations
+
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Method</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Authentication Required</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">
+        [setName](/ar-io-sdk/ants/set-name)
+      </Table.Cell>
+      <Table.Cell>Update the display name of the ANT process</Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">
+        [setTicker](/ar-io-sdk/ants/set-ticker)
+      </Table.Cell>
+      <Table.Cell>Update the ticker symbol of the ANT process</Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">
+        [setDescription](/ar-io-sdk/ants/set-description)
+      </Table.Cell>
+      <Table.Cell>Update the descriptive text for the ANT process</Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">
+        [setKeywords](/ar-io-sdk/ants/set-keywords)
+      </Table.Cell>
+      <Table.Cell>
+        Update the list of keywords associated with the ANT
+      </Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">
+        [setLogo](/ar-io-sdk/ants/set-logo)
+      </Table.Cell>
+      <Table.Cell>Update the logo of the ANT process</Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">
+        [setRecord](/ar-io-sdk/ants/set-record)
+      </Table.Cell>
+      <Table.Cell>Set or update a record in the ANT process</Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">
+        [setBaseNameRecord](/ar-io-sdk/ants/set-base-name-record)
+      </Table.Cell>
+      <Table.Cell>Add or update the base name record for the ANT</Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">
+        [setUndernameRecord](/ar-io-sdk/ants/set-undername-record)
+      </Table.Cell>
+      <Table.Cell>Create or update an undername record for the ANT</Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">
+        [addController](/ar-io-sdk/ants/add-controller)
+      </Table.Cell>
+      <Table.Cell>
+        Add a new controller to the ANT's approved controllers list
+      </Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">
+        [removeController](/ar-io-sdk/ants/remove-controller)
+      </Table.Cell>
+      <Table.Cell>
+        Remove a controller from the ANT's approved controllers list
+      </Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">
+        [transfer](/ar-io-sdk/ants/transfer)
+      </Table.Cell>
+      <Table.Cell>
+        Transfer ownership of the ANT process to another wallet
+      </Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">
+        [reassignName](/ar-io-sdk/ants/reassign-name)
+      </Table.Cell>
+      <Table.Cell>Transfer ownership of an ArNS name to a new ANT</Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">
+        [releaseName](/ar-io-sdk/ants/release-name)
+      </Table.Cell>
+      <Table.Cell>Release an ArNS name from the ANT for auction</Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">
+        [removeRecord](/ar-io-sdk/ants/remove-record)
+      </Table.Cell>
+      <Table.Cell>Remove a record from the ANT process</Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">
+        [removeUndernameRecord](/ar-io-sdk/ants/remove-undername-record)
+      </Table.Cell>
+      <Table.Cell>Remove a specified undername record from the ANT</Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">
+        [removePrimaryNames](/ar-io-sdk/ants/remove-primary-names)
+      </Table.Cell>
+      <Table.Cell>
+        Remove specified primary names from the ANT process
+      </Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">
+        [approvePrimaryNameRequest](/ar-io-sdk/ants/approve-primary-name-request)
+      </Table.Cell>
+      <Table.Cell>
+        Approve a primary name request for a given name or address
+      </Table.Cell>
+      <Table.Cell>Yes</Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
+
+## Configuration
+
+For detailed information about configuring the ANT class, see the [configuration guide](/ar-io-sdk/ants/configuration).
+
+## Related Classes
+
+- **[ANTRegistry](/ar-io-sdk/ant-registry)**: For discovering and managing ANTs
+- **[ANTVersions](/ar-io-sdk/ant-versions)**: For managing ANT versions and updates
+- **[ARIO](/ar-io-sdk/ario)**: For interacting with the AR.IO Network contract
+
+## Examples
+
+### Basic Read Operations
+
+```typescript
+import { ANT } from '@ar.io/sdk'
+
+const ant = ANT.init({
+  processId: 'your-ant-process-id',
+})
+
+// Get basic information
+const info = await ant.getInfo()
+console.log('ANT Name:', info.name)
+console.log('ANT Ticker:', info.ticker)
+
+// Get all records
+const records = await ant.getRecords()
+console.log('Total Records:', records.length)
+```
+
+### Write Operations
+
+```typescript
+import { ANT, ArweaveSigner } from '@ar.io/sdk'
+
+const ant = ANT.init({
+  processId: 'your-ant-process-id',
+  signer: new ArweaveSigner(jwk),
+})
+
+// Set a new record
+const { id: txId } = await ant.setRecord({
+  name: 'example',
+  transactionId: 'your-tx-id',
+  ttlSeconds: 3600,
+})
+
+console.log('Record set successfully:', txId)
+```
+
+## Notes
+
+- Read operations do not require authentication and can be performed with just a process ID
+- Write operations require a signer to be provided during initialization
+- The ANT class automatically handles AO process communication and state management
+- All write operations return a transaction ID that can be used to track the operation
