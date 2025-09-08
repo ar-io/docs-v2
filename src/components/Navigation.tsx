@@ -16,6 +16,7 @@ import {
   // mainNavigation,
   // secondaryNavigation,
   singleNavigation,
+  newNavigation,
 } from '@/navConfigs/sidebarConfig'
 
 import { ChevronDown, ChevronRight } from 'lucide-react'
@@ -25,21 +26,16 @@ function useInitialValue<T>(value: T, condition = true) {
   return condition ? initialValue : value
 }
 
+export interface NavItem {
+  title: string
+  href?: string
+  children?: NavItem[]
+}
+
 export interface NavGroup {
   title: string
   href?: string
-  links: Array<{
-    title: string
-    href?: string
-    children?: Array<{
-      title: string
-      href?: string
-      children?: Array<{
-        title: string
-        href?: string
-      }>
-    }>
-  }>
+  links: Array<NavItem>
 }
 
 function TopLevelNavItem({
@@ -483,7 +479,7 @@ export function Navigation(props: React.ComponentPropsWithoutRef<'nav'>) {
   //   ? secondaryNavigation
   //   : mainNavigation
 
-  const currentNavigation = singleNavigation
+  const currentNavigation = newNavigation
 
   return (
     <nav {...props}>

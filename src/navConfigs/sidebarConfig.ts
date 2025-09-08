@@ -1,5 +1,154 @@
 import { NavGroup } from '@/components/Navigation'
 
+
+export const newNavigation: Array<NavGroup> = [
+  {
+    title: 'Getting Started',
+    links: [
+      {
+        title: 'Introduction',
+        href: '/learn/introduction',
+      },
+      {
+        title: 'Upload a file to Arweave',
+        href: '',
+      },
+      {
+        title: 'Access data on Arweave',
+        href: '',
+      },
+      {
+        title: 'Arweave Name System (ArNS)',
+        href: '/arns',
+      },
+    ],
+  },
+  {
+    title: 'AR.IO Network',
+    links: [
+      {
+        title: "White Paper",
+        href: "https://whitepaper.arweave.net/",
+      },
+      {
+        title: 'Network Composition',
+        href: '/network-composition',
+      },
+      {
+        title: 'Smart Contract',
+        href: '/ario-contract',
+      },
+      {
+        title: 'Token',
+        href: '/token',
+      },
+      {
+        title: 'Staking',
+        href: '/staking',
+      },
+      {
+        title: 'Arweave Name System (ArNS)',
+        href: '/arns',
+      },
+    ],
+  },
+  {
+    title: 'Uploading Data',
+    links: [
+      {
+        title: 'Quick Start Guides',
+        children: [
+          { title: 'Turbo SDK' },
+          { title: 'ArDrive SDK' },
+          { title: 'ArDrive Core SDK' },
+          { title: 'Turbo CLI' },
+          { title: 'ArDrive CLI' },
+          { title: 'ArDrive Web' },
+          { title: 'Permaweb Deploy' },
+        ],
+      },
+      { title: 'Normalized Addresses' },
+      { title: 'Manifests' },
+      { title: 'Privacy' },
+      { title: 'EthAReum' },
+      {
+        title: 'Arweave File System (ArFS)',
+        children: [
+          { title: 'Overview' },
+          { title: 'Data Model' },
+          { title: 'Entity Types' },
+          { title: 'Schema Diagrams' },
+          { title: 'Content Types' },
+          { title: 'Privacy' },
+          {
+            title: 'Usage',
+            children: [
+              { title: 'create Drive' },
+              { title: 'Create Folder' },
+              { title: 'create File' },
+              { title: 'Modify Drives' },
+              { title: 'Modify Folders' },
+              { title: 'Modify Files' },
+              { title: 'Read ArFS Data' },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: 'Accessing Data',
+    links: [
+      { title: 'Accessing Data quickstart guide (new)' },
+      {
+        title: 'Gateway Architecture',
+      },
+      { title: 'Gateway Network' },
+      { title: 'Wayfinder' },
+    ],
+  },
+  {
+    title: 'SDKs and APIs',
+    links: [
+      { title: 'AR.IO SDK (expandable)' },
+      { title: 'AR.IO CLI (expandable)' },
+      { title: 'Turbo SDK (expandable)' },
+      { title: 'Turbo CLI (expandable)' },
+      { title: 'ArDrive SDK (expandable)' },
+      { title: 'ArDrive CLI (expandable)' },
+      { title: 'AR.IO Gateway API (link out)' },
+      { title: 'Turbo upload API' },
+      { title: 'Turbo Payment API' },
+    ],
+  },
+  {
+    title: "Gateway Operation",
+    links: [
+      {title: "The current setup and operation subsection"}
+    ]
+  },
+  {
+    title: "Guides",
+    links: [
+      {title: "Every non-quickstart guide we currently have"},
+      {title: "large project guides"},
+      {title: "How to...",
+        children: [
+          {title: "simple quick guides like 'how to buy an ArNS name'"},
+        ]
+      }
+    ]
+  },
+  {
+    title: "References",
+    links: [
+      {title: "Glossary"},
+      {title: "Community Resources"},
+      {title: "ArDrive Price Calculator (link out)"}
+    ]
+  }
+]
+
 export const mainNavigation: Array<NavGroup> = [] //Not used
 // [
 //   {
