@@ -1,6 +1,5 @@
 import { NavGroup } from '@/components/Navigation'
 
-
 export const newNavigation: Array<NavGroup> = [
   {
     title: 'Getting Started',
@@ -27,8 +26,8 @@ export const newNavigation: Array<NavGroup> = [
     title: 'AR.IO Network',
     links: [
       {
-        title: "White Paper",
-        href: "https://whitepaper.arweave.net/",
+        title: 'White Paper',
+        href: 'https://whitepaper.arweave.net/',
       },
       {
         title: 'Network Composition',
@@ -74,7 +73,7 @@ export const newNavigation: Array<NavGroup> = [
       {
         title: 'Arweave File System (ArFS)',
         children: [
-          { title: 'Overview' },
+          { title: 'Overview', href: '/arfs/overview' },
           { title: 'Data Model' },
           { title: 'Entity Types' },
           { title: 'Schema Diagrams' },
@@ -122,31 +121,117 @@ export const newNavigation: Array<NavGroup> = [
     ],
   },
   {
-    title: "Gateway Operation",
+    title: 'Gateway Operation',
     links: [
-      {title: "The current setup and operation subsection"}
-    ]
-  },
-  {
-    title: "Guides",
-    links: [
-      {title: "Every non-quickstart guide we currently have"},
-      {title: "large project guides"},
-      {title: "How to...",
+      {
+        title: 'Linux Setup',
+        href: '/gateways/linux-setup',
+      },
+      {
+        title: 'Windows Setup',
+        href: '/gateways/windows-setup',
+      },
+      {
+        title: 'Parquet',
+        href: '/gateways/parquet',
+      },
+      {
+        title: 'Snapshots',
+        href: '/gateways/snapshots',
+      },
+      {
+        title: 'Join The Network',
+        href: '/gateways/join-network',
+      },
+      {
+        title: 'ArNS Resolution',
+        href: '/gateways/arns-resolution',
+      },
+      {
+        title: 'Apex Domain Content Resolution',
+        href: '/gateways/apex',
+      },
+      {
+        title: 'Admin Configurations',
+        href: '/gateways/admin',
+      },
+      {
+        title: 'Advanced Configurations',
+        href: '/gateways/advanced',
+      },
+      {
+        title: 'Environmental Variables',
+        href: '/gateways/env',
+      },
+      {
+        title: 'Troubleshooting & FAQ',
+        href: '/gateways/troubleshooting',
+      },
+      {
+        title: 'Upgrading',
+        href: '/gateways/upgrading',
+      },
+      {
+        title: 'Moderation',
+        href: '/gateways/moderation',
+      },
+      {
+        title: 'Indexing and Webhook Filters',
+        href: '/gateways/filters',
+      },
+      {
+        title: 'Optimize Gateway Data',
+        href: '/gateways/optimize-data',
+      },
+      {
+        title: 'Bundler Sidecar',
+        href: '/gateways/bundler',
+      },
+      {
+        title: 'Grafana Sidecar',
+        href: '/gateways/grafana',
+      },
+      {
+        title: 'AO Compute Unit (CU) Sidecar',
+        href: '/gateways/cu',
+      },
+      {
+        title: 'Automating SSL',
+        href: '/gateways/networking',
         children: [
-          {title: "simple quick guides like 'how to buy an ArNS name'"},
-        ]
-      }
-    ]
+          {
+            title: 'Cloudflare',
+            href: '/gateways/networking/certbot/cloudflare',
+          },
+          {
+            title: 'Namecheap',
+            href: '/gateways/networking/certbot/namecheap',
+          },
+        ],
+      },
+    ],
   },
   {
-    title: "References",
+    title: 'Guides',
     links: [
-      {title: "Glossary"},
-      {title: "Community Resources"},
-      {title: "ArDrive Price Calculator (link out)"}
-    ]
-  }
+      { title: 'Every non-quickstart guide we currently have' },
+      { title: 'large project guides' },
+      {
+        title: 'How to...',
+        children: [
+          { title: "simple quick guides like 'how to buy an ArNS name'" },
+        ],
+      },
+    ],
+  },
+  {
+    title: 'References',
+    links: [
+      { title: 'Glossary' },
+      { title: 'Community Resources' },
+      { title: 'ArDrive Price Calculator (link out)' },
+    ],
+  },
 ]
 
 export const mainNavigation: Array<NavGroup> = [] //Not used
