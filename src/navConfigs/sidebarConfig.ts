@@ -63,7 +63,7 @@ export const newNavigation: Array<NavGroup> = [
           { title: 'Turbo CLI' },
           { title: 'ArDrive CLI' },
           { title: 'ArDrive Web' },
-          { title: 'Permaweb Deploy' },
+          { title: 'Permaweb Deploy', href: '/guides/permaweb-deploy' },
         ],
       },
       { title: 'Normalized Addresses' },
@@ -105,6 +105,14 @@ export const newNavigation: Array<NavGroup> = [
       { title: 'Gateway Network' },
       { title: 'Wayfinder' },
     ],
+  },
+  {
+    title: "Arweave Name System (ArNS)",
+    links: [
+      {title: "Overview", href: "/arns"},
+      {title: "ArNS.app"},
+      {title: "Permaweb-Deploy", href: "/guides/permaweb-deploy"},
+    ]
   },
   {
     title: 'SDKs and APIs',
