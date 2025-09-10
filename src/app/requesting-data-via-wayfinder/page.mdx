@@ -1,0 +1,31 @@
+# Requesting data via Wayfinder
+
+Wayfinder is an intelligent data discovery service that helps you find and access data across the Arweave network using advanced search and indexing capabilities. It goes beyond simple transaction lookups to provide smart, context-aware data discovery.
+
+This service is particularly useful when you need to find data but don't know the exact transaction ID or specific search criteria. Wayfinder can help you discover content based on semantic meaning, content similarity, or other intelligent matching algorithms that traditional search methods might miss.
+
+Wayfinder is ideal for applications that need to help users discover relevant content, build recommendation systems, or create search experiences that go beyond basic keyword matching. While it depends on the Wayfinder service being available, it can significantly enhance the discoverability of your Arweave data.
+
+## Quick Start Guide
+
+To use Wayfinder for data discovery, you'll typically interact with its API to search for relevant content:
+
+```javascript
+// Example: Searching for data using Wayfinder
+const searchQuery = 'machine learning datasets'
+const response = await fetch('https://wayfinder.arweave.net/search', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    query: searchQuery,
+    limit: 10,
+  }),
+})
+
+const results = await response.json()
+// Process the search results to find relevant data
+```
+
+Wayfinder can also be integrated into applications to provide intelligent search capabilities, helping users discover content that matches their interests or needs without requiring them to know specific transaction IDs or search terms.

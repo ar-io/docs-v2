@@ -1,0 +1,30 @@
+# Querying via Parquet & Iceberg
+
+Parquet and Iceberg provide advanced analytical querying capabilities for large datasets stored on Arweave. These columnar storage formats are optimized for data analysis, business intelligence, and analytical workloads that need to process and query large amounts of data efficiently.
+
+This method is particularly powerful for organizations that need to perform complex analytics on Arweave data, such as trend analysis, data mining, or building dashboards. The columnar format allows for fast aggregation and filtering operations on large datasets, making it much more efficient than traditional row-based storage for analytical queries.
+
+While Parquet and Iceberg offer significant performance advantages for analytical workloads, they require specialized tools and have a steeper learning curve. They're best suited for data scientists, analysts, and developers building analytical applications rather than simple file retrieval needs.
+
+## Quick Start Guide
+
+To query Arweave data using Parquet/Iceberg, you'll typically work with analytical tools that support these formats:
+
+```python
+import pandas as pd
+import pyarrow as pa
+import pyarrow.parquet as pq
+
+# Load Parquet data from Arweave
+df = pd.read_parquet('https://arweave.net/your-parquet-file-id')
+
+# Perform analytical queries
+result = df.groupby('category').agg({
+    'value': ['sum', 'mean', 'count']
+}).reset_index()
+
+# Export results
+result.to_parquet('analytics_results.parquet')
+```
+
+For more complex analytical workloads, consider using tools like Apache Spark, Dremio, or other analytical platforms that support these formats.

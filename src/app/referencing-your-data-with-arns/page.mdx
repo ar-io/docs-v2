@@ -1,0 +1,24 @@
+# Referencing your data with ArNS
+
+ArNS (Arweave Name System) provides human-readable names for data stored on Arweave, making it much easier to reference and share content. Instead of using long, complex transaction IDs, you can create memorable domain names that point to your Arweave data.
+
+This system works similarly to traditional DNS, but for Arweave content. You can register a name like "my-awesome-app" and have it point to your data, making it much easier for users to access and share your content. ArNS names are also more brand-friendly and professional-looking in applications.
+
+ArNS is particularly useful for applications that need to share content publicly or maintain stable references to data that might be updated over time. While there's an additional cost for registering and maintaining names, the benefits of human-readable URLs often outweigh the costs for many use cases.
+
+## Quick Start Guide
+
+To use ArNS, you'll need to register a name and point it to your Arweave transaction:
+
+1. **Register an ArNS name** through the ArNS registry or a gateway service
+2. **Point your name** to your Arweave transaction ID
+3. **Access your data** using the human-readable URL
+
+```javascript
+// Example: Accessing data via ArNS
+const arnsName = 'my-awesome-app'
+const data = await fetch(`https://${arnsName}.arweave.net`)
+const content = await data.text()
+```
+
+You can also use ArNS names in your applications to create stable, shareable links to your Arweave content, making it much easier for users to access and bookmark your data.

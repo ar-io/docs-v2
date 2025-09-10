@@ -1,0 +1,24 @@
+# Requesting via HTTP
+
+HTTP requests are the simplest way to retrieve data from Arweave. You can access any file stored on the network by making a direct HTTP request to a gateway using the transaction ID. This method is perfect for basic file retrieval when you know the exact transaction ID of the data you want to access.
+
+Most Arweave gateways support standard HTTP GET requests, making it easy to integrate with any application or tool that can make web requests. You can use this method with curl, fetch(), or any HTTP client library in your preferred programming language.
+
+The main advantage of HTTP requests is their simplicity and universal compatibility. However, this method doesn't provide advanced querying capabilities or metadata filtering - you need to know the exact transaction ID to retrieve the data you want.
+
+## Quick Start Guide
+
+To retrieve data via HTTP, simply make a GET request to any Arweave gateway:
+
+```bash
+curl https://arweave.net/{transaction-id}
+```
+
+Or using JavaScript:
+
+```javascript
+const response = await fetch(`https://arweave.net/${transactionId}`)
+const data = await response.text()
+```
+
+For more advanced use cases, consider using GraphQL queries or other specialized access methods.

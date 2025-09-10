@@ -1,0 +1,21 @@
+# Full Gateway Setup Guide (Linux / Windows)
+
+For production deployments, you'll want a complete setup with proper configuration, SSL certificates, and network integration. This guide covers the full installation process for both Linux and Windows environments.
+
+## Linux Setup
+
+The Linux setup involves installing Docker, configuring environment variables, setting up SSL certificates with Let's Encrypt, and configuring nginx as a reverse proxy. The process includes creating proper DNS records, setting up port forwarding, and joining the AR.IO network for rewards.
+
+Key steps include cloning the ar-io-node repository, configuring your `.env` file with proper settings, setting up your Arweave wallet, and running the gateway with Docker Compose. You'll also need to configure nginx to handle SSL termination and route traffic to your gateway.
+
+## Windows Setup
+
+Windows users can run the gateway using Docker Desktop or WSL2 (Windows Subsystem for Linux). The setup process is similar to Linux but requires additional configuration for Windows-specific networking and file system permissions.
+
+The Windows setup includes installing Docker Desktop, configuring Windows Firewall, setting up your domain and SSL certificates, and running the gateway using Docker Compose. You'll also need to configure IIS or nginx as a reverse proxy.
+
+## Production Considerations
+
+Both setups include guidance on monitoring, logging, backup strategies, and security hardening. You'll learn how to configure environment variables for optimal performance, set up automated SSL certificate renewal, and implement proper security measures.
+
+The guides also cover troubleshooting common issues, performance optimization, and how to scale your gateway as your needs grow. Whether you're running on a home server or enterprise infrastructure, these guides provide the foundation for a robust gateway deployment.

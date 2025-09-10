@@ -1,0 +1,25 @@
+# How to Load a Bundler Alongside Your Gateway
+
+Loading a bundler alongside your AR.IO gateway creates a complete data infrastructure stack. The bundler handles data submission while the gateway serves the data, providing a seamless experience for users and applications.
+
+## Prerequisites
+
+Before loading a bundler, ensure your gateway is running and properly configured. The bundler requires access to your gateway's data storage and network configuration to function correctly.
+
+## Configuration Setup
+
+Configure the bundler to work with your gateway by setting up shared data storage, typically using AWS S3 or a local S3-compatible service. This allows the bundler to share data with your gateway for optimistic indexing.
+
+## Network Integration
+
+The bundler runs on the same Docker network as your gateway, allowing direct communication and data sharing. Configure the bundler's environment variables to point to your gateway's services and data storage.
+
+## Access Control
+
+Set up proper access control by configuring the `ALLOW_LISTED_ADDRESSES` environment variable. This determines which wallets can submit data through your bundler, providing security and control over your infrastructure.
+
+## Monitoring and Management
+
+Monitor both services to ensure they're working together correctly. The bundler will process data items and make them available through your gateway, creating a complete data pipeline from submission to serving.
+
+This setup provides a robust foundation for applications that need both data submission and serving capabilities in a single infrastructure stack.

@@ -1,0 +1,37 @@
+# Run a Bundler Locally
+
+Running a bundler locally is straightforward using Docker and the provided configuration files. The bundler integrates with your existing AR.IO gateway to provide seamless data submission capabilities.
+
+## Quick Start
+
+The bundler uses a separate Docker Compose file and environment configuration. Start by copying the example environment file:
+
+```bash
+cp .env.bundler.example .env.bundler
+```
+
+Then configure your bundler settings in the `.env.bundler` file, including your Arweave wallet, AWS S3 settings for data sharing, and access control lists.
+
+## Starting the Bundler
+
+Run the bundler using:
+
+```bash
+docker compose --env-file ./.env.bundler --file docker-compose.bundler.yaml up -d
+```
+
+The bundler will start and begin processing data items, bundling them for efficient submission to Arweave.
+
+## Configuration
+
+Key configuration options include:
+
+- **BUNDLER_ARWEAVE_WALLET**: Your Arweave wallet for signing transactions
+- **ALLOW_LISTED_ADDRESSES**: Comma-separated list of allowed uploaders
+- **AWS_S3_BUCKET**: S3 bucket for data sharing with your gateway
+
+## Integration
+
+The bundler automatically integrates with your gateway through shared data storage, allowing for optimistic indexing and immediate data availability after upload.
+
+Monitor the bundler logs to ensure it's running correctly and processing data items as expected.

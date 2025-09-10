@@ -1,0 +1,36 @@
+# Encrypting / Decrypting data on Arweave
+
+Arweave itself is completely agnostic to encryption, which means all encryption and decryption must be handled client-side by your application. This approach gives you complete control over your data security while ensuring that Arweave can store any type of data without restrictions.
+
+The most common approach is to encrypt your data before uploading it to Arweave, then decrypt it when retrieving. This ensures that even though your data is stored on a public network, only those with the proper decryption keys can access the actual content. You can use any encryption algorithm or library that suits your needs.
+
+A best practice is to include tags indicating the type of encryption used when uploading encrypted data. This makes it easier for clients to know how to decrypt the data correctly. Common tags include "Encryption-Type", "Encryption-Algorithm", or "Encryption-Version" to help with proper decryption.
+
+## Quick Start Guide
+
+Here's a basic example of encrypting data before uploading to Arweave:
+
+```javascript
+import CryptoJS from 'crypto-js'
+
+// Encrypt data before uploading
+const data = 'Sensitive information'
+const secretKey = 'your-secret-key'
+const encryptedData = CryptoJS.AES.encrypt(data, secretKey).toString()
+
+// Upload with encryption tags
+const transaction = await arweave.createTransaction({
+  data: encryptedData,
+  tags: [
+    { name: 'Encryption-Type', value: 'AES' },
+    { name: 'Encryption-Algorithm', value: 'AES-256-CBC' },
+  ],
+})
+
+// Decrypt when retrieving
+const decryptedData = CryptoJS.AES.decrypt(encryptedData, secretKey).toString(
+  CryptoJS.enc.Utf8,
+)
+```
+
+Remember to keep your encryption keys secure and consider using key derivation functions for production applications.

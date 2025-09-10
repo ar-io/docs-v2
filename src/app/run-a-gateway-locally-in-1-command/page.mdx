@@ -1,0 +1,38 @@
+# Run a Gateway Locally in 1 Command
+
+The simplest way to get an AR.IO gateway running is using Docker with a single command. This approach is perfect for testing, development, or getting familiar with gateway functionality before setting up a production deployment.
+
+## Quick Start
+
+Run this command to start a basic gateway:
+
+```bash
+docker run -p 4000:4000 -v ar-io-data:/app/data ghcr.io/ar-io/ar-io-core:latest
+```
+
+This command:
+
+- Exposes the gateway on port 4000
+- Creates a persistent data volume for caching
+- Uses the latest AR.IO core image
+
+## Test Your Gateway
+
+Once running, test the gateway with:
+
+```bash
+curl localhost:4000/agYcCFJtrMG6cqMuZfskIkFTGvUPddICmtQSBIoPdiA
+```
+
+This should return data from a known Arweave transaction, confirming your gateway is working correctly.
+
+## What's Next
+
+This basic setup is ideal for development and testing. For production use, you'll want to:
+
+- Configure environment variables for optimization
+- Set up SSL certificates for HTTPS
+- Join the AR.IO network for rewards
+- Add monitoring and logging
+
+The gateway will start syncing with the Arweave network automatically, though it may take some time to fully catch up depending on your system resources.

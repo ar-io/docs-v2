@@ -1,7 +1,7 @@
 export const metadata = {
   title: 'What are my Options?',
   description:
-    'Explore the three main approaches to uploading data to Arweave: No-code solutions, Arweave-js SDK, and Bundling/Turbo services',
+    'Explore the different methods for accessing data on Arweave: HTTP requests, GraphQL queries, Parquet/Iceberg, ArNS, and Wayfinder',
   openGraph: {
     title: 'What are my Options?',
   },
@@ -9,7 +9,7 @@ export const metadata = {
 
 # What are my Options?
 
-When it comes to uploading data to Arweave, you have three main approaches to choose from, each with its own advantages and ideal use cases. The best choice depends on your technical skill level, the amount of data you're working with, and whether you need to integrate uploading into an existing application.
+When it comes to accessing data on Arweave, you have several methods to choose from, each optimized for different use cases and data types. The best choice depends on your specific needs, whether you're retrieving individual files, querying large datasets, or building analytical applications.
 
 <Table>
   <Table.Head>
@@ -23,68 +23,105 @@ When it comes to uploading data to Arweave, you have three main approaches to ch
   </Table.Head>
   <Table.Body>
     <Table.Row>
-      <Table.Cell className="font-semibold">No-code</Table.Cell>
+      <Table.Cell className="font-semibold">HTTP Requests</Table.Cell>
       <Table.Cell>
-        Simple drag-and-drop interfaces that handle all technical complexity
-        automatically. Perfect for one-off uploads without writing any code.
+        Direct HTTP requests to retrieve individual files or data by transaction ID.
+        Simple and straightforward for basic file retrieval needs.
       </Table.Cell>
-      <Table.Cell>ArDrive Web App</Table.Cell>
+      <Table.Cell>REST API, curl, fetch()</Table.Cell>
       <Table.Cell>
-        • Easy to use
+        • Simple to implement
 
-        • No coding required
+        • Works with any HTTP client
 
-        • Automatic tagging and cost calculation
+        • Direct file access
       </Table.Cell>
       <Table.Cell>
-        • Limited customization
+        • Limited querying capabilities
 
-        • Not suitable for programmatic integration
+        • No metadata filtering
       </Table.Cell>
     </Table.Row>
     <Table.Row>
-      <Table.Cell className="font-semibold">Direct to Network</Table.Cell>
+      <Table.Cell className="font-semibold">GraphQL Queries</Table.Cell>
       <Table.Cell>
-        Direct programmatic control over the upload process with full access to
-        Arweave's native functionality and transaction management.
+        Powerful query language for searching and filtering transactions based on
+        tags, owners, and other metadata with complex filtering capabilities.
       </Table.Cell>
-      <Table.Cell>Arweave-js SDK, Direct Arweave API</Table.Cell>
+      <Table.Cell>Arweave GraphQL API</Table.Cell>
       <Table.Cell>
-        • Maximum flexibility
+        • Complex filtering
 
-        • Full control
-        
-        • Deep system understanding
+        • Metadata search
+
+        • Flexible queries
       </Table.Cell>
       <Table.Cell>
-        • More complex
+        • Learning curve
 
-        • Requires AR tokens
-        
-        • Steeper learning curve
+        • Query complexity
       </Table.Cell>
     </Table.Row>
     <Table.Row>
-      <Table.Cell className="font-semibold">Bundling Services</Table.Cell>
+      <Table.Cell className="font-semibold">Parquet & Iceberg</Table.Cell>
       <Table.Cell>
-        Modern, streamlined approach that combines ease of use with programmatic
-        control, handling bundling complexity and multiple payment methods.
+        Advanced analytical querying for large datasets using columnar storage
+        formats optimized for data analysis and business intelligence.
       </Table.Cell>
-      <Table.Cell>Turbo SDK, ArDrive Core JS SDK</Table.Cell>
+      <Table.Cell>Analytical tools, BI platforms</Table.Cell>
       <Table.Cell>
-        • Fast uploads
+        • Fast analytics
 
-        • Multiple payment methods
+        • Large dataset support
 
-        • Production-ready
-        
-        • Good developer experience
+        • Columnar efficiency
       </Table.Cell>
       <Table.Cell>
-        • Additional service dependency
-        
+        • Complex setup
+
+        • Specialized tools required
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">ArNS (Arweave Name System)</Table.Cell>
+      <Table.Cell>
+        Human-readable names for Arweave data, making it easier to reference
+        and share content with memorable URLs instead of transaction IDs.
+      </Table.Cell>
+      <Table.Cell>ar.io gateway, custom domains</Table.Cell>
+      <Table.Cell>
+        • Human-readable URLs
+
+        • Easy sharing
+
+        • Brand-friendly
+      </Table.Cell>
+      <Table.Cell>
+        • Additional cost
+
+        • Name management required
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">Wayfinder</Table.Cell>
+      <Table.Cell>
+        Intelligent data discovery service that helps find and access data
+        across the Arweave network using advanced search and indexing.
+      </Table.Cell>
+      <Table.Cell>Wayfinder API, search tools</Table.Cell>
+      <Table.Cell>
+        • Smart discovery
+
+        • Cross-network search
+
+        • Advanced indexing
+      </Table.Cell>
+      <Table.Cell>
+        • Service dependency
+
         • May have usage limits
       </Table.Cell>
     </Table.Row>
+
   </Table.Body>
 </Table>

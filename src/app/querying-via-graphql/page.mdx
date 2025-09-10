@@ -1,0 +1,38 @@
+# Querying via GraphQL
+
+GraphQL provides a powerful way to query and search data on Arweave using flexible, structured queries. Unlike simple HTTP requests, GraphQL allows you to search for transactions based on tags, owners, content types, and other metadata without needing to know specific transaction IDs.
+
+This method is ideal when you need to discover data based on criteria rather than retrieve known files. You can search for all transactions from a specific owner, find files with certain tags, or query based on content type or file size. The query language is expressive and allows for complex filtering and sorting.
+
+GraphQL queries are particularly useful for building applications that need to browse or search through Arweave data dynamically. While there's a learning curve to mastering the query syntax, the flexibility it provides makes it essential for many use cases.
+
+## Quick Start Guide
+
+Here's a basic GraphQL query to find transactions with specific tags:
+
+```graphql
+query {
+  transactions(
+    tags: [
+      { name: "App-Name", values: ["PublicSquare"] }
+      { name: "Content-Type", values: ["text/plain"] }
+    ]
+    first: 10
+  ) {
+    edges {
+      node {
+        id
+        tags {
+          name
+          value
+        }
+        data {
+          size
+        }
+      }
+    }
+  }
+}
+```
+
+Execute this query using any GraphQL client or HTTP POST request to an Arweave GraphQL endpoint like `https://arweave.net/graphql`.

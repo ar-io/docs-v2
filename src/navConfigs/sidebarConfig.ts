@@ -28,14 +28,6 @@ export const atAGlanceNavigation: Array<NavGroup> = [
     href: '/how-to-upload-data-to-arweave',
     links: [
       {
-        title: 'How to Upload Data to Arweave',
-        href: '/how-to-upload-data-to-arweave',
-      },
-      {
-        title: 'What are my Options?',
-        href: '/what-are-my-options',
-      },
-      {
         title: 'Uploading Data with Turbo',
         href: '/uploading-data-with-turbo',
       },
@@ -58,36 +50,102 @@ export const atAGlanceNavigation: Array<NavGroup> = [
     href: '/how-to-access-data-on-arweave',
     links: [
       {
-        title: 'What are my Options?',
+        title: 'How to Access Data on Arweave',
+        href: '/how-to-access-data-on-arweave',
       },
       {
-        title: 'Requesting via http',
+        title: 'What are my Options?',
+        href: '/what-are-my-options',
+      },
+      {
+        title: 'Requesting via HTTP',
+        href: '/requesting-via-http',
       },
       {
         title: 'Querying via GraphQL',
+        href: '/querying-via-graphql',
       },
       {
-        title: 'Referencing Data with ArNS',
+        title: 'Querying via Parquet & Iceberg',
+        href: '/querying-via-parquet-iceberg',
       },
       {
-        title: 'Requesting Data via Wayfinder',
+        title: 'Referencing your data with ArNS',
+        href: '/referencing-your-data-with-arns',
+      },
+      {
+        title: 'Requesting data via Wayfinder',
+        href: '/requesting-data-via-wayfinder',
+      },
+      {
+        title: 'Encrypting / Decrypting data on Arweave',
+        href: '/encrypting-decrypting-data-on-arweave',
       },
     ],
   },
   {
     title: 'Running your own Infrastructure',
+    href: '/running-your-own-infrastructure',
     links: [
       {
-        title: 'Running your own Gateway',
+        title: 'Running your own Infrastructure',
+        href: '/running-your-own-infrastructure',
       },
       {
-        title: 'Running your own Bundler Extension',
+        title: 'Why Run Your Own Gateway?',
+        href: '/why-run-your-own-gateway',
       },
       {
-        title: 'Running Other Gateway Extensions',
+        title: 'Run a Gateway Locally in 1 Command',
+        href: '/run-a-gateway-locally-in-1-command',
       },
       {
-        title: 'Create your own Extensions',
+        title: 'Choosing a Gateway Provider',
+        href: '/choosing-a-gateway-provider',
+      },
+      {
+        title: 'Full Gateway Setup Guide (Linux / Windows)',
+        href: '/full-gateway-setup-guide-linux-windows',
+      },
+      {
+        title: 'Joining the Arweave Network (Gateway)',
+        href: '/joining-the-arweave-network-gateway',
+      },
+      {
+        title: 'How to Optimize Your Gateway for Your Data',
+        href: '/how-to-optimize-your-gateway-for-your-data',
+      },
+      {
+        title: 'Why Run Your Own Bundler Extension?',
+        href: '/why-run-your-own-bundler-extension',
+      },
+      {
+        title: 'Run a Bundler Locally',
+        href: '/run-a-bundler-locally',
+      },
+      {
+        title: 'How to Load a Bundler Alongside Your Gateway',
+        href: '/how-to-load-a-bundler-alongside-your-gateway',
+      },
+      {
+        title: 'Scaling Your Bundling for Production',
+        href: '/scaling-your-bundling-for-production',
+      },
+      {
+        title: 'What Are Gateway Extensions?',
+        href: '/what-are-gateway-extensions',
+      },
+      {
+        title: 'Extensions Marketplace',
+        href: '/extensions-marketplace',
+      },
+      {
+        title: 'How to Load a Gateway Extension',
+        href: '/how-to-load-a-gateway-extension',
+      },
+      {
+        title: 'How to Create Your Own Gateway Extension',
+        href: '/how-to-create-your-own-gateway-extension',
       },
     ],
   },

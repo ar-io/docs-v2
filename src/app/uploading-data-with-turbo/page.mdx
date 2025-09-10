@@ -16,3 +16,71 @@ The key advantage of Turbo is its simplified payment model. Instead of needing A
 Turbo provides both SDK and CLI tools for different use cases. The SDK is perfect for integrating uploads into web applications, while the CLI is great for batch uploads and automation. Both tools support uploading single files, entire folders, and even complete websites with automatic manifest generation. The service also includes features like progress tracking, retry logic, and detailed error reporting to make the upload process as smooth as possible.
 
 Getting started with Turbo is straightforward - you just need to create an account, purchase some credits, and start uploading. The service provides detailed documentation and examples for all major programming languages, making it easy to integrate into your existing workflow. Whether you're building a simple file sharing app or a complex decentralized application, Turbo provides the reliability and ease of use you need for production deployments.
+
+## Quick Start Guide
+
+Here are basic examples of uploading data with the Turbo SDK:
+
+<CodeGroup>
+```javascript {{ title: 'Simple Data Upload' }}
+import { ArweaveSigner, TurboFactory } from '@ardrive/turbo-sdk'
+
+async function uploadWithTurbo() {
+// Load your Arweave wallet
+const jwk = JSON.parse(fs.readFileSync('./my-wallet.json', 'utf-8'))
+const signer = new ArweaveSigner(jwk)
+
+// Create authenticated Turbo client
+const turbo = TurboFactory.authenticated({ signer })
+
+try {
+// Upload simple data
+const result = await turbo.upload({
+data: 'Hello, Arweave!',
+events: {
+onProgress: ({ totalBytes, processedBytes, step }) => {
+console.log(`Progress: ${processedBytes}/${totalBytes} (${step})`)
+},
+},
+})
+
+    console.log('Upload successful!', result.id)
+
+} catch (error) {
+console.error('Upload failed:', error)
+}
+}
+
+````
+
+```javascript {{ title: 'File Upload' }}
+import { ArweaveSigner, TurboFactory } from '@ardrive/turbo-sdk'
+
+async function uploadFileWithTurbo() {
+  const jwk = JSON.parse(fs.readFileSync('./my-wallet.json', 'utf-8'))
+  const signer = new ArweaveSigner(jwk)
+  const turbo = TurboFactory.authenticated({ signer })
+
+  try {
+    // Upload a file
+    const result = await turbo.uploadFile({
+      fileStreamFactory: () => fs.createReadStream('./my-file.txt'),
+      fileSizeFactory: () => fs.statSync('./my-file.txt').size,
+      dataItemOpts: {
+        tags: [
+          { name: 'Content-Type', value: 'text/plain' },
+          { name: 'App-Name', value: 'MyApp' },
+        ],
+      },
+    })
+
+    console.log('File upload successful!', result.id)
+  } catch (error) {
+    console.error('File upload failed:', error)
+  }
+}
+```
+
+</CodeGroup>
+
+Install the SDK with `npm install @ardrive/turbo-sdk` and you're ready to start uploading!
