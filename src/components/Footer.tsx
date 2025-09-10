@@ -2,24 +2,65 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useState, useEffect } from 'react'
 
 import { Button } from '@/components/Button'
-import { singleNavigation as navigation } from '@/navConfigs/sidebarConfig'
+import {
+  atAGlanceNavigation,
+  inDepthNavigation,
+  sdkNavigation,
+} from '@/navConfigs/sidebarConfig'
 
 type NavItem = {
-  title: string;
-  href?: string;
-  children?: NavItem[];
-};
+  title: string
+  href?: string
+  children?: NavItem[]
+}
+
+type NavGroup = {
+  title: string
+  href?: string
+  links?: Array<NavItem>
+}
+
+type NavigationMode = 'at-a-glance' | 'in-depth' | 'sdk'
+
+function detectNavigationMode(pathname: string): NavigationMode {
+  // SDK/API pages
+  if (
+    pathname.startsWith('/ar-io-sdk') ||
+    pathname.startsWith('/wayfinder') ||
+    pathname.startsWith('/ai/sdk')
+  ) {
+    return 'sdk'
+  }
+
+  // In-depth technical pages
+  if (
+    pathname.startsWith('/gateways') ||
+    pathname.startsWith('/guides') ||
+    pathname.startsWith('/concepts') ||
+    pathname.startsWith('/arfs') ||
+    pathname.startsWith('/staking') ||
+    pathname.startsWith('/token') ||
+    pathname.startsWith('/ario-contract') ||
+    pathname.startsWith('/network-composition')
+  ) {
+    return 'in-depth'
+  }
+
+  // Default to at-a-glance for intro pages and others
+  return 'at-a-glance'
+}
 
 function PageLink({
   label,
   page,
   previous = false,
 }: {
-  label: string;
-  page: NavItem;
-  previous?: boolean;
+  label: string
+  page: NavItem
+  previous?: boolean
 }) {
   return page.href ? (
     <>
@@ -44,45 +85,167 @@ function PageLink({
     <span className="text-base font-semibold text-zinc-900 dark:text-white">
       {page.title}
     </span>
-  );
+  )
 }
 
-function flattenNavigation(navItems: NavItem[]): NavItem[] {
-  const flatPages: NavItem[] = [];
+function flattenNavigation(navGroups: NavGroup[]): NavItem[] {
+  const flatPages: NavItem[] = []
 
-  function recurse(items: NavItem[]) {
+  function recurseItems(items: NavItem[]) {
     items.forEach((item) => {
       if (item.href) {
-        flatPages.push(item);
+        flatPages.push(item)
       }
       if (item.children) {
-        recurse(item.children);
+        recurseItems(item.children)
       }
-    });
+    })
   }
 
-  recurse(navItems);
-  return flatPages;
+  navGroups.forEach((group) => {
+    if (group.links) {
+      recurseItems(group.links)
+    }
+  })
+
+  return flatPages
+}
+
+function findCurrentSubMenu(
+  navGroups: NavGroup[],
+  currentPath: string,
+): NavItem[] | null {
+  for (const group of navGroups) {
+    if (group.links) {
+      // Check if current path is in this group's links
+      const hasCurrentPath = group.links.some(
+        (link) =>
+          link.href === currentPath ||
+          (link.children && findInChildren(link.children, currentPath)),
+      )
+
+      if (hasCurrentPath) {
+        return group.links.filter((link) => link.href) // Only return items with hrefs
+      }
+
+      // Recursively check nested children in links
+      for (const link of group.links) {
+        if (link.children) {
+          const nestedResult = findCurrentSubMenuInChildren(
+            link.children,
+            currentPath,
+          )
+          if (nestedResult) {
+            return nestedResult
+          }
+        }
+      }
+    }
+  }
+  return null
+}
+
+function findCurrentSubMenuInChildren(
+  children: NavItem[],
+  currentPath: string,
+): NavItem[] | null {
+  // Check if current path is in this children array
+  const hasCurrentPath = children.some(
+    (child) =>
+      child.href === currentPath ||
+      (child.children && findInChildren(child.children, currentPath)),
+  )
+
+  if (hasCurrentPath) {
+    return children.filter((child) => child.href) // Only return items with hrefs
+  }
+
+  // Recursively check nested children
+  for (const child of children) {
+    if (child.children) {
+      const nestedResult = findCurrentSubMenuInChildren(
+        child.children,
+        currentPath,
+      )
+      if (nestedResult) {
+        return nestedResult
+      }
+    }
+  }
+
+  return null
+}
+
+function findInChildren(children: NavItem[], currentPath: string): boolean {
+  return children.some(
+    (child) =>
+      child.href === currentPath ||
+      (child.children && findInChildren(child.children, currentPath)),
+  )
 }
 
 function PageNavigation() {
-  let pathname = usePathname();
-  let allPages = flattenNavigation(navigation);
-  let currentPageIndex = allPages.findIndex((page) => page.href === pathname);
+  let pathname = usePathname()
+  let [activeMode, setActiveMode] = useState<NavigationMode>(() => {
+    // Check localStorage for saved preference first
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('navigation-mode') as NavigationMode
+      if (saved && ['at-a-glance', 'in-depth', 'sdk'].includes(saved)) {
+        return saved
+      }
+    }
+    // Fall back to detection based on current path
+    return detectNavigationMode(pathname)
+  })
+
+  // Update mode when pathname changes (for direct navigation)
+  useEffect(() => {
+    const detectedMode = detectNavigationMode(pathname)
+    setActiveMode(detectedMode)
+  }, [pathname])
+
+  const getCurrentNavigation = () => {
+    switch (activeMode) {
+      case 'at-a-glance':
+        return atAGlanceNavigation
+      case 'in-depth':
+        return inDepthNavigation
+      case 'sdk':
+        return sdkNavigation
+      default:
+        return atAGlanceNavigation
+    }
+  }
+
+  const currentNavigation = getCurrentNavigation()
+
+  // Try to find the current sub-menu first
+  const currentSubMenu = findCurrentSubMenu(currentNavigation, pathname)
+  let allPages: NavItem[]
+
+  if (currentSubMenu && currentSubMenu.length > 0) {
+    // Use the current sub-menu for navigation
+    allPages = currentSubMenu
+  } else {
+    // Fall back to flattened navigation if no sub-menu found
+    allPages = flattenNavigation(currentNavigation)
+  }
+
+  let currentPageIndex = allPages.findIndex((page) => page.href === pathname)
 
   if (currentPageIndex === -1) {
-    return null;
+    return null
   }
 
   let previousPage =
-    currentPageIndex > 0 ? allPages[currentPageIndex - 1] : undefined;
+    currentPageIndex > 0 ? allPages[currentPageIndex - 1] : undefined
   let nextPage =
     currentPageIndex < allPages.length - 1
       ? allPages[currentPageIndex + 1]
-      : undefined;
+      : undefined
 
   if (!previousPage && !nextPage) {
-    return null;
+    return null
   }
 
   return (
@@ -98,7 +261,7 @@ function PageNavigation() {
         </div>
       )}
     </div>
-  );
+  )
 }
 
 function XIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
@@ -106,7 +269,7 @@ function XIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
     <svg viewBox="0 0 20 20" aria-hidden="true" {...props}>
       <path d="M11.1527 8.92804L16.2525 3H15.044L10.6159 8.14724L7.07919 3H3L8.34821 10.7835L3 17H4.20855L8.88474 11.5643L12.6198 17H16.699L11.1524 8.92804H11.1527ZM9.49748 10.8521L8.95559 10.077L4.644 3.90978H6.50026L9.97976 8.88696L10.5216 9.66202L15.0446 16.1316H13.1883L9.49748 10.8524V10.8521Z" />
     </svg>
-  );
+  )
 }
 
 function GitHubIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
@@ -118,7 +281,7 @@ function GitHubIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
         d="M10 1.667c-4.605 0-8.334 3.823-8.334 8.544 0 3.78 2.385 6.974 5.698 8.106.417.075.573-.182.573-.406 0-.203-.011-.875-.011-1.592-2.093.397-2.635-.522-2.802-1.002-.094-.246-.5-1.005-.854-1.207-.291-.16-.708-.556-.01-.567.656-.01 1.124.62 1.281.876.75 1.292 1.948.93 2.427.705.073-.555.291-.93.531-1.143-1.854-.213-3.791-.95-3.791-4.218 0-.929.322-1.698.854-2.296-.083-.214-.375-1.09.083-2.265 0 0 .698-.224 2.292.876a7.576 7.576 0 0 1 2.083-.288c.709 0 1.417.096 2.084.288 1.593-1.11 2.291-.875 2.291-.875.459 1.174.167 2.05.084 2.263.53.599.854 1.357.854 2.297 0 3.278-1.948 4.005-3.802 4.219.302.266.563.78.563 1.58 0 1.143-.011 2.061-.011 2.35 0 .224.156.491.573.405a8.365 8.365 0 0 0 4.11-3.116 8.707 8.707 0 0 0 1.567-4.99c0-4.721-3.73-8.545-8.334-8.545Z"
       />
     </svg>
-  );
+  )
 }
 
 function DiscordIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
@@ -126,7 +289,7 @@ function DiscordIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
     <svg viewBox="0 0 20 20" aria-hidden="true" {...props}>
       <path d="M16.238 4.515a14.842 14.842 0 0 0-3.664-1.136.055.055 0 0 0-.059.027 10.35 10.35 0 0 0-.456.938 13.702 13.702 0 0 0-4.115 0 9.479 9.479 0 0 0-.464-.938.058.058 0 0 0-.058-.027c-1.266.218-2.497.6-3.664 1.136a.052.052 0 0 0-.024.02C1.4 8.023.76 11.424 1.074 14.782a.062.062 0 0 0 .024.042 14.923 14.923 0 0 0 4.494 2.272.058.058 0 0 0 .064-.02c.346-.473.654-.972.92-1.496a.057.057 0 0 0-.032-.08 9.83 9.83 0 0 1-1.404-.669.058.058 0 0 1-.029-.046.058.058 0 0 1 .023-.05c.094-.07.189-.144.279-.218a.056.056 0 0 1 .058-.008c2.946 1.345 6.135 1.345 9.046 0a.056.056 0 0 1 .059.007c.09.074.184.149.28.22a.058.058 0 0 1 .023.049.059.059 0 0 1-.028.046 9.224 9.224 0 0 1-1.405.669.058.058 0 0 0-.033.033.056.056 0 0 0 .002.047c.27.523.58 1.022.92 1.495a.056.056 0 0 0 .062.021 14.878 14.878 0 0 0 4.502-2.272.055.055 0 0 0 .016-.018.056.056 0 0 0 .008-.023c.375-3.883-.63-7.256-2.662-10.246a.046.046 0 0 0-.023-.021Zm-9.223 8.221c-.887 0-1.618-.814-1.618-1.814s.717-1.814 1.618-1.814c.908 0 1.632.821 1.618 1.814 0 1-.717 1.814-1.618 1.814Zm5.981 0c-.887 0-1.618-.814-1.618-1.814s.717-1.814 1.618-1.814c.908 0 1.632.821 1.618 1.814 0 1-.71 1.814-1.618 1.814Z" />
     </svg>
-  );
+  )
 }
 
 function SocialLink({
@@ -134,16 +297,16 @@ function SocialLink({
   icon: Icon,
   children,
 }: {
-  href: string;
-  icon: React.ComponentType<{ className?: string }>;
-  children: React.ReactNode;
+  href: string
+  icon: React.ComponentType<{ className?: string }>
+  children: React.ReactNode
 }) {
   return (
     <Link href={href} className="group">
       <span className="sr-only">{children}</span>
       <Icon className="h-5 w-5 fill-zinc-700 transition group-hover:fill-zinc-900 dark:group-hover:fill-zinc-500" />
     </Link>
-  );
+  )
 }
 
 function SmallPrint() {
@@ -164,7 +327,7 @@ function SmallPrint() {
         </SocialLink>
       </div>
     </div>
-  );
+  )
 }
 
 export function Footer() {
@@ -173,5 +336,5 @@ export function Footer() {
       <PageNavigation />
       <SmallPrint />
     </footer>
-  );
+  )
 }

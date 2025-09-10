@@ -3,32 +3,49 @@ import { NavGroup } from '@/components/Navigation'
 export const atAGlanceNavigation: Array<NavGroup> = [
   {
     title: 'Introduction',
+    href: '/introduction',
     links: [
       {
+        title: 'Introduction',
+        href: '/introduction',
+      },
+      {
         title: 'What is Arweave?',
+        href: '/what-is-arweave',
       },
       {
         title: 'What is AR.IO?',
+        href: '/what-is-ario',
       },
       {
         title: 'Why AR.IO?',
+        href: '/why-ario',
       },
     ],
   },
   {
     title: 'How to Upload Data to Arweave',
+    href: '/how-to-upload-data-to-arweave',
     links: [
       {
+        title: 'How to Upload Data to Arweave',
+        href: '/how-to-upload-data-to-arweave',
+      },
+      {
         title: 'What are my Options?',
+        href: '/what-are-my-options',
       },
       {
         title: 'Uploading Data with Turbo',
+        href: '/uploading-data-with-turbo',
       },
       {
         title: 'Tagging Data',
+        href: '/tagging-data',
       },
       {
         title: 'Manifests',
+        href: '/manifests',
       },
       {
         title: 'Encrypting Data on Arweave',
@@ -37,6 +54,7 @@ export const atAGlanceNavigation: Array<NavGroup> = [
   },
   {
     title: 'How to Access Data on Arweave',
+    href: '/how-to-access-data-on-arweave',
     links: [
       {
         title: 'What are my Options?',

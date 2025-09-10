@@ -341,13 +341,34 @@ function NavigationGroup({
 
   useEffect(() => {
     if (group.links) {
+      // First, expand the group if any of its links match the current path
+      const hasActiveLink = group.links.some((link) =>
+        isPathActive(link, pathname),
+      )
+      if (hasActiveLink) {
+        setCollapsedState((prev) => ({
+          ...prev,
+          [group.title]: false,
+        }))
+      }
+
+      // Then process individual links
       group.links.forEach((link) => {
         const processLink = (currentLink: any) => {
-          if (currentLink.href === pathname && sections.length > 0) {
+          if (currentLink.href === pathname) {
+            // Always expand the current link's parent
             setCollapsedState((prev) => ({
               ...prev,
               [currentLink.title]: false,
             }))
+
+            // If it has sections, also expand for sections
+            if (sections.length > 0) {
+              setCollapsedState((prev) => ({
+                ...prev,
+                [currentLink.title]: false,
+              }))
+            }
           }
           if (currentLink.children) {
             currentLink.children.forEach(processLink)

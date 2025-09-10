@@ -1,0 +1,18 @@
+export const metadata = {
+  title: 'Manifests',
+  description:
+    'Learn how to use manifests to create organized, navigable websites and applications on the permaweb with friendly URLs and relative paths',
+  openGraph: {
+    title: 'Manifests',
+  },
+}
+
+# Manifests
+
+Manifests are JSON files that organize multiple Arweave transactions into a cohesive, navigable structure - essentially creating a website or application from individual data pieces. Instead of accessing each file through its individual transaction ID, manifests allow you to create friendly URLs and relative paths that make your content easy to navigate and maintain. This is how you build complete websites, applications, or organized collections of data on the permaweb.
+
+A manifest works like a sitemap for your Arweave data. It defines which transaction ID corresponds to which URL path, specifies an index page, and can include fallback pages for 404 errors. For example, instead of accessing your website's homepage through a long transaction ID, you can access it through a simple path like `/index.html`. The manifest also enables relative linking between pages, so you can use standard HTML links like `./about.html` instead of full transaction IDs.
+
+The manifest system is particularly powerful for building websites and applications because it handles the complexity of organizing multiple files while maintaining the permanence of individual Arweave transactions. Each file is still stored as a separate transaction (ensuring permanence), but the manifest creates the illusion of a traditional file system. This means you can build complex websites with CSS, JavaScript, images, and other assets, all while maintaining the benefits of permanent storage.
+
+Creating manifests is straightforward - most upload tools like Turbo and ArDrive automatically generate them when you upload folders or websites. The manifest follows a standard format that all AR.IO gateways understand, so your content will work across the entire network. This makes manifests the foundation for building user-friendly, permanent web applications that feel familiar to users while providing the permanence and decentralization of the permaweb.
