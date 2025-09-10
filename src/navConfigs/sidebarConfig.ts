@@ -49,6 +49,7 @@ export const atAGlanceNavigation: Array<NavGroup> = [
       },
       {
         title: 'Encrypting Data on Arweave',
+        href: '/encrypting-data-on-arweave',
       },
     ],
   },

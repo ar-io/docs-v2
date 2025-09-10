@@ -11,10 +11,80 @@ export const metadata = {
 
 When it comes to uploading data to Arweave, you have three main approaches to choose from, each with its own advantages and ideal use cases. The best choice depends on your technical skill level, the amount of data you're working with, and whether you need to integrate uploading into an existing application.
 
-**No-code Solutions** are perfect for beginners and one-off uploads. Tools like ArDrive Web provide a simple drag-and-drop interface that handles all the technical complexity for you. You can upload files, folders, or entire websites without writing any code, and the tools automatically handle tagging, cost calculation, and transaction submission. This approach is ideal for artists, content creators, or anyone who just wants to store data permanently without learning the technical details.
+<Table>
+  <Table.Head>
+    <Table.Row>
+      <Table.Header>Method</Table.Header>
+      <Table.Header>Description</Table.Header>
+      <Table.Header>Examples</Table.Header>
+      <Table.Header>Pros</Table.Header>
+      <Table.Header>Cons</Table.Header>
+    </Table.Row>
+  </Table.Head>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell className="font-semibold">No-code</Table.Cell>
+      <Table.Cell>
+        Simple drag-and-drop interfaces that handle all technical complexity
+        automatically. Perfect for one-off uploads without writing any code.
+      </Table.Cell>
+      <Table.Cell>ArDrive Web App</Table.Cell>
+      <Table.Cell>
+        • Easy to use
 
-**Arweave-js SDK** gives you direct programmatic control over the upload process. This is the traditional method that connects directly to the Arweave network, giving you full control over transaction creation, signing, and submission. It's more complex but offers maximum flexibility for developers who need custom behavior or want to understand exactly how the system works. This approach is best for developers building applications that need to upload data programmatically.
+        • No coding required
 
-**Bundling/Turbo Services** provide a modern, streamlined approach that combines the ease of no-code solutions with the power of programmatic control. Services like Turbo handle the complexity of bundling multiple transactions and provide faster, more reliable uploads. They also support multiple payment methods and offer better user experience for both developers and end users. This is often the best choice for production applications that need reliable, fast uploads.
+        • Automatic tagging and cost calculation
+      </Table.Cell>
+      <Table.Cell>
+        • Limited customization
 
-Each approach has its pros and cons, and you can even mix and match depending on your needs. Let's dive deeper into each option to help you choose the right path for your project.
+        • Not suitable for programmatic integration
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">Direct to Network</Table.Cell>
+      <Table.Cell>
+        Direct programmatic control over the upload process with full access to
+        Arweave's native functionality and transaction management.
+      </Table.Cell>
+      <Table.Cell>Arweave-js SDK, Direct Arweave API</Table.Cell>
+      <Table.Cell>
+        • Maximum flexibility
+
+        • Full control
+        
+        • Deep system understanding
+      </Table.Cell>
+      <Table.Cell>
+        • More complex
+
+        • Requires AR tokens
+        
+        • Steeper learning curve
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell className="font-semibold">Bundling Services</Table.Cell>
+      <Table.Cell>
+        Modern, streamlined approach that combines ease of use with programmatic
+        control, handling bundling complexity and multiple payment methods.
+      </Table.Cell>
+      <Table.Cell>Turbo SDK, ArDrive Core JS SDK</Table.Cell>
+      <Table.Cell>
+        • Fast uploads
+
+        • Multiple payment methods
+
+        • Production-ready
+        
+        • Good developer experience
+      </Table.Cell>
+      <Table.Cell>
+        • Additional service dependency
+        
+        • May have usage limits
+      </Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>

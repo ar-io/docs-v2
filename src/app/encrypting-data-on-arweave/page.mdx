@@ -1,0 +1,18 @@
+export const metadata = {
+  title: 'Encrypting Data on Arweave',
+  description:
+    'Learn how to encrypt data before uploading to Arweave, including best practices for client-side encryption and proper tagging',
+  openGraph: {
+    title: 'Encrypting Data on Arweave',
+  },
+}
+
+# Encrypting Data on Arweave
+
+Arweave itself is completely agnostic to encryption, so encryption and decryption must be handled client-side. This means you have full control over how your data is encrypted before it's uploaded to the network, giving you the flexibility to choose the encryption method that best fits your security requirements.
+
+Since Arweave doesn't provide built-in encryption services, all encryption and decryption must be implemented in your application before uploading data. This approach ensures that your data remains private and secure throughout the entire process, as only you (or those with the proper decryption keys) can access the encrypted content.
+
+A common best practice is to include tags indicating the type of encryption used for data at upload. This makes it easier for clients to decrypt the data correctly when they retrieve it from Arweave. Consider adding tags like `Encryption-Type`, `Encryption-Version`, and `Content-Type` to help identify the encryption method and original data format.
+
+Remember that while Arweave provides permanent storage, the security of your encrypted data depends entirely on your client-side implementation and key management practices. You'll need to store encryption keys securely outside of Arweave and ensure only authorized parties have access to them.
