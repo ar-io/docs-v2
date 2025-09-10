@@ -17,6 +17,9 @@ import {
   // secondaryNavigation,
   singleNavigation,
   newNavigation,
+  atAGlanceNavigation,
+  inDepthNavigation,
+  sdkNavigation,
 } from '@/navConfigs/sidebarConfig'
 
 import { ChevronDown, ChevronRight } from 'lucide-react'
@@ -35,7 +38,7 @@ export interface NavItem {
 export interface NavGroup {
   title: string
   href?: string
-  links: Array<NavItem>
+  links?: Array<NavItem>
 }
 
 function TopLevelNavItem({
@@ -254,7 +257,7 @@ function ActivePageMarker({
   const itemHeight = remToPx(2)
   const offset = remToPx(0.25)
 
-  const activeLink = findActiveLink(group.links, pathname)
+  const activeLink = group.links ? findActiveLink(group.links, pathname) : null
 
   let top = activeLink ? offset + activeLink.index * itemHeight : 0
 
@@ -322,7 +325,9 @@ function NavigationGroup({
 
       // Set the group title's initial state
       initialState[group.title] = !isPathActive(group, pathname)
-      setInitialStates(group.links, 0)
+      if (group.links) {
+        setInitialStates(group.links, 0)
+      }
       return initialState
     },
   )
@@ -335,20 +340,22 @@ function NavigationGroup({
   }
 
   useEffect(() => {
-    group.links.forEach((link) => {
-      const processLink = (currentLink: any) => {
-        if (currentLink.href === pathname && sections.length > 0) {
-          setCollapsedState((prev) => ({
-            ...prev,
-            [currentLink.title]: false,
-          }))
+    if (group.links) {
+      group.links.forEach((link) => {
+        const processLink = (currentLink: any) => {
+          if (currentLink.href === pathname && sections.length > 0) {
+            setCollapsedState((prev) => ({
+              ...prev,
+              [currentLink.title]: false,
+            }))
+          }
+          if (currentLink.children) {
+            currentLink.children.forEach(processLink)
+          }
         }
-        if (currentLink.children) {
-          currentLink.children.forEach(processLink)
-        }
-      }
-      processLink(link)
-    })
+        processLink(link)
+      })
+    }
   }, [pathname, sections, group.links])
 
   const mapSections = (link: any, level = 0) => {
@@ -454,7 +461,7 @@ function NavigationGroup({
           {collapsedState[group.title] ? <ChevronRight /> : <ChevronDown />}
         </span>
       </motion.h2>
-      {!collapsedState[group.title] && (
+      {!collapsedState[group.title] && group.links && (
         <div className="relative mt-1 pl-2">
           <ul role="list" className="border-l border-transparent">
             {group.links.map((link) => (
@@ -473,16 +480,119 @@ function NavigationGroup({
   )
 }
 
+type NavigationMode = 'at-a-glance' | 'in-depth' | 'sdk'
+
+function detectNavigationMode(pathname: string): NavigationMode {
+  // SDK/API pages
+  if (
+    pathname.startsWith('/ar-io-sdk') ||
+    pathname.startsWith('/wayfinder') ||
+    pathname.startsWith('/ai/sdk')
+  ) {
+    return 'sdk'
+  }
+
+  // In-depth technical pages
+  if (
+    pathname.startsWith('/gateways') ||
+    pathname.startsWith('/guides') ||
+    pathname.startsWith('/concepts') ||
+    pathname.startsWith('/arfs') ||
+    pathname.startsWith('/staking') ||
+    pathname.startsWith('/token') ||
+    pathname.startsWith('/ario-contract') ||
+    pathname.startsWith('/network-composition')
+  ) {
+    return 'in-depth'
+  }
+
+  // Default to at-a-glance for intro pages and others
+  return 'at-a-glance'
+}
+
 export function Navigation(props: React.ComponentPropsWithoutRef<'nav'>) {
   const pathname = usePathname()
-  // const currentNavigation = pathname.startsWith('/build')
-  //   ? secondaryNavigation
-  //   : mainNavigation
+  const [activeMode, setActiveMode] = useState<NavigationMode>(() => {
+    // Check localStorage for saved preference first
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('navigation-mode') as NavigationMode
+      if (saved && ['at-a-glance', 'in-depth', 'sdk'].includes(saved)) {
+        return saved
+      }
+    }
+    // Fall back to detection based on current path
+    return detectNavigationMode(pathname)
+  })
 
-  const currentNavigation = newNavigation
+  // Update mode when pathname changes (for direct navigation)
+  useEffect(() => {
+    const detectedMode = detectNavigationMode(pathname)
+    setActiveMode(detectedMode)
+  }, [pathname])
+
+  // Save mode preference to localStorage
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('navigation-mode', activeMode)
+    }
+  }, [activeMode])
+
+  const getCurrentNavigation = () => {
+    switch (activeMode) {
+      case 'at-a-glance':
+        return atAGlanceNavigation
+      case 'in-depth':
+        return inDepthNavigation
+      case 'sdk':
+        return sdkNavigation
+      default:
+        return atAGlanceNavigation
+    }
+  }
+
+  const currentNavigation = getCurrentNavigation()
 
   return (
     <nav {...props}>
+      {/* Navigation Mode Tabs */}
+      <div className="mb-4">
+        <div className="flex border-b border-zinc-200 dark:border-zinc-700">
+          <button
+            onClick={() => setActiveMode('at-a-glance')}
+            className={clsx(
+              'border-b-2 px-4 py-2 text-sm font-medium transition-colors',
+              activeMode === 'at-a-glance'
+                ? 'border-zinc-900 text-zinc-900 dark:border-white dark:text-white'
+                : 'border-transparent text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300',
+            )}
+          >
+            At a Glance
+          </button>
+          <button
+            onClick={() => setActiveMode('in-depth')}
+            className={clsx(
+              'border-b-2 px-4 py-2 text-sm font-medium transition-colors',
+              activeMode === 'in-depth'
+                ? 'border-zinc-900 text-zinc-900 dark:border-white dark:text-white'
+                : 'border-transparent text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300',
+            )}
+          >
+            In Depth
+          </button>
+          <button
+            onClick={() => setActiveMode('sdk')}
+            className={clsx(
+              'border-b-2 px-4 py-2 text-sm font-medium transition-colors',
+              activeMode === 'sdk'
+                ? 'border-zinc-900 text-zinc-900 dark:border-white dark:text-white'
+                : 'border-transparent text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300',
+            )}
+          >
+            SDK/API
+          </button>
+        </div>
+      </div>
+
       <ul role="list">
         {/* <TopLevelNavItem href="https://whitepaper.arweave.net/" target="_blank" className='flex cursor-pointer justify-between gap-2 py-1 pr-3 text-sm transition text-zinc-600 hover:text-emerald-600 dark:text-zinc-400 dark:hover:text-emerald-600'>
           White Paper <SquareArrowOutUpRight className="w-4 h-4 transition-colors group-hover:text-emerald-600 dark:group-hover:text-emerald-600" />

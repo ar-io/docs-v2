@@ -1,12 +1,301 @@
 import { NavGroup } from '@/components/Navigation'
 
+export const atAGlanceNavigation: Array<NavGroup> = [
+  {
+    title: 'Introduction',
+    links: [
+      {
+        title: 'What is Arweave?',
+      },
+      {
+        title: 'What is AR.IO?',
+      },
+      {
+        title: 'Why AR.IO?',
+      },
+    ],
+  },
+  {
+    title: 'How to Upload Data to Arweave',
+    links: [
+      {
+        title: 'What are my Options?',
+      },
+      {
+        title: 'Uploading Data with Turbo',
+      },
+      {
+        title: 'Tagging Data',
+      },
+      {
+        title: 'Manifests',
+      },
+      {
+        title: 'Encrypting Data on Arweave',
+      },
+    ],
+  },
+  {
+    title: 'How to Access Data on Arweave',
+    links: [
+      {
+        title: 'What are my Options?',
+      },
+      {
+        title: 'Requesting via http',
+      },
+      {
+        title: 'Querying via GraphQL',
+      },
+      {
+        title: 'Referencing Data with ArNS',
+      },
+      {
+        title: 'Requesting Data via Wayfinder',
+      },
+    ],
+  },
+  {
+    title: 'Running your own Infrastructure',
+    links: [
+      {
+        title: 'Running your own Gateway',
+      },
+      {
+        title: 'Running your own Bundler Extension',
+      },
+      {
+        title: 'Running Other Gateway Extensions',
+      },
+      {
+        title: 'Create your own Extensions',
+      },
+    ],
+  },
+  {
+    title: 'Use Cases',
+    links: [
+      {
+        title: 'Decentralized Web Hosting',
+      },
+      {
+        title: 'Storing DePIN Data',
+      },
+      {
+        title: 'Unruggable NFTs',
+      },
+      {
+        title: 'Storing Data for AI',
+      },
+      {
+        title: 'Storing Data for Decentralized Science',
+      },
+      {
+        title: 'Storing Data for DeFi',
+      },
+    ],
+  },
+  {
+    title: 'References',
+    links: [
+      { title: 'Glossary' },
+      { title: 'Community Resources' },
+      { title: 'ArDrive Price Calculator (link out)' },
+    ],
+  },
+]
+
+export const inDepthNavigation: Array<NavGroup> = [
+  {
+    title: 'White Paper',
+    href: 'https://whitepaper.arweave.net/',
+  },
+  {
+    title: 'AR.IO Network',
+    links: [
+      {
+        title: 'Network Composition',
+      },
+      {
+        title: 'Smart Contract',
+      },
+      {
+        title: 'Token',
+      },
+      {
+        title: 'Etc.',
+      },
+    ],
+  },
+  {
+    title: 'Arweave Name System (ArNS)',
+    links: [
+      { title: 'Overview', href: '/arns' },
+      { title: 'ArNS.app' },
+      { title: 'Permaweb-Deploy', href: '/guides/permaweb-deploy' },
+    ],
+  },
+  {
+    title: 'Gateway Operation',
+    links: [
+      {
+        title: 'Linux Setup',
+        href: '/gateways/linux-setup',
+      },
+      {
+        title: 'Windows Setup',
+        href: '/gateways/windows-setup',
+      },
+      {
+        title: 'Parquet',
+        href: '/gateways/parquet',
+      },
+      {
+        title: 'Snapshots',
+        href: '/gateways/snapshots',
+      },
+      {
+        title: 'Join The Network',
+        href: '/gateways/join-network',
+      },
+      {
+        title: 'ArNS Resolution',
+        href: '/gateways/arns-resolution',
+      },
+      {
+        title: 'Apex Domain Content Resolution',
+        href: '/gateways/apex',
+      },
+      {
+        title: 'Admin Configurations',
+        href: '/gateways/admin',
+      },
+      {
+        title: 'Advanced Configurations',
+        href: '/gateways/advanced',
+      },
+      {
+        title: 'Environmental Variables',
+        href: '/gateways/env',
+      },
+      {
+        title: 'Troubleshooting & FAQ',
+        href: '/gateways/troubleshooting',
+      },
+      {
+        title: 'Upgrading',
+        href: '/gateways/upgrading',
+      },
+      {
+        title: 'Moderation',
+        href: '/gateways/moderation',
+      },
+      {
+        title: 'Indexing and Webhook Filters',
+        href: '/gateways/filters',
+      },
+      {
+        title: 'Optimize Gateway Data',
+        href: '/gateways/optimize-data',
+      },
+      {
+        title: 'Bundler Sidecar',
+        href: '/gateways/bundler',
+      },
+      {
+        title: 'Grafana Sidecar',
+        href: '/gateways/grafana',
+      },
+      {
+        title: 'AO Compute Unit (CU) Sidecar',
+        href: '/gateways/cu',
+      },
+      {
+        title: 'Automating SSL',
+        href: '/gateways/networking',
+        children: [
+          {
+            title: 'Cloudflare',
+            href: '/gateways/networking/certbot/cloudflare',
+          },
+          {
+            title: 'Namecheap',
+            href: '/gateways/networking/certbot/namecheap',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: 'Guides',
+    links: [{ title: 'Every non-quickstart guide we currently have' }],
+  },
+]
+
+export const sdkNavigation: Array<NavGroup> = [
+  {
+    title: 'AR.IO SDK',
+    links: [
+      { title: 'Overview' },
+      { title: 'Installation' },
+      { title: 'Usage' },
+      { title: 'API Reference' },
+    ],
+  },
+  {
+    title: 'AR.IO CLI',
+    links: [
+      { title: 'Overview' },
+      { title: 'Installation' },
+      { title: 'Usage' },
+      { title: 'API Reference' },
+    ],
+  },
+  {
+    title: 'Turbo SDK',
+    links: [
+      { title: 'Overview' },
+      { title: 'Installation' },
+      { title: 'Usage' },
+      { title: 'API Reference' },
+    ],
+  },
+  {
+    title: 'Turbo CLI',
+    links: [
+      { title: 'Overview' },
+      { title: 'Installation' },
+      { title: 'Usage' },
+      { title: 'API Reference' },
+    ],
+  },
+  {
+    title: 'ArDrive SDK',
+    links: [
+      { title: 'Overview' },
+      { title: 'Installation' },
+      { title: 'Usage' },
+      { title: 'API Reference' },
+    ],
+  },
+  {
+    title: 'ArDrive CLI',
+    links: [
+      { title: 'Overview' },
+      { title: 'Installation' },
+      { title: 'Usage' },
+      { title: 'API Reference' },
+    ],
+  },
+]
+
 export const newNavigation: Array<NavGroup> = [
   {
     title: 'Getting Started',
     links: [
       {
         title: 'Introduction',
-        href: '/learn/introduction',
+        href: '/introduction',
       },
       {
         title: 'Upload a file to Arweave',
@@ -74,9 +363,9 @@ export const newNavigation: Array<NavGroup> = [
         title: 'Arweave File System (ArFS)',
         children: [
           { title: 'Overview', href: '/arfs/overview' },
-          { title: 'Data Model' },
-          { title: 'Entity Types' },
-          { title: 'Schema Diagrams' },
+          { title: 'Data Model', href: '/arfs/data-model' },
+          { title: 'Entity Types', href: '/arfs/entity-types' },
+          { title: 'Schema Diagrams', href: '/arfs/schema-diagrams' },
           { title: 'Content Types' },
           { title: 'Privacy' },
           {
@@ -107,12 +396,12 @@ export const newNavigation: Array<NavGroup> = [
     ],
   },
   {
-    title: "Arweave Name System (ArNS)",
+    title: 'Arweave Name System (ArNS)',
     links: [
-      {title: "Overview", href: "/arns"},
-      {title: "ArNS.app"},
-      {title: "Permaweb-Deploy", href: "/guides/permaweb-deploy"},
-    ]
+      { title: 'Overview', href: '/arns' },
+      { title: 'ArNS.app' },
+      { title: 'Permaweb-Deploy', href: '/guides/permaweb-deploy' },
+    ],
   },
   {
     title: 'SDKs and APIs',
