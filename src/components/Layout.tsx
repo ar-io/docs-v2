@@ -9,6 +9,7 @@ import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { Logo } from '@/components/Logo'
 import { Navigation } from '@/components/Navigation'
+import { OnThisPage } from '@/components/OnThisPage'
 import { type Section, SectionProvider } from '@/components/SectionProvider'
 import DiagramWithWayfinder from '@/components/DiagramWithWayfinder'
 import Tip from '@/components/Tip'
@@ -67,12 +68,17 @@ export function Layout({
           <div className="relative flex h-full justify-center px-3 pt-14 sm:px-4 md:px-6 lg:px-8">
             <div className="flex h-full w-full max-w-sm flex-col overflow-hidden sm:max-w-2xl md:max-w-4xl lg:max-w-6xl xl:max-w-none">
               <HeroPattern />
-              <MDXProvider components={components}>
-                <main className="w-full flex-auto overflow-x-hidden">
-                  <div className="hyphens-auto break-words">{children}</div>
-                </main>
-              </MDXProvider>
-              <Footer />
+              <div className="flex flex-1">
+                <div className="max-w-none flex-1 xl:mr-80">
+                  <MDXProvider components={components}>
+                    <main className="w-full flex-auto overflow-x-hidden">
+                      <div className="hyphens-auto break-words">{children}</div>
+                    </main>
+                  </MDXProvider>
+                  <Footer />
+                </div>
+              </div>
+              <OnThisPage />
             </div>
           </div>
         </div>
