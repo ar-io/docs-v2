@@ -6,6 +6,7 @@ description: "SDK for interacting with Turbo, a fast and efficient data upload s
 import { Steps, Step } from 'fumadocs-ui/components/steps';
 import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 import { Card, Cards } from 'fumadocs-ui/components/card';
+import { Callout } from 'fumadocs-ui/components/callout';
 import { BookOpen, Network, Zap, Code } from 'lucide-react';
 
 # Turbo SDK
@@ -14,7 +15,7 @@ SDK for interacting with Turbo, a fast and efficient data upload service for Arw
 
 ## Quick Start
 
-<Tabs items={['Node.js', 'Web']}>
+<Tabs items={['Node.js', 'Web (React)', 'Web (HTML)']}>
   <Tab value="Node.js">
     <Steps>
       <Step>
@@ -53,7 +54,7 @@ SDK for interacting with Turbo, a fast and efficient data upload service for Arw
     </Steps>
   </Tab>
   
-  <Tab value="Web">
+  <Tab value="Web (React)">
     <Steps>
       <Step>
         ### Install the SDK
@@ -142,6 +143,163 @@ SDK for interacting with Turbo, a fast and efficient data upload service for Arw
         }
 
         export default FileUploader;
+        ```
+      </Step>
+    </Steps>
+  </Tab>
+  
+  <Tab value="Web (HTML)">
+    <Steps>
+      <Step>
+        ### Import from CDN
+
+        Use ES module imports directly in your script tags. The bundled SDK includes all necessary polyfills.
+
+        ```html
+        <script type="module">
+          import { TurboFactory } from 'https://unpkg.com/@ardrive/turbo-sdk@latest/dist/turbo-sdk.esm.js';
+          
+          // Your code here
+        </script>
+        ```
+      </Step>
+      <Step>
+        ### Create minimal upload page
+
+        ```html
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Turbo Upload</title>
+        </head>
+        <body>
+          <h1>Upload to Arweave</h1>
+          
+          <input type="file" id="fileInput" />
+          <button id="uploadBtn" disabled>Upload</button>
+          <div id="status"></div>
+          
+          <script type="module">
+            import { TurboFactory } from 'https://unpkg.com/@ardrive/turbo-sdk@latest/dist/turbo-sdk.esm.js';
+            
+            const fileInput = document.getElementById('fileInput');
+            const uploadBtn = document.getElementById('uploadBtn');
+            const statusDiv = document.getElementById('status');
+            
+            fileInput.addEventListener('change', (e) => {
+              uploadBtn.disabled = !e.target.files[0];
+            });
+            
+            uploadBtn.addEventListener('click', async () => {
+              const file = fileInput.files[0];
+              if (!file) return;
+              
+              statusDiv.textContent = 'Uploading...';
+              
+              try {
+                const turbo = TurboFactory.authenticated({
+                  privateKey: 'your-private-key' // Never do this in production!
+                });
+                
+                const result = await turbo.uploadFile({
+                  fileStreamFactory: () => file.stream(),
+                  fileSizeFactory: () => file.size,
+                });
+                
+                statusDiv.innerHTML = `Success! TX: <a href="https://arweave.net/${result.id}" target="_blank">${result.id}</a>`;
+              } catch (error) {
+                statusDiv.textContent = `Error: ${error.message}`;
+              }
+            });
+          </script>
+        </body>
+        </html>
+        ```
+      </Step>
+      <Step>
+        ### Use wallet connectors (recommended)
+
+        For production, integrate with wallet providers like Wander to avoid exposing private keys:
+
+        ```html
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Turbo Upload with Wallet</title>
+        </head>
+        <body>
+          <h1>Upload to Arweave</h1>
+          
+          <button id="connectBtn">Connect Wallet</button>
+          <input type="file" id="fileInput" style="display:none;" />
+          <button id="uploadBtn" style="display:none;" disabled>Upload</button>
+          <div id="status"></div>
+          
+          <script type="module">
+            import { TurboFactory } from 'https://unpkg.com/@ardrive/turbo-sdk@latest/dist/turbo-sdk.esm.js';
+            
+            const connectBtn = document.getElementById('connectBtn');
+            const fileInput = document.getElementById('fileInput');
+            const uploadBtn = document.getElementById('uploadBtn');
+            const statusDiv = document.getElementById('status');
+            
+            // Connect to wallet (ArConnect example)
+            connectBtn.addEventListener('click', async () => {
+              try {
+                // Check if ArConnect is installed
+                if (!window.arweaveWallet) {
+                  statusDiv.textContent = 'Please install Wander wallet extension';
+                  return;
+                }
+                
+                // Connect to wallet
+                await window.arweaveWallet.connect(['ACCESS_ADDRESS', 'SIGN_TRANSACTION']);
+                const address = await window.arweaveWallet.getActiveAddress();
+                
+                statusDiv.textContent = `Connected: ${address}`;
+                connectBtn.style.display = 'none';
+                fileInput.style.display = 'inline';
+                uploadBtn.style.display = 'inline';
+              } catch (error) {
+                statusDiv.textContent = `Connection failed: ${error.message}`;
+              }
+            });
+            
+            fileInput.addEventListener('change', (e) => {
+              uploadBtn.disabled = !e.target.files[0];
+            });
+            
+            uploadBtn.addEventListener('click', async () => {
+              const file = fileInput.files[0];
+              if (!file || !turboClient) return;
+
+              if (!window.arweaveWallet) throw new Error('You must connect your wallet!');
+              
+              statusDiv.textContent = 'Uploading...';
+
+              // Create turbo client using the wallet
+              const turboClient =  TurboFactory.authenticated({
+                signer: window.arweaveWallet
+              });
+              
+              try {
+                const result = await turboClient.uploadFile({
+                  fileStreamFactory: () => file.stream(),
+                  fileSizeFactory: () => file.size,
+                });
+                
+                statusDiv.innerHTML = `Success! TX: <a href="https://arweave.net/${result.id}" target="_blank">${result.id}</a>`;
+              } catch (error) {
+                statusDiv.textContent = `Error: ${error.message}`;
+              }
+            });
+          </script>
+        </body>
+        </html>
         ```
       </Step>
     </Steps>
