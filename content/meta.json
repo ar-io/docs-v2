@@ -1,3 +1,5 @@
 {
-  "pages": ["learn", "build", "sdks", "apis", "guides"]
+  "title": "AR.IO Docs",
+  "root": true,
+  "pages": ["...", "learn", "build", "sdks", "apis", "guides", "!migrated"]
 }
