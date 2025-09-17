@@ -63,6 +63,16 @@ The `ar://` protocol enables decentralized resolution and access to Arweave data
         ```bash
         npm install @ar.io/wayfinder-react @ar.io/wayfinder-core @ar.io/sdk
         ```
+
+        <Callout type="warning" title="Browser Polyfills Required">
+        When using Wayfinder in browser environments, you need to configure crypto polyfills. For example, with Vite:
+        
+        ```bash
+        npm install --save-dev vite-plugin-node-polyfills
+        ```
+        
+        See the [installation notes](/sdks/wayfinder/wayfinder-core/installation-notes) for detailed configuration examples.
+        </Callout>
       </Step>
       <Step>
         ### Setup the provider

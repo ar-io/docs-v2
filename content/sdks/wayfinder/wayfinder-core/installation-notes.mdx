@@ -5,6 +5,62 @@ description: "JavaScript/TypeScript SDK for accessing Arweave data with built-in
 
 # Installation Notes
 
+## Browser Environment Requirements
+
+<Callout type="warning" title="Crypto Polyfills Required for Browser Usage">
+When using `@ar.io/wayfinder-core` in browser environments, you must configure crypto polyfills as the SDK relies on Node.js crypto modules.
+
+**For Vite:**
+```bash
+npm install --save-dev vite-plugin-node-polyfills
+```
+
+```js
+// vite.config.js
+import { defineConfig } from 'vite';
+import { nodePolyfills } from 'vite-plugin-node-polyfills';
+
+export default defineConfig({
+  plugins: [
+    nodePolyfills({
+      globals: {
+        Buffer: true,
+        global: true,
+        process: true,
+      },
+    }),
+  ],
+});
+```
+
+**For Webpack 5:**
+```bash
+npm install --save-dev crypto-browserify stream-browserify buffer process
+```
+
+```js
+// webpack.config.js
+module.exports = {
+  resolve: {
+    fallback: {
+      crypto: require.resolve('crypto-browserify'),
+      stream: require.resolve('stream-browserify'),
+      buffer: require.resolve('buffer/'),
+      process: require.resolve('process/browser'),
+    },
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      Buffer: ['buffer', 'Buffer'],
+      process: 'process/browser',
+    }),
+  ],
+};
+```
+
+**For other bundlers:** Configure polyfills for `crypto`, `stream`, `buffer`, and `process` modules according to your bundler's documentation.
+</Callout>
+
 ### Optional Dependencies
 
 The `@ar.io/sdk` package is an optional peer dependency. To use AR.IO network gateways, you must explicitly provide an `ario` instance:
