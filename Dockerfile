@@ -15,6 +15,9 @@ RUN yarn install --frozen-lockfile
 # 2) build: compile Next.js (static export)
 FROM node:20-bullseye-slim AS build
 ENV NODE_ENV=production
+# Set the site URL - can be overridden at build time
+ARG NEXT_PUBLIC_SITE_URL=""
+ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .

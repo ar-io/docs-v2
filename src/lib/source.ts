@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 // See https://fumadocs.vercel.app/docs/headless/source-api for more info
 export const source = loader({
-  baseUrl: "/",
+  baseUrl: process.env.NEXT_PUBLIC_SITE_URL || "/",
   source: docs.toFumadocsSource(),
   pageTree: {
     transformers: [transformerOpenAPI()],
