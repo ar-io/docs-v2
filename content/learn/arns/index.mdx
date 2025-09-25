@@ -17,6 +17,37 @@ This system works similarly to traditional DNS services, where users can purchas
 
 With ArNS, the registry is stored permanently on Arweave via [AO](/glossary#ao-computer-ao), making it immutable and globally resilient. This also means that apps and infrastructure cannot just read the latest state of the registry but can also check any point in time in the past, creating a "Wayback Machine" of permanent data.
 
+```mermaid
+graph TB
+    subgraph "AR.IO Smart Contract"
+        Registry[ArNS Registry]
+        Registry --> Name1[ardrive]
+        Registry --> Name2[ao]
+        Registry --> Name3[gateways]
+        Registry --> NameN[...]
+    end
+    
+    subgraph "ANT Tokens"
+        Name1 -.->|owned by| ANT1[Owner: 0x242424...<br/>Record: @<br/>Target: TxID_123]
+        Name2 -.->|owned by| ANT2[Owner: Zjgamagh...<br/>Record: @<br/>Target: TxID_456]
+        Name3 -.->|owned by| ANT3[Owner: Hboaalf...<br/>Record: @<br/>Target: TxID_789]
+    end
+    
+    subgraph "Arweave"
+        ANT1 -.->|points to| TX1[TxID_123<br/>ArDrive App]
+        ANT2 -.->|points to| TX2[TxID_456<br/>Email App]
+        ANT3 -.->|points to| TX3[TxID_789<br/>Pages App]
+    end
+    
+    style Registry fill:#f9f,stroke:#333,stroke-width:3px
+    style ANT1 fill:#e6f2ff,stroke:#333,stroke-width:2px,color:#333
+    style ANT2 fill:#e6f2ff,stroke:#333,stroke-width:2px,color:#333
+    style ANT3 fill:#e6f2ff,stroke:#333,stroke-width:2px,color:#333
+    style TX1 fill:#bfb,stroke:#333,stroke-width:2px,color:#333
+    style TX2 fill:#bfb,stroke:#333,stroke-width:2px,color:#333
+    style TX3 fill:#bfb,stroke:#333,stroke-width:2px,color:#333
+```
+
 ## Name Resolution Process
 
 Users can register a name, like `ardrive`, within the ArNS Registry. Before owning a name, they must create an Arweave Name Token (ANT), an AO Computer based token and open-source protocol used by ArNS to track the ownership and control over the name.
@@ -28,6 +59,27 @@ Each AR.IO gateway acts as an ArNS Name resolver. They fetch the latest state of
 AR.IO gateways will also resolve that name as one of their own subdomains, e.g., `https://ardrive.arweave.net` and proxy all requests to the associated Arweave transaction ID. This means that ANTs work across all AR.IO gateways that support them: `https://ardrive.ar-io.dev`, `https://ardrive.g8way.io/`, etc.
 
 Users can easily reference these friendly names in their browsers, and other applications and infrastructure can build rich solutions on top of these ArNS primitives.
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Gateway as AR.IO Gateway
+    participant Registry as ArNS Registry
+    participant ANT as ANT Token
+    participant Arweave
+    
+    User->>Gateway: Request ardrive.arweave.net
+    Gateway->>Registry: Query "ardrive" record
+    Registry-->>Gateway: Returns ANT address
+    Gateway->>ANT: Get target TxID
+    ANT-->>Gateway: Returns TxID (abc123...)
+    Gateway->>Gateway: Check cache for TxID
+    alt TxID not in cache
+        Gateway->>Arweave: Fetch data from TxID
+        Arweave-->>Gateway: Returns permaweb content
+    end
+    Gateway-->>User: Serves content
+```
 
 ## Key Benefits
 
