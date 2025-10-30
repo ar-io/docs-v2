@@ -21,6 +21,7 @@ export const source = loader({
     // Handle custom SVG/PNG icons
     if (typeof icon === 'string' && (icon.endsWith('.svg') || icon.endsWith('.png'))) {
       return createElement(Image, {
+        key: icon,
         src: icon,
         alt: '',
         width: 16,
@@ -30,6 +31,6 @@ export const source = loader({
     }
     
     // Handle lucide-react icons
-    if (icon in icons) return createElement(icons[icon as keyof typeof icons]);
+    if (icon in icons) return createElement(icons[icon as keyof typeof icons], { key: icon });
   },
 });

@@ -1,0 +1,804 @@
+---
+title: "Using Undernames for Versioning"
+description: "Learn practical versioning patterns using ArNS undernames for managing multiple versions and environments of your unstoppable apps"
+---
+
+import { Callout } from 'fumadocs-ui/components/callout';
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+import { Card, Cards } from 'fumadocs-ui/components/card';
+import { GitBranch, Code, Rocket, Network, Settings, RefreshCw, CheckCircle } from 'lucide-react';
+
+## Introduction
+
+<Callout title="New to unstoppable apps?" type="info">
+Check out the [series introduction](/build/guides/hosting-unstoppable-apps) to understand how AR.IO Network makes apps truly unstoppable with 100+ independent gateways.
+</Callout>
+
+While the previous guides showed you how to deploy with the `--undername` flag, this guide teaches you **strategic versioning patterns** for managing multiple versions and environments of your application.
+
+## What You'll Learn
+
+- **Understanding undernames** as sub-domains under your ArNS name
+- **Common versioning patterns** (v1/v2/v3, staging/production, component architecture)
+- **Environment workflows** for dev → staging → production
+- **Automation strategies** with package.json scripts and GitHub Actions
+- **Managing undernames** via the ArNS app interface
+- **Best practices** for choosing and implementing versioning strategies
+
+## Prerequisites
+
+This guide assumes you've completed at least one of the deployment guides and are familiar with basic `permaweb-deploy` usage:
+
+- [Hosting a Blog](/build/guides/hosting-unstoppable-apps/hosting-a-blog)
+- [Hosting an Arweave/AO dApp](/build/guides/hosting-unstoppable-apps/hosting-arweave-ao-dapp)
+- [Hosting an EVM dApp](/build/guides/hosting-unstoppable-apps/hosting-evm-dapp)
+
+You should understand how to deploy with the `--undername` flag before exploring advanced versioning strategies.
+
+## Understanding Undernames
+
+**Undernames** are sub-domains under your main ArNS name, similar to traditional DNS subdomains but permanent and decentralized.
+
+### How Undernames Work
+
+```
+Your ArNS Name: myapp
+
+├─ @ (base record)    → myapp.arweave.net
+├─ staging            → staging_myapp.arweave.net
+├─ dev                → dev_myapp.arweave.net
+├─ v1                 → v1_myapp.arweave.net
+└─ v2                 → v2_myapp.arweave.net
+```
+
+**Key Points:**
+
+- **One ArNS name** → Unlimited undernames (no extra cost)
+- **Each undername** → Points to a different Arweave transaction ID
+- **Permanent history** → All versions remain accessible forever
+- **Naming convention** → Undernames use underscores in URLs (e.g., `staging_myapp.arweave.net`)
+
+### Why Use Undernames?
+
+**Instead of buying multiple ArNS names:**
+
+❌ `myapp-staging.arweave.net` (separate name, extra cost)
+❌ `myapp-v2.arweave.net` (separate name, extra cost)
+
+✅ `staging_myapp.arweave.net` (one name, unlimited undernames)
+✅ `v2_myapp.arweave.net` (one name, unlimited undernames)
+
+**Benefits:**
+
+- **Cost-effective** - One registration fee, unlimited versions
+- **Organized** - Logical structure for versions and environments
+- **Permanent** - All versions accessible forever
+- **Transferable** - Undernames transfer with the main ArNS name
+- **Instant rollbacks** - Via the ArNS app interface
+
+---
+
+## Common Versioning Patterns
+
+### Pattern 1: Environment-Based Versioning
+
+Best for: Most production applications
+
+**Structure:**
+
+```
+@ (production)   → Current production release
+staging          → Pre-release testing environment
+dev              → Active development builds
+```
+
+**Deployment workflow:**
+
+<Steps>
+
+<Step title="Deploy to Dev">
+
+```bash
+# Deploy latest changes to dev for testing
+permaweb-deploy --arns-name myapp --undername dev --ttl 60
+```
+
+Access at: `https://dev_myapp.arweave.net`
+
+</Step>
+
+<Step title="Deploy to Staging">
+
+```bash
+# Once dev is tested, deploy to staging
+permaweb-deploy --arns-name myapp --undername staging --ttl 60
+```
+
+Access at: `https://staging_myapp.arweave.net`
+
+</Step>
+
+<Step title="Deploy to Production">
+
+```bash
+# After staging approval, deploy to production
+permaweb-deploy --arns-name myapp --ttl 60
+```
+
+Access at: `https://myapp.arweave.net`
+
+</Step>
+
+</Steps>
+
+**Package.json scripts:**
+
+```json title="package.json"
+{
+  "scripts": {
+    "deploy:dev": "permaweb-deploy --arns-name myapp --undername dev --ttl 60",
+    "deploy:staging": "permaweb-deploy --arns-name myapp --undername staging --ttl 60",
+    "deploy:prod": "permaweb-deploy --arns-name myapp --ttl 60"
+  }
+}
+```
+
+**Usage:**
+
+```bash
+npm run deploy:dev      # Deploy to dev
+npm run deploy:staging  # Deploy to staging
+npm run deploy:prod     # Deploy to production
+```
+
+---
+
+### Pattern 2: Version Number + Environment
+
+Best for: Applications needing version history and environments
+
+**Structure:**
+
+```
+@ (production)   → v2.0 (current release)
+staging          → v2.1 (next release testing)
+dev              → Latest development
+v1               → Version 1.x (legacy, archived)
+v2               → Version 2.x (current)
+```
+
+**Deployment workflow:**
+
+```bash
+# Development
+permaweb-deploy --arns-name myapp --undername dev --ttl 60
+
+# Staging for v2.1
+permaweb-deploy --arns-name myapp --undername staging --ttl 60
+
+# Release v2.1 to production
+permaweb-deploy --arns-name myapp --ttl 60
+
+# Archive v2.1 for permanent access
+permaweb-deploy --arns-name myapp --undername v2-1 --ttl 3600
+```
+
+**Package.json scripts:**
+
+```json title="package.json"
+{
+  "scripts": {
+    "deploy:dev": "permaweb-deploy --arns-name myapp --undername dev --ttl 60",
+    "deploy:staging": "permaweb-deploy --arns-name myapp --undername staging --ttl 60",
+    "deploy:prod": "permaweb-deploy --arns-name myapp --ttl 60",
+    "deploy:archive": "node scripts/deploy-archive.js"
+  }
+}
+```
+
+**Archive script:**
+
+```javascript title="scripts/deploy-archive.js"
+const { execSync } = require('child_process');
+const packageJson = require('../package.json');
+
+// Get version from package.json (e.g., "2.1.0")
+const version = packageJson.version.replace(/\./g, '-'); // "2-1-0"
+
+console.log(`Archiving version ${version}...`);
+
+// Deploy to version-specific undername
+execSync(
+  `permaweb-deploy --arns-name myapp --undername v${version} --ttl 3600`,
+  { stdio: 'inherit' }
+);
+
+console.log(`✓ Archived at: https://v${version}_myapp.arweave.net`);
+```
+
+---
+
+### Pattern 3: Component Architecture
+
+Best for: Large applications with separate parts
+
+**Structure:**
+
+```
+@ (marketing)    → Marketing website
+app              → Main application
+api              → API documentation
+docs             → User documentation
+admin            → Admin panel
+```
+
+**Deployment commands:**
+
+```bash
+# Deploy each component independently
+permaweb-deploy --arns-name myapp --deploy-folder ./marketing/dist --ttl 3600
+permaweb-deploy --arns-name myapp --undername app --deploy-folder ./app/dist --ttl 60
+permaweb-deploy --arns-name myapp --undername api --deploy-folder ./api-docs/dist --ttl 1800
+permaweb-deploy --arns-name myapp --undername docs --deploy-folder ./docs/dist --ttl 1800
+permaweb-deploy --arns-name myapp --undername admin --deploy-folder ./admin/dist --ttl 60
+```
+
+**Package.json scripts:**
+
+```json title="package.json"
+{
+  "scripts": {
+    "deploy:marketing": "permaweb-deploy --arns-name myapp --deploy-folder ./marketing/dist --ttl 3600",
+    "deploy:app": "permaweb-deploy --arns-name myapp --undername app --deploy-folder ./app/dist --ttl 60",
+    "deploy:api": "permaweb-deploy --arns-name myapp --undername api --deploy-folder ./api-docs/dist --ttl 1800",
+    "deploy:docs": "permaweb-deploy --arns-name myapp --undername docs --deploy-folder ./docs/dist --ttl 1800",
+    "deploy:admin": "permaweb-deploy --arns-name myapp --undername admin --deploy-folder ./admin/dist --ttl 60",
+    "deploy:all": "npm run deploy:marketing && npm run deploy:app && npm run deploy:api && npm run deploy:docs && npm run deploy:admin"
+  }
+}
+```
+
+---
+
+## GitHub Actions Workflows
+
+### Multi-Environment Pipeline
+
+Deploy automatically based on branch:
+
+```yaml title=".github/workflows/deploy.yml"
+name: Deploy to Environments
+
+on:
+  push:
+    branches:
+      - develop  # Deploys to dev
+      - main     # Deploys to staging
+
+jobs:
+  deploy-dev:
+    if: github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-latest
+    environment: development
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install & Build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Deploy to Dev
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+          ARNS_NAME: ${{ secrets.ARNS_NAME }}
+        run: |
+          npx permaweb-deploy \
+            --arns-name $ARNS_NAME \
+            --undername dev \
+            --wallet-file <(echo "$DEPLOY_KEY") \
+            --ttl 60
+
+      - name: Comment on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `🚀 Deployed to dev: https://dev_${{ secrets.ARNS_NAME }}.arweave.net`
+            })
+
+  deploy-staging:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: staging
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install & Build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Deploy to Staging
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+          ARNS_NAME: ${{ secrets.ARNS_NAME }}
+        run: |
+          npx permaweb-deploy \
+            --arns-name $ARNS_NAME \
+            --undername staging \
+            --wallet-file <(echo "$DEPLOY_KEY") \
+            --ttl 60
+
+      - name: Run Integration Tests
+        run: npm run test:integration -- --base-url=https://staging_${{ secrets.ARNS_NAME }}.arweave.net
+
+      - name: Notify Staging Ready
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.repos.createCommitComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              commit_sha: context.sha,
+              body: `✅ Deployed to staging: https://staging_${{ secrets.ARNS_NAME }}.arweave.net\n\nReady for production deployment.`
+            })
+```
+
+### Production Deployment with Manual Approval
+
+```yaml title=".github/workflows/deploy-production.yml"
+name: Deploy to Production
+
+on:
+  workflow_dispatch:  # Manual trigger only
+
+jobs:
+  deploy-production:
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://${{ secrets.ARNS_NAME }}.arweave.net
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install & Build
+        run: |
+          npm ci
+          npm run build
+
+      - name: Deploy to Production
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+          ARNS_NAME: ${{ secrets.ARNS_NAME }}
+        run: |
+          npx permaweb-deploy \
+            --arns-name $ARNS_NAME \
+            --wallet-file <(echo "$DEPLOY_KEY") \
+            --ttl 3600
+
+      - name: Create Version Archive
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+          ARNS_NAME: ${{ secrets.ARNS_NAME }}
+        run: |
+          VERSION=$(date +%Y%m%d)-${{ github.run_number }}
+          npx permaweb-deploy \
+            --arns-name $ARNS_NAME \
+            --undername v$VERSION \
+            --wallet-file <(echo "$DEPLOY_KEY") \
+            --ttl 3600 \
+            --skip-confirmation
+          echo "Archived at: https://v${VERSION}_${{ secrets.ARNS_NAME }}.arweave.net"
+
+      - name: Notify Production Deployment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.repos.createCommitComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              commit_sha: context.sha,
+              body: `🎉 Deployed to PRODUCTION: https://${{ secrets.ARNS_NAME }}.arweave.net`
+            })
+```
+
+<Callout title="GitHub Environment Setup" type="info">
+  Configure environments in GitHub Settings → Environments:
+
+  - **development** - No protection rules (auto-deploy)
+  - **staging** - Optional: required reviewers
+  - **production** - Required reviewers (enforce manual approval)
+</Callout>
+
+---
+
+## Managing Undernames via ArNS App
+
+For operations that don't involve new uploads (like rollbacks or updates), use the [ArNS app](https://arns.app) web interface.
+
+### Rollback to a Previous Version
+
+<Steps>
+
+<Step title="Find Previous Version">
+
+Navigate to your ArNS name in the ArNS app. You'll see all undernames and their transaction IDs.
+
+For example:
+- `@` → `abc123...` (current production)
+- `v1` → `def456...` (previous version)
+- `staging` → `ghi789...` (staging version)
+
+</Step>
+
+<Step title="Copy Transaction ID">
+
+Copy the transaction ID from the undername you want to rollback to (e.g., `v1`).
+
+</Step>
+
+<Step title="Update Production Record">
+
+Click on the `@` (base) record, paste the transaction ID from `v1`, and save.
+
+Production now serves the `v1` content - instant rollback!
+
+</Step>
+
+</Steps>
+
+<Callout title="Instant Rollbacks" type="success">
+  Rollbacks on Arweave are instant because you're just updating a pointer to existing data. The old version is already on Arweave, permanent and accessible.
+</Callout>
+
+### Viewing All Undernames
+
+In the ArNS app, you can:
+
+- ✅ View all undernames and their transaction IDs
+- ✅ See TTL values for each undername
+- ✅ Update any undername's transaction ID
+- ✅ Add new undernames manually
+- ✅ Delete undernames you no longer need
+
+For detailed instructions, see: [Managing ArNS via UI](/build/guides/working-with-arns/manage-arns-ui)
+
+---
+
+## Best Practices
+
+### Choosing a Versioning Strategy
+
+| Strategy | Best For | Pros | Cons |
+|----------|----------|------|------|
+| **Environment-Based** (dev, staging, prod) | Most applications | Simple, clear workflow, easy testing | No version history in URLs |
+| **Version Numbers** (v1, v2, v3) | Long-term support needs | Clear version history, easy rollback | More undernames to manage |
+| **Combined** (v2-staging, v2-prod) | Complex applications | Best of both worlds, comprehensive | Most complex to manage |
+| **Component Architecture** (app, api, docs) | Large multi-part apps | Independent deployments, scalable | Coordination needed |
+
+### Naming Conventions
+
+**Recommended patterns:**
+
+```bash
+# Environments
+dev, staging, prod (rarely use prod since @ is production)
+
+# Version numbers
+v1, v2, v3
+
+# Version with minor
+v2-1, v2-2
+
+# Combined
+v2-staging, v3-beta
+
+# Components
+app, api, docs, admin, assets
+```
+
+**Avoid:**
+
+```bash
+# Don't use periods (they become underscores anyway)
+v1.5.2 → becomes v1_5_2 (confusing)
+
+# Don't use spaces
+my app → becomes my_app (unclear)
+
+# Don't be overly verbose
+very-long-descriptive-name (hard to type and remember)
+```
+
+### TTL (Time To Live) Guidelines
+
+Choose TTL based on update frequency:
+
+| Environment | Recommended TTL | Reasoning |
+|-------------|----------------|-----------|
+| Production (`@`) | 3600s (1 hour) | Stable content, good caching |
+| Staging | 900s (15 min) | Test updates frequently |
+| Development | 60s (1 min) | Rapid iteration |
+| Version archives (v1, v2) | 3600s (1 hour) | Rarely change, maximize caching |
+| Static assets | 86400s (24 hours) | Very stable content |
+
+**Set TTL with the `--ttl` flag:**
+
+```bash
+permaweb-deploy --arns-name myapp --ttl 3600      # Production: 1 hour
+permaweb-deploy --arns-name myapp --undername staging --ttl 900  # Staging: 15 min
+permaweb-deploy --arns-name myapp --undername dev --ttl 60       # Dev: 1 min
+```
+
+### Testing Before Production
+
+**Recommended workflow:**
+
+<Steps>
+
+<Step title="Build & Validate">
+
+```bash
+npm run build
+npm run typecheck
+npm run lint
+```
+
+</Step>
+
+<Step title="Deploy to Dev">
+
+```bash
+npm run deploy:dev
+```
+
+Test at: `https://dev_myapp.arweave.net`
+
+</Step>
+
+<Step title="Deploy to Staging">
+
+```bash
+npm run deploy:staging
+```
+
+Test at: `https://staging_myapp.arweave.net`
+
+</Step>
+
+<Step title="Run Integration Tests">
+
+```bash
+npm run test:integration -- --base-url=https://staging_myapp.arweave.net
+```
+
+</Step>
+
+<Step title="Manual QA">
+
+- Functional testing (all features work)
+- Cross-browser testing (Chrome, Firefox, Safari)
+- Mobile testing (responsive design)
+- Performance testing (load times)
+
+</Step>
+
+<Step title="Deploy to Production">
+
+```bash
+npm run deploy:prod
+```
+
+Live at: `https://myapp.arweave.net`
+
+</Step>
+
+<Step title="Archive Version">
+
+```bash
+npm run deploy:archive
+```
+
+Permanent archive at: `https://v2-1-0_myapp.arweave.net`
+
+</Step>
+
+</Steps>
+
+### Security Considerations
+
+<Callout title="Wallet Security" type="warn">
+  **Critical**: Never commit wallet files or private keys to git. Always use environment variables or secure secret management.
+</Callout>
+
+**Best practices:**
+
+```bash
+# .gitignore
+wallet.json
+*.jwk
+.env
+.env.local
+```
+
+**GitHub Secrets:**
+
+Store in Settings → Secrets and variables → Actions:
+
+- `DEPLOY_KEY` - Your wallet JSON or private key
+- `ARNS_NAME` - Your ArNS name
+
+**Local development:**
+
+```bash
+# .env (never commit)
+DEPLOY_KEY_PATH=~/wallets/arweave-wallet.json
+ARNS_NAME=myapp
+```
+
+---
+
+## Common Workflows
+
+### Daily Development
+
+```bash
+# Make changes to your code
+git add .
+git commit -m "Add new feature"
+git push origin develop
+
+# GitHub Actions automatically deploys to dev
+# https://dev_myapp.arweave.net
+```
+
+### Weekly Staging Release
+
+```bash
+# Merge develop to main
+git checkout main
+git merge develop
+git push origin main
+
+# GitHub Actions automatically deploys to staging
+# https://staging_myapp.arweave.net
+
+# Test staging thoroughly
+npm run test:integration -- --base-url=https://staging_myapp.arweave.net
+```
+
+### Production Release
+
+```bash
+# Manually trigger production deployment in GitHub Actions
+# (requires approval if environment protection is enabled)
+
+# Or deploy manually:
+npm run deploy:prod
+
+# Archive this version
+npm run deploy:archive
+```
+
+### Emergency Rollback
+
+If production has issues:
+
+1. Go to [ArNS app](https://arns.app)
+2. Find your ArNS name
+3. Copy transaction ID from previous version undername
+4. Update `@` (base) record with that transaction ID
+5. Save - instant rollback!
+
+You've learned how to use ArNS undernames for strategic versioning:
+
+**Key Concepts:**
+- ✅ Undernames as sub-domains under your ArNS name
+- ✅ Common patterns (environment, version, component)
+- ✅ Automation with package.json and GitHub Actions
+- ✅ Managing undernames via ArNS app
+- ✅ Best practices for production workflows
+
+**Strategic Benefits:**
+- **Cost-effective** - One ArNS name, unlimited versions
+- **Organized** - Logical structure for environments and versions
+- **Permanent** - All versions accessible forever
+- **Simple** - Use permaweb-deploy for everything
+- **Instant rollbacks** - Via ArNS app interface
+
+## Next Steps
+
+<Cards>
+  <Card
+    href="/build/guides/hosting-unstoppable-apps/deploying-with-arlink"
+    title="Deploy with Arlink"
+    icon={<Rocket />}
+  >
+    <div>
+      <p>Try the web-based deployment alternative:</p>
+      <ul>
+        <li>No CLI required</li>
+        <li>Visual interface</li>
+        <li>GitHub integration</li>
+        <li>Perfect for quick testing</li>
+      </ul>
+    </div>
+  </Card>
+
+  <Card
+    href="/build/guides/working-with-arns/manage-arns-ui"
+    title="Manage ArNS via UI"
+    icon={<Settings />}
+  >
+    <div>
+      <p>Learn to manage undernames in the ArNS app:</p>
+      <ul>
+        <li>View all undernames</li>
+        <li>Update transaction IDs</li>
+        <li>Rollback to previous versions</li>
+        <li>Adjust TTL values</li>
+      </ul>
+    </div>
+  </Card>
+
+  <Card
+    href="/build/guides/working-with-arns/set-arns-records-programmatically"
+    title="Advanced: Programmatic Management"
+    icon={<Code />}
+  >
+    <div>
+      <p>For advanced use cases, use the SDK:</p>
+      <ul>
+        <li>Programmatic undername control</li>
+        <li>Custom automation scripts</li>
+        <li>Batch operations</li>
+        <li>Advanced workflows</li>
+      </ul>
+    </div>
+  </Card>
+
+  <Card
+    href="https://discord.gg/cuCqBb5v"
+    title="Join the Community"
+    icon={<Network />}
+  >
+    <div>
+      <p>Connect with other builders:</p>
+      <ul>
+        <li>Get help with deployments</li>
+        <li>Share your strategies</li>
+        <li>Stay updated on features</li>
+        <li>Contribute ideas</li>
+      </ul>
+    </div>
+  </Card>
+</Cards>

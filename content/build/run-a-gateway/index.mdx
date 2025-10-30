@@ -12,48 +12,21 @@ Join the decentralized network that powers permanent data access. Run your own *
 Choose the deployment approach that fits your needs - from local testing to production infrastructure.
 
 <Cards>
-  <Card 
+  <Card
     title={<span className="flex items-center gap-2">Production Gateway <span className="text-xs bg-green-500/10 text-green-600 dark:text-green-400 px-2 py-1 rounded-full">Earn Rewards</span></span>}
-    description={
-      <>
-        <p className="mb-3">Join the AR.IO Network and earn ARIO tokens</p>
-        <div className="space-y-1 text-sm">
-          <div className="flex items-center gap-2"><DollarSign className="w-4 h-4" /> Earn ARIO token rewards</div>
-          <div className="flex items-center gap-2"><Network className="w-4 h-4" /> Serve Wayfinder traffic</div>
-          <div className="flex items-center gap-2"><Server className="w-4 h-4" /> Cache and serve Arweave data</div>
-        </div>
-      </>
-    }
+    description="Join the AR.IO Network and earn ARIO tokens. Earn rewards by serving Wayfinder traffic and caching/serving Arweave data."
     href="/build/run-a-gateway/quick-start#production-setup-with-custom-domain"
     icon={<Server className="w-6 h-6" />}
   />
-  <Card 
+  <Card
     title="Local Gateway"
-    description={
-      <>
-        <p className="mb-3">Perfect for development and testing</p>
-        <div className="space-y-1 text-sm">
-          <div className="flex items-center gap-2"><Check className="w-4 h-4" /> Quick Docker setup</div>
-          <div className="flex items-center gap-2"><Check className="w-4 h-4" /> Test gateway features</div>
-          <div className="flex items-center gap-2"><Check className="w-4 h-4" /> No commitment required</div>
-        </div>
-      </>
-    }
+    description="Perfect for development and testing. Features quick Docker setup, ability to test gateway features, and no commitment required."
     href="/build/run-a-gateway/quick-start"
     icon={<Terminal className="w-6 h-6" />}
   />
-  <Card 
+  <Card
     title="Custom Configuration"
-    description={
-      <>
-        <p className="mb-3">Optimize for specific use cases</p>
-        <div className="space-y-1 text-sm text-muted-foreground">
-          <div>• Data filtering options</div>
-          <div>• Performance tuning</div>
-          <div>• Advanced features</div>
-        </div>
-      </>
-    }
+    description="Optimize for specific use cases. Includes data filtering options, performance tuning, and advanced features."
     href="/build/run-a-gateway/manage/filters"
     icon={<Database className="w-6 h-6" />}
   />

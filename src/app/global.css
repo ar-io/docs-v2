@@ -17,3 +17,8 @@
     Roboto,
     sans-serif;
 }
+
+/* Add spacing between main content and feedback section */
+.border-y.py-3 {
+  margin-top: 3rem;
+}

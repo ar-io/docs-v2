@@ -1,9 +1,20 @@
 ---
-title: "Deploy a dApp with ArDrive Web"
+title: "Deploying with ArDrive"
 description: "How to upload a dApp to the permaweb using ArDrive web"
 ---
 
+import { Callout } from 'fumadocs-ui/components/callout';
+import { Steps, Step } from 'fumadocs-ui/components/steps';
+import { Card, Cards } from 'fumadocs-ui/components/card';
+import { Upload, Globe, Code } from 'lucide-react';
+
+## Introduction
+
 Create **permanent dApps** using the ArDrive web interface. This guide shows you how to deploy your dApp or website to the permaweb using ArDrive's user-friendly interface.
+
+<Callout title="New to unstoppable apps?" type="info">
+Check out the [series introduction](/build/guides/hosting-unstoppable-apps) to understand how AR.IO Network makes apps truly unstoppable with 100+ independent gateways.
+</Callout>
 
 ## What You'll Learn
 
@@ -28,91 +39,67 @@ Create **permanent dApps** using the ArDrive web interface. This guide shows you
 ## Step-by-Step Deployment
 
 <Steps>
-  <Step>
-    ### Log into ArDrive
-
+  <Step title="Log into ArDrive">
     Go to the [ArDrive web app](https://app.ardrive.io/#/sign-in) and log in using your preferred method. If you don't have an account, follow the instructions to create one.
-
   </Step>
 
-  <Step>
-    ### Select or Create a Drive
-
+  <Step title="Select or Create a Drive">
     Navigate to the drive where you want your project hosted. If you need a new drive:
 
     - Click the big red "New" button at the top left
     - Create a new drive
     - **Important:** Set the drive to **public** for others to access your dApp
-
   </Step>
 
-  <Step>
-    ### Upload Your Project
-
+  <Step title="Upload Your Project">
     With your drive selected:
 
     - Click the big red "New" button again
     - Select "Upload Folder"
     - Navigate to your project's root directory (or built directory if required)
     - Select the entire directory to maintain your project's file structure
-
   </Step>
 
-  <Step>
-    ### Confirm Upload
-
+  <Step title="Confirm Upload">
     Review the upload and associated cost. If everything looks correct, click "Confirm".
 
     <Callout type="info">
       **Cost Note:** Uploading to Arweave isn't free, but costs are usually quite small compared to the benefits of permanent hosting.
     </Callout>
-
   </Step>
 
-  <Step>
-    ### Create the Manifest
-
+  <Step title="Create the Manifest">
     While ArDrive displays files as a traditional file structure, they don't actually exist that way on Arweave. The manifest acts as a map to all your dApp files:
 
     - Navigate into your newly created folder by double-clicking it
     - Click the big red "New" button again
     - Select "New Manifest" in the "Advanced" section
     - Name the manifest and save it inside the folder you just created
-
   </Step>
 
-  <Step>
-    ### Get the Data TX ID
-
+  <Step title="Get the Data TX ID">
     Once the manifest is created:
 
     - Click on it to expand its details
     - Go to the "Details" tab
     - Find the "Data TX ID" on the bottom right
     - Copy this unique identifier for your dApp
-
   </Step>
 
-  <Step>
-    ### View and Share Your dApp
-
+  <Step title="View and Share Your dApp">
     Your dApp is now live on the permaweb forever!
 
     - Append the Data TX ID to an Arweave gateway URL: `https://arweave.net/YOUR-TX-ID`
     - It may take a few minutes for files to propagate through the network
     - Once propagated, your dApp is accessible to anyone, anywhere, at any time
-
   </Step>
 
-  <Step>
-    ### Assign a Friendly Name (Optional)
-
+  <Step title="Assign a Friendly Name (Optional)">
     Make your dApp easier to access with an ArNS name:
 
     - If you own an ArNS name, you'll be prompted during manifest creation
     - If not, purchase one from [arns.app](https://arns.arweave.net)
     - You can also assign an ArNS name later by clicking the three dots next to any file and selecting "Assign ArNS name"
-
   </Step>
 </Steps>
 
@@ -144,31 +131,25 @@ Files uploaded to Arweave are **permanent and immutable** - they cannot be chang
 - **Version management** - Built-in file history and updates
 - **Cost transparency** - See upload costs before confirming
 
-## Ready to Deploy?
+## Next Steps
 
 <Cards>
   <Card
     href="https://app.ardrive.io"
     title="Try ArDrive Web"
+    description="Deploy your dApp using the ArDrive web interface"
     icon={<Upload />}
-    arrow
-  >
-    Deploy your dApp using the ArDrive web interface
-  </Card>
-
-<Card
-  href="/build/guides/arns-primary-names"
-  title="Get an ArNS Name"
-  icon={<Globe />}
->
-  Learn how to create friendly domain names for your dApp
-</Card>
-
+  />
   <Card
-    href="/build/guides/hosting-decentralized-websites"
-    title="Advanced Deployment"
+    href="/build/guides/working-with-arns/arns-primary-names"
+    title="Get an ArNS Name"
+    description="Learn how to create friendly domain names for your dApp"
+    icon={<Globe />}
+  />
+  <Card
+    href="/build/guides/hosting-unstoppable-apps"
+    title="More Deployment Options"
+    description="Explore CLI-based deployment tools and automation"
     icon={<Code />}
-  >
-    Explore more advanced deployment options and tools
-  </Card>
+  />
 </Cards>

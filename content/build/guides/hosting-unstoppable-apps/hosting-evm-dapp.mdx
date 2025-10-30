@@ -1,0 +1,2154 @@
+---
+title: "Hosting an EVM App on ArNS"
+description: "Deploy an Ethereum dApp frontend to Arweave with ArNS integration, combining EVM smart contracts with permanent decentralized hosting"
+---
+
+import { Callout } from 'fumadocs-ui/components/callout';
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+import { Card, Cards } from 'fumadocs-ui/components/card';
+import { Code, Wallet, Coins, Network, GitBranch, Terminal, FileCode, Globe } from 'lucide-react';
+
+## Introduction
+
+This guide shows you how to build and deploy an Ethereum dApp frontend to Arweave using ArNS. You'll create a complete ETH wallet dashboard with balance checking and transfer functionality, then host it permanently on Arweave while your smart contract logic runs on Ethereum.
+
+This **hybrid architecture** combines the best of both worlds:
+- **EVM chains** (Ethereum, Base, etc.) for smart contract execution and state management
+- **Arweave + ArNS** for permanent, censorship-resistant frontend hosting
+
+By the end of this guide, you'll have a production-ready dApp that users can access through your ArNS name, with the frontend stored permanently on Arweave and transactions executing on Ethereum or Base.
+
+<Callout title="New to unstoppable apps?" type="info">
+Check out the [series introduction](/build/guides/hosting-unstoppable-apps) to understand how AR.IO Network makes apps truly unstoppable with 100+ independent gateways.
+</Callout>
+
+## What You'll Build
+
+You'll create an **ETH Wallet Dashboard** that demonstrates core dApp functionality:
+
+- **Multi-Wallet Support**: Connect with MetaMask, Coinbase Wallet, Brave Wallet, and other browser extension wallets
+- **Multi-Chain**: Support both Ethereum Mainnet and Base
+- **View Balance**: Display user's ETH balance on connected chain
+- **Send ETH**: Transfer ETH to other addresses with gas estimation
+- **Network Switching**: Let users switch between Ethereum and Base
+- **Permanent Hosting**: Deploy to Arweave with your ArNS domain
+
+The complete app will be ~350 lines of code across 5 components, fully typed with TypeScript.
+
+## Prerequisites
+
+Before starting, ensure you have:
+
+- **Node.js 18+** installed
+- **Ethereum Wallet** (MetaMask, Coinbase Wallet, or similar) - You'll use this for both testing your dApp AND deploying to Arweave
+- **ETH on Base** for Arweave storage payments (or Turbo credits from [turbo.ar.io/topup](https://turbo.ar.io/topup))
+- **ArNS Name** configured and ready ([purchase](https://arns.app))
+- Basic understanding of React and Ethereum
+
+<Callout title="One Wallet for Everything" type="info">
+This guide uses your Ethereum wallet (MetaMask, etc.) for both:
+- **Testing your dApp** - Connect to your dashboard, view balance, send transactions
+- **Deploying to Arweave** - Use your wallet's private key with `permaweb-deploy`
+
+You can pay for Arweave storage with Base-ETH tokens directly from your Ethereum wallet, making this a fully EVM-native workflow.
+</Callout>
+
+## Project Setup
+
+<Tabs items={['Vite', 'Next.js']}>
+<Tab value="Vite">
+
+### Create React + Vite Project
+
+Vite is the recommended approach for EVM dApps due to its fast build times and excellent developer experience.
+
+```bash
+npm create vite@latest my-eth-dashboard -- --template react-ts
+cd my-eth-dashboard
+```
+
+### Install Dependencies
+
+Install the Web3 stack (wagmi + viem) and Arweave deployment tool:
+
+```bash
+# Web3 libraries
+npm install wagmi viem@2.x @tanstack/react-query
+
+# Deployment tool
+npm install --save-dev permaweb-deploy
+```
+
+**Package versions:**
+- `wagmi` - Ethereum interaction hooks (latest v2)
+- `viem@2.x` - Ethereum client (wagmi v2 requires viem v2)
+- `@tanstack/react-query` - Required by wagmi for data fetching
+
+<Callout title="No External Dependencies" type="info">
+This guide uses wagmi with custom UI components and built-in connectors only. No WalletConnect project ID or third-party wallet libraries needed!
+</Callout>
+
+</Tab>
+<Tab value="Next.js">
+
+### Create Next.js Project
+
+Next.js is great if you need server-side rendering or API routes, though this example will be client-side only.
+
+```bash
+npx create-next-app@latest my-eth-dashboard --typescript --tailwind --app
+cd my-eth-dashboard
+```
+
+Choose these options:
+- ✅ TypeScript
+- ✅ ESLint
+- ✅ Tailwind CSS
+- ✅ `src/` directory
+- ✅ App Router
+- ❌ Customize default import alias
+
+### Install Dependencies
+
+```bash
+# Web3 libraries
+npm install wagmi viem@2.x @tanstack/react-query
+
+# Deployment tool
+npm install --save-dev permaweb-deploy
+```
+
+</Tab>
+</Tabs>
+
+## Configure Web3 Stack
+
+Now set up wagmi with custom connectors to handle wallet connections and Ethereum interactions.
+
+<Tabs items={['Vite', 'Next.js']}>
+<Tab value="Vite">
+
+### Create Web3 Configuration
+
+Create `src/wagmi.config.ts`:
+
+```typescript title="src/wagmi.config.ts"
+import { http, createConfig } from 'wagmi';
+import { mainnet, base } from 'wagmi/chains';
+import { injected, metaMask, coinbaseWallet } from 'wagmi/connectors';
+
+// Configure wagmi with injected wallet connectors only
+export const config = createConfig({
+  chains: [mainnet, base],
+  connectors: [
+    injected(), // Auto-detects MetaMask, Brave, etc.
+    metaMask(), // Explicitly for MetaMask
+    coinbaseWallet({
+      appName: 'ETH Dashboard',
+    }),
+  ],
+  transports: {
+    [mainnet.id]: http(),
+    [base.id]: http(),
+  },
+});
+```
+
+**Supported wallets:**
+- MetaMask (browser extension)
+- Coinbase Wallet (browser extension)
+- Brave Wallet (built-in to Brave browser)
+- Any wallet that injects `window.ethereum`
+
+<Callout title="No External Dependencies" type="info">
+This configuration uses only browser-injected wallets. No WalletConnect project ID needed! Mobile users can access via MetaMask mobile browser or Coinbase Wallet mobile browser.
+</Callout>
+
+### Setup Providers
+
+Update `src/main.tsx` to wrap your app with Web3 providers:
+
+```typescript title="src/main.tsx"
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import './index.css';
+
+// Web3 imports
+import { WagmiProvider } from 'wagmi';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { config } from './wagmi.config';
+
+// Create React Query client
+const queryClient = new QueryClient();
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <App />
+      </QueryClientProvider>
+    </WagmiProvider>
+  </React.StrictMode>
+);
+```
+
+</Tab>
+<Tab value="Next.js">
+
+### Create Web3 Configuration
+
+Create `src/wagmi.config.ts`:
+
+```typescript title="src/wagmi.config.ts"
+import { http, createConfig } from 'wagmi';
+import { mainnet, base } from 'wagmi/chains';
+import { injected, metaMask, coinbaseWallet } from 'wagmi/connectors';
+
+export const config = createConfig({
+  chains: [mainnet, base],
+  connectors: [
+    injected(),
+    metaMask(),
+    coinbaseWallet({
+      appName: 'ETH Dashboard',
+    }),
+  ],
+  transports: {
+    [mainnet.id]: http(),
+    [base.id]: http(),
+  },
+  ssr: true,
+});
+```
+
+### Create Providers Component
+
+Create `src/providers/Web3Provider.tsx`:
+
+```typescript title="src/providers/Web3Provider.tsx"
+'use client';
+
+import { WagmiProvider } from 'wagmi';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { config } from '../wagmi.config';
+
+const queryClient = new QueryClient();
+
+export function Web3Provider({ children }: { children: React.ReactNode }) {
+  return (
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        {children}
+      </QueryClientProvider>
+    </WagmiProvider>
+  );
+}
+```
+
+### Setup Root Layout
+
+Update `src/app/layout.tsx`:
+
+```typescript title="src/app/layout.tsx"
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import './globals.css';
+import { Web3Provider } from '@/providers/Web3Provider';
+
+const inter = Inter({ subsets: ['latin'] });
+
+export const metadata: Metadata = {
+  title: 'ETH Dashboard',
+  description: 'Ethereum wallet dashboard on Arweave',
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body className={inter.className}>
+        <Web3Provider>
+          {children}
+        </Web3Provider>
+      </body>
+    </html>
+  );
+}
+```
+
+</Tab>
+</Tabs>
+
+## Build the Components
+
+Now create the dashboard components. Each component demonstrates a key dApp pattern.
+
+### Component 1: Wallet Connection
+
+Create a custom wallet connection component that detects and connects to available wallets.
+
+<Tabs items={['Vite', 'Next.js']}>
+<Tab value="Vite">
+
+Create `src/components/WalletConnect.tsx`:
+
+```typescript title="src/components/WalletConnect.tsx"
+import { useConnect, useAccount, useDisconnect, useChainId, useSwitchChain } from 'wagmi';
+import { mainnet, base } from 'wagmi/chains';
+
+export function WalletConnect() {
+  const { connectors, connect, status, error } = useConnect();
+  const { isConnected, address, chain } = useAccount();
+  const { disconnect } = useDisconnect();
+  const chainId = useChainId();
+  const { switchChain } = useSwitchChain();
+
+  // Filter out duplicate connectors
+  const availableConnectors = connectors.filter(
+    (connector, index, self) =>
+      index === self.findIndex((c) => c.name === connector.name)
+  );
+
+  if (isConnected) {
+    return (
+      <div className="wallet-connected">
+        <div className="wallet-info">
+          <div className="wallet-address">
+            {address?.slice(0, 6)}...{address?.slice(-4)}
+          </div>
+          <div className="wallet-network">
+            {chain?.name || 'Unknown Network'}
+          </div>
+        </div>
+
+        <div className="wallet-actions">
+          {/* Network Switcher */}
+          <div className="network-switcher">
+            <button
+              className={`network-button ${chainId === mainnet.id ? 'active' : ''}`}
+              onClick={() => switchChain({ chainId: mainnet.id })}
+              disabled={chainId === mainnet.id}
+            >
+              Ethereum
+            </button>
+            <button
+              className={`network-button ${chainId === base.id ? 'active' : ''}`}
+              onClick={() => switchChain({ chainId: base.id })}
+              disabled={chainId === base.id}
+            >
+              Base
+            </button>
+          </div>
+
+          <button className="disconnect-button" onClick={() => disconnect()}>
+            Disconnect
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="wallet-connect">
+      <h3>Connect Your Wallet</h3>
+      <div className="wallet-options">
+        {availableConnectors.map((connector) => (
+          <button
+            key={connector.uid}
+            onClick={() => connect({ connector })}
+            disabled={status === 'pending'}
+            className="wallet-option"
+          >
+            <span className="wallet-icon">🔐</span>
+            <span className="wallet-name">{connector.name}</span>
+          </button>
+        ))}
+      </div>
+      {error && (
+        <div className="connect-error">
+          Error: {error.message}
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+**What this component does:**
+- Lists all available wallet connectors (MetaMask, Coinbase Wallet, etc.)
+- Connects to selected wallet on click
+- Shows connected address and network
+- Provides network switcher between Ethereum and Base
+- Handles disconnect functionality
+- Displays connection errors
+
+</Tab>
+<Tab value="Next.js">
+
+Create `src/components/WalletConnect.tsx`:
+
+```typescript title="src/components/WalletConnect.tsx"
+'use client';
+
+import { useConnect, useAccount, useDisconnect, useChainId, useSwitchChain } from 'wagmi';
+import { mainnet, base } from 'wagmi/chains';
+
+export function WalletConnect() {
+  const { connectors, connect, status, error } = useConnect();
+  const { isConnected, address, chain } = useAccount();
+  const { disconnect } = useDisconnect();
+  const chainId = useChainId();
+  const { switchChain } = useSwitchChain();
+
+  const availableConnectors = connectors.filter(
+    (connector, index, self) =>
+      index === self.findIndex((c) => c.name === connector.name)
+  );
+
+  if (isConnected) {
+    return (
+      <div className="wallet-connected">
+        <div className="wallet-info">
+          <div className="wallet-address">
+            {address?.slice(0, 6)}...{address?.slice(-4)}
+          </div>
+          <div className="wallet-network">
+            {chain?.name || 'Unknown Network'}
+          </div>
+        </div>
+
+        <div className="wallet-actions">
+          <div className="network-switcher">
+            <button
+              className={`network-button ${chainId === mainnet.id ? 'active' : ''}`}
+              onClick={() => switchChain({ chainId: mainnet.id })}
+              disabled={chainId === mainnet.id}
+            >
+              Ethereum
+            </button>
+            <button
+              className={`network-button ${chainId === base.id ? 'active' : ''}`}
+              onClick={() => switchChain({ chainId: base.id })}
+              disabled={chainId === base.id}
+            >
+              Base
+            </button>
+          </div>
+
+          <button className="disconnect-button" onClick={() => disconnect()}>
+            Disconnect
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="wallet-connect">
+      <h3>Connect Your Wallet</h3>
+      <div className="wallet-options">
+        {availableConnectors.map((connector) => (
+          <button
+            key={connector.uid}
+            onClick={() => connect({ connector })}
+            disabled={status === 'pending'}
+            className="wallet-option"
+          >
+            <span className="wallet-icon">🔐</span>
+            <span className="wallet-name">{connector.name}</span>
+          </button>
+        ))}
+      </div>
+      {error && (
+        <div className="connect-error">
+          Error: {error.message}
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+<Callout title="'use client' Directive" type="info">
+Next.js App Router requires `'use client'` for components that use hooks or browser APIs.
+</Callout>
+
+</Tab>
+</Tabs>
+
+### Component 2: ETH Balance Display
+
+Display the user's ETH balance using wagmi's `useAccount` and `useBalance` hooks.
+
+<Tabs items={['Vite', 'Next.js']}>
+<Tab value="Vite">
+
+Create `src/components/EthBalance.tsx`:
+
+```typescript title="src/components/EthBalance.tsx"
+import { useAccount, useBalance } from 'wagmi';
+import { formatEther } from 'viem';
+
+export function EthBalance() {
+  const { address, isConnected, chain } = useAccount();
+
+  // Fetch ETH balance for connected address
+  const { data: balance, isError, isLoading } = useBalance({
+    address: address,
+  });
+
+  if (!isConnected) {
+    return (
+      <div className="balance-card">
+        <h2>💰 Your Balance</h2>
+        <p>Connect your wallet to view your balance</p>
+      </div>
+    );
+  }
+
+  if (isLoading) {
+    return (
+      <div className="balance-card">
+        <h2>💰 Your Balance</h2>
+        <p>Loading balance...</p>
+      </div>
+    );
+  }
+
+  if (isError || !balance) {
+    return (
+      <div className="balance-card">
+        <h2>💰 Your Balance</h2>
+        <p className="error">Failed to load balance</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="balance-card">
+      <h2>💰 Your Balance</h2>
+      <div className="balance-amount">
+        {parseFloat(formatEther(balance.value)).toFixed(4)} {balance.symbol}
+      </div>
+      <div className="balance-details">
+        <span className="chain-name">{chain?.name}</span>
+        <span className="address-short">
+          {address?.slice(0, 6)}...{address?.slice(-4)}
+        </span>
+      </div>
+    </div>
+  );
+}
+```
+
+**Key concepts:**
+- `useAccount()` - Get connected wallet address and chain
+- `useBalance()` - Fetch ETH balance (auto-updates on transactions)
+- `formatEther()` - Convert wei (smallest unit) to ETH for display
+
+</Tab>
+<Tab value="Next.js">
+
+Create `src/components/EthBalance.tsx`:
+
+```typescript title="src/components/EthBalance.tsx"
+'use client';
+
+import { useAccount, useBalance } from 'wagmi';
+import { formatEther } from 'viem';
+
+export function EthBalance() {
+  const { address, isConnected, chain } = useAccount();
+
+  const { data: balance, isError, isLoading } = useBalance({
+    address: address,
+  });
+
+  if (!isConnected) {
+    return (
+      <div className="balance-card">
+        <h2>💰 Your Balance</h2>
+        <p>Connect your wallet to view your balance</p>
+      </div>
+    );
+  }
+
+  if (isLoading) {
+    return (
+      <div className="balance-card">
+        <h2>💰 Your Balance</h2>
+        <p>Loading balance...</p>
+      </div>
+    );
+  }
+
+  if (isError || !balance) {
+    return (
+      <div className="balance-card">
+        <h2>💰 Your Balance</h2>
+        <p className="error">Failed to load balance</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="balance-card">
+      <h2>💰 Your Balance</h2>
+      <div className="balance-amount">
+        {parseFloat(formatEther(balance.value)).toFixed(4)} {balance.symbol}
+      </div>
+      <div className="balance-details">
+        <span className="chain-name">{chain?.name}</span>
+        <span className="address-short">
+          {address?.slice(0, 6)}...{address?.slice(-4)}
+        </span>
+      </div>
+    </div>
+  );
+}
+```
+
+</Tab>
+</Tabs>
+
+### Component 3: Send ETH
+
+Allow users to send ETH to other addresses with proper gas estimation and error handling.
+
+<Tabs items={['Vite', 'Next.js']}>
+<Tab value="Vite">
+
+Create `src/components/SendEth.tsx`:
+
+```typescript title="src/components/SendEth.tsx"
+import { useState } from 'react';
+import { useAccount, useSendTransaction, useWaitForTransactionReceipt } from 'wagmi';
+import { parseEther } from 'viem';
+
+export function SendEth() {
+  const { address, isConnected } = useAccount();
+  const [recipient, setRecipient] = useState('');
+  const [amount, setAmount] = useState('');
+
+  // Hook to send transaction
+  const {
+    data: hash,
+    isPending,
+    sendTransaction,
+    error
+  } = useSendTransaction();
+
+  // Hook to wait for confirmation
+  const { isLoading: isConfirming, isSuccess } = useWaitForTransactionReceipt({
+    hash,
+  });
+
+  const handleSend = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!recipient || !amount) {
+      alert('Please enter recipient address and amount');
+      return;
+    }
+
+    try {
+      // Send ETH transaction
+      sendTransaction({
+        to: recipient as `0x${string}`,
+        value: parseEther(amount), // Convert ETH to wei
+      });
+    } catch (err) {
+      console.error('Transaction error:', err);
+    }
+  };
+
+  if (!isConnected) {
+    return (
+      <div className="send-card">
+        <h2>📤 Send ETH</h2>
+        <p>Connect your wallet to send ETH</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="send-card">
+      <h2>📤 Send ETH</h2>
+
+      <form onSubmit={handleSend}>
+        <div className="form-group">
+          <label htmlFor="recipient">Recipient Address</label>
+          <input
+            id="recipient"
+            type="text"
+            placeholder="0x..."
+            value={recipient}
+            onChange={(e) => setRecipient(e.target.value)}
+            disabled={isPending || isConfirming}
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="amount">Amount (ETH)</label>
+          <input
+            id="amount"
+            type="number"
+            step="0.001"
+            placeholder="0.1"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+            disabled={isPending || isConfirming}
+          />
+        </div>
+
+        <button
+          type="submit"
+          disabled={isPending || isConfirming}
+        >
+          {isPending ? 'Waiting for approval...' :
+           isConfirming ? 'Confirming...' :
+           'Send ETH'}
+        </button>
+      </form>
+
+      {error && (
+        <div className="error-message">
+          Error: {error.message}
+        </div>
+      )}
+
+      {hash && (
+        <div className="transaction-hash">
+          <p>Transaction Hash:</p>
+          <code>{hash}</code>
+        </div>
+      )}
+
+      {isSuccess && (
+        <div className="success-message">
+          ✅ Transaction confirmed!
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+**Key concepts:**
+- `useSendTransaction()` - Send ETH transfers (triggers wallet approval)
+- `useWaitForTransactionReceipt()` - Wait for transaction confirmation
+- `parseEther()` - Convert ETH input to wei (1 ETH = 10^18 wei)
+- Gas is estimated automatically by the wallet
+
+</Tab>
+<Tab value="Next.js">
+
+Create `src/components/SendEth.tsx`:
+
+```typescript title="src/components/SendEth.tsx"
+'use client';
+
+import { useState } from 'react';
+import { useAccount, useSendTransaction, useWaitForTransactionReceipt } from 'wagmi';
+import { parseEther } from 'viem';
+
+export function SendEth() {
+  const { address, isConnected } = useAccount();
+  const [recipient, setRecipient] = useState('');
+  const [amount, setAmount] = useState('');
+
+  const {
+    data: hash,
+    isPending,
+    sendTransaction,
+    error
+  } = useSendTransaction();
+
+  const { isLoading: isConfirming, isSuccess } = useWaitForTransactionReceipt({
+    hash,
+  });
+
+  const handleSend = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!recipient || !amount) {
+      alert('Please enter recipient address and amount');
+      return;
+    }
+
+    try {
+      sendTransaction({
+        to: recipient as `0x${string}`,
+        value: parseEther(amount),
+      });
+    } catch (err) {
+      console.error('Transaction error:', err);
+    }
+  };
+
+  if (!isConnected) {
+    return (
+      <div className="send-card">
+        <h2>📤 Send ETH</h2>
+        <p>Connect your wallet to send ETH</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="send-card">
+      <h2>📤 Send ETH</h2>
+
+      <form onSubmit={handleSend}>
+        <div className="form-group">
+          <label htmlFor="recipient">Recipient Address</label>
+          <input
+            id="recipient"
+            type="text"
+            placeholder="0x..."
+            value={recipient}
+            onChange={(e) => setRecipient(e.target.value)}
+            disabled={isPending || isConfirming}
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="amount">Amount (ETH)</label>
+          <input
+            id="amount"
+            type="number"
+            step="0.001"
+            placeholder="0.1"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+            disabled={isPending || isConfirming}
+          />
+        </div>
+
+        <button
+          type="submit"
+          disabled={isPending || isConfirming}
+        >
+          {isPending ? 'Waiting for approval...' :
+           isConfirming ? 'Confirming...' :
+           'Send ETH'}
+        </button>
+      </form>
+
+      {error && (
+        <div className="error-message">
+          Error: {error.message}
+        </div>
+      )}
+
+      {hash && (
+        <div className="transaction-hash">
+          <p>Transaction Hash:</p>
+          <code>{hash}</code>
+        </div>
+      )}
+
+      {isSuccess && (
+        <div className="success-message">
+          ✅ Transaction confirmed!
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+</Tab>
+</Tabs>
+
+## Create Main App
+
+Now assemble your components into the main application.
+
+<Tabs items={['Vite', 'Next.js']}>
+<Tab value="Vite">
+
+### Update App Component
+
+Replace `src/App.tsx` with:
+
+```typescript title="src/App.tsx"
+import { WalletConnect } from './components/WalletConnect';
+import { EthBalance } from './components/EthBalance';
+import { SendEth } from './components/SendEth';
+import './App.css';
+
+function App() {
+  return (
+    <div className="app">
+      <header className="app-header">
+        <h1>ETH Dashboard</h1>
+        <p className="subtitle">Permanent hosting on Arweave</p>
+      </header>
+
+      <div className="wallet-section">
+        <WalletConnect />
+      </div>
+
+      <div className="dashboard-grid">
+        <EthBalance />
+        <SendEth />
+      </div>
+
+      <footer className="app-footer">
+        <p>
+          Hosted on <a href="https://ar.io" target="_blank" rel="noopener">AR.IO Network</a>
+        </p>
+      </footer>
+    </div>
+  );
+}
+
+export default App;
+```
+
+### Add Styles
+
+Update `src/App.css`:
+
+```css title="src/App.css"
+.app {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem;
+}
+
+.app-header {
+  text-align: center;
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.app-header h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-top: 0.5rem;
+}
+
+.wallet-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+/* Wallet Connection Styles */
+.wallet-connect,
+.wallet-connected {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  min-width: 400px;
+}
+
+.wallet-connect h3 {
+  margin: 0 0 1.5rem 0;
+  color: #333;
+  text-align: center;
+}
+
+.wallet-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.wallet-option {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: #f8f8f8;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.wallet-option:hover:not(:disabled) {
+  background: #667eea;
+  border-color: #667eea;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.wallet-option:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.wallet-icon {
+  font-size: 1.5rem;
+}
+
+.wallet-name {
+  font-weight: 600;
+}
+
+.connect-error {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: #fee;
+  border-left: 4px solid #f44;
+  border-radius: 4px;
+  color: #c33;
+  font-size: 0.9rem;
+}
+
+/* Wallet Connected State */
+.wallet-connected {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.wallet-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.wallet-address {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  font-family: 'Courier New', monospace;
+}
+
+.wallet-network {
+  font-size: 0.9rem;
+  color: #666;
+  background: #f0f0f0;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+}
+
+.wallet-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.network-switcher {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.network-button {
+  flex: 1;
+  padding: 0.75rem;
+  background: #f8f8f8;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 500;
+}
+
+.network-button:hover:not(:disabled) {
+  background: #e8e8f8;
+  border-color: #667eea;
+}
+
+.network-button.active {
+  background: #667eea;
+  border-color: #667eea;
+  color: white;
+}
+
+.network-button:disabled {
+  cursor: not-allowed;
+}
+
+.disconnect-button {
+  width: 100%;
+  padding: 0.75rem;
+  background: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-weight: 600;
+}
+
+.disconnect-button:hover {
+  background: #cc0000;
+}
+
+.dashboard-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+.balance-card,
+.send-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.balance-card h2,
+.send-card h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.balance-amount {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #667eea;
+  margin: 1rem 0;
+}
+
+.balance-details {
+  display: flex;
+  justify-content: space-between;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.chain-name {
+  background: #667eea;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.form-group input:disabled {
+  background: #f5f5f5;
+  cursor: not-allowed;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 1rem;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button[type="submit"]:hover:not(:disabled) {
+  background: #5568d3;
+}
+
+button[type="submit"]:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.error-message {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #fee;
+  border-left: 4px solid #f44;
+  border-radius: 4px;
+  color: #c33;
+}
+
+.success-message {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #efe;
+  border-left: 4px solid #4c4;
+  border-radius: 4px;
+  color: #363;
+}
+
+.transaction-hash {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #f5f5f5;
+  border-radius: 4px;
+}
+
+.transaction-hash code {
+  word-break: break-all;
+  color: #667eea;
+}
+
+.app-footer {
+  text-align: center;
+  margin-top: 3rem;
+  color: white;
+  opacity: 0.8;
+}
+
+.app-footer a {
+  color: white;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+```
+
+Update `src/index.css` for base styles:
+
+```css title="src/index.css"
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+```
+
+</Tab>
+<Tab value="Next.js">
+
+### Create Page Component
+
+Replace `src/app/page.tsx` with:
+
+```typescript title="src/app/page.tsx"
+'use client';
+
+import { WalletConnect } from '@/components/WalletConnect';
+import { EthBalance } from '@/components/EthBalance';
+import { SendEth } from '@/components/SendEth';
+
+export default function Home() {
+  return (
+    <div className="app">
+      <header className="app-header">
+        <h1>ETH Dashboard</h1>
+        <p className="subtitle">Permanent hosting on Arweave</p>
+      </header>
+
+      <div className="wallet-section">
+        <WalletConnect />
+      </div>
+
+      <div className="dashboard-grid">
+        <EthBalance />
+        <SendEth />
+      </div>
+
+      <footer className="app-footer">
+        <p>
+          Hosted on <a href="https://ar.io" target="_blank" rel="noopener">AR.IO Network</a>
+        </p>
+      </footer>
+    </div>
+  );
+}
+```
+
+### Add Styles
+
+Update `src/app/globals.css`:
+
+```css title="src/app/globals.css"
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+.app {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem;
+}
+
+.app-header {
+  text-align: center;
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.app-header h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-top: 0.5rem;
+}
+
+.wallet-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+/* Wallet Connection Styles */
+.wallet-connect,
+.wallet-connected {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  min-width: 400px;
+}
+
+.wallet-connect h3 {
+  margin: 0 0 1.5rem 0;
+  color: #333;
+  text-align: center;
+}
+
+.wallet-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.wallet-option {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: #f8f8f8;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.wallet-option:hover:not(:disabled) {
+  background: #667eea;
+  border-color: #667eea;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.wallet-option:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.wallet-icon {
+  font-size: 1.5rem;
+}
+
+.wallet-name {
+  font-weight: 600;
+}
+
+.connect-error {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: #fee;
+  border-left: 4px solid #f44;
+  border-radius: 4px;
+  color: #c33;
+  font-size: 0.9rem;
+}
+
+/* Wallet Connected State */
+.wallet-connected {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.wallet-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.wallet-address {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  font-family: 'Courier New', monospace;
+}
+
+.wallet-network {
+  font-size: 0.9rem;
+  color: #666;
+  background: #f0f0f0;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+}
+
+.wallet-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.network-switcher {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.network-button {
+  flex: 1;
+  padding: 0.75rem;
+  background: #f8f8f8;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 500;
+}
+
+.network-button:hover:not(:disabled) {
+  background: #e8e8f8;
+  border-color: #667eea;
+}
+
+.network-button.active {
+  background: #667eea;
+  border-color: #667eea;
+  color: white;
+}
+
+.network-button:disabled {
+  cursor: not-allowed;
+}
+
+.disconnect-button {
+  width: 100%;
+  padding: 0.75rem;
+  background: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-weight: 600;
+}
+
+.disconnect-button:hover {
+  background: #cc0000;
+}
+
+.dashboard-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+.balance-card,
+.send-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.balance-card h2,
+.send-card h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.balance-amount {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #667eea;
+  margin: 1rem 0;
+}
+
+.balance-details {
+  display: flex;
+  justify-content: space-between;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.chain-name {
+  background: #667eea;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.form-group input:disabled {
+  background: #f5f5f5;
+  cursor: not-allowed;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 1rem;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button[type="submit"]:hover:not(:disabled) {
+  background: #5568d3;
+}
+
+button[type="submit"]:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.error-message {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #fee;
+  border-left: 4px solid #f44;
+  border-radius: 4px;
+  color: #c33;
+}
+
+.success-message {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #efe;
+  border-left: 4px solid #4c4;
+  border-radius: 4px;
+  color: #363;
+}
+
+.transaction-hash {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #f5f5f5;
+  border-radius: 4px;
+}
+
+.transaction-hash code {
+  word-break: break-all;
+  color: #667eea;
+}
+
+.app-footer {
+  text-align: center;
+  margin-top: 3rem;
+  color: white;
+  opacity: 0.8;
+}
+
+.app-footer a {
+  color: white;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+```
+
+</Tab>
+</Tabs>
+
+## Build Configuration
+
+Configure your framework to output a properly formatted SPA for Arweave.
+
+<Tabs items={['Vite', 'Next.js']}>
+<Tab value="Vite">
+
+### Configure Vite
+
+Update `vite.config.ts`:
+
+```typescript title="vite.config.ts"
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+  plugins: [react()],
+  base: './', // Use relative paths for Arweave
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    rollupOptions: {
+      output: {
+        manualChunks: undefined, // Single bundle for simplicity
+      },
+    },
+  },
+});
+```
+
+### Build the Project
+
+```bash
+npm run build
+```
+
+This creates a `dist/` folder with your compiled app ready for Arweave deployment.
+
+</Tab>
+<Tab value="Next.js">
+
+### Configure Next.js for Static Export
+
+Update `next.config.mjs`:
+
+```javascript title="next.config.mjs"
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'export', // Enable static export
+  images: {
+    unoptimized: true, // Required for static export
+  },
+  trailingSlash: true, // Add trailing slashes to URLs
+};
+
+export default nextConfig;
+```
+
+<Callout title="Static Export" type="info">
+`output: 'export'` generates a static site that works on Arweave. This disables server-side features like API routes and ISR.
+</Callout>
+
+### Build the Project
+
+```bash
+npm run build
+```
+
+This creates an `out/` folder with your static site ready for deployment.
+
+</Tab>
+</Tabs>
+
+## Deploy to Arweave
+
+Now deploy your dApp frontend to Arweave using your Ethereum wallet.
+
+### Export Your Private Key
+
+You'll need your Ethereum wallet's private key for deployment. Here's how to export it from MetaMask:
+
+<Steps>
+
+<Step title="Open MetaMask">
+Click the MetaMask extension and unlock your wallet.
+</Step>
+
+<Step title="Access Account Details">
+1. Click the three dots menu next to your account name
+2. Select "Account details"
+</Step>
+
+<Step title="Export Private Key">
+1. Click "Show private key"
+2. Enter your MetaMask password
+3. Click "Confirm" to reveal your private key
+4. Copy the private key (starts with `0x`)
+</Step>
+
+</Steps>
+
+<Callout title="Private Key Security" type="warn">
+**NEVER share your private key or commit it to version control.**
+
+Your private key grants full access to your wallet funds. Only use it locally or in secure CI/CD environments like GitHub Secrets. Consider using a dedicated deployment wallet with limited funds for additional security.
+</Callout>
+
+### Payment Options
+
+You have two options to pay for Arweave storage:
+
+1. **Base-ETH** (Recommended for EVM users): Pay directly with ETH on Base network using `--on-demand base-eth`
+2. **Turbo Credits**: Pre-purchase credits at [turbo.ar.io/topup](https://turbo.ar.io/topup)
+
+<Tabs items={['Vite', 'Next.js']}>
+<Tab value="Vite">
+
+### Deploy with Base-ETH (Recommended)
+
+Deploy and pay for storage using ETH on Base network:
+
+```bash
+npx permaweb-deploy \
+  --arns-name my-eth-dashboard \
+  --sig-type ethereum \
+  --private-key "0xYOUR_PRIVATE_KEY" \
+  --on-demand base-eth \
+  --max-token-amount 0.01 \
+  --ttl 60
+```
+
+**Options explained:**
+- `--sig-type ethereum` - Use Ethereum wallet for signing
+- `--private-key` - Your MetaMask private key (starts with `0x`)
+- `--on-demand base-eth` - Pay with ETH on Base network
+- `--max-token-amount 0.01` - Maximum ETH to spend (adjust as needed)
+- `--ttl 60` - ArNS updates propagate within 1 minute
+
+<Callout title="Calculate deployment cost" type="info">
+This app's production build is approximately **300 KB** (0.3 MB). Use the [Turbo Calculator](https://turbo.ar.io/calculator) to calculate the exact cost based on your build size. You'll need at least this equivalent in Base-ETH in your wallet (or Turbo credits) to cover the upload cost.
+</Callout>
+
+### Deploy with Turbo Credits (Alternative)
+
+If you prefer using pre-purchased Turbo credits:
+
+```bash
+npx permaweb-deploy \
+  --arns-name my-eth-dashboard \
+  --sig-type ethereum \
+  --private-key "0xYOUR_PRIVATE_KEY" \
+  --ttl 60
+```
+
+### Package.json Script
+
+Create a deployment script for easier local deploys:
+
+```json title="package.json"
+{
+  "scripts": {
+    "deploy": "permaweb-deploy --arns-name $ARNS_NAME --sig-type ethereum --private-key $PRIVATE_KEY --on-demand base-eth --max-token-amount 0.01 --ttl 60"
+  }
+}
+```
+
+Then deploy with:
+
+```bash
+ARNS_NAME=my-eth-dashboard PRIVATE_KEY="0x..." npm run deploy
+```
+
+</Tab>
+<Tab value="Next.js">
+
+### Deploy with Base-ETH (Recommended)
+
+Deploy and pay for storage using ETH on Base network:
+
+```bash
+npx permaweb-deploy \
+  --deploy-folder out \
+  --arns-name my-eth-dashboard \
+  --sig-type ethereum \
+  --private-key "0xYOUR_PRIVATE_KEY" \
+  --on-demand base-eth \
+  --max-token-amount 0.01 \
+  --ttl 60
+```
+
+**Options explained:**
+- `--deploy-folder out` - Next.js static export folder
+- `--sig-type ethereum` - Use Ethereum wallet for signing
+- `--private-key` - Your MetaMask private key (starts with `0x`)
+- `--on-demand base-eth` - Pay with ETH on Base network
+- `--max-token-amount 0.01` - Maximum ETH to spend (adjust as needed)
+- `--ttl 60` - ArNS updates propagate within 1 minute
+
+### Deploy with Turbo Credits (Alternative)
+
+If you prefer using pre-purchased Turbo credits:
+
+```bash
+npx permaweb-deploy \
+  --deploy-folder out \
+  --arns-name my-eth-dashboard \
+  --sig-type ethereum \
+  --private-key "0xYOUR_PRIVATE_KEY" \
+  --ttl 60
+```
+
+### Package.json Script
+
+Create a deployment script:
+
+```json title="package.json"
+{
+  "scripts": {
+    "deploy": "permaweb-deploy --deploy-folder out --arns-name $ARNS_NAME --sig-type ethereum --private-key $PRIVATE_KEY --on-demand base-eth --max-token-amount 0.01 --ttl 60"
+  }
+}
+```
+
+Then deploy with:
+
+```bash
+ARNS_NAME=my-eth-dashboard PRIVATE_KEY="0x..." npm run deploy
+```
+
+</Tab>
+</Tabs>
+
+### Access Your dApp
+
+After deployment completes (1-2 minutes), access your dApp at:
+
+- **Primary**: `https://my-eth-dashboard.arweave.net`
+- **Alternative gateways**: `https://my-eth-dashboard.g8way.io`, `https://my-eth-dashboard.ar-io.dev`
+
+Your dApp is now permanently hosted across 100+ AR.IO gateways!
+
+## Automating Deployments
+
+### GitHub Actions
+
+Set up CI/CD to automatically deploy when you push to GitHub.
+
+<Tabs items={['Vite', 'Next.js']}>
+<Tab value="Vite">
+
+Create `.github/workflows/deploy.yml`:
+
+```yaml title=".github/workflows/deploy.yml"
+name: Deploy to Arweave
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to Arweave
+        env:
+          ARNS_NAME: ${{ secrets.ARNS_NAME }}
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+        run: |
+          npx permaweb-deploy \
+            --arns-name $ARNS_NAME \
+            --sig-type ethereum \
+            --private-key $PRIVATE_KEY \
+            --on-demand base-eth \
+            --max-token-amount 0.01 \
+            --ttl 60
+```
+
+</Tab>
+<Tab value="Next.js">
+
+Create `.github/workflows/deploy.yml`:
+
+```yaml title=".github/workflows/deploy.yml"
+name: Deploy to Arweave
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to Arweave
+        env:
+          ARNS_NAME: ${{ secrets.ARNS_NAME }}
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+        run: |
+          npx permaweb-deploy \
+            --deploy-folder out \
+            --arns-name $ARNS_NAME \
+            --sig-type ethereum \
+            --private-key $PRIVATE_KEY \
+            --on-demand base-eth \
+            --max-token-amount 0.01 \
+            --ttl 60
+```
+
+</Tab>
+</Tabs>
+
+### Configure GitHub Secrets
+
+<Steps>
+
+<Step title="Export Private Key">
+Export your Ethereum wallet's private key from MetaMask (see "Export Your Private Key" section above).
+</Step>
+
+<Step title="Add Secrets to GitHub">
+1. Go to your repository on GitHub
+2. Navigate to Settings → Secrets and variables → Actions
+3. Add these secrets:
+   - `PRIVATE_KEY`: Your Ethereum private key (starts with `0x`)
+   - `ARNS_NAME`: Your ArNS name (e.g., `my-eth-dashboard`)
+
+<Callout title="Dedicated Deployment Wallet" type="info">
+For production deployments, consider creating a separate Ethereum wallet specifically for deployments. Fund it with just enough Base-ETH for deployments (e.g., $5-10 worth) to limit exposure if the secret is compromised.
+</Callout>
+</Step>
+
+<Step title="Test Workflow">
+Push a commit to the `main` branch and watch the Actions tab for deployment progress.
+</Step>
+
+</Steps>
+
+### Multi-Environment Setup
+
+Deploy to different ArNS undernames for staging and production:
+
+```yaml title=".github/workflows/deploy.yml" {8-12,36-38}
+name: Deploy to Arweave
+
+on:
+  push:
+    branches: [main, develop]
+  workflow_dispatch:
+
+env:
+  ARNS_NAME: ${{ github.ref == 'refs/heads/main' && secrets.ARNS_NAME_PROD || secrets.ARNS_NAME_DEV }}
+  UNDERNAME: ${{ github.ref == 'refs/heads/main' && '@' || 'dev' }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to Arweave
+        env:
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+        run: |
+          npx permaweb-deploy \
+            --arns-name $ARNS_NAME \
+            --undername $UNDERNAME \
+            --sig-type ethereum \
+            --private-key $PRIVATE_KEY \
+            --on-demand base-eth \
+            --max-token-amount 0.01 \
+            --ttl 60
+```
+
+This deploys:
+- `main` branch → `myapp.arweave.net` (production)
+- `develop` branch → `dev_myapp.arweave.net` (staging)
+
+## Test Your dApp
+
+Before sharing your dApp, verify all functionality works:
+
+<Steps>
+
+<Step title="Connect Wallet">
+1. Open your deployed dApp (e.g., `https://my-eth-dashboard.arweave.net`)
+2. Click "Connect Wallet" and approve in MetaMask/your wallet
+3. Verify your address and balance display correctly
+</Step>
+
+<Step title="Switch Networks">
+1. Use the network switcher to toggle between Ethereum and Base
+2. Verify balance updates for each network
+3. Check that chain name displays correctly
+</Step>
+
+<Step title="Test Transactions (on Testnet)">
+<Callout title="Use Testnet First" type="warn">
+Test your dApp on testnets (Sepolia, Base Sepolia) before using real ETH. Update the chain configuration to include testnets during development.
+</Callout>
+
+1. Send a small test transaction to another address you control
+2. Verify the transaction hash displays
+3. Check transaction confirmation works
+4. Verify balance updates after confirmation
+</Step>
+
+<Step title="Test Error Handling">
+1. Try sending with insufficient balance
+2. Try rejecting a transaction in your wallet
+3. Verify error messages display correctly
+</Step>
+
+<Step title="Test Mobile">
+1. Open your dApp on mobile
+2. Test WalletConnect integration with mobile wallets
+3. Verify responsive design works
+</Step>
+
+</Steps>
+
+## Next Steps
+
+<Cards>
+  <Card
+    icon={<GitBranch />}
+    title="Versioning with Undernames"
+    href="/build/guides/hosting-unstoppable-apps/using-undernames-for-versioning"
+  >
+    Deploy staging and production versions of your dApp to different undernames for safe updates and testing.
+  </Card>
+
+  <Card
+    icon={<Code />}
+    title="AO dApp Alternative"
+    href="/build/guides/hosting-unstoppable-apps/hosting-arweave-ao-dapp"
+  >
+    Explore building fully decentralized dApps using AO smart contracts instead of EVM chains.
+  </Card>
+
+  <Card
+    icon={<Globe />}
+    title="Quick Deploy with Arlink"
+    href="/build/guides/hosting-unstoppable-apps/deploying-with-arlink"
+  >
+    Use Arlink's web interface for one-click deployments without CLI tools or local builds.
+  </Card>
+</Cards>
+
+You've successfully built and deployed an Ethereum dApp frontend to Arweave! Your app now benefits from:
+
+- ✅ **Permanent hosting** - Frontend stored forever on Arweave
+- ✅ **Decentralized access** - Available through 100+ AR.IO gateways
+- ✅ **Human-readable domain** - Accessible via your ArNS name
+- ✅ **Hybrid architecture** - Smart contracts on Ethereum, frontend on Arweave
+- ✅ **Multi-chain support** - Works with Ethereum, Base, and other EVM chains
+- ✅ **Automated deployment** - CI/CD pipeline for updates
+
+This architecture gives you the best of both worlds: the maturity and ecosystem of EVM chains for your contracts, with the permanence and censorship-resistance of Arweave for your frontend.

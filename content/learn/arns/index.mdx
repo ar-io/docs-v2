@@ -4,7 +4,7 @@ description: "ArNS is a censorship-resistant naming system stored on Arweave, po
 ---
 
 import { Card, Cards } from "fumadocs-ui/components/card";
-import { Globe, Key, DollarSign, ShoppingCart } from "lucide-react";
+import { Globe, Key, DollarSign, ShoppingCart, Rocket } from "lucide-react";
 
 ## What is ArNS?
 
@@ -119,5 +119,11 @@ sequenceDiagram
     description="Start registering names for your permanent applications"
     href="https://arns.app"
     icon={<ShoppingCart className="w-8 h-8" />}
+  />
+  <Card
+    title="Host Unstoppable Apps"
+    description="Deploy permanent websites and dApps using ArNS names"
+    href="/build/guides/hosting-unstoppable-apps"
+    icon={<Rocket className="w-8 h-8" />}
   />
 </Cards>

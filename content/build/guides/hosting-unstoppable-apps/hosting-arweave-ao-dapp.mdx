@@ -1,0 +1,1518 @@
+---
+title: "Hosting an Arweave/AO App on ArNS"
+description: "Learn how to build and deploy decentralized applications that interact with Arweave and AO processes"
+---
+
+import { Callout } from 'fumadocs-ui/components/callout';
+import { Steps, Step } from 'fumadocs-ui/components/steps';
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
+import { Cards, Card } from 'fumadocs-ui/components/card';
+import { Code, Wallet, Database, GitBranch, Zap, Terminal, FileCode, Globe } from 'lucide-react';
+
+## Introduction
+
+This guide walks you through building and deploying a decentralized application (dApp) that interacts with the Arweave and AO ecosystems. You'll create a functional token dashboard for the ARIO token that connects to user wallets, interacts with the ARIO AO process, and queries data from Arweave.
+
+<Callout title="New to unstoppable apps?" type="info">
+Check out the [series introduction](/build/guides/hosting-unstoppable-apps) to understand how AR.IO Network makes apps truly unstoppable with 100+ independent gateways.
+</Callout>
+
+## What You'll Build
+
+In this guide, you'll create an **AO Token Dashboard for the ARIO token** - a dApp that:
+- Connects to Wander wallet
+- Fetches ARIO token balances from the ARIO process
+- Sends ARIO tokens to other addresses
+- Queries transaction data from Arweave using GraphQL
+- Displays token information in a responsive interface
+
+<Callout type="info">
+This guide uses the ARIO token (`qNvAoz0TgcH7DMg8BCVn8jF32QH5L6T29VjHxhHqqGE`) as a practical example. The same patterns work for any AO token - simply replace the process ID with your target token's process ID.
+</Callout>
+
+## Prerequisites
+
+Before starting, ensure you have:
+
+- **Node.js 18+** and npm installed
+- **Git** for version control
+- **Basic knowledge** of React and TypeScript
+- **Wander wallet** extension installed ([download here](https://wander.app/download))
+- **Arweave wallet** with storage credits for deployment ([create with Wander](https://www.wander.app/))
+- **Storage credits** from [turbo.ar.io](https://turbo.ar.io/topup)
+- **ArNS name** registered (see [Purchase ArNS Name](/build/guides/working-with-arns/purchase-arns-ui))
+
+<Callout type="info">
+If you're new to AO, check out the [AO documentation](https://cookbook_ao.g8way.io/) to understand the architecture and concepts.
+</Callout>
+
+## Setting Up Your Development Environment
+
+Let's start by creating a new React project with Vite and installing the necessary dependencies.
+
+<Steps>
+<Step title="Create a new Vite project">
+```bash
+npm create vite@latest my-ao-dapp -- --template react-ts
+cd my-ao-dapp
+npm install
+```
+</Step>
+
+<Step title="Install AO and Arweave dependencies">
+```bash
+npm install @permaweb/aoconnect arconnect graphql-request
+```
+
+**Package explanations:**
+- `@permaweb/aoconnect` - SDK for interacting with AO processes
+- `arconnect` - Type definitions for Wander wallet (maintained for compatibility)
+- `graphql-request` - Lightweight GraphQL client for Arweave queries
+</Step>
+
+<Step title="Install permaweb-deploy for deployment">
+```bash
+npm install --save-dev permaweb-deploy
+```
+</Step>
+</Steps>
+
+## Project Structure
+
+Organize your project with this recommended structure:
+
+```
+my-ao-dapp/
+├── src/
+│   ├── components/
+│   │   ├── WalletConnect.tsx      # Wallet connection component
+│   │   ├── TokenBalance.tsx       # Token balance display
+│   │   ├── SendTokens.tsx         # Token sending form
+│   │   └── TransactionList.tsx    # Transaction history
+│   ├── lib/
+│   │   ├── ao.ts                  # AO process interactions
+│   │   ├── arweave.ts             # Arweave GraphQL queries
+│   │   └── wallet.ts              # Wallet utilities
+│   ├── types/
+│   │   └── index.ts               # TypeScript type definitions
+│   ├── App.tsx                    # Main application component
+│   ├── App.css                    # Application styles
+│   └── main.tsx                   # Application entry point
+├── dist/                           # Build output directory
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+└── index.html
+```
+
+## Wallet Integration
+
+First, let's create wallet connection functionality using Wander.
+
+### Create wallet utilities
+
+Create `src/lib/wallet.ts`:
+
+```typescript
+// Check if Wander is available
+export const isWanderInstalled = (): boolean => {
+  return typeof window !== 'undefined' && 'arweaveWallet' in window;
+};
+
+// Connect to Wander wallet
+export const connectWallet = async (): Promise<string> => {
+  if (!isWanderInstalled()) {
+    throw new Error('Wander is not installed. Please install the extension.');
+  }
+
+  try {
+    // Request permissions from user
+    await window.arweaveWallet.connect(
+      ['ACCESS_ADDRESS', 'SIGN_TRANSACTION', 'ACCESS_PUBLIC_KEY'],
+      {
+        name: 'ARIO Token Dashboard',
+        logo: 'https://arweave.net/your-logo-tx-id'
+      }
+    );
+
+    // Get the wallet address
+    const address = await window.arweaveWallet.getActiveAddress();
+    return address;
+  } catch (error) {
+    console.error('Failed to connect wallet:', error);
+    throw error;
+  }
+};
+
+// Disconnect wallet
+export const disconnectWallet = async (): Promise<void> => {
+  if (isWanderInstalled()) {
+    await window.arweaveWallet.disconnect();
+  }
+};
+
+// Get current wallet address
+export const getWalletAddress = async (): Promise<string | null> => {
+  if (!isWanderInstalled()) {
+    return null;
+  }
+
+  try {
+    const address = await window.arweaveWallet.getActiveAddress();
+    return address;
+  } catch {
+    return null;
+  }
+};
+```
+
+### Create wallet connection component
+
+Create `src/components/WalletConnect.tsx`:
+
+```typescript
+import { useState, useEffect } from 'react';
+import { connectWallet, disconnectWallet, getWalletAddress, isWanderInstalled } from '../lib/wallet';
+
+interface WalletConnectProps {
+  onAddressChange: (address: string | null) => void;
+}
+
+export function WalletConnect({ onAddressChange }: WalletConnectProps) {
+  const [address, setAddress] = useState<string | null>(null);
+  const [isConnecting, setIsConnecting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  // Check for existing connection on mount
+  useEffect(() => {
+    checkConnection();
+  }, []);
+
+  const checkConnection = async () => {
+    const addr = await getWalletAddress();
+    setAddress(addr);
+    onAddressChange(addr);
+  };
+
+  const handleConnect = async () => {
+    if (!isWanderInstalled()) {
+      setError('Wander extension is not installed');
+      return;
+    }
+
+    setIsConnecting(true);
+    setError(null);
+
+    try {
+      const addr = await connectWallet();
+      setAddress(addr);
+      onAddressChange(addr);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to connect wallet');
+      setAddress(null);
+      onAddressChange(null);
+    } finally {
+      setIsConnecting(false);
+    }
+  };
+
+  const handleDisconnect = async () => {
+    await disconnectWallet();
+    setAddress(null);
+    onAddressChange(null);
+  };
+
+  if (!isWanderInstalled()) {
+    return (
+      <div className="wallet-connect">
+        <p className="error">Wander extension not found</p>
+        <a
+          href="https://wander.app/download"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="button"
+        >
+          Install Wander
+        </a>
+      </div>
+    );
+  }
+
+  return (
+    <div className="wallet-connect">
+      {error && <p className="error">{error}</p>}
+
+      {address ? (
+        <div className="connected">
+          <p>Connected: {address.slice(0, 8)}...{address.slice(-8)}</p>
+          <button onClick={handleDisconnect} className="button">
+            Disconnect
+          </button>
+        </div>
+      ) : (
+        <button
+          onClick={handleConnect}
+          disabled={isConnecting}
+          className="button"
+        >
+          {isConnecting ? 'Connecting...' : 'Connect Wallet'}
+        </button>
+      )}
+    </div>
+  );
+}
+```
+
+### Add TypeScript declarations
+
+Create `src/types/index.ts`:
+
+```typescript
+// Wander wallet type declaration (uses window.arweaveWallet API)
+// Note: Wander was formerly ArConnect - the API and TypeScript types remain compatible
+declare global {
+  interface Window {
+    arweaveWallet: {
+      connect(
+        permissions: string[],
+        appInfo?: { name: string; logo: string }
+      ): Promise<void>;
+      disconnect(): Promise<void>;
+      getActiveAddress(): Promise<string>;
+      getActivePublicKey(): Promise<string>;
+      sign(
+        transaction: unknown,
+        options?: { tags?: { name: string; value: string }[] }
+      ): Promise<unknown>;
+    };
+  }
+}
+
+// AO Process types
+export interface AOMessage {
+  Target: string;
+  Action: string;
+  [key: string]: string | number;
+}
+
+export interface AOResult {
+  Messages: Array<{
+    Data: string;
+    Tags: Array<{ name: string; value: string }>;
+  }>;
+  Error?: string;
+}
+
+// Token types
+export interface TokenBalance {
+  process: string;
+  balance: string;
+  ticker: string;
+  name: string;
+  denomination: number;
+}
+
+// Transaction types
+export interface ArweaveTransaction {
+  id: string;
+  owner: {
+    address: string;
+  };
+  tags: Array<{
+    name: string;
+    value: string;
+  }>;
+  block?: {
+    timestamp: number;
+    height: number;
+  };
+}
+
+export {};
+```
+
+## AO Process Interaction
+
+Now let's create functions to interact with AO processes.
+
+### Create AO utilities
+
+Create `src/lib/ao.ts`:
+
+```typescript
+import { createDataItemSigner, message, result } from '@permaweb/aoconnect';
+import type { AOMessage, AOResult, TokenBalance } from '../types';
+
+// Send a message to an AO process
+export const sendAOMessage = async (
+  processId: string,
+  messageData: AOMessage
+): Promise<string> => {
+  try {
+    // Create a signer using Wander
+    const signer = createDataItemSigner(window.arweaveWallet);
+
+    // Send the message
+    const messageId = await message({
+      process: processId,
+      tags: Object.entries(messageData).map(([name, value]) => ({
+        name,
+        value: String(value)
+      })),
+      signer,
+      data: messageData.Data || ''
+    });
+
+    return messageId;
+  } catch (error) {
+    console.error('Failed to send AO message:', error);
+    throw error;
+  }
+};
+
+// Get result from an AO message
+export const getAOResult = async (
+  processId: string,
+  messageId: string
+): Promise<AOResult> => {
+  try {
+    const res = await result({
+      process: processId,
+      message: messageId
+    });
+
+    return res as AOResult;
+  } catch (error) {
+    console.error('Failed to get AO result:', error);
+    throw error;
+  }
+};
+
+// Get token balance from an AO token process
+export const getTokenBalance = async (
+  processId: string,
+  address: string
+): Promise<TokenBalance> => {
+  try {
+    // Create a signer
+    const signer = createDataItemSigner(window.arweaveWallet);
+
+    // Send balance query message
+    const messageId = await message({
+      process: processId,
+      tags: [
+        { name: 'Action', value: 'Balance' },
+        { name: 'Target', value: address }
+      ],
+      signer
+    });
+
+    // Wait a moment for processing
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    // Get the result
+    const res = await result({
+      process: processId,
+      message: messageId
+    });
+
+    // Parse the result
+    const data = JSON.parse(res.Messages[0].Data);
+
+    return {
+      process: processId,
+      balance: data.balance || '0',
+      ticker: data.ticker || 'TOKEN',
+      name: data.name || 'Unknown Token',
+      denomination: data.denomination || 12
+    };
+  } catch (error) {
+    console.error('Failed to get token balance:', error);
+    throw error;
+  }
+};
+
+// Send tokens to another address
+export const sendTokens = async (
+  processId: string,
+  recipient: string,
+  amount: string
+): Promise<string> => {
+  try {
+    const signer = createDataItemSigner(window.arweaveWallet);
+
+    const messageId = await message({
+      process: processId,
+      tags: [
+        { name: 'Action', value: 'Transfer' },
+        { name: 'Recipient', value: recipient },
+        { name: 'Quantity', value: amount }
+      ],
+      signer
+    });
+
+    return messageId;
+  } catch (error) {
+    console.error('Failed to send tokens:', error);
+    throw error;
+  }
+};
+
+// Get token info from process
+export const getTokenInfo = async (processId: string): Promise<{
+  name: string;
+  ticker: string;
+  denomination: number;
+  logo?: string;
+}> => {
+  try {
+    const signer = createDataItemSigner(window.arweaveWallet);
+
+    const messageId = await message({
+      process: processId,
+      tags: [{ name: 'Action', value: 'Info' }],
+      signer
+    });
+
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    const res = await result({
+      process: processId,
+      message: messageId
+    });
+
+    const data = JSON.parse(res.Messages[0].Data);
+
+    return {
+      name: data.Name || 'Unknown',
+      ticker: data.Ticker || 'TOKEN',
+      denomination: data.Denomination || 12,
+      logo: data.Logo
+    };
+  } catch (error) {
+    console.error('Failed to get token info:', error);
+    throw error;
+  }
+};
+```
+
+## GraphQL Queries for Arweave Data
+
+Let's create utilities to query transaction data from Arweave using GraphQL.
+
+### Create Arweave query utilities
+
+Create `src/lib/arweave.ts`:
+
+```typescript
+import { GraphQLClient, gql } from 'graphql-request';
+import type { ArweaveTransaction } from '../types';
+
+// Initialize GraphQL client
+const client = new GraphQLClient('https://arweave.net/graphql');
+
+// Query transactions by owner
+export const getTransactionsByOwner = async (
+  owner: string,
+  limit: number = 10
+): Promise<ArweaveTransaction[]> => {
+  const query = gql`
+    query GetTransactions($owner: String!, $first: Int!) {
+      transactions(
+        owners: [$owner]
+        first: $first
+        sort: HEIGHT_DESC
+      ) {
+        edges {
+          node {
+            id
+            owner {
+              address
+            }
+            tags {
+              name
+              value
+            }
+            block {
+              timestamp
+              height
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  try {
+    const data = await client.request<{
+      transactions: {
+        edges: Array<{ node: ArweaveTransaction }>;
+      };
+    }>(query, { owner, first: limit });
+
+    return data.transactions.edges.map(edge => edge.node);
+  } catch (error) {
+    console.error('Failed to query transactions:', error);
+    throw error;
+  }
+};
+
+// Query transactions by tags
+export const getTransactionsByTags = async (
+  tags: Array<{ name: string; values: string[] }>,
+  limit: number = 10
+): Promise<ArweaveTransaction[]> => {
+  const query = gql`
+    query GetTransactionsByTags($tags: [TagFilter!]!, $first: Int!) {
+      transactions(
+        tags: $tags
+        first: $first
+        sort: HEIGHT_DESC
+      ) {
+        edges {
+          node {
+            id
+            owner {
+              address
+            }
+            tags {
+              name
+              value
+            }
+            block {
+              timestamp
+              height
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  try {
+    const data = await client.request<{
+      transactions: {
+        edges: Array<{ node: ArweaveTransaction }>;
+      };
+    }>(query, { tags, first: limit });
+
+    return data.transactions.edges.map(edge => edge.node);
+  } catch (error) {
+    console.error('Failed to query transactions by tags:', error);
+    throw error;
+  }
+};
+
+// Get transaction data
+export const getTransactionData = async (txId: string): Promise<string> => {
+  try {
+    const response = await fetch(`https://arweave.net/${txId}`);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch transaction data: ${response.statusText}`);
+    }
+    return await response.text();
+  } catch (error) {
+    console.error('Failed to get transaction data:', error);
+    throw error;
+  }
+};
+
+// Format timestamp to readable date
+export const formatTimestamp = (timestamp: number): string => {
+  return new Date(timestamp * 1000).toLocaleString();
+};
+```
+
+## Building the Dashboard Components
+
+Now let's create the components for our token dashboard.
+
+### Token Balance Component
+
+Create `src/components/TokenBalance.tsx`:
+
+```typescript
+import { useState, useEffect } from 'react';
+import { getTokenBalance } from '../lib/ao';
+import type { TokenBalance } from '../types';
+
+interface TokenBalanceProps {
+  processId: string;
+  address: string;
+}
+
+export function TokenBalance({ processId, address }: TokenBalanceProps) {
+  const [balance, setBalance] = useState<TokenBalance | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    loadBalance();
+  }, [processId, address]);
+
+  const loadBalance = async () => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const bal = await getTokenBalance(processId, address);
+      setBalance(bal);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to load balance');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return <div className="token-balance loading">Loading balance...</div>;
+  }
+
+  if (error) {
+    return <div className="token-balance error">Error: {error}</div>;
+  }
+
+  if (!balance) {
+    return null;
+  }
+
+  // Format balance with denomination
+  const formattedBalance = (
+    Number(balance.balance) / Math.pow(10, balance.denomination)
+  ).toFixed(balance.denomination);
+
+  return (
+    <div className="token-balance">
+      <h3>{balance.name} ({balance.ticker})</h3>
+      <p className="balance">{formattedBalance} {balance.ticker}</p>
+      <p className="process-id">Process: {processId.slice(0, 8)}...{processId.slice(-8)}</p>
+      <button onClick={loadBalance} className="refresh-button">
+        Refresh
+      </button>
+    </div>
+  );
+}
+```
+
+### Send Tokens Component
+
+Create `src/components/SendTokens.tsx`:
+
+```typescript
+import { useState } from 'react';
+import { sendTokens } from '../lib/ao';
+
+interface SendTokensProps {
+  processId: string;
+  onSuccess: () => void;
+}
+
+export function SendTokens({ processId, onSuccess }: SendTokensProps) {
+  const [recipient, setRecipient] = useState('');
+  const [amount, setAmount] = useState('');
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!recipient || !amount) {
+      setError('Please fill in all fields');
+      return;
+    }
+
+    setSending(true);
+    setError(null);
+    setSuccess(null);
+
+    try {
+      const messageId = await sendTokens(processId, recipient, amount);
+      setSuccess(`Tokens sent! Message ID: ${messageId}`);
+      setRecipient('');
+      setAmount('');
+
+      // Wait a moment then refresh parent
+      setTimeout(() => {
+        onSuccess();
+      }, 2000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to send tokens');
+    } finally {
+      setSending(false);
+    }
+  };
+
+  return (
+    <div className="send-tokens">
+      <h3>Send Tokens</h3>
+
+      {error && <p className="error">{error}</p>}
+      {success && <p className="success">{success}</p>}
+
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="recipient">Recipient Address:</label>
+          <input
+            id="recipient"
+            type="text"
+            value={recipient}
+            onChange={(e) => setRecipient(e.target.value)}
+            placeholder="Enter Arweave address"
+            disabled={sending}
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="amount">Amount:</label>
+          <input
+            id="amount"
+            type="text"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+            placeholder="Enter amount"
+            disabled={sending}
+          />
+        </div>
+
+        <button type="submit" disabled={sending}>
+          {sending ? 'Sending...' : 'Send Tokens'}
+        </button>
+      </form>
+    </div>
+  );
+}
+```
+
+### Transaction List Component
+
+Create `src/components/TransactionList.tsx`:
+
+```typescript
+import { useState, useEffect } from 'react';
+import { getTransactionsByOwner, formatTimestamp } from '../lib/arweave';
+import type { ArweaveTransaction } from '../types';
+
+interface TransactionListProps {
+  address: string;
+}
+
+export function TransactionList({ address }: TransactionListProps) {
+  const [transactions, setTransactions] = useState<ArweaveTransaction[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    loadTransactions();
+  }, [address]);
+
+  const loadTransactions = async () => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const txs = await getTransactionsByOwner(address, 10);
+      setTransactions(txs);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to load transactions');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return <div className="transaction-list loading">Loading transactions...</div>;
+  }
+
+  if (error) {
+    return <div className="transaction-list error">Error: {error}</div>;
+  }
+
+  if (transactions.length === 0) {
+    return <div className="transaction-list empty">No transactions found</div>;
+  }
+
+  return (
+    <div className="transaction-list">
+      <h3>Recent Transactions</h3>
+      <div className="transactions">
+        {transactions.map((tx) => (
+          <div key={tx.id} className="transaction">
+            <div className="tx-id">
+              <a
+                href={`https://viewblock.io/arweave/tx/${tx.id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {tx.id.slice(0, 12)}...{tx.id.slice(-12)}
+              </a>
+            </div>
+            {tx.block && (
+              <div className="tx-time">
+                {formatTimestamp(tx.block.timestamp)}
+              </div>
+            )}
+            <div className="tx-tags">
+              {tx.tags.slice(0, 3).map((tag, i) => (
+                <span key={i} className="tag">
+                  {tag.name}: {tag.value}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+      <button onClick={loadTransactions} className="refresh-button">
+        Refresh
+      </button>
+    </div>
+  );
+}
+```
+
+## Main Application Component
+
+Now let's put it all together in the main App component.
+
+Update `src/App.tsx`:
+
+```typescript
+import { useState } from 'react';
+import { WalletConnect } from './components/WalletConnect';
+import { TokenBalance } from './components/TokenBalance';
+import { SendTokens } from './components/SendTokens';
+import { TransactionList } from './components/TransactionList';
+import './App.css';
+
+function App() {
+  const [walletAddress, setWalletAddress] = useState<string | null>(null);
+  const [refreshKey, setRefreshKey] = useState(0);
+
+  // ARIO token process ID
+  const ARIO_PROCESS_ID = 'qNvAoz0TgcH7DMg8BCVn8jF32QH5L6T29VjHxhHqqGE';
+
+  const handleBalanceRefresh = () => {
+    setRefreshKey(prev => prev + 1);
+  };
+
+  return (
+    <div className="app">
+      <header className="app-header">
+        <h1>ARIO Token Dashboard</h1>
+        <WalletConnect onAddressChange={setWalletAddress} />
+      </header>
+
+      <main className="app-main">
+        {walletAddress ? (
+          <>
+            <section className="section">
+              <TokenBalance
+                key={refreshKey}
+                processId={ARIO_PROCESS_ID}
+                address={walletAddress}
+              />
+            </section>
+
+            <section className="section">
+              <SendTokens
+                processId={ARIO_PROCESS_ID}
+                onSuccess={handleBalanceRefresh}
+              />
+            </section>
+
+            <section className="section">
+              <TransactionList address={walletAddress} />
+            </section>
+          </>
+        ) : (
+          <div className="connect-prompt">
+            <p>Connect your wallet to view your ARIO token balance and send tokens</p>
+          </div>
+        )}
+      </main>
+
+      <footer className="app-footer">
+        <p>Powered by Arweave & AO</p>
+      </footer>
+    </div>
+  );
+}
+
+export default App;
+```
+
+### Add basic styling
+
+Update `src/App.css`:
+
+```css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #0a0a0a;
+  color: #ffffff;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  padding: 2rem;
+  background: #111;
+  border-bottom: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.app-main {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.section {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.section h3 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.wallet-connect .button {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+.wallet-connect .button:hover {
+  background: #2563eb;
+}
+
+.wallet-connect .button:disabled {
+  background: #555;
+  cursor: not-allowed;
+}
+
+.wallet-connect .connected {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.wallet-connect .error {
+  color: #ef4444;
+  margin-bottom: 1rem;
+}
+
+.token-balance {
+  text-align: center;
+}
+
+.token-balance .balance {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 1rem 0;
+  color: #3b82f6;
+}
+
+.token-balance .process-id {
+  font-size: 0.875rem;
+  color: #888;
+  margin-bottom: 1rem;
+}
+
+.refresh-button {
+  background: #333;
+  color: white;
+  border: 1px solid #555;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.refresh-button:hover {
+  background: #444;
+}
+
+.send-tokens form {
+  max-width: 500px;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  color: #888;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  background: #222;
+  border: 1px solid #444;
+  border-radius: 6px;
+  color: white;
+  font-size: 1rem;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+.form-group input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.send-tokens button[type="submit"] {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.send-tokens button[type="submit"]:hover {
+  background: #2563eb;
+}
+
+.send-tokens button[type="submit"]:disabled {
+  background: #555;
+  cursor: not-allowed;
+}
+
+.send-tokens .error {
+  color: #ef4444;
+  margin-bottom: 1rem;
+}
+
+.send-tokens .success {
+  color: #10b981;
+  margin-bottom: 1rem;
+}
+
+.transaction-list .transactions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.transaction {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.transaction .tx-id a {
+  color: #3b82f6;
+  text-decoration: none;
+  font-family: monospace;
+}
+
+.transaction .tx-id a:hover {
+  text-decoration: underline;
+}
+
+.transaction .tx-time {
+  font-size: 0.875rem;
+  color: #888;
+  margin: 0.5rem 0;
+}
+
+.transaction .tx-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.transaction .tag {
+  background: #222;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: #aaa;
+}
+
+.loading {
+  text-align: center;
+  padding: 2rem;
+  color: #888;
+}
+
+.error {
+  text-align: center;
+  padding: 2rem;
+  color: #ef4444;
+}
+
+.empty {
+  text-align: center;
+  padding: 2rem;
+  color: #888;
+}
+
+.connect-prompt {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #888;
+}
+
+.app-footer {
+  padding: 2rem;
+  text-align: center;
+  background: #111;
+  border-top: 1px solid #333;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .app-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .app-main {
+    padding: 1rem;
+  }
+
+  .section {
+    padding: 1rem;
+  }
+}
+```
+
+## Configuring Vite for SPA Routing
+
+For single-page application routing to work correctly on Arweave, you need to configure Vite properly.
+
+Update `vite.config.ts`:
+
+```typescript
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+  plugins: [react()],
+  base: './',
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
+  },
+});
+```
+
+<Callout type="info">
+The `base: './'` configuration ensures that all asset paths are relative, which is required for Arweave deployment.
+</Callout>
+
+## Testing Your dApp Locally
+
+Before deploying, test your dApp locally:
+
+```bash
+npm run dev
+```
+
+Visit `http://localhost:5173` and test:
+
+1. **Wallet Connection**: Connect your Wander wallet
+2. **Token Balance**: Verify your ARIO balance loads correctly
+3. **Send Tokens**: Test sending ARIO tokens to another address
+4. **Transaction List**: Check that recent transactions display
+
+<Callout type="warn">
+Make sure you have:
+- Wander extension installed
+- ARIO tokens in your wallet for testing transfers (the example uses the ARIO process ID)
+</Callout>
+
+## Building for Production
+
+Build your dApp for deployment:
+
+```bash
+npm run build
+```
+
+This creates an optimized production build in the `dist/` directory.
+
+## Deploying to Arweave with permaweb-deploy
+
+Now let's deploy your AO dApp to Arweave with ArNS integration.
+
+### Interactive Deployment
+
+<Callout type="info">
+You'll need a deployment wallet separate from your Wander wallet. This wallet should have storage credits from [turbo.ar.io](https://turbo.ar.io/topup).
+</Callout>
+
+Run the interactive deployment:
+
+```bash
+npx permaweb-deploy
+```
+
+The CLI will prompt you for:
+1. **Wallet path**: Path to your deployment wallet JSON file (e.g., `~/wallets/arweave-wallet.json`)
+2. **Deploy folder**: Enter `dist`
+3. **ArNS name**: Enter your registered ArNS name (e.g., `my-ao-dapp`)
+4. **Undername**: Press Enter to deploy to root (`@`)
+5. **TTL**: Enter `60` for fast updates (1 minute cache)
+
+### CLI Deployment
+
+For non-interactive deployment:
+
+```bash
+npx permaweb-deploy \
+  --deploy-folder dist \
+  --wallet ~/wallets/arweave-wallet.json \
+  --arns-name my-ao-dapp \
+  --ttl 60
+```
+
+After deployment, your dApp will be accessible at:
+- `https://my-ao-dapp.arweave.net`
+- `https://my-ao-dapp.g8way.io`
+- `https://my-ao-dapp.ar-io.dev`
+- And 100+ other AR.IO gateways!
+
+## Automating Deployments
+
+### Package Scripts
+
+Add deployment scripts to `package.json`:
+
+```json
+{
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "npm run build && permaweb-deploy --deploy-folder dist --wallet \"$WALLET_PATH\" --arns-name \"$ARNS_NAME\" --ttl 60",
+    "deploy:dev": "npm run build && permaweb-deploy --deploy-folder dist --wallet \"$WALLET_PATH\" --arns-name \"$ARNS_NAME\" --undername dev_$ARNS_NAME --ttl 60"
+  }
+}
+```
+
+Deploy with environment variables:
+
+```bash
+WALLET_PATH=~/wallets/arweave-wallet.json ARNS_NAME=my-ao-dapp npm run deploy
+```
+
+### GitHub Actions
+
+Automate deployments on push to main branch.
+
+Create `.github/workflows/deploy.yml`:
+
+```yaml
+name: Deploy AO dApp
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build
+
+      - name: Create wallet file
+        run: |
+          mkdir -p ~/.wallets
+          echo '${{ secrets.DEPLOY_KEY }}' > ~/.wallets/deploy-wallet.json
+
+      - name: Deploy to Arweave
+        run: |
+          npx permaweb-deploy \
+            --deploy-folder dist \
+            --wallet ~/.wallets/deploy-wallet.json \
+            --arns-name ${{ secrets.ARNS_NAME }} \
+            --ttl 60
+
+      - name: Clean up wallet
+        if: always()
+        run: rm -f ~/.wallets/deploy-wallet.json
+```
+
+#### Setting up GitHub Secrets
+
+Add these secrets to your repository (Settings → Secrets and variables → Actions):
+
+1. **DEPLOY_KEY**: Your deployment wallet JSON content (entire file content)
+2. **ARNS_NAME**: Your ArNS name (e.g., `my-ao-dapp`)
+
+<Callout type="warn">
+Never commit wallet files or secrets to your repository. Always use GitHub Secrets or environment variables.
+</Callout>
+
+### Multi-Environment Deployments
+
+Deploy different branches to different undernames:
+
+```yaml
+name: Deploy to Environments
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build
+
+      - name: Create wallet file
+        run: |
+          mkdir -p ~/.wallets
+          echo '${{ secrets.DEPLOY_KEY }}' > ~/.wallets/deploy-wallet.json
+
+      - name: Determine undername
+        id: undername
+        run: |
+          if [ "${{ github.ref }}" = "refs/heads/main" ]; then
+            echo "undername=@" >> $GITHUB_OUTPUT
+          else
+            echo "undername=dev_${{ secrets.ARNS_NAME }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Deploy to Arweave
+        run: |
+          if [ "${{ steps.undername.outputs.undername }}" = "@" ]; then
+            npx permaweb-deploy \
+              --deploy-folder dist \
+              --wallet ~/.wallets/deploy-wallet.json \
+              --arns-name ${{ secrets.ARNS_NAME }} \
+              --ttl 60
+          else
+            npx permaweb-deploy \
+              --deploy-folder dist \
+              --wallet ~/.wallets/deploy-wallet.json \
+              --arns-name ${{ secrets.ARNS_NAME }} \
+              --undername ${{ steps.undername.outputs.undername }} \
+              --ttl 60
+          fi
+
+      - name: Display deployment URLs
+        run: |
+          if [ "${{ steps.undername.outputs.undername }}" = "@" ]; then
+            echo "Production deployed to:"
+            echo "- https://${{ secrets.ARNS_NAME }}.arweave.net"
+          else
+            echo "Development deployed to:"
+            echo "- https://${{ steps.undername.outputs.undername }}.arweave.net"
+          fi
+
+      - name: Clean up wallet
+        if: always()
+        run: rm -f ~/.wallets/deploy-wallet.json
+```
+
+This workflow:
+- Deploys `main` branch to root domain (`@`)
+- Deploys `develop` branch to `dev_myapp` undername
+- Works with any branch by adapting the undername
+
+## Next Steps
+
+Congratulations! You've built and deployed an ARIO token dashboard on Arweave. You can adapt this pattern to work with any AO token by changing the process ID. Here's what to explore next:
+
+<Cards>
+  <Card
+    title="Host an EVM dApp"
+    href="/build/guides/hosting-unstoppable-apps/hosting-evm-dapp"
+    description="Learn how to deploy Ethereum dApp frontends with different wallet integration patterns"
+  />
+  <Card
+    title="Use Undernames for Versioning"
+    href="/build/guides/hosting-unstoppable-apps/using-undernames-for-versioning"
+    description="Set up staging and production environments using ArNS undernames"
+  />
+  <Card
+    title="Deploy with Arlink"
+    href="/build/guides/hosting-unstoppable-apps/deploying-with-arlink"
+    description="Explore the one-click deployment alternative for rapid prototyping"
+  />
+  <Card
+    title="AO Cookbook"
+    href="https://cookbook_ao.g8way.io/"
+    description="Dive deeper into AO development with the official cookbook"
+  />
+</Cards>

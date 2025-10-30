@@ -12,48 +12,21 @@ Once data is stored on Arweave, it's permanently available. Here's how to access
 Different methods serve different needs. Each provides unique capabilities for retrieving data from Arweave.
 
 <Cards>
-  <Card 
+  <Card
     title="Find Data"
-    description={
-      <>
-        <p className="mb-3">Search and discover data on Arweave</p>
-        <div className="space-y-1 text-sm">
-          <div className="flex items-center gap-2"><Search className="w-4 h-4" /> Query by tags and metadata</div>
-          <div className="flex items-center gap-2"><Search className="w-4 h-4" /> Filter by app, owner, timestamp</div>
-          <div className="flex items-center gap-2"><Search className="w-4 h-4" /> Get transaction IDs for fetching</div>
-        </div>
-      </>
-    }
+    description="Search and discover data on Arweave. Query by tags and metadata, filter by app/owner/timestamp, and get transaction IDs for fetching."
     href="/build/access/find-data"
     icon={<Search className="w-8 h-8" />}
   />
-  <Card 
+  <Card
     title="Fetch Data"
-    description={
-      <>
-        <p className="mb-3">Retrieve data bytes from Arweave</p>
-        <div className="space-y-1 text-sm">
-          <div className="flex items-center gap-2"><Globe className="w-4 h-4" /> REST API endpoints</div>
-          <div className="flex items-center gap-2"><Globe className="w-4 h-4" /> GET arweave.net/[txId]</div>
-          <div className="flex items-center gap-2"><Globe className="w-4 h-4" /> Returns raw data/files</div>
-        </div>
-      </>
-    }
+    description="Retrieve data bytes from Arweave using REST API endpoints. Access via GET arweave.net/[txId] to get raw data and files."
     href="/build/access/fetch-data"
     icon={<Globe className="w-8 h-8" />}
   />
-  <Card 
+  <Card
     title="ArNS Names"
-    description={
-      <>
-        <p className="mb-3">Assign names to data and apps</p>
-        <div className="space-y-1 text-sm">
-          <div className="flex items-center gap-2"><Link className="w-4 h-4" /> Create names like ardrive.ar.io</div>
-          <div className="flex items-center gap-2"><Link className="w-4 h-4" /> Point to any Arweave data</div>
-          <div className="flex items-center gap-2"><Link className="w-4 h-4" /> Update targets as needed</div>
-        </div>
-      </>
-    }
+    description="Assign names to data and apps. Create names like ardrive.ar.io, point to any Arweave data, and update targets as needed."
     href="/build/access/arns"
     icon={<Link className="w-8 h-8" />}
   />

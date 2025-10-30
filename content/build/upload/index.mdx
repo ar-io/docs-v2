@@ -13,6 +13,7 @@ import {
   Zap,
   Check,
   Image,
+  Rocket,
 } from "lucide-react";
 
 Arweave enables **permanent data storage** with a single payment. Unlike traditional cloud storage that requires ongoing fees, your data is preserved forever.
@@ -31,60 +32,19 @@ There are multiple ways to upload data to Arweave. Each has its own attributes a
         </span>
       </span>
     }
-    description={
-      <>
-        <p className="mb-3">
-          Production-ready bundling service with enterprise features
-        </p>
-        <div className="space-y-1 text-sm">
-          <div className="flex items-center gap-2">
-            <CreditCard className="w-4 h-4" /> Credit cards, AR, ETH, SOL, MATIC
-          </div>
-          <div className="flex items-center gap-2">
-            <Zap className="w-4 h-4" /> Free uploads under 100 KiB
-          </div>
-          <div className="flex items-center gap-2">
-            <Shield className="w-4 h-4" /> Automatic retry & confirmation
-          </div>
-        </div>
-      </>
-    }
+    description="Production-ready bundling service with enterprise features. Accepts credit cards, AR, ETH, SOL, MATIC. Free uploads under 100 KiB with automatic retry and confirmation."
     href="/build/upload/bundling-services"
     icon={<Image src="/turbo.svg" alt="Turbo" width={40} height={40} />}
   />
   <Card
     title="ArDrive"
-    description={
-      <>
-        <p className="mb-3">No-code solution for personal and business files</p>
-        <div className="space-y-1 text-sm">
-          <div className="flex items-center gap-2">
-            <Check className="w-4 h-4" /> Drag-and-drop interface
-          </div>
-          <div className="flex items-center gap-2">
-            <Check className="w-4 h-4" /> End-to-end encryption
-          </div>
-          <div className="flex items-center gap-2">
-            <Check className="w-4 h-4" /> Powered by Turbo
-          </div>
-        </div>
-      </>
-    }
+    description="No-code solution for personal and business files. Features drag-and-drop interface, end-to-end encryption, and powered by Turbo."
     href="https://app.ardrive.io"
     icon={<Image src="/ardrive.svg" alt="ArDrive" width={40} height={40} />}
   />
   <Card
     title="Direct to Arweave"
-    description={
-      <>
-        <p className="mb-3">Raw protocol access for advanced use cases</p>
-        <div className="space-y-1 text-sm text-muted-foreground">
-          <div>• AR tokens required</div>
-          <div>• Manual transaction handling</div>
-          <div>• Complex setup needed</div>
-        </div>
-      </>
-    }
+    description="Raw protocol access for advanced use cases. Requires AR tokens, manual transaction handling, and complex setup."
     href="https://arweave.org"
     icon={<Image src="/arweave.png" alt="Arweave" width={40} height={40} />}
   />
@@ -181,5 +141,11 @@ Before uploading, learn best practices for structuring and tagging your data for
     title="Get Help"
     description="Join our Discord community"
     href="https://discord.gg/cuCqBb5v"
+  />
+  <Card
+    title="Deploy Your Apps"
+    description="Host permanent websites and dApps after uploading"
+    href="/build/guides/hosting-unstoppable-apps"
+    icon={<Rocket />}
   />
 </Cards>
