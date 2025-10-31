@@ -27,37 +27,40 @@ Turbo Credits represent upload power on the Arweave network, divisible down to 1
 
 ### Payment Methods
 
-- **Fiat Currency**: Credit/debit cards via Stripe
-- **Crypto Tokens**: AR, ETH, SOL, MATIC, ARIO, USDC, KYVE, ETH (BASE)
-- **Multiple Wallets**: Ethereum, Solana, and Arweave wallets supported
+- **Fiat Currency**: Credit/debit cards or USDC via Stripe
+- **Crypto Tokens**: AR, ETH, SOL, POLYGON, ARIO, USDC, KYVE via transfer transactions
+- **Spending Wallets**: Ethereum, Solana, Arweave, and Kyve wallets supported
 
 ### Supported Tokens & Purchase Methods
 
-| Payment Method               | Turbo SDK | Turbo CLI | Turbo API | Top Up App | ArDrive App |
-| ---------------------------- | --------- | --------- | --------- | ---------- | ----------- |
-| **Fiat (credit/debit card)** | ✅        | ✅        | ✅        | ✅         | ✅          |
-| **AR**                       | ✅        | ✅        | ✅        | ✅         | ❌          |
-| **ETH**                      | ✅        | ✅        | ✅        | ✅         | ❌          |
-| **SOL**                      | ✅        | ✅        | ✅        | ✅         | ❌          |
-| **MATIC**                    | ✅        | ✅        | ✅        | ❌         | ❌          |
-| **KYVE**                     | ✅        | ✅        | ✅        | ❌         | ❌          |
-| **ETH (BASE)**               | ✅        | ✅        | ✅        | ❌         | ❌          |
-| **ARIO**                     | ✅        | ✅        | ✅        | ❌         | ❌          |
-| **USDC**                     | ❌        | ✅        | ✅        | ❌         | ❌          |
+| Payment Method               | Turbo SDK | Turbo CLI | Turbo API | Turbo App | ArDrive App |
+| ---------------------------- | --------- | --------- | --------- | --------- | ----------- |
+| **Fiat (credit/debit card)** | ✅        | ✅        | ✅        | ✅        | ✅          |
+| **AR**                       | ✅        | ✅        | ✅        | ✅        | ❌          |
+| **ETH**                      | ✅        | ✅        | ✅        | ✅        | ❌          |
+| **ETH (BASE)**               | ✅        | ✅        | ✅        | ✅        | ❌          |
+| **SOL**                      | ✅        | ✅        | ✅        | ✅        | ❌          |
+| **POLYGON**                  | ✅        | ✅        | ✅        | ✅        | ❌          |
+| **ARIO**                     | ✅        | ✅        | ✅        | ✅        | ❌          |
+| **USDC (ETH)**               | ✅        | ✅        | ✅        | ✅        | ❌          |
+| **USDC (BASE)**              | ✅        | ✅        | ✅        | ✅        | ❌          |
+| **USDC (POLYGON)**           | ✅        | ✅        | ✅        | ✅        | ❌          |
+| **KYVE**                     | ✅        | ✅        | ✅        | ❌        | ❌          |
 
 <Callout type="info">
   **Wallet Compatibility:** When purchasing with cryptocurrencies, credits are
-  deposited into the corresponding wallet type. You cannot top up an ETH wallet
-  by paying with AR.
+  deposited into the wallet described by optional parameter
+  `turboCreditDestinationAddress`. When not provided, credits will be added to
+  the signing wallet of the transfer.
 </Callout>
 
 ### Purchase Options
 
-**Option 1: Turbo Top Up App**
+**Option 1: Turbo App**
 
-- Visit [turbo-topup.com](https://turbo-topup.com)
-- Purchase with USD or AR tokens
-- Credits can be purchased into Ethereum or Solana wallets
+- Visit [turbo.ar.io](https://turbo.ar.io)
+- Purchase with USD, ARIO, USDC, SOL, ETH, POL, KYVE tokens
+- Credits can be purchased for Arweave, Ethereum, Solana, or Kyve native wallet addresses
 
 **Option 2: ArDrive App**
 
@@ -69,9 +72,13 @@ Turbo Credits represent upload power on the Arweave network, divisible down to 1
 
 ```js
 // Purchase credits programmatically
-const fundResult = await turbo.topUpWithTokens({
-  tokenAmount: TOKEN_AMOUNT,
-  tokenType: "solana", // or 'ethereum', 'matic', 'arweave'
+const { winc, status, id, ...fundResult } = await TurboFactory.authenticated({
+  signer,
+  token: "base-usdc",
+}).topUpWithTokens({
+  tokenAmount: USDCToTokenAmount(1), // 1 USDC on base network
+  turboCreditDestinationAddress:
+    "any-valid-evm-arweave-solana-kyve-native-wallet-address",
 });
 
 // Check your balance
